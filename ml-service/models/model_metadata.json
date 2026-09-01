@@ -1,0 +1,258 @@
+{
+  "version": "1.0.4",
+  "algorithm": "Random Forest",
+  "trained_at": "2026-09-01T11:20:26.286085+00:00",
+  "total_samples": 600,
+  "train_samples": 480,
+  "test_samples": 120,
+  "classes": [
+    "Low",
+    "Moderate",
+    "High"
+  ],
+  "evaluation_metrics": {
+    "accuracy": 0.9917,
+    "precision": 0.9919,
+    "recall": 0.9917,
+    "f1_score": 0.9917,
+    "high_risk_recall": 0.9615,
+    "cv_accuracy_mean": 0.975,
+    "cv_accuracy_std": 0.0169,
+    "cv_f1_mean": 0.9747,
+    "confusion_matrix": [
+      [
+        64,
+        0,
+        0
+      ],
+      [
+        0,
+        30,
+        0
+      ],
+      [
+        0,
+        1,
+        25
+      ]
+    ],
+    "labels": [
+      "Low",
+      "Moderate",
+      "High"
+    ]
+  },
+  "all_model_benchmarks": {
+    "Random Forest": {
+      "accuracy": 0.9917,
+      "precision": 0.9919,
+      "recall": 0.9917,
+      "f1_score": 0.9917,
+      "high_risk_recall": 0.9615,
+      "cv_accuracy_mean": 0.975,
+      "cv_accuracy_std": 0.0169,
+      "cv_f1_mean": 0.9747,
+      "confusion_matrix": [
+        [
+          64,
+          0,
+          0
+        ],
+        [
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          1,
+          25
+        ]
+      ],
+      "labels": [
+        "Low",
+        "Moderate",
+        "High"
+      ]
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.9833,
+      "precision": 0.9836,
+      "recall": 0.9833,
+      "f1_score": 0.9834,
+      "high_risk_recall": 1.0,
+      "cv_accuracy_mean": 0.9812,
+      "cv_accuracy_std": 0.0167,
+      "cv_f1_mean": 0.981,
+      "confusion_matrix": [
+        [
+          63,
+          1,
+          0
+        ],
+        [
+          0,
+          29,
+          1
+        ],
+        [
+          0,
+          0,
+          26
+        ]
+      ],
+      "labels": [
+        "Low",
+        "Moderate",
+        "High"
+      ]
+    },
+    "Logistic Regression": {
+      "accuracy": 0.975,
+      "precision": 0.9752,
+      "recall": 0.975,
+      "f1_score": 0.975,
+      "high_risk_recall": 0.9231,
+      "cv_accuracy_mean": 0.9396,
+      "cv_accuracy_std": 0.0138,
+      "cv_f1_mean": 0.9388,
+      "confusion_matrix": [
+        [
+          64,
+          0,
+          0
+        ],
+        [
+          0,
+          29,
+          1
+        ],
+        [
+          0,
+          2,
+          24
+        ]
+      ],
+      "labels": [
+        "Low",
+        "Moderate",
+        "High"
+      ]
+    },
+    "Decision Tree": {
+      "accuracy": 0.9833,
+      "precision": 0.9836,
+      "recall": 0.9833,
+      "f1_score": 0.9834,
+      "high_risk_recall": 1.0,
+      "cv_accuracy_mean": 0.9604,
+      "cv_accuracy_std": 0.029,
+      "cv_f1_mean": 0.9601,
+      "confusion_matrix": [
+        [
+          63,
+          1,
+          0
+        ],
+        [
+          0,
+          29,
+          1
+        ],
+        [
+          0,
+          0,
+          26
+        ]
+      ],
+      "labels": [
+        "Low",
+        "Moderate",
+        "High"
+      ]
+    }
+  },
+  "feature_importances": [
+    {
+      "feature": "attendance_pct",
+      "importance": 0.2205,
+      "percentage": 22.1
+    },
+    {
+      "feature": "internal_test_avg",
+      "importance": 0.1378,
+      "percentage": 13.8
+    },
+    {
+      "feature": "assignment_completion_rate",
+      "importance": 0.129,
+      "percentage": 12.9
+    },
+    {
+      "feature": "subject_failure_count",
+      "importance": 0.0888,
+      "percentage": 8.9
+    },
+    {
+      "feature": "subject_avg_score",
+      "importance": 0.0884,
+      "percentage": 8.8
+    },
+    {
+      "feature": "assignment_avg_score",
+      "importance": 0.0699,
+      "percentage": 7.0
+    },
+    {
+      "feature": "previous_exam_score",
+      "importance": 0.0472,
+      "percentage": 4.7
+    },
+    {
+      "feature": "study_engagement_score",
+      "importance": 0.0459,
+      "percentage": 4.6
+    },
+    {
+      "feature": "subject_min_score",
+      "importance": 0.0446,
+      "percentage": 4.5
+    },
+    {
+      "feature": "score_dbms",
+      "importance": 0.0358,
+      "percentage": 3.6
+    },
+    {
+      "feature": "performance_trend",
+      "importance": 0.032,
+      "percentage": 3.2
+    },
+    {
+      "feature": "score_cn",
+      "importance": 0.0192,
+      "percentage": 1.9
+    },
+    {
+      "feature": "score_dsa",
+      "importance": 0.0169,
+      "percentage": 1.7
+    },
+    {
+      "feature": "score_maths",
+      "importance": 0.0111,
+      "percentage": 1.1
+    },
+    {
+      "feature": "score_os",
+      "importance": 0.0076,
+      "percentage": 0.8
+    },
+    {
+      "feature": "subject_std_dev",
+      "importance": 0.0052,
+      "percentage": 0.5
+    }
+  ],
+  "is_demo_model": false
+}

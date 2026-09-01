@@ -1,0 +1,11 @@
+{
+  "/student/dashboard/page": "app/student/dashboard/page.js",
+  "/student/risk-analysis/page": "app/student/risk-analysis/page.js",
+  "/student/subjects/page": "app/student/subjects/page.js",
+  "/student/performance/page": "app/student/performance/page.js",
+  "/faculty/dashboard/page": "app/faculty/dashboard/page.js",
+  "/student/recommendations/page": "app/student/recommendations/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/admin/data-import/page": "app/admin/data-import/page.js",
+  "/student/progress/page": "app/student/progress/page.js"
+}

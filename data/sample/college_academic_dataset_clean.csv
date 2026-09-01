@@ -1,0 +1,601 @@
+student_id,name,email,course,semester,attendance_pct,assignment_completion_rate,assignment_avg_score,internal_test_avg,previous_exam_score,performance_trend,study_engagement_score,subject_failure_count,score_dsa,score_dbms,score_maths,score_os,score_cn,risk_level
+EDU2024CS001,Rahul Gupta,rahul.gupta1@university.edu,B.Tech Computer Science,5,91.0,91.0,89.2,93.7,80.1,2.3,99.2,0,96.8,92.4,94.6,91.0,90.0,Low
+EDU2024CS002,Krishna Bhatia,krishna.bhatia2@university.edu,B.Tech Computer Science,3,69.5,55.0,48.0,51.5,52.9,-2.6,52.0,1,37.2,63.8,45.5,53.0,40.1,Moderate
+EDU2024CS003,Vivaan Patel,vivaan.patel3@university.edu,B.Tech Computer Science,4,84.7,92.8,74.8,83.4,77.2,2.0,79.6,0,95.2,85.3,69.9,91.0,73.6,Low
+EDU2024CS004,Vivaan Mukherjee,vivaan.mukherjee4@university.edu,B.Tech Computer Science,6,89.3,78.3,73.4,81.8,87.9,4.4,84.0,0,76.4,73.4,71.3,79.1,90.2,Low
+EDU2024CS005,Kunal Nair,kunal.nair5@university.edu,B.Tech Computer Science,4,70.1,55.0,66.2,52.9,55.9,-0.8,73.3,1,57.4,49.0,46.1,56.6,60.7,Moderate
+EDU2024CS006,Ananya Singh,ananya.singh6@university.edu,B.Tech Computer Science,5,85.1,90.7,75.1,69.2,88.5,10.3,84.4,0,74.3,73.8,59.4,73.1,81.5,Low
+EDU2024CS007,Navya Gupta,navya.gupta7@university.edu,B.Tech Information Technology,5,67.8,85.0,48.0,62.6,62.8,-6.3,63.0,0,43.7,63.0,61.8,75.4,58.4,Moderate
+EDU2024CS008,Varun Kapoor,varun.kapoor8@university.edu,B.Tech AI & Data Science,3,44.7,40.0,55.0,41.0,42.2,-8.4,39.2,4,45.7,38.0,34.0,38.8,29.3,High
+EDU2024CS009,Sai Mukherjee,sai.mukherjee9@university.edu,B.Tech Information Technology,5,69.8,72.6,63.1,54.1,49.3,-7.0,58.2,0,44.7,55.0,53.8,70.2,55.5,Moderate
+EDU2024CS010,Aditya Pandey,aditya.pandey10@university.edu,B.Tech Computer Science,5,54.3,45.1,21.0,37.8,48.7,2.0,35.7,3,37.2,39.5,23.2,47.9,43.8,High
+EDU2024CS011,Reyansh Chopra,reyansh.chopra11@university.edu,B.Tech Information Technology,6,72.7,60.9,77.0,44.8,67.3,8.0,51.1,3,37.3,47.5,36.3,33.4,45.3,Moderate
+EDU2024CS012,Shaurya Joshi,shaurya.joshi12@university.edu,B.Tech Information Technology,4,61.6,74.7,53.8,68.4,55.0,-6.4,70.9,0,55.6,72.0,76.2,56.5,69.9,Moderate
+EDU2024CS013,Pooja Mishra,pooja.mishra13@university.edu,B.Tech Computer Science,4,89.6,97.5,74.1,68.1,86.2,5.0,87.3,0,67.9,65.4,66.2,71.5,62.4,Low
+EDU2024CS014,Navya Nair,navya.nair14@university.edu,B.Tech AI & Data Science,4,79.2,74.7,51.1,61.3,53.2,0.2,74.7,0,51.7,70.0,61.0,68.8,76.4,Moderate
+EDU2024CS015,Rudra Yadav,rudra.yadav15@university.edu,B.Tech Computer Science,5,86.5,86.7,76.9,72.7,81.4,5.2,87.5,0,76.3,74.7,81.7,71.5,94.4,Low
+EDU2024CS016,Arjun Rao,arjun.rao16@university.edu,B.Tech AI & Data Science,5,91.8,86.0,75.4,84.3,80.2,7.1,89.3,0,80.8,80.4,66.7,81.8,91.2,Low
+EDU2024CS017,Prisha Chopra,prisha.chopra17@university.edu,B.Tech AI & Data Science,6,89.3,83.3,85.4,83.5,74.9,4.3,85.5,0,71.3,88.0,84.5,93.1,91.9,Low
+EDU2024CS018,Krishna Reddy,krishna.reddy18@university.edu,B.Tech AI & Data Science,5,59.7,60.6,68.2,60.1,66.6,8.0,68.3,1,66.2,68.8,62.0,58.6,66.2,High
+EDU2024CS019,Kunal Chopra,kunal.chopra19@university.edu,B.Tech Information Technology,4,45.0,43.2,38.2,38.7,64.0,-25.1,46.2,3,22.8,37.4,44.5,40.3,30.1,High
+EDU2024CS020,Aditi Bose,aditi.bose20@university.edu,B.Tech Computer Science,3,45.6,54.2,35.2,39.9,48.5,-16.6,60.0,3,42.0,27.8,37.6,35.7,46.8,High
+EDU2024CS021,Rahul Kumar,rahul.kumar21@university.edu,B.Tech AI & Data Science,6,63.2,68.9,68.0,62.9,51.2,-6.5,56.8,1,54.7,77.3,62.6,53.8,70.3,Moderate
+EDU2024CS022,Navya Ghosh,navya.ghosh22@university.edu,B.Tech Information Technology,5,68.0,58.4,25.8,33.6,61.9,-17.0,43.3,5,36.8,29.2,29.1,15.0,25.4,High
+EDU2024CS023,Neha Bhatia,neha.bhatia23@university.edu,B.Tech Computer Science,5,66.5,57.5,78.0,44.6,58.0,-3.7,77.9,2,30.1,54.7,40.7,37.7,48.3,Moderate
+EDU2024CS024,Ayaan Iyer,ayaan.iyer24@university.edu,B.Tech Information Technology,4,89.2,87.8,84.6,76.5,82.9,6.8,99.3,0,63.6,93.5,55.0,76.3,81.2,Low
+EDU2024CS025,Varun Agarwal,varun.agarwal25@university.edu,B.Tech AI & Data Science,5,54.5,38.5,41.5,33.6,41.5,-6.1,42.3,3,25.0,41.9,32.3,41.1,38.6,High
+EDU2024CS026,Aditi Bansal,aditi.bansal26@university.edu,B.Tech Computer Science,5,44.5,39.3,53.0,43.5,47.8,-11.2,53.3,3,35.8,49.3,37.7,42.8,52.3,High
+EDU2024CS027,Pooja Rao,pooja.rao27@university.edu,B.Tech Computer Science,5,73.0,78.1,76.1,56.2,68.1,-6.4,65.6,0,52.1,58.8,57.5,50.6,72.9,Moderate
+EDU2024CS028,Pooja Mehta,pooja.mehta28@university.edu,B.Tech Information Technology,3,82.0,83.5,93.3,87.1,87.0,6.6,84.9,0,76.9,89.7,77.0,95.9,85.9,Low
+EDU2024CS029,Anika Agarwal,anika.agarwal29@university.edu,B.Tech Information Technology,4,83.0,89.8,87.3,74.9,75.4,4.7,87.2,0,67.9,73.6,73.0,64.3,63.7,Low
+EDU2024CS030,Sneha Patel,sneha.patel30@university.edu,B.Tech Computer Science,6,63.7,67.9,66.1,67.8,69.7,-5.5,61.8,0,56.8,69.7,61.2,71.4,61.2,Moderate
+EDU2024CS031,Krishna Pandey,krishna.pandey31@university.edu,B.Tech Information Technology,4,91.1,100.0,83.1,83.6,87.5,1.5,87.0,0,80.7,86.3,72.7,84.8,87.6,Low
+EDU2024CS032,Pooja Malhotra,pooja.malhotra32@university.edu,B.Tech Computer Science,4,76.7,79.6,78.0,49.9,69.9,-3.4,80.0,1,40.4,46.0,40.5,33.9,45.7,Moderate
+EDU2024CS033,Ankit Mishra,ankit.mishra33@university.edu,B.Tech Information Technology,6,45.2,47.8,48.1,52.0,58.5,-16.0,27.2,2,52.9,44.8,64.5,62.4,48.2,High
+EDU2024CS034,Ayaan Reddy,ayaan.reddy34@university.edu,B.Tech Computer Science,3,77.7,100.0,83.1,91.1,69.2,0.5,85.0,0,88.5,90.0,92.7,83.6,90.0,Low
+EDU2024CS035,Kunal Mukherjee,kunal.mukherjee35@university.edu,B.Tech Computer Science,4,88.7,95.6,89.7,69.9,69.7,9.9,88.0,0,60.9,82.7,66.9,80.3,70.4,Low
+EDU2024CS036,Simran Mishra,simran.mishra36@university.edu,B.Tech Computer Science,4,100.0,100.0,82.0,88.7,87.2,10.3,76.3,0,91.2,98.2,68.9,80.3,72.4,Low
+EDU2024CS037,Aditya Chauhan,aditya.chauhan37@university.edu,B.Tech Information Technology,3,86.4,97.0,96.0,80.7,95.0,-3.4,69.7,0,77.2,85.4,76.4,65.1,80.0,Low
+EDU2024CS038,Ananya Pandey,ananya.pandey38@university.edu,B.Tech Information Technology,4,80.2,96.7,86.9,71.5,77.9,-1.8,84.4,0,76.2,66.6,72.1,68.3,65.2,Low
+EDU2024CS039,Varun Bansal,varun.bansal39@university.edu,B.Tech AI & Data Science,6,87.4,84.8,79.6,69.2,97.7,3.7,78.7,0,67.9,70.4,63.2,75.1,75.3,Low
+EDU2024CS040,Tanvi Tiwari,tanvi.tiwari40@university.edu,B.Tech Information Technology,4,84.8,88.0,81.8,65.0,69.9,10.3,99.8,0,60.0,71.0,63.8,90.6,74.0,Low
+EDU2024CS041,Ankit Malhotra,ankit.malhotra41@university.edu,B.Tech Information Technology,6,87.2,85.3,71.1,81.8,75.9,-3.6,79.2,0,70.2,95.6,85.8,82.8,93.7,Low
+EDU2024CS042,Varun Verma,varun.verma42@university.edu,B.Tech AI & Data Science,3,88.5,86.0,96.2,84.9,73.7,2.5,77.1,0,70.8,93.3,98.0,74.7,89.4,Low
+EDU2024CS043,Varun Mehta,varun.mehta43@university.edu,B.Tech Computer Science,4,84.1,88.6,79.3,72.2,82.4,-0.7,87.4,0,68.8,72.6,60.1,68.6,78.3,Low
+EDU2024CS044,Kavya Kapoor,kavya.kapoor44@university.edu,B.Tech Computer Science,6,91.0,85.2,84.8,86.8,68.6,6.2,79.0,0,88.3,83.4,66.5,74.7,87.1,Low
+EDU2024CS045,Riya Reddy,riya.reddy45@university.edu,B.Tech Computer Science,6,69.6,61.0,69.4,44.0,61.4,-11.8,54.8,3,41.4,40.0,36.5,53.1,39.4,High
+EDU2024CS046,Vihaan Mishra,vihaan.mishra46@university.edu,B.Tech AI & Data Science,3,59.5,32.4,50.4,51.0,22.0,-17.6,44.9,1,46.3,55.6,41.5,52.7,49.7,High
+EDU2024CS047,Shaurya Malhotra,shaurya.malhotra47@university.edu,B.Tech Information Technology,6,95.0,93.8,86.7,76.3,78.1,1.3,88.6,0,69.9,80.3,91.0,84.3,73.7,Low
+EDU2024CS048,Angel Agarwal,angel.agarwal48@university.edu,B.Tech Computer Science,4,95.2,89.1,70.0,70.9,67.0,1.7,85.2,0,81.3,75.2,65.0,78.6,53.2,Low
+EDU2024CS049,Navya Nair,navya.nair49@university.edu,B.Tech Information Technology,5,89.4,97.4,72.2,90.3,84.7,1.4,90.7,0,100.0,93.6,88.5,87.6,83.5,Low
+EDU2024CS050,Varun Tiwari,varun.tiwari50@university.edu,B.Tech AI & Data Science,6,93.0,86.0,84.6,75.7,85.8,5.2,94.3,0,68.6,75.8,62.9,73.1,78.7,Low
+EDU2024CS051,Diya Rao,diya.rao51@university.edu,B.Tech Computer Science,3,72.5,60.8,71.7,66.8,65.7,6.8,53.5,0,53.9,56.4,76.3,73.1,66.4,Moderate
+EDU2024CS052,Vihaan Banerjee,vihaan.banerjee52@university.edu,B.Tech Information Technology,4,89.7,84.1,98.0,81.2,82.9,7.1,89.3,0,80.0,77.6,81.4,97.2,91.9,Low
+EDU2024CS053,Aditi Patel,aditi.patel53@university.edu,B.Tech Computer Science,3,77.6,64.9,53.1,55.0,62.5,2.1,43.4,0,64.2,55.9,47.2,47.9,41.8,Moderate
+EDU2024CS054,Angel Gupta,angel.gupta54@university.edu,B.Tech AI & Data Science,4,72.9,70.7,50.1,45.6,59.0,5.5,59.1,3,30.6,45.9,39.2,25.1,45.2,Moderate
+EDU2024CS055,Vikram Patel,vikram.patel55@university.edu,B.Tech Information Technology,5,49.9,54.4,60.0,48.1,45.0,-19.7,60.0,1,45.6,50.2,43.9,50.7,47.0,High
+EDU2024CS056,Ankit Saxena,ankit.saxena56@university.edu,B.Tech Information Technology,4,84.6,88.2,83.7,75.1,76.3,4.0,82.7,0,84.1,58.6,80.9,86.1,58.5,Low
+EDU2024CS057,Krishna Pandey,krishna.pandey57@university.edu,B.Tech AI & Data Science,5,85.9,89.4,72.7,73.0,73.1,12.3,93.4,0,80.2,80.1,58.8,69.8,76.9,Low
+EDU2024CS058,Manish Bansal,manish.bansal58@university.edu,B.Tech Computer Science,3,80.7,97.0,82.1,76.6,87.7,5.7,81.8,0,82.9,71.1,78.2,82.4,74.2,Low
+EDU2024CS059,Sneha Gupta,sneha.gupta59@university.edu,B.Tech Computer Science,4,90.0,83.2,91.4,78.3,77.8,8.7,78.7,0,64.1,69.4,79.8,69.1,92.4,Low
+EDU2024CS060,Krishna Bansal,krishna.bansal60@university.edu,B.Tech Information Technology,3,33.3,62.0,46.5,37.1,42.0,-9.2,37.5,4,43.0,39.9,34.5,35.2,36.7,High
+EDU2024CS061,Diya Kumar,diya.kumar61@university.edu,B.Tech Information Technology,5,69.8,55.0,49.5,61.9,63.5,-5.6,62.2,0,61.7,60.2,50.9,64.5,54.1,Moderate
+EDU2024CS062,Ankit Yadav,ankit.yadav62@university.edu,B.Tech AI & Data Science,5,55.7,25.6,56.3,42.3,50.8,-5.1,58.0,3,47.4,31.4,26.7,38.3,42.5,High
+EDU2024CS063,Krishna Nair,krishna.nair63@university.edu,B.Tech Computer Science,3,71.1,62.7,64.9,50.0,56.5,-12.9,51.8,1,36.1,45.1,55.4,43.4,71.0,Moderate
+EDU2024CS064,Ananya Iyer,ananya.iyer64@university.edu,B.Tech AI & Data Science,4,71.0,71.8,54.4,61.6,56.8,-3.8,80.0,0,57.8,71.6,51.3,62.3,75.8,Moderate
+EDU2024CS065,Neha Mishra,neha.mishra65@university.edu,B.Tech Information Technology,6,84.2,100.0,89.7,74.9,87.1,8.4,90.6,0,59.4,71.8,68.7,75.3,79.9,Low
+EDU2024CS066,Vihaan Patel,vihaan.patel66@university.edu,B.Tech AI & Data Science,6,69.1,56.6,66.8,60.9,67.0,2.0,71.2,0,61.6,62.4,41.9,65.3,62.5,Moderate
+EDU2024CS067,Aarav Mehta,aarav.mehta67@university.edu,B.Tech Computer Science,5,89.6,83.1,75.4,89.5,81.7,6.9,85.3,0,86.7,98.0,80.8,91.2,85.8,Low
+EDU2024CS068,Isha Mukherjee,isha.mukherjee68@university.edu,B.Tech AI & Data Science,6,65.4,66.9,65.2,52.2,73.3,-9.9,59.9,0,45.7,64.3,49.9,61.4,40.3,Moderate
+EDU2024CS069,Arjun Agarwal,arjun.agarwal69@university.edu,B.Tech AI & Data Science,4,89.6,98.2,84.7,89.6,77.9,10.5,100.0,0,83.7,88.5,98.7,100.0,85.4,Low
+EDU2024CS070,Anika Banerjee,anika.banerjee70@university.edu,B.Tech AI & Data Science,4,85.5,90.0,73.2,71.7,74.0,-0.3,84.7,0,70.6,84.6,58.7,80.6,70.0,Low
+EDU2024CS071,Aditya Iyer,aditya.iyer71@university.edu,B.Tech Information Technology,3,51.6,54.1,30.5,41.4,49.8,-8.6,41.5,4,58.1,39.0,32.7,37.5,37.0,High
+EDU2024CS072,Neha Reddy,neha.reddy72@university.edu,B.Tech AI & Data Science,3,84.2,100.0,95.4,74.9,75.3,5.9,80.0,0,76.9,78.3,57.2,88.2,89.2,Low
+EDU2024CS073,Deepak Agarwal,deepak.agarwal73@university.edu,B.Tech Information Technology,4,46.5,41.3,47.4,41.0,55.2,2.0,35.9,3,31.6,33.4,30.4,41.7,55.4,High
+EDU2024CS074,Shaurya Tiwari,shaurya.tiwari74@university.edu,B.Tech Computer Science,6,84.9,93.6,83.9,90.7,98.0,0.8,80.6,0,96.0,97.5,100.0,96.4,87.8,Low
+EDU2024CS075,Shruti Bansal,shruti.bansal75@university.edu,B.Tech Information Technology,6,71.5,81.1,71.2,60.1,71.6,2.5,77.2,0,62.2,60.9,57.4,70.7,53.5,Moderate
+EDU2024CS076,Ananya Kumar,ananya.kumar76@university.edu,B.Tech AI & Data Science,3,90.2,89.2,84.2,91.5,83.5,3.7,72.8,0,94.5,98.0,100.0,90.0,93.3,Low
+EDU2024CS077,Aditya Chauhan,aditya.chauhan77@university.edu,B.Tech Information Technology,4,89.5,100.0,83.2,82.5,86.9,4.4,81.0,0,81.1,92.0,69.3,84.6,76.9,Low
+EDU2024CS078,Riya Joshi,riya.joshi78@university.edu,B.Tech Information Technology,4,95.2,81.3,79.5,83.4,94.5,3.2,80.0,0,95.4,75.3,59.6,87.9,79.4,Low
+EDU2024CS079,Ankit Rao,ankit.rao79@university.edu,B.Tech Information Technology,5,81.9,97.0,86.0,74.9,71.8,7.9,90.9,0,71.1,89.8,61.3,63.7,69.4,Low
+EDU2024CS080,Arjun Seth,arjun.seth80@university.edu,B.Tech Information Technology,5,67.7,72.4,60.6,58.8,50.7,4.2,61.1,1,64.8,63.2,58.9,64.4,62.4,Moderate
+EDU2024CS081,Neha Yadav,neha.yadav81@university.edu,B.Tech AI & Data Science,5,57.8,61.9,46.4,44.4,47.0,-1.9,29.9,2,55.8,46.1,27.5,46.4,38.9,High
+EDU2024CS082,Rohan Kumar,rohan.kumar82@university.edu,B.Tech AI & Data Science,5,93.0,87.4,80.4,65.0,78.4,-8.0,70.7,0,68.1,72.5,64.8,58.3,64.6,Low
+EDU2024CS083,Pooja Malhotra,pooja.malhotra83@university.edu,B.Tech Information Technology,5,88.0,83.9,96.0,87.9,80.2,3.6,86.9,0,68.6,88.2,77.8,80.9,85.6,Low
+EDU2024CS084,Aditi Gupta,aditi.gupta84@university.edu,B.Tech Information Technology,4,98.8,96.5,79.4,85.2,93.2,8.1,85.5,0,77.0,92.0,84.7,93.3,90.2,Low
+EDU2024CS085,Simran Malhotra,simran.malhotra85@university.edu,B.Tech Computer Science,4,94.3,88.3,94.5,81.8,98.0,0.1,100.0,0,80.4,79.2,73.4,80.2,85.2,Low
+EDU2024CS086,Arjun Pandey,arjun.pandey86@university.edu,B.Tech Information Technology,5,71.1,64.3,62.8,70.0,76.0,-1.9,62.4,0,68.0,76.3,56.8,68.9,56.7,Moderate
+EDU2024CS087,Varun Agarwal,varun.agarwal87@university.edu,B.Tech Information Technology,5,70.4,76.5,58.2,68.6,51.0,-13.3,64.5,1,74.0,82.4,60.5,78.2,68.3,Moderate
+EDU2024CS088,Angel Saxena,angel.saxena88@university.edu,B.Tech Information Technology,4,87.0,98.2,89.2,65.8,93.8,10.4,79.4,0,66.0,71.3,64.2,62.4,60.4,Low
+EDU2024CS089,Ankit Chopra,ankit.chopra89@university.edu,B.Tech AI & Data Science,4,67.8,81.7,68.4,53.0,68.9,-20.0,74.6,2,36.1,52.5,39.0,43.7,62.3,High
+EDU2024CS090,Angel Mukherjee,angel.mukherjee90@university.edu,B.Tech Computer Science,5,85.2,94.4,83.6,84.3,82.6,-2.9,94.0,0,77.3,75.4,76.4,97.3,91.1,Low
+EDU2024CS091,Sara Tiwari,sara.tiwari91@university.edu,B.Tech AI & Data Science,5,85.9,89.6,81.4,98.0,85.1,5.7,94.3,0,96.9,98.2,92.2,98.4,97.7,Low
+EDU2024CS092,Isha Pandey,isha.pandey92@university.edu,B.Tech Computer Science,6,72.4,70.5,70.3,55.4,62.7,-16.5,72.1,1,55.1,64.3,25.3,73.1,54.2,Moderate
+EDU2024CS093,Ankit Patel,ankit.patel93@university.edu,B.Tech Information Technology,5,94.6,84.7,88.9,70.5,77.0,13.1,83.3,0,69.3,78.6,71.0,72.7,73.4,Low
+EDU2024CS094,Manish Reddy,manish.reddy94@university.edu,B.Tech AI & Data Science,5,100.0,91.6,85.6,89.5,90.8,9.4,90.7,0,77.3,100.0,75.1,92.9,83.4,Low
+EDU2024CS095,Dhruv Singh,dhruv.singh95@university.edu,B.Tech Computer Science,3,87.6,94.3,86.6,83.8,94.9,5.8,82.8,0,88.5,94.1,68.7,89.6,89.4,Low
+EDU2024CS096,Tanvi Ghosh,tanvi.ghosh96@university.edu,B.Tech Computer Science,6,86.2,100.0,82.8,81.1,80.6,3.6,75.1,0,66.6,94.3,69.5,74.2,63.9,Low
+EDU2024CS097,Rahul Banerjee,rahul.banerjee97@university.edu,B.Tech Computer Science,6,84.2,82.7,97.1,89.1,76.5,14.8,93.8,0,83.5,73.6,100.0,79.0,75.9,Low
+EDU2024CS098,Vikas Singh,vikas.singh98@university.edu,B.Tech AI & Data Science,3,61.2,62.0,60.0,43.1,54.5,-6.0,47.1,2,42.3,45.8,38.5,38.0,40.8,High
+EDU2024CS099,Divya Malhotra,divya.malhotra99@university.edu,B.Tech Computer Science,4,58.0,69.0,53.1,47.2,63.6,3.9,72.1,1,31.6,42.2,51.6,40.3,45.4,High
+EDU2024CS100,Vihaan Mukherjee,vihaan.mukherjee100@university.edu,B.Tech Computer Science,3,91.3,85.2,84.8,68.0,77.2,5.1,70.7,0,68.5,69.9,69.0,70.8,78.9,Low
+EDU2024CS101,Riya Pandey,riya.pandey101@university.edu,B.Tech AI & Data Science,5,53.1,40.8,45.5,42.9,48.5,-11.7,29.6,4,34.6,35.1,54.6,33.9,37.3,High
+EDU2024CS102,Vikram Yadav,vikram.yadav102@university.edu,B.Tech AI & Data Science,6,45.5,56.7,40.5,49.2,40.6,-10.0,28.0,3,63.4,42.9,48.0,55.3,52.5,High
+EDU2024CS103,Isha Agarwal,isha.agarwal103@university.edu,B.Tech Computer Science,6,86.9,91.1,84.4,78.7,89.7,14.6,80.0,0,64.7,80.1,97.9,73.2,91.8,Low
+EDU2024CS104,Manish Reddy,manish.reddy104@university.edu,B.Tech AI & Data Science,5,78.1,64.5,68.7,69.0,58.6,-5.7,55.6,1,57.9,66.5,54.0,70.3,62.9,Moderate
+EDU2024CS105,Rahul Reddy,rahul.reddy105@university.edu,B.Tech Information Technology,6,89.4,81.1,86.6,87.5,66.1,5.4,96.0,0,74.8,100.0,87.3,82.9,87.1,Low
+EDU2024CS106,Diya Reddy,diya.reddy106@university.edu,B.Tech Information Technology,5,91.3,92.5,88.3,71.7,83.4,-3.6,84.0,0,61.5,68.6,78.8,81.4,76.6,Low
+EDU2024CS107,Kavya Patel,kavya.patel107@university.edu,B.Tech Computer Science,4,81.4,89.8,93.7,81.3,98.0,5.5,86.7,0,75.8,84.2,75.9,87.9,88.9,Low
+EDU2024CS108,Amit Singh,amit.singh108@university.edu,B.Tech AI & Data Science,4,83.3,82.7,70.0,84.6,73.2,-7.3,88.5,0,100.0,86.5,88.1,86.2,83.8,Low
+EDU2024CS109,Myra Mehta,myra.mehta109@university.edu,B.Tech AI & Data Science,6,93.5,90.0,86.1,82.9,76.7,8.5,83.4,0,73.8,88.7,70.8,84.1,82.8,Low
+EDU2024CS110,Kabir Yadav,kabir.yadav110@university.edu,B.Tech Information Technology,6,61.8,51.7,43.7,45.4,63.3,-8.1,38.1,3,31.9,39.9,38.6,41.5,43.9,High
+EDU2024CS111,Amit Sharma,amit.sharma111@university.edu,B.Tech AI & Data Science,6,88.3,95.7,83.4,84.4,82.5,-6.4,76.5,0,80.2,77.9,85.8,97.6,94.1,Low
+EDU2024CS112,Ananya Iyer,ananya.iyer112@university.edu,B.Tech Information Technology,6,86.7,100.0,85.2,77.0,77.1,2.0,81.5,0,75.3,80.1,73.0,81.5,86.5,Low
+EDU2024CS113,Shruti Mukherjee,shruti.mukherjee113@university.edu,B.Tech AI & Data Science,4,93.7,81.6,70.0,88.4,71.1,2.4,74.5,0,71.0,94.2,91.2,84.8,67.7,Low
+EDU2024CS114,Ananya Malhotra,ananya.malhotra114@university.edu,B.Tech Information Technology,3,84.7,94.7,72.2,81.7,81.9,6.4,86.1,0,70.9,92.0,76.2,82.4,74.2,Low
+EDU2024CS115,Ankit Pandey,ankit.pandey115@university.edu,B.Tech Information Technology,4,48.0,35.4,41.9,52.0,32.9,-23.3,55.7,1,47.3,49.3,57.4,48.2,66.6,High
+EDU2024CS116,Vikram Mukherjee,vikram.mukherjee116@university.edu,B.Tech Computer Science,6,72.1,65.1,78.0,51.2,68.7,-2.7,76.3,0,60.6,53.4,40.4,55.8,45.7,Moderate
+EDU2024CS117,Sai Mishra,sai.mishra117@university.edu,B.Tech Information Technology,4,68.0,47.6,39.6,39.7,33.2,-18.8,52.4,2,31.4,34.3,40.5,50.1,45.4,High
+EDU2024CS118,Vihaan Nair,vihaan.nair118@university.edu,B.Tech Information Technology,5,94.0,86.7,72.6,93.5,79.4,2.2,97.0,0,95.0,98.7,100.0,89.4,100.0,Low
+EDU2024CS119,Aadhya Mehta,aadhya.mehta119@university.edu,B.Tech Information Technology,5,68.3,72.7,78.0,60.1,66.8,1.9,58.0,1,50.3,54.7,38.4,77.5,51.2,Moderate
+EDU2024CS120,Rohan Yadav,rohan.yadav120@university.edu,B.Tech Computer Science,6,86.7,90.1,86.5,87.3,88.9,0.6,83.5,0,86.6,87.6,97.8,92.3,93.2,Low
+EDU2024CS121,Kavya Verma,kavya.verma121@university.edu,B.Tech Information Technology,4,72.0,81.7,64.8,45.6,65.6,-8.4,56.2,0,47.3,56.3,41.8,49.1,59.2,Moderate
+EDU2024CS122,Manish Sharma,manish.sharma122@university.edu,B.Tech Computer Science,4,54.2,62.0,50.8,22.2,56.3,-9.3,53.5,5,24.5,23.2,10.0,21.5,15.3,High
+EDU2024CS123,Ishaan Reddy,ishaan.reddy123@university.edu,B.Tech Computer Science,6,64.5,75.9,78.0,59.2,51.2,-1.8,75.2,0,51.3,60.2,55.3,53.9,64.3,Moderate
+EDU2024CS124,Riya Saxena,riya.saxena124@university.edu,B.Tech Information Technology,5,87.3,94.9,76.9,76.1,87.8,1.6,100.0,0,69.9,79.6,80.5,65.7,62.0,Low
+EDU2024CS125,Pooja Bhatia,pooja.bhatia125@university.edu,B.Tech AI & Data Science,3,58.8,82.6,57.5,70.0,56.9,-3.4,79.0,0,83.0,86.4,76.9,79.2,74.7,High
+EDU2024CS126,Saanvi Gupta,saanvi.gupta126@university.edu,B.Tech AI & Data Science,3,59.0,39.4,34.2,38.0,46.1,-15.2,46.4,3,42.6,40.6,47.3,29.8,36.4,High
+EDU2024CS127,Neha Bansal,neha.bansal127@university.edu,B.Tech Information Technology,6,45.5,23.6,43.0,36.9,64.0,-7.6,25.7,3,48.7,47.5,38.1,36.1,29.2,High
+EDU2024CS128,Arjun Banerjee,arjun.banerjee128@university.edu,B.Tech AI & Data Science,4,85.8,99.6,98.0,93.9,78.1,-2.1,86.3,0,76.7,98.2,88.6,91.2,81.1,Low
+EDU2024CS129,Divya Iyer,divya.iyer129@university.edu,B.Tech AI & Data Science,3,71.1,64.7,51.3,44.0,61.8,6.1,80.0,2,37.3,41.8,44.2,37.0,46.4,Moderate
+EDU2024CS130,Ananya Mukherjee,ananya.mukherjee130@university.edu,B.Tech Information Technology,5,92.6,100.0,83.2,78.2,75.0,-0.6,83.0,0,78.1,86.6,66.9,91.1,76.0,Low
+EDU2024CS131,Priya Mehta,priya.mehta131@university.edu,B.Tech Computer Science,6,67.9,62.5,48.0,63.1,68.6,-6.2,62.7,0,64.2,54.1,54.3,70.4,53.0,Moderate
+EDU2024CS132,Sara Joshi,sara.joshi132@university.edu,B.Tech AI & Data Science,6,69.8,56.4,67.7,55.7,48.0,2.5,53.9,1,46.2,59.1,62.1,48.6,56.2,Moderate
+EDU2024CS133,Atharva Bhatia,atharva.bhatia133@university.edu,B.Tech AI & Data Science,5,70.6,76.9,64.8,53.1,54.6,-4.0,50.2,2,26.7,58.1,57.2,35.2,45.0,Moderate
+EDU2024CS134,Riya Malhotra,riya.malhotra134@university.edu,B.Tech AI & Data Science,5,91.7,100.0,84.2,73.4,80.5,10.4,79.2,0,64.1,72.1,60.9,75.4,86.4,Low
+EDU2024CS135,Vikas Yadav,vikas.yadav135@university.edu,B.Tech Computer Science,5,54.9,43.0,40.5,23.9,57.7,-12.5,35.8,4,46.5,28.0,13.2,21.5,33.1,High
+EDU2024CS136,Manish Kapoor,manish.kapoor136@university.edu,B.Tech AI & Data Science,6,88.7,81.9,91.4,74.0,97.0,8.9,81.0,0,81.2,76.5,77.7,78.9,67.2,Low
+EDU2024CS137,Prisha Chauhan,prisha.chauhan137@university.edu,B.Tech Information Technology,4,84.1,99.2,81.3,76.4,74.4,5.6,100.0,0,64.8,78.5,85.1,76.7,80.0,Low
+EDU2024CS138,Ananya Tiwari,ananya.tiwari138@university.edu,B.Tech Information Technology,5,81.6,95.0,82.5,88.9,91.5,16.4,90.2,0,88.5,92.2,81.7,92.6,86.5,Low
+EDU2024CS139,Pooja Saxena,pooja.saxena139@university.edu,B.Tech Information Technology,3,89.0,100.0,75.9,90.3,92.5,2.9,68.0,0,82.4,100.0,86.1,83.3,86.2,Low
+EDU2024CS140,Dhruv Patel,dhruv.patel140@university.edu,B.Tech Computer Science,6,93.0,95.8,82.1,76.7,78.9,-1.1,99.5,0,71.1,87.2,86.4,85.7,73.2,Low
+EDU2024CS141,Manish Reddy,manish.reddy141@university.edu,B.Tech AI & Data Science,6,70.4,69.8,54.0,58.6,51.4,2.6,56.9,1,57.2,62.6,52.3,64.3,54.8,Moderate
+EDU2024CS142,Isha Tiwari,isha.tiwari142@university.edu,B.Tech Computer Science,3,93.2,82.6,85.0,97.5,74.0,0.1,89.6,0,95.9,100.0,97.9,100.0,100.0,Low
+EDU2024CS143,Angel Saxena,angel.saxena143@university.edu,B.Tech Computer Science,5,70.5,67.6,69.7,70.0,60.8,-10.3,74.2,1,66.0,56.8,73.6,66.7,69.3,Moderate
+EDU2024CS144,Tanvi Mukherjee,tanvi.mukherjee144@university.edu,B.Tech AI & Data Science,5,90.0,93.3,89.7,76.1,86.1,2.2,91.6,0,78.0,71.5,81.9,72.8,82.5,Low
+EDU2024CS145,Shruti Mukherjee,shruti.mukherjee145@university.edu,B.Tech Information Technology,5,70.2,85.0,60.8,53.2,61.8,-6.3,70.8,2,37.3,47.8,39.6,61.8,66.9,High
+EDU2024CS146,Saanvi Nair,saanvi.nair146@university.edu,B.Tech Computer Science,3,67.4,68.3,63.7,65.3,53.7,-3.1,72.7,1,66.3,68.6,70.3,44.7,70.7,Moderate
+EDU2024CS147,Ayaan Bhatia,ayaan.bhatia147@university.edu,B.Tech AI & Data Science,4,84.1,79.2,88.1,92.4,80.9,8.3,99.5,0,99.9,100.0,95.0,94.0,79.5,Low
+EDU2024CS148,Shruti Bose,shruti.bose148@university.edu,B.Tech Information Technology,5,49.8,35.9,60.0,36.4,49.4,-8.1,38.5,4,47.0,34.1,34.2,31.5,25.9,High
+EDU2024CS149,Diya Reddy,diya.reddy149@university.edu,B.Tech Information Technology,4,84.3,91.7,80.6,73.8,70.7,3.1,71.5,0,76.8,76.3,56.7,72.3,67.8,Low
+EDU2024CS150,Simran Mukherjee,simran.mukherjee150@university.edu,B.Tech Computer Science,5,89.9,100.0,70.0,81.0,80.7,6.9,86.9,0,72.0,80.8,69.9,90.6,81.2,Low
+EDU2024CS151,Vihaan Mukherjee,vihaan.mukherjee151@university.edu,B.Tech Information Technology,4,79.4,69.4,55.9,44.0,48.0,-14.0,64.9,1,45.1,34.9,48.1,41.1,45.2,Moderate
+EDU2024CS152,Reyansh Chauhan,reyansh.chauhan152@university.edu,B.Tech Computer Science,5,97.7,98.3,81.9,72.0,65.0,-0.1,83.1,0,61.1,73.1,68.7,71.2,66.8,Low
+EDU2024CS153,Isha Mehta,isha.mehta153@university.edu,B.Tech Computer Science,3,89.0,95.1,75.3,92.7,81.2,3.6,91.4,0,91.6,100.0,91.3,88.8,95.6,Low
+EDU2024CS154,Tanvi Gupta,tanvi.gupta154@university.edu,B.Tech Computer Science,6,81.1,92.8,83.7,78.1,81.0,-5.9,80.1,0,75.9,81.2,64.9,89.3,71.2,Low
+EDU2024CS155,Sneha Mishra,sneha.mishra155@university.edu,B.Tech AI & Data Science,3,93.8,95.0,78.8,96.0,72.5,8.1,94.0,0,87.6,100.0,89.7,99.3,98.1,Low
+EDU2024CS156,Sneha Iyer,sneha.iyer156@university.edu,B.Tech Computer Science,4,87.2,97.7,90.3,65.0,92.4,-4.8,94.3,0,71.0,59.4,57.3,57.2,63.3,Low
+EDU2024CS157,Manish Malhotra,manish.malhotra157@university.edu,B.Tech AI & Data Science,4,66.2,77.8,76.1,67.2,56.9,-5.8,43.5,1,57.7,75.9,77.7,58.3,62.4,Moderate
+EDU2024CS158,Isha Bansal,isha.bansal158@university.edu,B.Tech Information Technology,5,51.8,49.4,34.3,41.8,42.8,-12.1,44.6,3,38.9,40.8,36.8,42.1,38.9,High
+EDU2024CS159,Saanvi Banerjee,saanvi.banerjee159@university.edu,B.Tech AI & Data Science,3,66.4,85.0,68.6,53.6,68.3,-6.5,74.9,0,53.6,54.9,53.7,42.1,44.6,Moderate
+EDU2024CS160,Manish Rao,manish.rao160@university.edu,B.Tech AI & Data Science,4,80.8,93.0,97.9,98.0,87.1,6.0,68.8,0,90.7,94.5,88.4,97.7,94.2,Low
+EDU2024CS161,Sai Kumar,sai.kumar161@university.edu,B.Tech Computer Science,4,58.0,77.5,52.3,57.9,76.0,-10.0,40.0,0,52.6,67.6,71.5,49.1,61.9,High
+EDU2024CS162,Aarav Malhotra,aarav.malhotra162@university.edu,B.Tech Information Technology,6,85.2,91.3,98.0,66.5,84.0,5.8,94.8,0,64.3,70.6,58.9,69.6,63.7,Low
+EDU2024CS163,Rudra Iyer,rudra.iyer163@university.edu,B.Tech AI & Data Science,5,71.7,66.3,66.8,55.8,72.1,-4.8,42.5,1,62.9,51.4,45.9,52.0,66.8,Moderate
+EDU2024CS164,Arjun Pandey,arjun.pandey164@university.edu,B.Tech Computer Science,5,58.0,85.0,73.6,57.8,61.5,-2.8,67.7,0,59.9,63.7,54.6,57.2,56.6,High
+EDU2024CS165,Sara Gupta,sara.gupta165@university.edu,B.Tech AI & Data Science,4,66.8,81.3,68.9,44.0,67.9,-3.3,61.8,2,37.9,53.9,48.5,38.8,47.3,Moderate
+EDU2024CS166,Ishaan Patel,ishaan.patel166@university.edu,B.Tech Computer Science,4,62.2,56.2,56.7,62.9,70.6,-1.4,70.0,1,64.0,60.4,62.8,70.3,68.9,Moderate
+EDU2024CS167,Isha Gupta,isha.gupta167@university.edu,B.Tech Information Technology,5,75.1,77.1,66.5,64.6,61.8,-9.8,60.2,1,55.6,61.8,59.3,59.2,62.1,Moderate
+EDU2024CS168,Aditi Mukherjee,aditi.mukherjee168@university.edu,B.Tech Information Technology,6,76.6,93.5,84.0,72.6,87.3,8.2,70.5,0,63.5,69.3,60.2,80.3,71.1,Low
+EDU2024CS169,Aditya Agarwal,aditya.agarwal169@university.edu,B.Tech Information Technology,5,66.4,55.0,69.4,46.1,62.5,-2.8,77.0,2,32.6,26.9,43.7,61.5,56.0,Moderate
+EDU2024CS170,Sai Reddy,sai.reddy170@university.edu,B.Tech AI & Data Science,3,53.9,40.1,53.7,29.2,53.2,-8.5,50.7,4,48.3,34.0,20.7,30.0,15.1,High
+EDU2024CS171,Ananya Banerjee,ananya.banerjee171@university.edu,B.Tech Computer Science,4,83.8,89.1,79.8,81.4,75.4,9.1,85.0,0,78.3,81.1,78.8,89.0,74.4,Low
+EDU2024CS172,Priya Kapoor,priya.kapoor172@university.edu,B.Tech Information Technology,4,46.1,42.4,27.8,30.6,42.8,-5.9,41.2,5,29.2,38.6,25.4,34.8,29.8,High
+EDU2024CS173,Rahul Yadav,rahul.yadav173@university.edu,B.Tech Information Technology,3,89.6,87.9,70.0,78.8,93.4,8.1,93.7,0,85.7,81.4,76.6,74.9,76.3,Low
+EDU2024CS174,Myra Mehta,myra.mehta174@university.edu,B.Tech Information Technology,3,57.5,60.4,42.3,33.9,48.0,-7.8,20.7,5,12.6,32.1,19.0,30.9,32.8,High
+EDU2024CS175,Myra Saxena,myra.saxena175@university.edu,B.Tech Information Technology,5,65.3,84.5,66.3,58.4,67.6,-11.3,73.4,1,54.8,65.1,44.8,47.0,64.9,Moderate
+EDU2024CS176,Manish Mukherjee,manish.mukherjee176@university.edu,B.Tech Computer Science,6,90.3,85.7,77.0,90.1,72.5,11.7,76.9,0,92.2,89.8,91.6,86.8,88.8,Low
+EDU2024CS177,Rohan Mehta,rohan.mehta177@university.edu,B.Tech Computer Science,6,52.4,34.0,52.9,33.4,45.5,-19.0,15.0,4,28.9,52.3,36.4,34.2,31.3,High
+EDU2024CS178,Ankit Chauhan,ankit.chauhan178@university.edu,B.Tech AI & Data Science,6,88.1,95.8,74.6,90.0,87.7,7.1,88.9,0,87.2,96.7,91.4,88.2,85.4,Low
+EDU2024CS179,Dhruv Das,dhruv.das179@university.edu,B.Tech Information Technology,6,68.6,85.0,50.6,44.3,63.5,-4.2,63.9,2,43.2,44.7,53.7,32.5,37.6,High
+EDU2024CS180,Kabir Nair,kabir.nair180@university.edu,B.Tech AI & Data Science,4,51.1,26.3,41.9,52.0,48.2,-10.4,22.9,2,44.1,51.4,45.1,63.3,56.5,High
+EDU2024CS181,Amit Bose,amit.bose181@university.edu,B.Tech Computer Science,3,42.0,49.0,50.0,48.3,64.0,-19.1,28.3,3,35.2,48.6,48.5,57.2,47.7,High
+EDU2024CS182,Vikas Saxena,vikas.saxena182@university.edu,B.Tech Computer Science,5,66.1,71.5,54.6,70.0,48.0,-3.4,80.0,1,67.1,70.7,62.8,69.6,81.0,Moderate
+EDU2024CS183,Sai Reddy,sai.reddy183@university.edu,B.Tech Computer Science,6,32.1,62.0,26.9,35.6,43.3,-7.9,18.8,4,36.3,51.8,19.3,38.1,30.3,High
+EDU2024CS184,Ishaan Bose,ishaan.bose184@university.edu,B.Tech AI & Data Science,5,90.6,92.1,78.9,84.4,96.4,2.5,91.5,0,71.0,79.7,84.6,97.3,87.2,Low
+EDU2024CS185,Ananya Malhotra,ananya.malhotra185@university.edu,B.Tech Information Technology,6,86.1,92.0,74.0,85.4,89.1,1.2,80.8,0,84.6,84.4,80.8,100.0,83.5,Low
+EDU2024CS186,Deepak Singh,deepak.singh186@university.edu,B.Tech Information Technology,4,48.8,38.2,52.9,36.4,40.9,-2.8,55.0,3,28.6,25.3,41.4,31.9,42.7,High
+EDU2024CS187,Shruti Agarwal,shruti.agarwal187@university.edu,B.Tech Computer Science,3,76.2,98.2,74.3,86.6,82.1,-1.3,81.3,0,89.1,89.3,87.8,100.0,74.1,Low
+EDU2024CS188,Myra Mehta,myra.mehta188@university.edu,B.Tech AI & Data Science,5,77.7,71.0,54.0,45.4,60.3,1.0,60.6,2,54.4,37.2,41.2,36.3,48.3,Moderate
+EDU2024CS189,Varun Iyer,varun.iyer189@university.edu,B.Tech AI & Data Science,6,60.0,41.0,20.0,39.8,52.8,-9.2,52.8,2,28.2,46.6,46.5,26.6,42.3,High
+EDU2024CS190,Kavya Bose,kavya.bose190@university.edu,B.Tech Information Technology,5,65.0,69.2,66.5,52.1,55.9,-4.3,50.0,1,40.4,58.9,37.8,58.4,55.8,Moderate
+EDU2024CS191,Riya Bansal,riya.bansal191@university.edu,B.Tech Information Technology,4,36.5,37.9,58.3,29.2,42.9,-8.8,47.4,4,24.2,27.0,38.0,44.1,37.0,High
+EDU2024CS192,Sneha Chopra,sneha.chopra192@university.edu,B.Tech Computer Science,6,88.5,86.3,77.4,84.7,85.3,10.5,90.9,0,69.7,94.1,71.7,82.6,86.7,Low
+EDU2024CS193,Shruti Bose,shruti.bose193@university.edu,B.Tech AI & Data Science,6,100.0,100.0,88.9,78.4,86.3,7.9,82.1,0,89.7,82.0,78.8,84.7,81.7,Low
+EDU2024CS194,Ankit Tiwari,ankit.tiwari194@university.edu,B.Tech AI & Data Science,4,93.0,87.7,79.5,70.1,85.5,7.4,89.1,0,80.5,72.1,72.1,62.4,67.0,Low
+EDU2024CS195,Aditya Singh,aditya.singh195@university.edu,B.Tech AI & Data Science,5,58.3,56.2,40.5,37.4,31.3,-14.5,48.7,4,39.0,42.9,33.8,38.4,32.1,High
+EDU2024CS196,Reyansh Das,reyansh.das196@university.edu,B.Tech Information Technology,3,72.2,74.2,67.9,51.8,48.0,2.1,56.7,1,41.9,58.6,44.3,61.3,56.7,Moderate
+EDU2024CS197,Priya Singh,priya.singh197@university.edu,B.Tech Computer Science,6,72.1,56.3,75.1,58.1,58.7,-3.6,42.5,1,58.4,52.9,41.9,46.9,67.0,Moderate
+EDU2024CS198,Pari Ghosh,pari.ghosh198@university.edu,B.Tech AI & Data Science,6,64.2,85.0,57.6,44.0,52.0,2.9,60.3,1,36.6,47.1,44.5,53.9,55.6,Moderate
+EDU2024CS199,Neha Chauhan,neha.chauhan199@university.edu,B.Tech AI & Data Science,6,48.8,30.1,39.0,40.3,37.4,-18.7,42.1,4,37.0,42.6,29.5,39.5,32.9,High
+EDU2024CS200,Simran Agarwal,simran.agarwal200@university.edu,B.Tech Information Technology,3,73.3,80.4,48.0,48.6,48.5,-8.4,61.1,2,34.0,44.1,35.5,51.2,49.1,High
+EDU2024CS201,Rahul Pandey,rahul.pandey201@university.edu,B.Tech Information Technology,4,63.7,71.8,57.5,53.8,76.0,3.5,47.7,1,57.5,61.5,39.5,61.4,66.1,Moderate
+EDU2024CS202,Reyansh Seth,reyansh.seth202@university.edu,B.Tech AI & Data Science,3,81.3,85.6,92.1,82.4,86.4,5.2,88.5,0,68.8,91.8,89.0,81.6,82.1,Low
+EDU2024CS203,Amit Iyer,amit.iyer203@university.edu,B.Tech Computer Science,3,78.8,95.6,88.6,79.4,91.0,1.8,90.1,0,68.3,81.3,73.9,82.2,76.5,Low
+EDU2024CS204,Vihaan Iyer,vihaan.iyer204@university.edu,B.Tech Information Technology,5,87.2,97.8,80.5,65.5,96.0,10.4,73.4,0,68.1,64.0,63.9,68.9,63.7,Low
+EDU2024CS205,Vikas Das,vikas.das205@university.edu,B.Tech Information Technology,4,83.3,87.2,76.7,72.5,81.5,-0.1,91.1,0,81.4,70.5,70.7,77.5,76.3,Low
+EDU2024CS206,Sai Ghosh,sai.ghosh206@university.edu,B.Tech Information Technology,4,88.5,97.2,87.9,68.9,89.0,7.9,78.1,0,66.2,75.6,63.0,78.4,87.8,Low
+EDU2024CS207,Kunal Singh,kunal.singh207@university.edu,B.Tech Computer Science,6,63.3,56.2,66.0,61.8,59.9,4.2,47.3,1,64.3,59.5,73.2,78.7,55.6,Moderate
+EDU2024CS208,Rohan Pandey,rohan.pandey208@university.edu,B.Tech Computer Science,6,47.1,56.3,39.4,37.6,48.3,-25.4,37.8,3,29.1,36.1,46.6,28.5,44.1,High
+EDU2024CS209,Kavya Kumar,kavya.kumar209@university.edu,B.Tech Computer Science,6,49.5,42.6,53.5,41.1,54.3,-5.2,34.0,3,33.2,35.5,29.6,65.7,51.0,High
+EDU2024CS210,Saanvi Mishra,saanvi.mishra210@university.edu,B.Tech Information Technology,5,79.9,82.7,87.9,84.9,86.4,2.2,83.9,0,84.5,87.5,61.0,84.1,78.1,Low
+EDU2024CS211,Saanvi Rao,saanvi.rao211@university.edu,B.Tech Information Technology,6,89.1,100.0,86.9,77.2,89.4,5.9,88.8,0,79.0,93.6,63.0,82.0,69.8,Low
+EDU2024CS212,Navya Banerjee,navya.banerjee212@university.edu,B.Tech Information Technology,5,57.0,35.0,39.0,35.3,58.7,-5.6,23.1,5,32.8,32.4,20.0,34.6,32.9,High
+EDU2024CS213,Vivaan Yadav,vivaan.yadav213@university.edu,B.Tech AI & Data Science,6,100.0,95.0,73.0,74.9,90.2,13.9,70.7,0,56.9,90.0,74.4,69.0,79.2,Low
+EDU2024CS214,Sneha Chauhan,sneha.chauhan214@university.edu,B.Tech AI & Data Science,3,28.3,46.0,47.9,46.3,36.8,-11.4,26.9,3,45.4,42.1,38.6,39.4,51.5,High
+EDU2024CS215,Prisha Yadav,prisha.yadav215@university.edu,B.Tech Information Technology,4,73.2,67.7,63.4,44.4,59.3,-4.8,80.0,1,32.5,56.7,49.4,47.7,58.5,Moderate
+EDU2024CS216,Rudra Mishra,rudra.mishra216@university.edu,B.Tech Computer Science,5,70.2,73.9,62.5,65.8,71.9,-8.3,47.5,0,61.2,62.2,61.2,76.7,62.1,Moderate
+EDU2024CS217,Rahul Gupta,rahul.gupta217@university.edu,B.Tech AI & Data Science,3,87.7,92.4,90.8,65.0,77.1,4.6,95.8,0,58.1,53.9,66.6,60.9,55.5,Low
+EDU2024CS218,Isha Verma,isha.verma218@university.edu,B.Tech AI & Data Science,5,64.3,68.2,57.0,44.0,70.1,3.1,69.2,2,31.9,44.6,39.9,49.8,49.3,Moderate
+EDU2024CS219,Diya Mehta,diya.mehta219@university.edu,B.Tech AI & Data Science,6,83.6,92.6,87.7,93.1,87.6,7.4,85.8,0,100.0,98.0,81.4,100.0,98.7,Low
+EDU2024CS220,Krishna Tiwari,krishna.tiwari220@university.edu,B.Tech AI & Data Science,5,85.3,88.6,86.4,84.2,83.6,5.1,100.0,0,89.7,87.5,88.6,76.9,87.4,Low
+EDU2024CS221,Ananya Yadav,ananya.yadav221@university.edu,B.Tech Computer Science,5,68.0,43.4,33.8,32.1,36.0,-17.5,33.6,4,17.9,34.2,36.3,25.9,44.3,High
+EDU2024CS222,Diya Bhatia,diya.bhatia222@university.edu,B.Tech Information Technology,3,91.1,99.2,78.7,87.7,73.3,8.0,86.5,0,89.1,81.5,75.6,93.5,80.1,Low
+EDU2024CS223,Arjun Singh,arjun.singh223@university.edu,B.Tech Computer Science,6,56.2,29.6,54.2,26.9,54.1,-7.6,29.6,5,28.6,30.7,18.1,19.8,15.0,High
+EDU2024CS224,Anika Patel,anika.patel224@university.edu,B.Tech Information Technology,3,90.1,81.0,84.8,77.6,87.4,2.0,82.0,0,80.5,82.0,76.5,82.4,65.3,Low
+EDU2024CS225,Ayaan Kapoor,ayaan.kapoor225@university.edu,B.Tech Information Technology,5,72.5,76.1,52.8,54.0,61.6,-5.3,65.7,1,62.5,63.6,38.2,60.0,64.7,Moderate
+EDU2024CS226,Reyansh Pandey,reyansh.pandey226@university.edu,B.Tech Computer Science,6,90.3,99.6,98.0,89.2,84.0,8.7,86.3,0,86.4,88.8,99.3,83.7,100.0,Low
+EDU2024CS227,Deepak Mehta,deepak.mehta227@university.edu,B.Tech AI & Data Science,4,71.0,56.0,66.7,44.0,67.6,0.8,55.5,2,42.0,59.7,35.4,36.5,55.9,Moderate
+EDU2024CS228,Amit Iyer,amit.iyer228@university.edu,B.Tech AI & Data Science,6,99.8,92.0,92.1,92.1,76.1,1.1,96.1,0,100.0,98.0,80.2,100.0,87.8,Low
+EDU2024CS229,Aditya Verma,aditya.verma229@university.edu,B.Tech Information Technology,6,86.0,94.4,96.4,87.7,85.3,5.8,85.4,0,89.2,72.0,81.0,90.6,78.5,Low
+EDU2024CS230,Vikas Agarwal,vikas.agarwal230@university.edu,B.Tech AI & Data Science,4,90.3,90.6,98.0,94.2,78.3,2.7,84.3,0,87.5,97.5,83.3,86.1,99.1,Low
+EDU2024CS231,Anika Pandey,anika.pandey231@university.edu,B.Tech AI & Data Science,6,71.8,62.0,72.0,50.9,64.3,0.4,61.6,0,51.6,49.3,45.2,50.3,45.0,Moderate
+EDU2024CS232,Myra Mishra,myra.mishra232@university.edu,B.Tech Computer Science,6,66.9,55.0,58.1,53.7,59.7,-5.9,61.3,1,54.6,61.8,43.9,45.1,45.4,Moderate
+EDU2024CS233,Aditya Saxena,aditya.saxena233@university.edu,B.Tech Information Technology,4,85.1,89.5,77.8,68.3,78.4,4.4,90.4,0,60.9,67.4,56.0,69.1,61.5,Low
+EDU2024CS234,Vikas Chauhan,vikas.chauhan234@university.edu,B.Tech Information Technology,3,57.2,24.6,39.7,40.7,50.0,2.0,42.2,3,29.7,42.0,20.7,41.1,34.0,High
+EDU2024CS235,Kavya Agarwal,kavya.agarwal235@university.edu,B.Tech AI & Data Science,5,93.5,88.2,83.1,74.3,95.9,1.9,100.0,0,77.8,79.7,73.6,78.4,58.9,Low
+EDU2024CS236,Ananya Rao,ananya.rao236@university.edu,B.Tech Computer Science,6,86.3,97.9,83.6,67.4,81.6,12.0,96.2,0,63.9,76.0,60.1,54.7,60.0,Low
+EDU2024CS237,Kabir Mishra,kabir.mishra237@university.edu,B.Tech AI & Data Science,3,97.4,90.1,82.1,77.3,97.2,11.6,100.0,0,73.0,81.4,59.7,90.1,68.0,Low
+EDU2024CS238,Pari Reddy,pari.reddy238@university.edu,B.Tech Computer Science,4,89.3,84.3,79.3,72.5,77.1,0.8,80.1,0,76.1,66.7,70.4,83.2,68.4,Low
+EDU2024CS239,Manish Mukherjee,manish.mukherjee239@university.edu,B.Tech Computer Science,4,63.7,67.7,74.8,57.6,57.2,-1.6,49.9,0,60.0,62.4,50.8,51.8,50.5,Moderate
+EDU2024CS240,Pari Seth,pari.seth240@university.edu,B.Tech Computer Science,3,91.2,100.0,78.9,84.1,65.3,0.6,84.7,0,73.8,79.6,74.1,87.5,82.6,Low
+EDU2024CS241,Ishaan Singh,ishaan.singh241@university.edu,B.Tech AI & Data Science,5,58.0,55.0,56.9,59.7,48.0,-7.5,56.2,0,67.8,59.0,59.1,61.8,42.6,High
+EDU2024CS242,Ankit Chauhan,ankit.chauhan242@university.edu,B.Tech Computer Science,4,92.6,93.5,88.1,98.0,65.3,12.1,82.4,0,97.3,99.7,90.2,94.4,100.0,Low
+EDU2024CS243,Vikas Banerjee,vikas.banerjee243@university.edu,B.Tech Information Technology,3,78.9,97.3,80.7,69.8,78.4,9.8,80.2,0,69.7,66.7,72.7,76.3,84.6,Low
+EDU2024CS244,Vihaan Singh,vihaan.singh244@university.edu,B.Tech AI & Data Science,6,86.9,96.7,84.8,91.7,76.2,7.2,83.2,0,88.1,94.3,89.9,91.7,93.4,Low
+EDU2024CS245,Shruti Patel,shruti.patel245@university.edu,B.Tech Information Technology,6,77.5,79.9,71.7,52.4,54.0,1.2,71.6,0,61.1,50.1,46.3,40.2,49.2,Moderate
+EDU2024CS246,Isha Das,isha.das246@university.edu,B.Tech Computer Science,3,74.0,65.3,69.4,54.5,64.9,-11.4,62.9,2,27.5,55.2,35.8,65.1,60.7,High
+EDU2024CS247,Riya Mishra,riya.mishra247@university.edu,B.Tech Computer Science,3,56.2,62.0,32.6,52.0,58.3,-13.7,51.6,2,40.1,48.2,42.5,48.8,43.5,High
+EDU2024CS248,Sara Pandey,sara.pandey248@university.edu,B.Tech Computer Science,6,75.3,67.4,66.5,51.4,48.0,-2.9,41.0,1,47.9,43.9,65.3,59.7,52.3,Moderate
+EDU2024CS249,Arjun Agarwal,arjun.agarwal249@university.edu,B.Tech Computer Science,5,75.6,61.5,68.4,57.6,64.4,3.1,70.1,0,56.9,48.0,45.0,57.6,58.3,Moderate
+EDU2024CS250,Krishna Nair,krishna.nair250@university.edu,B.Tech AI & Data Science,5,81.2,100.0,96.1,85.4,82.6,2.4,76.4,0,83.0,89.2,70.2,89.1,84.2,Low
+EDU2024CS251,Pooja Das,pooja.das251@university.edu,B.Tech Information Technology,6,76.6,86.0,80.7,97.0,86.5,-3.2,89.4,0,81.6,100.0,88.7,97.2,100.0,Low
+EDU2024CS252,Sara Gupta,sara.gupta252@university.edu,B.Tech AI & Data Science,3,40.4,29.2,37.0,47.3,31.3,-31.8,32.6,3,48.8,57.7,39.2,45.1,56.6,High
+EDU2024CS253,Divya Mukherjee,divya.mukherjee253@university.edu,B.Tech AI & Data Science,4,76.8,89.3,85.5,84.0,77.9,3.7,68.0,0,75.8,89.2,71.2,85.5,87.6,Low
+EDU2024CS254,Rudra Malhotra,rudra.malhotra254@university.edu,B.Tech Information Technology,6,85.9,93.2,76.3,78.1,86.9,4.3,79.7,0,76.9,85.1,55.7,88.4,75.5,Low
+EDU2024CS255,Varun Gupta,varun.gupta255@university.edu,B.Tech Information Technology,6,90.6,100.0,73.0,73.6,79.7,-0.4,100.0,0,63.8,71.7,71.5,65.0,70.4,Low
+EDU2024CS256,Rohan Joshi,rohan.joshi256@university.edu,B.Tech Computer Science,6,89.9,89.7,83.3,75.2,69.9,5.1,100.0,0,72.4,78.8,77.5,66.1,88.9,Low
+EDU2024CS257,Sai Patel,sai.patel257@university.edu,B.Tech Information Technology,3,69.2,85.0,55.7,70.0,69.0,-1.2,64.6,1,65.0,80.4,67.3,55.3,61.1,Moderate
+EDU2024CS258,Krishna Mukherjee,krishna.mukherjee258@university.edu,B.Tech Computer Science,5,66.9,73.1,62.4,65.8,48.0,-3.6,42.0,1,68.8,67.1,65.5,59.8,76.0,Moderate
+EDU2024CS259,Ananya Chauhan,ananya.chauhan259@university.edu,B.Tech AI & Data Science,6,61.4,53.0,42.4,43.2,40.2,-6.0,57.8,3,48.8,40.1,42.5,33.9,47.8,High
+EDU2024CS260,Vihaan Iyer,vihaan.iyer260@university.edu,B.Tech AI & Data Science,5,90.7,78.9,74.7,77.5,79.6,-2.5,88.5,0,76.5,78.1,66.6,86.8,90.7,Low
+EDU2024CS261,Sneha Das,sneha.das261@university.edu,B.Tech Computer Science,4,65.1,63.9,67.9,53.1,60.7,-0.1,41.0,0,60.7,55.6,45.4,53.4,52.8,Moderate
+EDU2024CS262,Reyansh Joshi,reyansh.joshi262@university.edu,B.Tech AI & Data Science,5,77.6,100.0,84.3,84.0,89.6,-1.6,89.3,0,78.8,91.9,60.8,84.2,79.2,Low
+EDU2024CS263,Ananya Banerjee,ananya.banerjee263@university.edu,B.Tech Computer Science,6,55.9,51.6,35.5,31.6,46.8,-18.3,48.1,5,25.6,15.0,24.2,24.3,18.5,High
+EDU2024CS264,Vikram Pandey,vikram.pandey264@university.edu,B.Tech AI & Data Science,3,60.6,71.1,76.3,58.5,56.5,-1.8,57.0,1,49.9,52.4,38.7,56.4,59.8,Moderate
+EDU2024CS265,Vivaan Kumar,vivaan.kumar265@university.edu,B.Tech Information Technology,5,51.1,41.0,32.7,43.5,33.5,-6.6,26.0,3,34.5,35.2,35.0,52.3,47.6,High
+EDU2024CS266,Aarav Kumar,aarav.kumar266@university.edu,B.Tech Computer Science,6,93.9,95.7,75.2,77.0,75.8,10.2,74.2,0,81.2,85.3,89.5,74.7,82.7,Low
+EDU2024CS267,Shruti Mishra,shruti.mishra267@university.edu,B.Tech Computer Science,3,80.0,63.8,48.0,44.0,68.4,-15.8,57.9,0,44.5,47.3,43.8,46.8,54.2,Moderate
+EDU2024CS268,Navya Malhotra,navya.malhotra268@university.edu,B.Tech Information Technology,5,82.3,87.3,77.8,87.5,89.2,5.8,95.7,0,75.0,100.0,97.2,94.4,100.0,Low
+EDU2024CS269,Saanvi Bhatia,saanvi.bhatia269@university.edu,B.Tech Information Technology,3,37.1,39.7,35.2,44.5,36.4,-6.7,54.4,2,47.1,48.5,31.6,38.7,54.5,High
+EDU2024CS270,Shaurya Seth,shaurya.seth270@university.edu,B.Tech AI & Data Science,3,72.7,69.6,58.8,44.0,52.4,7.0,47.9,1,42.5,53.1,28.7,46.5,51.5,Moderate
+EDU2024CS271,Isha Pandey,isha.pandey271@university.edu,B.Tech Information Technology,6,68.1,85.0,48.0,64.5,60.4,0.1,66.9,1,55.6,68.1,43.7,70.3,66.9,Moderate
+EDU2024CS272,Ananya Rao,ananya.rao272@university.edu,B.Tech AI & Data Science,3,91.8,99.4,86.9,81.3,75.0,-0.1,95.7,0,89.8,81.7,77.7,75.1,90.7,Low
+EDU2024CS273,Ayaan Iyer,ayaan.iyer273@university.edu,B.Tech AI & Data Science,6,92.0,100.0,77.0,76.6,83.9,6.7,83.1,0,66.6,84.8,79.1,70.3,87.4,Low
+EDU2024CS274,Saanvi Verma,saanvi.verma274@university.edu,B.Tech Computer Science,6,62.5,47.6,45.0,43.0,38.5,-11.8,15.0,1,47.0,34.1,52.5,41.3,41.3,High
+EDU2024CS275,Aarav Rao,aarav.rao275@university.edu,B.Tech Information Technology,4,64.2,67.1,77.2,44.0,73.5,-2.5,48.7,3,32.4,57.7,31.5,35.8,53.1,Moderate
+EDU2024CS276,Diya Mehta,diya.mehta276@university.edu,B.Tech Computer Science,3,90.0,85.4,85.7,70.8,90.8,8.8,89.8,0,70.7,85.1,66.8,62.3,74.4,Low
+EDU2024CS277,Sara Kumar,sara.kumar277@university.edu,B.Tech Computer Science,6,100.0,84.9,81.1,83.7,81.6,-1.4,95.1,0,99.3,87.1,71.6,72.4,85.8,Low
+EDU2024CS278,Rudra Das,rudra.das278@university.edu,B.Tech AI & Data Science,5,94.6,95.3,84.0,74.7,73.3,7.7,93.2,0,59.3,87.8,75.9,86.9,64.0,Low
+EDU2024CS279,Shruti Verma,shruti.verma279@university.edu,B.Tech Information Technology,3,79.8,91.0,88.0,96.2,87.6,2.3,75.8,0,100.0,91.4,100.0,94.9,100.0,Low
+EDU2024CS280,Arjun Chauhan,arjun.chauhan280@university.edu,B.Tech Information Technology,6,72.1,68.6,57.8,53.3,65.9,-4.0,55.5,1,48.9,55.8,30.1,57.9,45.4,Moderate
+EDU2024CS281,Diya Gupta,diya.gupta281@university.edu,B.Tech Information Technology,3,41.6,25.8,22.5,25.8,40.2,1.7,31.7,5,24.2,30.6,23.0,26.2,16.2,High
+EDU2024CS282,Vikram Kapoor,vikram.kapoor282@university.edu,B.Tech AI & Data Science,5,96.7,100.0,70.5,70.8,79.8,-1.3,89.6,0,62.0,87.9,77.5,73.5,79.0,Low
+EDU2024CS283,Reyansh Reddy,reyansh.reddy283@university.edu,B.Tech Information Technology,6,94.6,88.1,77.5,80.7,88.9,4.2,70.8,0,71.3,82.2,76.0,97.5,69.6,Low
+EDU2024CS284,Angel Chauhan,angel.chauhan284@university.edu,B.Tech Information Technology,5,91.0,100.0,98.0,76.4,85.9,6.3,86.8,0,72.6,81.4,49.6,82.8,77.4,Low
+EDU2024CS285,Divya Kumar,divya.kumar285@university.edu,B.Tech Computer Science,3,86.7,100.0,78.6,76.4,97.9,-0.7,80.0,0,72.2,84.3,74.2,67.0,72.1,Low
+EDU2024CS286,Dhruv Agarwal,dhruv.agarwal286@university.edu,B.Tech Information Technology,5,64.4,69.2,67.3,59.3,48.0,1.9,64.8,0,67.4,64.5,65.3,64.1,70.1,Moderate
+EDU2024CS287,Vikas Gupta,vikas.gupta287@university.edu,B.Tech Computer Science,5,91.1,91.3,98.0,88.0,86.6,-2.9,73.4,0,87.3,91.0,78.5,90.1,100.0,Low
+EDU2024CS288,Pooja Singh,pooja.singh288@university.edu,B.Tech AI & Data Science,3,92.2,84.0,83.1,72.8,78.9,1.4,80.7,0,59.7,73.9,63.7,50.3,89.2,Low
+EDU2024CS289,Divya Mishra,divya.mishra289@university.edu,B.Tech Information Technology,6,74.5,66.2,63.2,46.6,76.0,6.9,63.7,1,51.8,49.9,30.6,44.3,47.7,Moderate
+EDU2024CS290,Neha Bansal,neha.bansal290@university.edu,B.Tech AI & Data Science,5,47.9,43.4,42.9,37.3,48.6,-19.4,29.4,3,24.0,46.1,14.3,47.5,48.4,High
+EDU2024CS291,Aadhya Singh,aadhya.singh291@university.edu,B.Tech Information Technology,3,86.2,78.0,81.1,79.4,73.9,0.9,98.8,0,81.7,75.0,61.0,77.8,77.7,Low
+EDU2024CS292,Rahul Iyer,rahul.iyer292@university.edu,B.Tech Information Technology,3,91.0,88.3,88.1,97.4,88.5,3.3,83.4,0,91.6,100.0,87.8,98.8,97.8,Low
+EDU2024CS293,Arjun Iyer,arjun.iyer293@university.edu,B.Tech Information Technology,6,85.0,82.4,86.6,79.5,86.0,0.8,96.0,0,69.4,93.4,59.7,83.9,83.3,Low
+EDU2024CS294,Anika Yadav,anika.yadav294@university.edu,B.Tech Information Technology,3,63.2,74.2,75.8,44.0,66.5,-19.5,51.4,1,54.0,41.9,29.4,43.4,60.5,Moderate
+EDU2024CS295,Vikram Ghosh,vikram.ghosh295@university.edu,B.Tech AI & Data Science,6,77.0,84.6,96.0,96.7,81.2,-2.7,100.0,0,100.0,100.0,85.4,97.3,95.4,Low
+EDU2024CS296,Deepak Tiwari,deepak.tiwari296@university.edu,B.Tech AI & Data Science,3,90.0,100.0,91.0,70.3,93.0,5.1,91.2,0,79.0,64.5,66.0,67.1,57.8,Low
+EDU2024CS297,Sneha Mishra,sneha.mishra297@university.edu,B.Tech Computer Science,5,70.1,85.0,48.0,55.7,67.8,-3.8,60.8,1,42.3,59.4,44.9,39.2,65.3,Moderate
+EDU2024CS298,Vihaan Kapoor,vihaan.kapoor298@university.edu,B.Tech Computer Science,5,60.6,46.6,46.7,47.7,50.5,-5.7,34.4,1,55.2,51.9,45.4,38.5,50.0,Moderate
+EDU2024CS299,Aditi Mishra,aditi.mishra299@university.edu,B.Tech Computer Science,3,83.0,87.5,77.5,70.4,98.0,10.2,100.0,0,57.6,72.9,54.8,65.8,63.1,Low
+EDU2024CS300,Isha Kapoor,isha.kapoor300@university.edu,B.Tech AI & Data Science,4,95.4,89.2,92.5,85.4,98.0,-3.9,96.3,0,91.6,80.6,90.5,89.1,83.6,Low
+EDU2024CS301,Diya Chopra,diya.chopra301@university.edu,B.Tech Information Technology,5,63.1,62.8,78.0,56.0,69.0,-9.2,53.4,0,61.7,48.6,48.3,57.3,56.9,Moderate
+EDU2024CS302,Rahul Mishra,rahul.mishra302@university.edu,B.Tech Information Technology,3,86.9,94.8,89.5,86.6,74.1,2.1,95.8,0,90.8,79.0,85.8,71.8,87.0,Low
+EDU2024CS303,Deepak Pandey,deepak.pandey303@university.edu,B.Tech Information Technology,5,99.4,85.4,77.3,86.9,69.7,0.3,90.4,0,78.8,87.2,89.6,91.2,89.0,Low
+EDU2024CS304,Ankit Bansal,ankit.bansal304@university.edu,B.Tech AI & Data Science,4,86.0,94.6,83.0,84.1,78.0,2.6,76.1,0,80.8,80.4,70.1,87.2,85.8,Low
+EDU2024CS305,Kunal Pandey,kunal.pandey305@university.edu,B.Tech Computer Science,5,92.7,89.0,87.3,85.0,85.6,-0.6,86.3,0,84.9,87.0,62.2,87.2,100.0,Low
+EDU2024CS306,Priya Saxena,priya.saxena306@university.edu,B.Tech AI & Data Science,6,85.8,86.9,87.0,82.8,91.5,-2.8,91.6,0,84.5,83.8,81.9,92.0,89.8,Low
+EDU2024CS307,Simran Patel,simran.patel307@university.edu,B.Tech Information Technology,6,61.1,78.2,62.4,56.6,62.7,-5.4,75.1,1,52.9,50.7,49.0,59.0,66.4,Moderate
+EDU2024CS308,Krishna Pandey,krishna.pandey308@university.edu,B.Tech AI & Data Science,3,71.6,61.5,78.0,58.1,73.5,-5.4,67.9,1,61.8,68.6,63.6,66.1,55.6,Moderate
+EDU2024CS309,Aditi Joshi,aditi.joshi309@university.edu,B.Tech Computer Science,5,84.6,94.3,91.5,78.0,90.5,10.8,76.8,0,68.3,79.0,76.8,74.8,88.8,Low
+EDU2024CS310,Kabir Mehta,kabir.mehta310@university.edu,B.Tech Information Technology,4,90.5,92.3,72.5,68.2,84.2,-7.2,94.1,0,63.9,92.9,84.9,67.7,67.3,Low
+EDU2024CS311,Krishna Singh,krishna.singh311@university.edu,B.Tech Computer Science,5,61.0,62.0,24.3,21.9,41.2,-7.9,44.0,5,27.5,15.5,10.0,29.8,15.3,High
+EDU2024CS312,Aditi Seth,aditi.seth312@university.edu,B.Tech AI & Data Science,3,58.0,71.5,70.9,55.0,57.9,-5.5,57.9,0,41.2,52.0,55.7,58.6,56.4,High
+EDU2024CS313,Pooja Chopra,pooja.chopra313@university.edu,B.Tech Computer Science,4,82.0,90.7,70.0,81.6,93.4,-3.9,79.7,0,81.2,92.4,73.6,77.1,65.9,Low
+EDU2024CS314,Amit Seth,amit.seth314@university.edu,B.Tech AI & Data Science,4,68.6,85.0,65.8,55.8,64.9,-4.6,53.1,0,59.4,59.4,52.0,49.0,66.2,Moderate
+EDU2024CS315,Myra Joshi,myra.joshi315@university.edu,B.Tech AI & Data Science,4,58.0,39.4,56.0,33.5,39.4,-17.3,16.7,5,34.3,22.7,18.5,17.9,32.8,High
+EDU2024CS316,Diya Seth,diya.seth316@university.edu,B.Tech AI & Data Science,6,87.1,89.7,75.7,69.4,85.7,0.7,87.8,0,59.4,72.7,77.2,75.1,66.2,Low
+EDU2024CS317,Vikas Iyer,vikas.iyer317@university.edu,B.Tech Information Technology,4,89.5,90.3,84.1,77.1,80.7,4.6,76.1,0,65.9,69.3,58.7,68.3,78.3,Low
+EDU2024CS318,Sneha Kapoor,sneha.kapoor318@university.edu,B.Tech Information Technology,5,62.6,75.1,63.3,44.0,67.9,0.4,51.1,2,44.4,40.0,40.9,34.9,29.7,Moderate
+EDU2024CS319,Shaurya Yadav,shaurya.yadav319@university.edu,B.Tech Computer Science,4,48.6,44.5,39.2,27.3,43.6,-10.1,37.5,5,25.8,24.7,33.9,18.9,31.2,High
+EDU2024CS320,Priya Bose,priya.bose320@university.edu,B.Tech Information Technology,3,75.1,74.8,61.0,51.8,71.3,-13.0,51.3,0,45.6,62.4,51.2,45.0,49.3,Moderate
+EDU2024CS321,Diya Patel,diya.patel321@university.edu,B.Tech Computer Science,5,84.3,87.0,91.8,67.7,94.9,7.6,94.8,0,61.0,68.6,50.8,64.5,71.6,Low
+EDU2024CS322,Aditi Singh,aditi.singh322@university.edu,B.Tech Information Technology,3,63.7,32.7,39.6,36.6,32.6,-7.9,29.3,5,32.1,35.5,25.5,37.6,34.9,High
+EDU2024CS323,Isha Agarwal,isha.agarwal323@university.edu,B.Tech Information Technology,3,85.8,86.9,86.6,94.9,83.1,8.5,72.5,0,93.1,89.2,77.6,90.0,100.0,Low
+EDU2024CS324,Angel Das,angel.das324@university.edu,B.Tech Information Technology,4,93.7,93.7,71.7,78.2,84.4,4.4,68.4,0,68.1,79.8,79.1,61.7,76.9,Low
+EDU2024CS325,Sai Joshi,sai.joshi325@university.edu,B.Tech Computer Science,3,88.9,97.9,89.5,85.2,75.6,-6.0,81.5,0,90.3,97.0,87.6,89.7,88.3,Low
+EDU2024CS326,Reyansh Yadav,reyansh.yadav326@university.edu,B.Tech AI & Data Science,5,64.7,68.7,78.0,48.5,76.0,-6.4,76.6,3,34.2,54.6,37.8,38.1,50.2,High
+EDU2024CS327,Aditya Iyer,aditya.iyer327@university.edu,B.Tech Information Technology,4,74.1,61.6,48.0,55.3,61.2,-1.2,72.4,1,51.8,70.3,53.3,53.5,42.4,Moderate
+EDU2024CS328,Isha Ghosh,isha.ghosh328@university.edu,B.Tech Computer Science,3,86.4,89.6,91.7,84.2,72.6,4.4,91.0,0,93.4,92.4,87.0,85.6,87.3,Low
+EDU2024CS329,Kabir Yadav,kabir.yadav329@university.edu,B.Tech Computer Science,6,95.5,82.7,81.2,73.0,85.0,9.7,79.6,0,50.9,72.2,77.3,78.3,76.5,Low
+EDU2024CS330,Diya Reddy,diya.reddy330@university.edu,B.Tech Information Technology,3,86.3,83.0,88.1,72.5,98.0,6.4,79.8,0,64.6,73.8,66.3,82.4,74.0,Low
+EDU2024CS331,Myra Mishra,myra.mishra331@university.edu,B.Tech AI & Data Science,6,83.6,100.0,84.4,86.9,77.1,5.3,87.8,0,68.8,100.0,94.5,84.7,78.1,Low
+EDU2024CS332,Prisha Ghosh,prisha.ghosh332@university.edu,B.Tech AI & Data Science,3,70.1,70.9,66.6,57.5,66.6,4.2,68.2,0,46.1,69.1,68.3,83.7,48.5,Moderate
+EDU2024CS333,Simran Singh,simran.singh333@university.edu,B.Tech Information Technology,6,89.5,78.0,88.4,75.1,97.4,-0.4,69.8,0,68.3,63.2,77.8,59.5,75.3,Low
+EDU2024CS334,Ananya Reddy,ananya.reddy334@university.edu,B.Tech AI & Data Science,6,75.5,89.8,97.1,83.2,75.1,3.3,85.2,0,84.0,75.7,84.6,62.6,78.2,Low
+EDU2024CS335,Ankit Patel,ankit.patel335@university.edu,B.Tech AI & Data Science,5,85.1,96.4,84.2,67.3,74.1,4.5,84.3,0,59.7,66.0,69.6,64.2,66.6,Low
+EDU2024CS336,Meera Mukherjee,meera.mukherjee336@university.edu,B.Tech AI & Data Science,3,100.0,82.0,70.0,87.1,76.6,1.9,78.0,0,82.0,100.0,90.3,95.0,75.7,Low
+EDU2024CS337,Tanvi Verma,tanvi.verma337@university.edu,B.Tech AI & Data Science,6,41.6,15.0,34.3,46.6,53.7,-13.6,37.7,2,38.1,50.0,49.5,34.7,49.0,High
+EDU2024CS338,Shruti Sharma,shruti.sharma338@university.edu,B.Tech Information Technology,3,93.6,89.1,89.6,98.0,81.2,5.5,78.4,0,96.5,100.0,95.8,90.8,99.7,Low
+EDU2024CS339,Varun Pandey,varun.pandey339@university.edu,B.Tech AI & Data Science,3,76.8,74.5,72.6,54.1,68.7,-2.8,51.5,1,53.7,49.2,44.4,56.6,56.5,Moderate
+EDU2024CS340,Krishna Verma,krishna.verma340@university.edu,B.Tech Information Technology,5,60.9,80.5,68.7,50.4,48.2,-5.4,57.1,1,48.3,49.8,28.3,48.3,47.9,Moderate
+EDU2024CS341,Divya Pandey,divya.pandey341@university.edu,B.Tech Information Technology,6,71.8,63.0,78.0,44.0,73.8,-5.8,71.5,2,41.6,54.0,36.5,36.2,55.4,High
+EDU2024CS342,Arjun Saxena,arjun.saxena342@university.edu,B.Tech Information Technology,3,87.3,93.6,93.9,70.7,86.8,0.6,83.8,0,68.3,62.2,59.7,82.5,77.8,Low
+EDU2024CS343,Aditya Tiwari,aditya.tiwari343@university.edu,B.Tech Computer Science,3,87.6,93.7,81.6,92.2,80.4,4.7,95.3,0,83.0,100.0,74.4,100.0,89.2,Low
+EDU2024CS344,Saanvi Das,saanvi.das344@university.edu,B.Tech Information Technology,6,86.5,78.8,80.4,70.6,77.1,2.8,93.6,0,69.3,74.8,56.8,64.6,85.0,Low
+EDU2024CS345,Manish Mishra,manish.mishra345@university.edu,B.Tech Computer Science,5,83.6,100.0,82.1,80.0,90.6,9.9,84.0,0,73.9,81.6,79.1,88.2,80.1,Low
+EDU2024CS346,Divya Verma,divya.verma346@university.edu,B.Tech AI & Data Science,5,91.7,100.0,87.1,82.8,69.8,-8.0,88.5,0,79.0,81.2,81.0,83.3,91.8,Low
+EDU2024CS347,Anika Malhotra,anika.malhotra347@university.edu,B.Tech Information Technology,6,52.8,37.0,55.9,36.0,53.8,-15.3,30.2,5,33.7,38.1,36.4,34.9,21.4,High
+EDU2024CS348,Pari Kumar,pari.kumar348@university.edu,B.Tech Information Technology,6,85.4,97.6,81.6,77.8,89.9,-0.1,71.1,0,73.5,76.4,65.1,77.4,81.7,Low
+EDU2024CS349,Meera Nair,meera.nair349@university.edu,B.Tech Computer Science,6,87.9,94.1,98.0,76.9,84.2,1.0,77.4,0,69.2,75.6,76.1,96.7,71.2,Low
+EDU2024CS350,Pooja Yadav,pooja.yadav350@university.edu,B.Tech Computer Science,5,85.5,91.6,87.2,82.4,92.3,-8.0,68.0,0,75.4,92.1,64.3,59.3,86.9,Low
+EDU2024CS351,Sai Mehta,sai.mehta351@university.edu,B.Tech AI & Data Science,5,89.5,84.4,76.1,71.3,82.9,0.4,89.4,0,45.4,67.3,57.1,70.2,67.0,Low
+EDU2024CS352,Pooja Saxena,pooja.saxena352@university.edu,B.Tech Information Technology,4,72.8,55.0,63.5,60.5,76.0,-7.4,65.6,1,43.0,45.7,64.1,61.4,69.9,Moderate
+EDU2024CS353,Isha Verma,isha.verma353@university.edu,B.Tech AI & Data Science,5,59.8,75.2,78.0,59.4,64.5,-4.4,44.7,1,67.2,57.1,59.9,47.9,49.9,High
+EDU2024CS354,Ananya Mishra,ananya.mishra354@university.edu,B.Tech Computer Science,3,76.6,66.5,77.5,55.4,48.0,0.9,55.5,1,58.0,57.6,37.5,57.7,72.9,Moderate
+EDU2024CS355,Anika Das,anika.das355@university.edu,B.Tech AI & Data Science,4,56.4,45.3,56.9,39.9,50.3,-19.6,40.8,2,45.2,36.0,48.7,40.2,32.8,High
+EDU2024CS356,Pooja Pandey,pooja.pandey356@university.edu,B.Tech Information Technology,3,94.0,90.0,90.1,77.4,81.5,6.0,87.6,0,58.4,71.5,81.7,77.3,73.2,Low
+EDU2024CS357,Vikas Seth,vikas.seth357@university.edu,B.Tech AI & Data Science,5,79.8,84.4,70.0,79.1,77.2,-1.3,84.4,0,79.0,95.7,61.5,89.4,86.9,Low
+EDU2024CS358,Sneha Verma,sneha.verma358@university.edu,B.Tech AI & Data Science,4,63.3,72.0,58.4,57.5,75.6,-0.9,67.6,1,51.0,49.1,51.6,68.1,45.3,Moderate
+EDU2024CS359,Anika Kapoor,anika.kapoor359@university.edu,B.Tech Computer Science,4,81.7,92.9,76.1,72.9,78.6,-3.3,76.2,0,75.5,65.7,54.5,68.8,78.7,Low
+EDU2024CS360,Angel Mehta,angel.mehta360@university.edu,B.Tech AI & Data Science,5,86.8,88.7,84.4,65.0,86.0,5.4,81.3,0,70.0,59.1,71.2,67.2,62.3,Low
+EDU2024CS361,Ayaan Sharma,ayaan.sharma361@university.edu,B.Tech AI & Data Science,4,87.9,91.2,93.8,70.3,75.9,8.7,79.6,0,74.5,84.2,62.7,76.8,61.1,Low
+EDU2024CS362,Navya Bansal,navya.bansal362@university.edu,B.Tech AI & Data Science,3,92.5,93.4,87.8,74.2,68.7,6.0,68.0,0,68.7,82.8,71.9,90.8,82.4,Low
+EDU2024CS363,Rohan Saxena,rohan.saxena363@university.edu,B.Tech Information Technology,4,46.1,46.3,43.4,23.8,37.7,-15.9,15.0,5,21.1,24.0,10.0,28.0,29.5,High
+EDU2024CS364,Amit Bansal,amit.bansal364@university.edu,B.Tech Information Technology,4,89.4,89.7,88.7,86.1,84.5,-0.6,87.5,0,92.7,83.9,100.0,82.9,86.4,Low
+EDU2024CS365,Arjun Kapoor,arjun.kapoor365@university.edu,B.Tech Computer Science,6,45.9,48.7,23.1,33.1,36.0,-11.1,49.9,4,35.3,18.5,47.5,36.4,26.9,High
+EDU2024CS366,Aadhya Pandey,aadhya.pandey366@university.edu,B.Tech Information Technology,3,88.9,93.2,78.7,81.8,77.1,1.5,78.8,0,67.3,84.8,83.0,86.9,88.3,Low
+EDU2024CS367,Diya Agarwal,diya.agarwal367@university.edu,B.Tech Information Technology,4,69.9,64.7,71.4,45.1,53.9,-10.3,73.9,1,49.7,50.6,50.8,39.1,47.9,Moderate
+EDU2024CS368,Anika Das,anika.das368@university.edu,B.Tech Computer Science,3,50.9,56.2,42.6,34.5,53.9,-5.9,30.0,5,31.0,29.1,10.0,37.1,39.4,High
+EDU2024CS369,Vikas Tiwari,vikas.tiwari369@university.edu,B.Tech Information Technology,3,89.6,78.4,81.2,65.0,93.0,-1.9,96.3,0,69.6,60.7,50.8,68.8,58.2,Low
+EDU2024CS370,Sneha Joshi,sneha.joshi370@university.edu,B.Tech Information Technology,4,68.6,65.2,48.0,44.0,64.0,-7.9,55.9,1,46.6,54.2,37.5,42.3,48.0,Moderate
+EDU2024CS371,Arjun Iyer,arjun.iyer371@university.edu,B.Tech Information Technology,6,79.9,93.6,88.4,86.1,66.5,-0.3,77.1,0,83.9,91.5,95.6,83.2,82.1,Low
+EDU2024CS372,Divya Malhotra,divya.malhotra372@university.edu,B.Tech AI & Data Science,3,94.9,94.1,94.1,82.6,72.7,-3.2,71.0,0,84.9,92.9,95.2,90.3,91.9,Low
+EDU2024CS373,Aadhya Mishra,aadhya.mishra373@university.edu,B.Tech Computer Science,6,84.5,83.9,90.8,83.8,82.9,5.4,87.9,0,91.0,94.8,84.7,91.5,87.9,Low
+EDU2024CS374,Meera Joshi,meera.joshi374@university.edu,B.Tech Computer Science,4,65.2,77.6,49.1,64.4,51.2,-2.8,52.7,0,65.9,66.2,46.1,68.8,59.8,Moderate
+EDU2024CS375,Sara Das,sara.das375@university.edu,B.Tech Computer Science,3,93.3,92.0,87.2,71.4,77.3,1.2,92.7,0,81.8,67.7,77.1,55.0,61.8,Low
+EDU2024CS376,Saanvi Kumar,saanvi.kumar376@university.edu,B.Tech Computer Science,5,43.4,29.8,25.0,41.7,45.6,-9.3,46.3,2,40.8,48.3,37.1,33.2,50.2,High
+EDU2024CS377,Ananya Das,ananya.das377@university.edu,B.Tech Information Technology,3,84.5,85.5,82.6,71.8,78.7,5.2,88.1,0,61.6,70.4,77.5,76.8,88.4,Low
+EDU2024CS378,Rahul Mukherjee,rahul.mukherjee378@university.edu,B.Tech Information Technology,4,75.1,81.4,49.1,62.1,61.5,-7.8,63.8,0,66.7,67.6,50.2,69.1,57.0,Moderate
+EDU2024CS379,Aditi Mishra,aditi.mishra379@university.edu,B.Tech Computer Science,4,89.3,89.9,82.2,86.9,73.7,13.2,68.6,0,79.1,91.5,88.2,87.1,86.4,Low
+EDU2024CS380,Vikram Bhatia,vikram.bhatia380@university.edu,B.Tech AI & Data Science,5,55.7,43.2,60.0,45.6,57.6,-18.8,37.0,3,40.2,40.5,44.8,42.3,50.8,High
+EDU2024CS381,Aditya Yadav,aditya.yadav381@university.edu,B.Tech Computer Science,3,81.6,100.0,76.8,82.0,88.3,0.6,92.7,0,69.1,94.1,78.1,78.2,79.6,Low
+EDU2024CS382,Priya Seth,priya.seth382@university.edu,B.Tech AI & Data Science,5,72.9,64.2,55.5,54.2,51.4,6.4,55.8,1,57.9,57.7,41.4,55.2,60.5,Moderate
+EDU2024CS383,Vikram Mishra,vikram.mishra383@university.edu,B.Tech Computer Science,6,50.3,60.3,56.3,46.3,42.9,-19.6,30.6,3,44.8,52.1,22.7,47.2,47.5,High
+EDU2024CS384,Diya Mishra,diya.mishra384@university.edu,B.Tech Information Technology,6,86.3,100.0,87.4,91.8,80.3,8.2,99.7,0,99.3,86.1,85.5,90.0,95.7,Low
+EDU2024CS385,Neha Chopra,neha.chopra385@university.edu,B.Tech Information Technology,6,92.1,86.1,84.5,65.0,93.5,0.9,85.5,1,59.5,75.0,35.5,65.9,64.2,Moderate
+EDU2024CS386,Vihaan Kumar,vihaan.kumar386@university.edu,B.Tech Information Technology,6,85.3,100.0,76.9,86.9,84.9,9.8,79.0,0,78.1,96.6,86.8,75.6,82.6,Low
+EDU2024CS387,Kabir Mehta,kabir.mehta387@university.edu,B.Tech AI & Data Science,4,90.3,97.9,78.6,65.0,86.2,-2.6,68.0,1,39.3,72.7,62.2,64.2,76.1,Moderate
+EDU2024CS388,Simran Mehta,simran.mehta388@university.edu,B.Tech AI & Data Science,5,57.7,62.0,27.3,37.7,30.2,-13.6,35.0,2,39.7,40.0,39.3,44.3,54.9,High
+EDU2024CS389,Manish Joshi,manish.joshi389@university.edu,B.Tech AI & Data Science,3,86.1,85.4,86.0,72.8,93.9,2.1,79.9,0,66.0,79.8,67.4,68.6,86.1,Low
+EDU2024CS390,Riya Gupta,riya.gupta390@university.edu,B.Tech Information Technology,6,82.9,92.2,89.2,65.3,85.8,-1.8,92.4,0,54.6,72.2,71.3,73.2,67.3,Low
+EDU2024CS391,Reyansh Verma,reyansh.verma391@university.edu,B.Tech Information Technology,6,49.9,39.1,60.0,31.7,36.6,-7.3,28.4,5,21.1,23.6,23.4,32.0,33.6,High
+EDU2024CS392,Vikas Chauhan,vikas.chauhan392@university.edu,B.Tech Computer Science,5,60.6,52.3,41.7,36.2,53.6,-3.1,39.5,3,29.5,31.3,19.2,42.5,40.8,High
+EDU2024CS393,Aadhya Rao,aadhya.rao393@university.edu,B.Tech Computer Science,6,57.2,44.5,60.0,33.6,58.5,-12.3,30.7,5,35.4,38.5,32.9,35.3,33.3,High
+EDU2024CS394,Prisha Agarwal,prisha.agarwal394@university.edu,B.Tech Information Technology,6,100.0,100.0,89.8,81.0,90.1,6.1,85.2,0,75.6,82.4,48.5,83.7,77.1,Low
+EDU2024CS395,Angel Das,angel.das395@university.edu,B.Tech Information Technology,4,97.6,92.1,74.5,79.6,73.6,5.9,87.6,0,84.2,76.0,75.9,69.6,85.2,Low
+EDU2024CS396,Ananya Verma,ananya.verma396@university.edu,B.Tech Computer Science,5,91.1,95.5,84.0,83.7,94.8,2.1,86.2,0,72.0,79.7,80.6,93.6,81.7,Low
+EDU2024CS397,Priya Pandey,priya.pandey397@university.edu,B.Tech Information Technology,5,86.6,89.2,79.7,82.7,70.0,9.9,79.0,0,85.4,75.8,84.7,89.0,85.7,Low
+EDU2024CS398,Reyansh Malhotra,reyansh.malhotra398@university.edu,B.Tech Computer Science,5,62.0,72.5,51.2,54.0,71.3,0.3,62.2,1,43.2,60.5,50.2,36.4,60.2,Moderate
+EDU2024CS399,Anika Verma,anika.verma399@university.edu,B.Tech Information Technology,3,67.9,82.0,52.0,44.0,64.5,-2.8,43.4,3,33.2,65.3,37.2,50.8,38.8,Moderate
+EDU2024CS400,Anika Mukherjee,anika.mukherjee400@university.edu,B.Tech Information Technology,3,75.5,90.8,81.9,76.4,81.1,4.8,83.6,0,63.3,81.8,54.9,61.0,82.3,Low
+EDU2024CS401,Isha Seth,isha.seth401@university.edu,B.Tech AI & Data Science,5,71.0,69.4,49.0,50.3,59.6,-14.1,53.9,1,52.6,62.3,42.6,57.4,35.0,Moderate
+EDU2024CS402,Krishna Gupta,krishna.gupta402@university.edu,B.Tech Information Technology,5,72.0,62.0,66.1,54.0,73.9,-9.7,68.9,1,48.8,54.9,48.4,48.3,53.9,Moderate
+EDU2024CS403,Deepak Joshi,deepak.joshi403@university.edu,B.Tech Computer Science,4,67.6,72.4,63.8,62.4,70.3,-10.8,71.6,1,49.9,68.5,64.0,48.1,63.1,Moderate
+EDU2024CS404,Aditi Verma,aditi.verma404@university.edu,B.Tech Computer Science,3,85.2,86.7,94.8,74.1,75.5,3.9,91.2,0,70.0,84.3,74.9,57.7,69.9,Low
+EDU2024CS405,Pari Tiwari,pari.tiwari405@university.edu,B.Tech Information Technology,6,84.6,95.4,70.0,98.0,86.2,4.2,95.6,0,100.0,100.0,100.0,100.0,96.9,Low
+EDU2024CS406,Aditi Singh,aditi.singh406@university.edu,B.Tech Information Technology,5,85.1,86.2,78.5,67.8,81.4,-4.9,86.7,0,64.6,70.9,59.1,93.5,78.7,Low
+EDU2024CS407,Vikram Bhatia,vikram.bhatia407@university.edu,B.Tech Information Technology,5,80.5,93.6,79.1,70.9,71.3,5.7,78.9,0,75.6,79.8,79.2,65.1,74.7,Low
+EDU2024CS408,Aditi Mukherjee,aditi.mukherjee408@university.edu,B.Tech Information Technology,5,91.8,88.7,77.8,94.5,83.8,6.7,77.6,0,81.7,92.5,89.4,87.0,94.4,Low
+EDU2024CS409,Vivaan Joshi,vivaan.joshi409@university.edu,B.Tech Information Technology,3,36.8,32.6,52.1,43.4,43.7,-19.1,25.7,3,37.4,49.9,47.8,40.5,34.2,High
+EDU2024CS410,Saanvi Tiwari,saanvi.tiwari410@university.edu,B.Tech AI & Data Science,3,69.6,61.8,57.8,66.6,69.4,-3.6,48.0,1,65.3,76.0,59.2,78.4,76.9,Moderate
+EDU2024CS411,Priya Tiwari,priya.tiwari411@university.edu,B.Tech AI & Data Science,4,78.0,73.1,68.9,67.3,66.0,-7.5,57.1,1,66.2,60.3,62.0,77.1,49.8,Moderate
+EDU2024CS412,Shaurya Das,shaurya.das412@university.edu,B.Tech AI & Data Science,6,97.2,99.9,80.3,84.9,82.0,9.6,93.8,0,70.7,91.0,79.0,86.6,79.1,Low
+EDU2024CS413,Neha Reddy,neha.reddy413@university.edu,B.Tech Computer Science,3,98.5,99.3,78.1,68.0,78.9,5.7,87.2,0,75.0,75.5,72.7,71.6,56.9,Low
+EDU2024CS414,Isha Mehta,isha.mehta414@university.edu,B.Tech Information Technology,4,86.8,99.4,83.6,84.5,79.5,-1.6,83.9,0,84.0,81.9,78.4,78.0,93.5,Low
+EDU2024CS415,Kabir Malhotra,kabir.malhotra415@university.edu,B.Tech AI & Data Science,6,49.3,62.0,60.0,37.3,36.9,-26.6,20.3,3,23.3,48.9,34.3,41.4,19.5,High
+EDU2024CS416,Varun Verma,varun.verma416@university.edu,B.Tech AI & Data Science,4,80.8,98.2,86.3,78.7,86.5,11.7,83.0,0,76.2,82.0,96.2,62.9,84.1,Low
+EDU2024CS417,Deepak Mehta,deepak.mehta417@university.edu,B.Tech AI & Data Science,6,87.3,96.0,78.7,79.6,87.7,19.1,92.3,0,69.8,78.6,71.5,66.2,76.9,Low
+EDU2024CS418,Aadhya Kumar,aadhya.kumar418@university.edu,B.Tech Information Technology,5,92.4,83.1,92.4,84.4,76.1,2.8,99.4,0,87.3,86.5,78.3,86.0,80.3,Low
+EDU2024CS419,Neha Seth,neha.seth419@university.edu,B.Tech AI & Data Science,5,58.0,85.0,64.6,59.2,61.5,-8.9,60.0,0,43.4,77.1,44.1,51.9,55.7,High
+EDU2024CS420,Vikas Nair,vikas.nair420@university.edu,B.Tech AI & Data Science,5,95.7,92.1,74.1,91.3,87.8,6.2,91.4,0,100.0,100.0,81.1,100.0,94.4,Low
+EDU2024CS421,Saanvi Seth,saanvi.seth421@university.edu,B.Tech Information Technology,4,71.0,55.0,61.3,49.5,69.5,1.9,40.0,1,46.3,59.4,43.8,56.3,52.3,Moderate
+EDU2024CS422,Aadhya Bose,aadhya.bose422@university.edu,B.Tech Information Technology,5,90.0,90.1,74.3,69.9,87.7,3.6,83.8,0,63.5,69.8,75.3,68.2,59.2,Low
+EDU2024CS423,Sneha Pandey,sneha.pandey423@university.edu,B.Tech AI & Data Science,6,58.7,43.5,44.4,52.0,47.8,-10.0,23.9,2,47.2,58.3,34.0,54.6,52.8,High
+EDU2024CS424,Ananya Seth,ananya.seth424@university.edu,B.Tech Computer Science,5,88.2,99.3,86.7,93.3,74.1,4.2,85.8,0,81.7,100.0,100.0,94.2,97.3,Low
+EDU2024CS425,Simran Patel,simran.patel425@university.edu,B.Tech Information Technology,6,68.5,62.9,48.0,50.4,49.5,5.7,60.7,1,44.6,58.6,36.3,45.2,50.9,Moderate
+EDU2024CS426,Kabir Rao,kabir.rao426@university.edu,B.Tech AI & Data Science,5,61.3,52.0,47.0,38.7,52.4,-10.6,25.6,4,36.1,33.2,35.4,35.9,59.0,High
+EDU2024CS427,Ananya Singh,ananya.singh427@university.edu,B.Tech Computer Science,4,87.8,82.2,82.9,84.7,95.4,0.6,70.8,0,88.2,77.0,76.7,83.6,84.1,Low
+EDU2024CS428,Ankit Agarwal,ankit.agarwal428@university.edu,B.Tech AI & Data Science,4,72.1,63.2,60.3,55.9,63.3,-3.9,66.8,0,59.6,60.6,56.0,44.2,56.3,Moderate
+EDU2024CS429,Reyansh Malhotra,reyansh.malhotra429@university.edu,B.Tech Information Technology,6,90.9,97.1,78.5,74.1,77.4,6.2,94.3,0,67.8,82.4,71.2,74.1,72.4,Low
+EDU2024CS430,Divya Singh,divya.singh430@university.edu,B.Tech Computer Science,4,92.5,94.3,98.0,72.3,86.1,0.9,77.2,0,69.2,75.3,94.6,71.9,63.3,Low
+EDU2024CS431,Tanvi Bose,tanvi.bose431@university.edu,B.Tech AI & Data Science,4,69.6,55.0,62.1,56.1,69.2,1.3,56.5,1,51.9,52.8,42.0,59.6,45.9,Moderate
+EDU2024CS432,Aadhya Iyer,aadhya.iyer432@university.edu,B.Tech AI & Data Science,3,48.3,34.1,50.6,52.0,33.7,-25.0,36.5,1,49.1,55.5,44.0,51.4,54.9,High
+EDU2024CS433,Priya Banerjee,priya.banerjee433@university.edu,B.Tech Computer Science,3,61.4,22.5,39.6,39.9,37.9,0.1,30.4,4,36.6,45.8,30.6,26.2,36.5,High
+EDU2024CS434,Myra Agarwal,myra.agarwal434@university.edu,B.Tech Computer Science,3,61.3,42.0,33.8,46.3,44.4,-15.6,39.8,2,49.5,65.0,49.8,56.6,42.3,High
+EDU2024CS435,Prisha Kumar,prisha.kumar435@university.edu,B.Tech AI & Data Science,5,42.8,46.7,45.3,28.3,46.1,-9.2,42.3,5,29.3,32.3,19.7,25.2,18.7,High
+EDU2024CS436,Saanvi Banerjee,saanvi.banerjee436@university.edu,B.Tech AI & Data Science,3,68.0,46.2,41.3,29.6,64.0,-19.5,32.9,4,30.0,35.8,34.3,45.1,33.7,High
+EDU2024CS437,Diya Kapoor,diya.kapoor437@university.edu,B.Tech AI & Data Science,6,42.5,42.9,47.7,52.0,32.6,-3.6,40.2,1,55.7,53.3,40.4,59.0,57.2,High
+EDU2024CS438,Aditi Kapoor,aditi.kapoor438@university.edu,B.Tech Information Technology,4,73.8,69.9,57.0,44.0,69.4,-2.0,51.4,4,36.7,42.7,26.7,38.5,34.9,Moderate
+EDU2024CS439,Shaurya Bhatia,shaurya.bhatia439@university.edu,B.Tech Information Technology,5,65.5,62.6,48.0,70.0,73.3,-9.2,65.0,0,70.3,80.3,58.6,79.7,65.6,Moderate
+EDU2024CS440,Shruti Mehta,shruti.mehta440@university.edu,B.Tech Information Technology,4,80.0,97.1,94.3,98.0,72.4,7.0,81.3,0,100.0,89.7,82.6,92.8,98.6,Low
+EDU2024CS441,Rahul Agarwal,rahul.agarwal441@university.edu,B.Tech Information Technology,6,84.2,96.6,92.2,85.4,95.0,5.6,74.0,0,93.3,83.2,89.6,99.0,89.0,Low
+EDU2024CS442,Sai Chopra,sai.chopra442@university.edu,B.Tech AI & Data Science,3,79.0,85.6,94.6,78.5,82.6,7.3,91.3,0,77.7,79.0,71.7,86.3,82.9,Low
+EDU2024CS443,Krishna Bose,krishna.bose443@university.edu,B.Tech Information Technology,4,86.5,99.6,83.0,72.3,75.9,-1.4,82.5,0,79.2,68.7,70.0,68.1,70.3,Low
+EDU2024CS444,Navya Reddy,navya.reddy444@university.edu,B.Tech Information Technology,5,38.4,43.4,41.7,42.9,50.5,-20.4,51.0,2,41.5,46.3,38.8,39.7,44.6,High
+EDU2024CS445,Kunal Bhatia,kunal.bhatia445@university.edu,B.Tech AI & Data Science,3,90.9,79.8,79.7,77.7,84.0,9.5,78.1,0,70.7,76.1,66.5,75.9,83.9,Low
+EDU2024CS446,Anika Saxena,anika.saxena446@university.edu,B.Tech Computer Science,3,61.7,74.3,48.0,51.5,59.0,5.5,59.0,2,30.9,39.5,47.8,57.4,54.5,Moderate
+EDU2024CS447,Saanvi Kumar,saanvi.kumar447@university.edu,B.Tech Information Technology,5,69.0,81.6,57.6,63.2,48.0,-9.9,42.1,1,58.0,64.8,60.2,64.7,55.7,Moderate
+EDU2024CS448,Anika Ghosh,anika.ghosh448@university.edu,B.Tech Computer Science,4,50.3,28.0,60.0,35.3,42.6,-0.9,23.1,4,23.3,29.6,30.7,39.7,41.2,High
+EDU2024CS449,Ishaan Kapoor,ishaan.kapoor449@university.edu,B.Tech AI & Data Science,5,100.0,78.0,88.9,75.0,77.3,0.4,76.8,0,85.5,82.9,71.2,86.8,62.9,Low
+EDU2024CS450,Deepak Bansal,deepak.bansal450@university.edu,B.Tech Information Technology,4,60.0,55.0,56.0,57.3,62.9,-3.6,46.5,0,60.7,61.0,59.9,43.2,59.8,Moderate
+EDU2024CS451,Meera Kapoor,meera.kapoor451@university.edu,B.Tech AI & Data Science,5,80.9,89.2,88.3,80.8,75.2,3.5,71.2,0,87.0,81.4,86.9,77.6,76.6,Low
+EDU2024CS452,Sneha Gupta,sneha.gupta452@university.edu,B.Tech Computer Science,4,63.4,78.8,55.9,61.2,58.6,-16.4,55.7,0,48.7,63.4,46.4,69.6,60.4,Moderate
+EDU2024CS453,Shaurya Mehta,shaurya.mehta453@university.edu,B.Tech AI & Data Science,6,86.9,96.6,91.7,79.8,75.8,-5.4,78.8,0,71.9,82.6,72.7,86.3,74.9,Low
+EDU2024CS454,Kabir Saxena,kabir.saxena454@university.edu,B.Tech AI & Data Science,6,87.7,100.0,86.7,79.5,77.2,0.3,77.3,0,72.1,86.7,73.5,69.7,93.6,Low
+EDU2024CS455,Aditi Kapoor,aditi.kapoor455@university.edu,B.Tech Computer Science,6,89.9,82.2,80.5,81.0,95.6,-2.0,93.8,0,89.2,78.6,74.5,73.7,79.4,Low
+EDU2024CS456,Myra Kapoor,myra.kapoor456@university.edu,B.Tech AI & Data Science,3,67.8,76.6,73.9,50.0,48.0,-4.6,65.2,1,49.0,49.7,47.1,63.1,53.1,Moderate
+EDU2024CS457,Varun Sharma,varun.sharma457@university.edu,B.Tech Information Technology,5,65.8,65.0,61.3,69.1,60.4,-4.6,56.7,0,74.9,84.8,69.1,70.8,69.4,Moderate
+EDU2024CS458,Kunal Patel,kunal.patel458@university.edu,B.Tech Computer Science,6,75.0,97.2,85.1,83.9,76.3,1.6,81.3,0,89.0,83.2,98.6,88.3,73.6,Low
+EDU2024CS459,Arjun Mukherjee,arjun.mukherjee459@university.edu,B.Tech Computer Science,3,50.8,38.2,20.0,52.0,55.7,-8.3,40.0,2,37.9,50.6,55.6,44.6,31.7,High
+EDU2024CS460,Aditya Iyer,aditya.iyer460@university.edu,B.Tech Information Technology,4,66.6,68.6,64.4,61.8,67.7,-2.9,75.2,1,46.7,67.4,63.5,52.9,49.8,Moderate
+EDU2024CS461,Anika Agarwal,anika.agarwal461@university.edu,B.Tech Information Technology,6,45.3,38.1,53.0,32.5,38.6,-16.3,51.4,4,29.6,33.2,27.5,43.8,26.5,High
+EDU2024CS462,Navya Patel,navya.patel462@university.edu,B.Tech AI & Data Science,4,75.9,72.1,61.4,70.0,52.5,-6.6,48.4,1,74.6,83.8,81.0,80.8,68.4,Moderate
+EDU2024CS463,Ayaan Kumar,ayaan.kumar463@university.edu,B.Tech AI & Data Science,6,85.8,80.3,98.0,84.2,78.1,10.1,76.2,0,84.5,85.0,86.0,84.7,72.6,Low
+EDU2024CS464,Varun Reddy,varun.reddy464@university.edu,B.Tech Computer Science,3,52.7,58.6,43.6,45.0,36.5,-12.2,30.5,2,48.0,47.2,47.2,54.7,50.5,High
+EDU2024CS465,Neha Bhatia,neha.bhatia465@university.edu,B.Tech AI & Data Science,6,89.6,85.0,84.0,75.2,79.2,1.6,76.2,0,56.5,72.5,72.9,65.4,75.3,Low
+EDU2024CS466,Rudra Reddy,rudra.reddy466@university.edu,B.Tech Information Technology,5,99.4,99.2,97.1,83.5,91.3,-0.1,79.2,0,58.6,93.8,93.4,80.1,81.5,Low
+EDU2024CS467,Dhruv Bansal,dhruv.bansal467@university.edu,B.Tech AI & Data Science,3,83.5,94.7,93.0,65.0,85.3,2.1,86.0,0,65.7,65.7,60.1,64.3,72.8,Low
+EDU2024CS468,Ankit Malhotra,ankit.malhotra468@university.edu,B.Tech AI & Data Science,3,90.5,93.5,73.8,76.6,89.2,3.7,90.9,0,87.7,85.9,73.4,73.5,56.2,Low
+EDU2024CS469,Arjun Gupta,arjun.gupta469@university.edu,B.Tech AI & Data Science,3,87.0,89.7,87.1,78.6,79.4,-5.4,76.5,0,79.4,92.6,73.7,82.2,86.2,Low
+EDU2024CS470,Neha Saxena,neha.saxena470@university.edu,B.Tech Computer Science,4,63.1,73.7,55.6,62.9,63.4,-2.7,53.4,1,65.6,79.5,49.8,61.2,64.8,Moderate
+EDU2024CS471,Isha Reddy,isha.reddy471@university.edu,B.Tech AI & Data Science,4,72.7,64.4,48.0,66.9,68.8,-15.0,55.3,0,76.4,79.0,71.3,66.5,67.5,Moderate
+EDU2024CS472,Krishna Das,krishna.das472@university.edu,B.Tech Information Technology,4,67.2,81.3,54.2,49.6,71.1,-4.8,77.2,2,41.2,51.2,37.3,50.6,37.7,High
+EDU2024CS473,Sneha Ghosh,sneha.ghosh473@university.edu,B.Tech AI & Data Science,5,85.1,81.9,89.6,86.4,68.2,10.2,100.0,0,83.8,84.0,100.0,76.9,86.6,Low
+EDU2024CS474,Ishaan Pandey,ishaan.pandey474@university.edu,B.Tech AI & Data Science,4,89.1,100.0,86.9,75.5,74.4,1.8,75.9,0,72.9,73.6,58.1,86.6,71.5,Low
+EDU2024CS475,Ananya Verma,ananya.verma475@university.edu,B.Tech AI & Data Science,4,60.4,68.3,63.7,44.0,65.0,-10.8,80.0,1,45.2,43.2,33.3,44.2,48.9,Moderate
+EDU2024CS476,Deepak Bose,deepak.bose476@university.edu,B.Tech Computer Science,5,51.8,43.4,44.7,32.6,44.2,-26.6,49.7,4,32.0,29.2,45.7,34.3,24.3,High
+EDU2024CS477,Navya Tiwari,navya.tiwari477@university.edu,B.Tech AI & Data Science,5,73.1,74.0,66.9,52.6,66.1,-6.1,68.1,1,34.4,51.6,64.1,47.5,47.8,Moderate
+EDU2024CS478,Ishaan Iyer,ishaan.iyer478@university.edu,B.Tech Information Technology,4,65.3,57.9,48.0,54.2,63.2,-4.8,60.4,1,51.5,63.3,48.4,50.6,51.9,Moderate
+EDU2024CS479,Vikas Chauhan,vikas.chauhan479@university.edu,B.Tech Computer Science,5,57.2,62.0,36.5,38.9,51.7,-18.9,38.2,4,24.2,28.5,38.2,36.8,40.5,High
+EDU2024CS480,Riya Bansal,riya.bansal480@university.edu,B.Tech Computer Science,6,51.8,34.3,43.5,26.9,63.3,-21.5,35.7,5,15.6,32.9,19.9,23.8,33.7,High
+EDU2024CS481,Meera Singh,meera.singh481@university.edu,B.Tech Information Technology,4,88.2,95.6,76.1,67.4,82.9,1.9,90.6,0,63.7,70.8,48.7,83.5,66.0,Low
+EDU2024CS482,Pari Mishra,pari.mishra482@university.edu,B.Tech Computer Science,6,58.3,36.0,47.7,26.3,53.0,-14.5,38.4,4,28.9,19.6,16.1,30.9,43.1,High
+EDU2024CS483,Kavya Bhatia,kavya.bhatia483@university.edu,B.Tech Computer Science,3,87.2,96.1,83.1,97.5,68.0,4.0,70.4,0,74.4,100.0,94.7,96.2,96.6,Low
+EDU2024CS484,Neha Ghosh,neha.ghosh484@university.edu,B.Tech AI & Data Science,3,68.0,42.9,50.1,32.2,51.2,-13.7,33.1,3,43.7,42.4,29.4,15.0,29.3,High
+EDU2024CS485,Manish Banerjee,manish.banerjee485@university.edu,B.Tech AI & Data Science,4,100.0,90.4,92.8,93.0,83.8,-0.7,68.0,0,95.5,89.3,90.6,84.0,90.9,Low
+EDU2024CS486,Pari Iyer,pari.iyer486@university.edu,B.Tech Computer Science,4,52.3,49.2,30.6,48.8,41.4,-23.7,36.7,3,46.0,51.9,57.0,47.9,47.8,High
+EDU2024CS487,Ayaan Bhatia,ayaan.bhatia487@university.edu,B.Tech Information Technology,4,61.4,78.2,64.8,52.6,48.0,4.2,48.5,2,44.9,57.1,37.9,41.7,35.6,Moderate
+EDU2024CS488,Angel Bansal,angel.bansal488@university.edu,B.Tech Computer Science,5,72.3,64.5,78.0,48.0,53.7,-7.9,64.7,3,41.3,54.3,35.2,38.0,33.7,High
+EDU2024CS489,Riya Mukherjee,riya.mukherjee489@university.edu,B.Tech AI & Data Science,5,75.0,88.4,81.6,74.3,91.9,9.6,82.0,0,57.0,72.4,64.9,70.1,68.7,Low
+EDU2024CS490,Anika Das,anika.das490@university.edu,B.Tech Information Technology,6,84.1,89.3,78.9,81.9,84.9,-1.1,96.4,0,71.0,72.6,81.3,76.3,84.4,Low
+EDU2024CS491,Varun Bose,varun.bose491@university.edu,B.Tech Information Technology,4,75.0,100.0,89.4,66.5,70.2,11.9,78.4,0,56.8,52.6,59.3,65.7,72.2,Low
+EDU2024CS492,Myra Verma,myra.verma492@university.edu,B.Tech AI & Data Science,4,59.6,55.0,67.5,64.1,48.0,2.0,62.4,1,69.8,65.6,37.4,63.8,72.5,High
+EDU2024CS493,Rohan Mukherjee,rohan.mukherjee493@university.edu,B.Tech AI & Data Science,6,82.6,89.3,82.6,65.0,95.4,-1.0,89.6,0,61.3,75.8,64.7,64.1,57.9,Low
+EDU2024CS494,Dhruv Mehta,dhruv.mehta494@university.edu,B.Tech Computer Science,6,72.8,55.0,69.5,47.2,73.3,-3.5,69.1,2,44.9,36.9,35.5,53.6,48.5,Moderate
+EDU2024CS495,Prisha Mukherjee,prisha.mukherjee495@university.edu,B.Tech AI & Data Science,5,95.1,94.8,76.3,72.8,82.8,-8.0,100.0,0,73.4,83.4,54.6,83.8,90.7,Low
+EDU2024CS496,Prisha Bhatia,prisha.bhatia496@university.edu,B.Tech AI & Data Science,6,80.1,97.4,84.0,66.1,85.9,7.7,79.6,0,72.4,56.4,48.6,68.2,66.3,Low
+EDU2024CS497,Varun Tiwari,varun.tiwari497@university.edu,B.Tech Information Technology,4,83.7,97.7,88.2,87.7,81.0,6.5,81.0,0,100.0,84.0,100.0,89.0,76.7,Low
+EDU2024CS498,Kavya Bose,kavya.bose498@university.edu,B.Tech Computer Science,3,96.2,92.9,90.8,91.0,84.7,0.5,93.8,0,88.0,97.8,67.6,95.6,85.9,Low
+EDU2024CS499,Arjun Yadav,arjun.yadav499@university.edu,B.Tech AI & Data Science,3,77.9,76.2,65.4,59.9,53.0,5.2,80.0,1,60.0,73.0,50.8,54.5,60.2,Moderate
+EDU2024CS500,Krishna Yadav,krishna.yadav500@university.edu,B.Tech AI & Data Science,4,90.6,89.2,88.3,82.8,74.0,6.1,92.8,0,81.1,92.8,67.8,87.5,73.4,Low
+EDU2024CS501,Ishaan Sharma,ishaan.sharma501@university.edu,B.Tech Computer Science,6,81.3,87.6,76.5,75.1,80.3,7.7,82.1,0,59.4,85.0,63.5,75.6,78.6,Low
+EDU2024CS502,Vikram Mishra,vikram.mishra502@university.edu,B.Tech AI & Data Science,6,69.2,80.9,67.8,49.1,76.0,-3.3,60.4,0,53.8,52.9,48.7,70.0,46.9,Moderate
+EDU2024CS503,Aarav Mukherjee,aarav.mukherjee503@university.edu,B.Tech AI & Data Science,6,86.1,92.8,92.6,66.4,66.3,0.6,70.3,0,60.0,72.0,54.4,56.0,67.0,Low
+EDU2024CS504,Meera Bhatia,meera.bhatia504@university.edu,B.Tech Information Technology,5,93.2,80.1,90.6,87.4,89.6,9.6,100.0,0,81.5,90.1,79.6,88.4,99.6,Low
+EDU2024CS505,Amit Pandey,amit.pandey505@university.edu,B.Tech Information Technology,4,79.9,86.0,95.0,89.2,79.1,7.8,88.1,0,98.2,91.7,94.4,100.0,94.0,Low
+EDU2024CS506,Reyansh Das,reyansh.das506@university.edu,B.Tech Computer Science,4,88.3,97.1,81.1,98.0,83.4,2.1,77.5,0,100.0,100.0,89.5,100.0,85.9,Low
+EDU2024CS507,Meera Nair,meera.nair507@university.edu,B.Tech Information Technology,5,69.1,74.5,78.0,49.8,50.5,-9.9,47.3,0,57.5,62.7,48.7,60.6,50.9,Moderate
+EDU2024CS508,Anika Chopra,anika.chopra508@university.edu,B.Tech Information Technology,4,51.1,42.0,40.3,24.1,50.9,-12.3,46.9,5,21.8,24.9,12.2,25.6,30.0,High
+EDU2024CS509,Saanvi Pandey,saanvi.pandey509@university.edu,B.Tech Computer Science,3,81.1,92.6,85.9,73.5,77.3,4.7,74.8,0,73.3,69.3,79.1,93.2,66.7,Low
+EDU2024CS510,Navya Chopra,navya.chopra510@university.edu,B.Tech AI & Data Science,6,91.2,86.9,92.3,68.6,85.8,-0.9,83.1,0,57.4,76.4,57.1,74.0,65.9,Low
+EDU2024CS511,Aarav Saxena,aarav.saxena511@university.edu,B.Tech Computer Science,3,87.3,93.0,77.9,81.9,94.2,-0.4,95.5,0,90.9,78.2,64.8,85.3,77.5,Low
+EDU2024CS512,Sara Mishra,sara.mishra512@university.edu,B.Tech Information Technology,3,68.0,46.4,34.4,27.7,60.0,-16.0,38.5,5,32.3,26.3,23.3,28.5,33.1,High
+EDU2024CS513,Rudra Rao,rudra.rao513@university.edu,B.Tech AI & Data Science,6,91.5,90.5,84.5,76.7,70.2,4.8,100.0,0,66.6,73.2,64.8,83.5,80.2,Low
+EDU2024CS514,Arjun Pandey,arjun.pandey514@university.edu,B.Tech Information Technology,3,87.0,85.6,84.7,65.9,83.1,7.9,73.7,0,50.7,79.0,56.4,76.0,64.7,Low
+EDU2024CS515,Aadhya Sharma,aadhya.sharma515@university.edu,B.Tech Computer Science,4,67.0,74.4,54.2,57.1,58.6,-12.4,65.7,1,52.0,58.0,42.2,70.8,64.1,Moderate
+EDU2024CS516,Arjun Iyer,arjun.iyer516@university.edu,B.Tech Computer Science,4,73.8,66.9,48.0,70.0,61.5,-9.0,66.6,1,76.3,71.8,77.5,79.7,61.4,Moderate
+EDU2024CS517,Neha Agarwal,neha.agarwal517@university.edu,B.Tech AI & Data Science,5,84.0,98.7,70.0,78.7,70.6,1.1,82.3,0,72.8,76.8,64.8,98.0,93.6,Low
+EDU2024CS518,Shruti Singh,shruti.singh518@university.edu,B.Tech AI & Data Science,3,81.0,100.0,80.8,81.2,81.5,0.2,93.9,0,79.2,79.8,65.4,75.0,68.0,Low
+EDU2024CS519,Ananya Verma,ananya.verma519@university.edu,B.Tech Computer Science,6,88.1,83.6,81.9,92.3,91.6,3.3,84.2,0,100.0,98.0,85.4,81.9,95.5,Low
+EDU2024CS520,Arjun Mehta,arjun.mehta520@university.edu,B.Tech AI & Data Science,6,59.5,38.4,47.5,34.7,46.0,-29.4,35.3,5,39.5,32.3,31.2,29.7,37.6,High
+EDU2024CS521,Vivaan Mishra,vivaan.mishra521@university.edu,B.Tech Information Technology,6,86.7,85.4,94.7,88.4,77.2,6.0,89.8,0,90.5,78.5,93.4,84.8,85.5,Low
+EDU2024CS522,Ananya Mukherjee,ananya.mukherjee522@university.edu,B.Tech Information Technology,6,100.0,94.1,80.9,65.0,93.1,-3.2,76.0,0,59.3,76.9,68.0,64.7,67.5,Low
+EDU2024CS523,Kunal Pandey,kunal.pandey523@university.edu,B.Tech Information Technology,3,64.4,71.4,63.7,63.8,70.7,-1.5,58.0,1,66.7,65.1,50.0,61.5,64.4,Moderate
+EDU2024CS524,Vikas Saxena,vikas.saxena524@university.edu,B.Tech Computer Science,3,93.5,90.7,74.3,80.5,82.9,4.4,93.3,0,85.7,78.4,71.0,73.2,86.1,Low
+EDU2024CS525,Navya Saxena,navya.saxena525@university.edu,B.Tech AI & Data Science,4,76.7,66.8,60.6,67.7,66.6,-1.9,48.9,1,70.2,63.2,53.5,66.0,63.0,Moderate
+EDU2024CS526,Anika Gupta,anika.gupta526@university.edu,B.Tech Computer Science,3,50.0,28.7,55.5,48.1,26.6,-5.2,28.3,2,52.0,49.7,44.4,47.7,57.8,High
+EDU2024CS527,Anika Seth,anika.seth527@university.edu,B.Tech Information Technology,3,80.6,96.3,92.8,86.4,98.0,0.9,93.6,0,82.6,97.1,82.4,84.3,96.9,Low
+EDU2024CS528,Atharva Malhotra,atharva.malhotra528@university.edu,B.Tech Information Technology,6,85.1,82.1,79.9,85.6,93.1,4.1,96.9,0,71.7,84.5,79.0,85.7,86.2,Low
+EDU2024CS529,Sai Joshi,sai.joshi529@university.edu,B.Tech AI & Data Science,3,72.1,65.6,64.4,55.6,53.7,-5.2,60.4,1,51.3,57.9,52.3,53.2,65.8,Moderate
+EDU2024CS530,Navya Sharma,navya.sharma530@university.edu,B.Tech Information Technology,6,81.0,87.0,98.0,70.7,71.2,7.2,68.0,0,65.8,87.7,52.8,55.8,58.7,Low
+EDU2024CS531,Sai Bhatia,sai.bhatia531@university.edu,B.Tech AI & Data Science,4,73.4,81.2,57.9,61.5,74.5,6.2,59.3,0,40.1,57.7,53.6,60.4,60.0,Moderate
+EDU2024CS532,Neha Chopra,neha.chopra532@university.edu,B.Tech Computer Science,4,94.7,100.0,82.6,89.9,84.9,3.8,93.2,0,87.5,100.0,72.9,86.8,88.9,Low
+EDU2024CS533,Ananya Bose,ananya.bose533@university.edu,B.Tech Computer Science,3,90.6,100.0,83.8,67.2,88.7,7.3,68.0,0,64.2,58.1,57.2,61.0,73.7,Low
+EDU2024CS534,Ananya Malhotra,ananya.malhotra534@university.edu,B.Tech Information Technology,6,68.7,57.1,71.8,44.5,65.0,-9.4,58.0,1,45.6,50.2,52.6,44.9,47.0,Moderate
+EDU2024CS535,Rohan Reddy,rohan.reddy535@university.edu,B.Tech AI & Data Science,6,65.4,71.8,67.4,55.2,48.0,-2.5,66.0,0,46.8,48.2,64.5,60.1,53.4,Moderate
+EDU2024CS536,Riya Gupta,riya.gupta536@university.edu,B.Tech Computer Science,5,81.2,86.2,94.4,81.2,77.6,6.0,77.7,0,90.2,92.7,73.0,77.2,60.3,Low
+EDU2024CS537,Angel Mehta,angel.mehta537@university.edu,B.Tech AI & Data Science,6,59.1,56.6,64.4,53.4,49.9,-6.2,67.6,1,54.6,42.1,48.2,43.3,60.6,High
+EDU2024CS538,Isha Mehta,isha.mehta538@university.edu,B.Tech Information Technology,4,92.7,85.7,77.9,75.8,65.0,5.2,82.5,0,80.6,70.2,66.3,64.8,67.8,Low
+EDU2024CS539,Pooja Saxena,pooja.saxena539@university.edu,B.Tech Computer Science,6,80.9,99.0,78.4,81.1,79.0,-2.8,83.5,0,82.9,74.7,84.4,75.3,77.3,Low
+EDU2024CS540,Angel Mehta,angel.mehta540@university.edu,B.Tech Information Technology,6,56.8,38.0,44.5,35.2,49.4,-28.7,16.0,4,37.1,44.4,23.0,34.2,37.5,High
+EDU2024CS541,Aadhya Chopra,aadhya.chopra541@university.edu,B.Tech Information Technology,6,92.2,78.0,76.9,77.0,87.6,16.0,82.9,0,62.8,81.8,84.9,78.9,69.8,Low
+EDU2024CS542,Sneha Rao,sneha.rao542@university.edu,B.Tech AI & Data Science,4,73.7,76.6,52.7,59.1,71.0,2.6,61.3,0,53.2,69.6,44.2,63.6,48.1,Moderate
+EDU2024CS543,Varun Kapoor,varun.kapoor543@university.edu,B.Tech AI & Data Science,4,94.4,90.2,94.1,84.4,72.2,10.6,99.0,0,88.5,81.1,77.7,86.6,78.8,Low
+EDU2024CS544,Diya Yadav,diya.yadav544@university.edu,B.Tech AI & Data Science,3,78.2,71.4,48.0,58.7,58.9,-4.9,57.9,1,62.2,68.6,57.3,57.0,58.4,Moderate
+EDU2024CS545,Neha Bose,neha.bose545@university.edu,B.Tech Computer Science,5,88.1,86.4,88.6,84.1,94.3,9.8,78.8,0,87.7,79.5,86.4,81.0,76.0,Low
+EDU2024CS546,Ankit Singh,ankit.singh546@university.edu,B.Tech AI & Data Science,6,69.7,55.0,48.0,54.6,62.7,-6.7,44.6,0,45.0,59.3,55.8,55.5,63.8,Moderate
+EDU2024CS547,Isha Ghosh,isha.ghosh547@university.edu,B.Tech Information Technology,6,90.4,86.8,81.8,67.4,81.1,9.1,91.2,0,75.6,67.3,75.5,66.8,79.1,Low
+EDU2024CS548,Amit Malhotra,amit.malhotra548@university.edu,B.Tech AI & Data Science,3,67.9,77.1,77.8,54.5,64.0,3.2,60.5,1,40.9,71.5,46.2,56.7,63.7,Moderate
+EDU2024CS549,Amit Agarwal,amit.agarwal549@university.edu,B.Tech AI & Data Science,3,84.3,84.9,86.0,65.0,79.7,4.7,82.6,0,49.7,78.2,61.9,77.4,62.9,Low
+EDU2024CS550,Vikas Pandey,vikas.pandey550@university.edu,B.Tech AI & Data Science,5,82.7,93.9,82.3,69.4,93.8,0.4,68.4,0,77.0,67.9,59.9,56.3,83.3,Low
+EDU2024CS551,Vikram Verma,vikram.verma551@university.edu,B.Tech AI & Data Science,6,40.4,46.7,55.0,41.8,47.3,-23.9,28.3,2,40.3,38.3,39.6,48.2,49.5,High
+EDU2024CS552,Sara Gupta,sara.gupta552@university.edu,B.Tech Computer Science,3,80.6,100.0,90.1,80.0,90.7,15.3,72.1,0,75.2,65.3,77.7,83.9,79.7,Low
+EDU2024CS553,Aditi Bhatia,aditi.bhatia553@university.edu,B.Tech AI & Data Science,4,84.1,78.0,87.0,93.1,77.3,5.7,70.9,0,93.8,92.3,82.2,88.0,90.0,Low
+EDU2024CS554,Angel Kapoor,angel.kapoor554@university.edu,B.Tech AI & Data Science,4,90.3,82.8,80.8,79.6,73.2,12.5,77.3,0,71.3,74.8,91.8,85.0,72.1,Low
+EDU2024CS555,Vivaan Bose,vivaan.bose555@university.edu,B.Tech Computer Science,5,94.6,93.4,86.1,76.9,76.0,5.2,80.1,0,88.4,70.0,86.7,77.0,79.3,Low
+EDU2024CS556,Sai Gupta,sai.gupta556@university.edu,B.Tech AI & Data Science,4,93.0,87.6,90.9,65.0,76.2,-1.1,73.7,0,60.3,69.7,67.3,67.9,59.7,Low
+EDU2024CS557,Pari Kapoor,pari.kapoor557@university.edu,B.Tech Computer Science,6,90.2,92.9,91.5,87.0,82.2,-1.0,79.1,0,79.6,86.8,85.4,93.7,86.6,Low
+EDU2024CS558,Reyansh Kapoor,reyansh.kapoor558@university.edu,B.Tech AI & Data Science,6,88.1,93.0,79.9,71.7,68.0,0.0,89.3,0,63.0,72.0,71.9,76.8,63.0,Low
+EDU2024CS559,Saanvi Verma,saanvi.verma559@university.edu,B.Tech AI & Data Science,3,94.0,99.9,75.0,72.6,91.5,2.8,68.0,0,58.4,72.8,58.1,70.3,72.8,Low
+EDU2024CS560,Pari Mishra,pari.mishra560@university.edu,B.Tech Computer Science,4,65.2,42.5,56.9,50.9,63.8,-10.0,15.0,3,51.5,60.2,46.1,65.8,57.7,High
+EDU2024CS561,Vikas Das,vikas.das561@university.edu,B.Tech Computer Science,4,91.4,99.6,86.7,65.0,78.0,9.5,77.7,0,60.2,59.7,77.1,79.5,57.9,Low
+EDU2024CS562,Sara Kapoor,sara.kapoor562@university.edu,B.Tech Computer Science,6,68.9,63.2,69.1,60.1,69.3,-2.5,80.0,0,48.9,50.1,52.5,48.5,48.1,Moderate
+EDU2024CS563,Rahul Pandey,rahul.pandey563@university.edu,B.Tech Information Technology,6,82.0,85.5,76.4,84.7,78.0,2.6,93.0,0,75.5,84.8,84.0,70.1,65.6,Low
+EDU2024CS564,Vikram Agarwal,vikram.agarwal564@university.edu,B.Tech Computer Science,6,70.1,74.9,78.0,57.3,69.4,-5.7,65.3,1,67.6,44.4,57.0,75.3,59.5,Moderate
+EDU2024CS565,Aarav Saxena,aarav.saxena565@university.edu,B.Tech Computer Science,4,97.9,87.6,83.7,80.3,65.0,-2.3,75.1,0,83.9,88.4,79.2,87.9,79.0,Low
+EDU2024CS566,Simran Tiwari,simran.tiwari566@university.edu,B.Tech Computer Science,3,75.2,70.1,63.6,53.9,68.2,-7.0,72.7,0,41.8,48.2,56.1,54.2,50.2,Moderate
+EDU2024CS567,Anika Mehta,anika.mehta567@university.edu,B.Tech Computer Science,6,93.3,87.7,82.4,92.6,94.3,11.4,82.5,0,99.4,88.0,80.4,74.8,100.0,Low
+EDU2024CS568,Ankit Chauhan,ankit.chauhan568@university.edu,B.Tech Information Technology,5,62.8,68.7,53.9,61.6,58.6,-12.3,66.9,1,47.1,57.7,38.6,51.2,63.0,Moderate
+EDU2024CS569,Kunal Gupta,kunal.gupta569@university.edu,B.Tech Information Technology,5,34.3,28.2,44.0,33.1,64.0,0.8,27.6,4,34.6,40.4,23.7,22.1,33.0,High
+EDU2024CS570,Atharva Yadav,atharva.yadav570@university.edu,B.Tech AI & Data Science,5,50.4,40.8,49.3,31.2,35.3,-11.2,42.6,5,18.8,39.7,11.3,27.6,29.2,High
+EDU2024CS571,Sai Pandey,sai.pandey571@university.edu,B.Tech Computer Science,5,84.2,88.0,98.0,72.3,98.0,5.7,85.8,0,73.2,92.1,59.4,64.4,66.3,Low
+EDU2024CS572,Saanvi Gupta,saanvi.gupta572@university.edu,B.Tech Computer Science,5,68.2,55.0,63.2,69.5,63.4,-6.3,55.2,1,73.7,65.8,82.2,86.0,71.6,Moderate
+EDU2024CS573,Myra Ghosh,myra.ghosh573@university.edu,B.Tech Computer Science,6,87.9,99.2,92.8,72.7,77.8,-3.1,88.7,0,75.1,65.3,64.6,63.0,65.6,Low
+EDU2024CS574,Prisha Mishra,prisha.mishra574@university.edu,B.Tech AI & Data Science,4,71.3,62.7,60.0,44.0,63.7,-4.8,54.0,3,39.5,47.3,32.7,33.2,58.4,High
+EDU2024CS575,Diya Singh,diya.singh575@university.edu,B.Tech Computer Science,5,46.3,44.8,56.1,52.0,34.3,-8.9,29.5,3,44.7,49.0,37.9,52.7,40.2,High
+EDU2024CS576,Vihaan Chauhan,vihaan.chauhan576@university.edu,B.Tech Information Technology,3,93.7,92.4,87.4,75.8,79.1,4.9,74.5,0,69.9,71.8,63.8,59.9,86.5,Low
+EDU2024CS577,Dhruv Yadav,dhruv.yadav577@university.edu,B.Tech Information Technology,6,83.9,100.0,92.6,68.4,73.3,16.3,100.0,0,65.2,72.2,58.7,72.9,62.7,Low
+EDU2024CS578,Prisha Malhotra,prisha.malhotra578@university.edu,B.Tech AI & Data Science,6,75.8,82.7,84.2,69.8,81.5,-1.9,78.0,0,73.6,73.6,65.7,77.9,73.7,Low
+EDU2024CS579,Sai Banerjee,sai.banerjee579@university.edu,B.Tech Computer Science,4,96.7,88.8,80.6,68.3,78.6,8.3,96.7,0,73.0,57.7,74.0,54.6,75.5,Low
+EDU2024CS580,Ananya Reddy,ananya.reddy580@university.edu,B.Tech AI & Data Science,5,85.8,96.9,73.3,90.5,70.3,0.2,76.0,0,73.5,93.2,100.0,100.0,91.3,Low
+EDU2024CS581,Riya Banerjee,riya.banerjee581@university.edu,B.Tech AI & Data Science,6,94.7,93.6,88.0,76.9,83.6,6.2,79.8,0,73.3,78.5,80.4,69.4,76.5,Low
+EDU2024CS582,Ayaan Banerjee,ayaan.banerjee582@university.edu,B.Tech Computer Science,5,79.5,81.6,76.5,56.2,64.9,1.5,79.2,1,37.6,49.0,64.0,55.0,50.8,Moderate
+EDU2024CS583,Kavya Yadav,kavya.yadav583@university.edu,B.Tech Computer Science,6,80.5,88.1,72.8,98.0,81.8,3.2,90.3,0,100.0,100.0,100.0,94.0,95.6,Low
+EDU2024CS584,Sara Gupta,sara.gupta584@university.edu,B.Tech AI & Data Science,4,92.6,88.3,84.0,83.6,88.3,-5.4,91.4,0,78.7,90.5,86.6,97.5,94.4,Low
+EDU2024CS585,Aditya Kapoor,aditya.kapoor585@university.edu,B.Tech Information Technology,5,64.1,62.0,47.5,38.3,57.6,-6.9,34.3,3,38.5,40.0,26.6,49.6,38.7,High
+EDU2024CS586,Isha Chauhan,isha.chauhan586@university.edu,B.Tech Computer Science,4,100.0,80.6,79.5,80.3,91.1,5.5,87.8,0,68.3,74.2,79.2,70.4,76.0,Low
+EDU2024CS587,Shruti Banerjee,shruti.banerjee587@university.edu,B.Tech AI & Data Science,5,56.5,34.2,60.0,49.0,30.7,-18.5,15.0,3,39.8,56.4,41.3,53.7,36.8,High
+EDU2024CS588,Rahul Malhotra,rahul.malhotra588@university.edu,B.Tech Computer Science,4,72.8,64.4,63.1,55.3,50.6,-11.4,72.6,0,55.4,64.6,54.2,57.4,41.4,Moderate
+EDU2024CS589,Vihaan Banerjee,vihaan.banerjee589@university.edu,B.Tech Information Technology,5,66.4,69.7,78.0,61.5,75.8,-0.9,54.2,0,59.4,65.1,49.0,59.4,59.8,Moderate
+EDU2024CS590,Aadhya Saxena,aadhya.saxena590@university.edu,B.Tech Information Technology,5,77.6,55.0,75.1,48.5,49.7,2.6,70.1,0,55.5,56.1,63.0,54.0,47.3,Moderate
+EDU2024CS591,Krishna Seth,krishna.seth591@university.edu,B.Tech Information Technology,3,55.1,60.9,34.6,32.1,44.6,-26.7,39.7,4,14.0,34.5,35.9,29.3,45.5,High
+EDU2024CS592,Krishna Saxena,krishna.saxena592@university.edu,B.Tech Computer Science,4,79.2,100.0,89.4,65.0,98.0,3.2,77.1,0,50.7,65.5,59.9,66.8,62.6,Low
+EDU2024CS593,Aadhya Yadav,aadhya.yadav593@university.edu,B.Tech Computer Science,6,91.8,89.3,70.0,78.7,65.0,5.3,76.2,0,77.0,89.9,66.1,88.1,75.2,Low
+EDU2024CS594,Sneha Mishra,sneha.mishra594@university.edu,B.Tech Information Technology,6,98.5,89.4,77.3,86.2,78.5,-0.7,80.7,0,82.8,97.6,64.8,87.4,91.2,Low
+EDU2024CS595,Arjun Mishra,arjun.mishra595@university.edu,B.Tech Computer Science,6,89.2,100.0,83.4,78.3,86.7,4.0,81.5,0,79.5,75.8,68.8,75.1,89.2,Low
+EDU2024CS596,Ananya Saxena,ananya.saxena596@university.edu,B.Tech Information Technology,6,25.0,50.7,44.4,22.9,51.4,-8.7,45.1,5,10.0,34.4,12.2,29.4,28.8,High
+EDU2024CS597,Kunal Sharma,kunal.sharma597@university.edu,B.Tech AI & Data Science,3,62.7,76.6,59.1,44.0,72.5,-9.2,52.6,3,37.8,47.9,39.5,49.4,33.3,High
+EDU2024CS598,Rahul Pandey,rahul.pandey598@university.edu,B.Tech AI & Data Science,5,45.3,44.6,60.0,37.0,59.9,-11.7,32.2,4,32.0,37.8,38.4,49.0,39.9,High
+EDU2024CS599,Angel Rao,angel.rao599@university.edu,B.Tech Information Technology,4,95.1,85.2,80.7,73.5,84.5,1.7,91.6,0,63.0,75.8,75.7,58.0,90.5,Low
+EDU2024CS600,Aadhya Yadav,aadhya.yadav600@university.edu,B.Tech Information Technology,5,86.3,78.0,85.3,80.3,81.3,8.5,91.7,0,79.7,85.5,75.4,95.5,68.5,Low

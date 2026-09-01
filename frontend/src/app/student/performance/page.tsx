@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import api from '@/lib/api';
 import StatCard from '@/components/StatCard';
@@ -46,21 +47,31 @@ export default function PerformancePage() {
   }
 
   const student = data?.student;
+  const hasAcademicData = Boolean(student?.academicDataComplete || (student?.attendancePct !== undefined && student?.internalTestAvg !== undefined && student?.subjects?.length));
+  if (!hasAcademicData) {
+    return (
+      <div className="max-w-xl mx-auto my-16 px-4 text-center space-y-4">
+        <h2 className="text-xl font-bold text-white">No Academic Data Yet</h2>
+        <p className="text-sm text-slate-400">Update your academic data to view performance analytics.</p>
+        <Link href="/student/profile" className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium inline-flex">Update Academic Data</Link>
+      </div>
+    );
+  }
   const subjects = student?.subjects || [];
 
   const comparisonData = subjects.map((s: any) => ({
     subject: s.name.split(' ')[0], // Short name
     fullName: s.name,
-    score: s.score || s.internalScore || 60,
+    score: s.score ?? s.internalScore ?? 0,
     classAverage: 68,
     benchmark: 75
   }));
 
   const radarData = subjects.map((s: any) => ({
     subject: s.name.split(' ')[0],
-    student: s.score || s.internalScore || 60,
-    attendance: s.attendance || student.attendancePct,
-    assignments: s.assignmentCompletion || student.assignmentCompletionRate
+    student: s.score ?? s.internalScore ?? 0,
+    attendance: s.attendance ?? student.attendancePct,
+    assignments: s.assignmentCompletion ?? student.assignmentCompletionRate
   }));
 
   return (
@@ -94,7 +105,7 @@ export default function PerformancePage() {
         />
         <StatCard
           title="Passing Subjects"
-          value={`${subjects.filter((s: any) => (s.score || s.internalScore) >= 50).length} / ${subjects.length}`}
+          value={`${subjects.filter((s: any) => (s.score ?? s.internalScore ?? 0) >= 50).length} / ${subjects.length}`}
           subtitle=">= 50% threshold"
           color="blue"
           icon={CheckCircle2}
@@ -176,7 +187,7 @@ export default function PerformancePage() {
             </thead>
             <tbody className="divide-y divide-slate-800">
               {subjects.map((s: any, idx: number) => {
-                const score = s.score || s.internalScore || 60;
+                const score = s.score ?? s.internalScore ?? 0;
                 const isPassing = score >= 50;
                 return (
                   <tr key={idx} className="hover:bg-slate-800/40 transition-colors">
@@ -189,8 +200,8 @@ export default function PerformancePage() {
                         {score}%
                       </span>
                     </td>
-                    <td className="py-3.5 px-4 font-mono">{s.attendance || student.attendancePct}%</td>
-                    <td className="py-3.5 px-4 font-mono">{s.assignmentCompletion || student.assignmentCompletionRate}%</td>
+                    <td className="py-3.5 px-4 font-mono">{s.attendance ?? student.attendancePct}%</td>
+                    <td className="py-3.5 px-4 font-mono">{s.assignmentCompletion ?? student.assignmentCompletionRate}%</td>
                     <td className="py-3.5 px-4 capitalize text-slate-400">{s.trend || 'stable'}</td>
                     <td className="py-3.5 px-4">
                       <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium ${

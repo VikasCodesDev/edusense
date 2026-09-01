@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import api from '@/lib/api';
 import RiskBadge from '@/components/RiskBadge';
 import {
@@ -53,11 +54,21 @@ export default function RiskAnalysisPage() {
   }
 
   const student = data?.student;
+  const hasAcademicData = Boolean(student?.academicDataComplete || (student?.attendancePct !== undefined && student?.internalTestAvg !== undefined && student?.subjects?.length));
+  if (!hasAcademicData) {
+    return (
+      <div className="max-w-xl mx-auto my-16 px-4 text-center space-y-4">
+        <h2 className="text-xl font-bold text-white">Risk Analysis Not Available Yet</h2>
+        <p className="text-sm text-slate-400">Enter your academic data before running the ML risk analysis.</p>
+        <Link href="/student/profile" className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium inline-flex">Update Academic Data</Link>
+      </div>
+    );
+  }
   const prediction = data?.prediction;
   const riskLevel = prediction?.risk_level || student?.currentRiskLevel || 'Moderate';
-  const riskScore = prediction?.risk_score !== undefined ? prediction.risk_score : student?.currentRiskScore || 50;
+  const riskScore = prediction?.risk_score !== undefined ? prediction.risk_score : (student?.currentRiskScore ?? 0);
   const factors = prediction?.contributing_factors || [];
-  const probs = prediction?.probabilities || { low: 0.33, moderate: 0.33, high: 0.34 };
+  const probs = prediction?.probabilities || { low: 0, moderate: 0, high: 0 };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">

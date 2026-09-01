@@ -3,12 +3,25 @@
  */
 
 const db = require('../models/db');
-const mlService = require('../services/mlService');
-const llmService = require('../services/llmService');
+const { getLatestPrediction, getLatestRecommendation, hasAcademicData } = require('../services/academicService');
+
+function scopeStudentsForFaculty(user) {
+  const students = db.find('students').filter(hasAcademicData);
+  if (user.role === 'admin') return students;
+  if (Array.isArray(user.assignedStudentIds) && user.assignedStudentIds.length > 0) {
+    return students.filter((s) => user.assignedStudentIds.includes(s.studentId));
+  }
+  return students.filter((s) => user.department && s.department && s.department === user.department);
+}
+
+function canAccessStudent(user, student) {
+  if (user.role === 'admin') return true;
+  return scopeStudentsForFaculty(user).some((s) => s.studentId === student.studentId);
+}
 
 exports.getDashboardOverview = async (req, res) => {
   try {
-    const students = db.find('students');
+    const students = scopeStudentsForFaculty(req.user);
     const totalStudents = students.length;
 
     let highRiskCount = 0;
@@ -85,7 +98,7 @@ exports.getDashboardOverview = async (req, res) => {
 
     const subjectAverages = Object.entries(subjectsSummary).map(([name, data]) => ({
       subject: name,
-      averageScore: data.count > 0 ? Number((data.total / data.count).toFixed(1)) : 70
+      averageScore: data.count > 0 ? Number((data.total / data.count).toFixed(1)) : 0
     }));
 
     const riskDistribution = [
@@ -119,7 +132,7 @@ exports.getStudentsList = async (req, res) => {
   try {
     const { search, risk, course, semester, sortBy, sortOrder = 'asc', page = 1, limit = 15 } = req.query;
 
-    let students = db.find('students');
+    let students = scopeStudentsForFaculty(req.user);
 
     // Search
     if (search && search.trim() !== '') {
@@ -187,9 +200,12 @@ exports.getStudentDetail = async (req, res) => {
     if (!student) {
       return res.status(404).json({ success: false, error: 'Student not found.' });
     }
+    if (!canAccessStudent(req.user, student)) {
+      return res.status(403).json({ success: false, error: 'Access denied for this student record.' });
+    }
 
-    const prediction = db.findOne('predictions', { studentId: student.studentId });
-    const recommendation = db.findOne('recommendations', { studentId: student.studentId });
+    const prediction = getLatestPrediction(student.studentId);
+    const recommendation = getLatestRecommendation(student.studentId);
     const interventions = db.find('interventions', { studentId: student.studentId }) || [];
     const progressHistory = db.find('academic_records', { studentId: student.studentId }) || [];
 
@@ -216,6 +232,9 @@ exports.logIntervention = async (req, res) => {
     const student = db.findOne('students', { studentId });
     if (!student) {
       return res.status(404).json({ success: false, error: 'Student not found.' });
+    }
+    if (!canAccessStudent(req.user, student)) {
+      return res.status(403).json({ success: false, error: 'Access denied for this student record.' });
     }
 
     const intervention = db.create('interventions', {

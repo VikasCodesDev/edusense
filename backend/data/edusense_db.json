@@ -52,6 +52,17 @@
       "department": "Computer Science & Engineering",
       "createdAt": "2026-09-01T11:20:40.388Z",
       "updatedAt": "2026-09-01T11:20:40.388Z"
+    },
+    {
+      "_id": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "name": "Vikas Mishra",
+      "email": "kmr.vik136@gmail.com",
+      "passwordHash": "$2b$10$NCtIn6FiUOjEifHwV0Grfu1szqMf3UgEF0Av8.MkSVUs.2.jcytum",
+      "role": "student",
+      "studentId": "02396502723",
+      "department": "Computer Science & Engineering",
+      "createdAt": "2026-09-01T15:07:52.679Z",
+      "updatedAt": "2026-09-01T15:07:52.679Z"
     }
   ],
   "students": [
@@ -2838,6 +2849,68 @@
       ],
       "createdAt": "2026-09-01T11:20:40.391Z",
       "updatedAt": "2026-09-01T11:20:40.391Z"
+    },
+    {
+      "_id": "74ecf684-8d71-484a-bdc2-ced0c5825b55",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "studentId": "02396502723",
+      "name": "Vikas Mishra",
+      "email": "kmr.vik136@gmail.com",
+      "course": "B.Tech Computer Science",
+      "semester": 4,
+      "department": "Computer Science & Engineering",
+      "academicDataComplete": true,
+      "subjects": [
+        {
+          "name": "Data Structures & Algorithms",
+          "score": 83,
+          "attendance": 94,
+          "assignmentCompletion": 98,
+          "trend": "stable"
+        },
+        {
+          "name": "Database Management Systems",
+          "score": 73,
+          "attendance": 57,
+          "assignmentCompletion": 99,
+          "trend": "stable"
+        },
+        {
+          "name": "Applied Mathematics",
+          "score": 85,
+          "attendance": 78,
+          "assignmentCompletion": 100,
+          "trend": "stable"
+        },
+        {
+          "name": "Operating Systems",
+          "score": 75,
+          "attendance": 98,
+          "assignmentCompletion": 100,
+          "trend": "stable"
+        },
+        {
+          "name": "Computer Networks",
+          "score": 81,
+          "attendance": 33,
+          "assignmentCompletion": 90,
+          "trend": "stable"
+        }
+      ],
+      "createdAt": "2026-09-01T15:07:52.681Z",
+      "updatedAt": "2026-09-01T15:19:24.644Z",
+      "attendancePct": 85,
+      "assignmentCompletionRate": 77,
+      "assignmentAvgScore": 84,
+      "internalTestAvg": 84,
+      "previousExamScore": 75,
+      "performanceTrend": 93,
+      "studyEngagementScore": 75,
+      "subjectFailureCount": 0,
+      "dataSource": "student_entry",
+      "currentRiskLevel": "Low",
+      "currentRiskScore": 5,
+      "lastPredictedAt": "2026-09-01T15:19:24.644Z"
     }
   ],
   "academic_records": [
@@ -4712,6 +4785,32 @@
       "riskLevel": "High",
       "createdAt": "2026-09-01T11:20:43.647Z",
       "updatedAt": "2026-09-01T11:20:43.647Z"
+    },
+    {
+      "_id": "553dcb57-5106-438b-8600-570eaa5b3944",
+      "studentId": "02396502723",
+      "evaluationCycle": "Current Update",
+      "date": "2026-09-01",
+      "attendance": 75,
+      "internalMarks": 78,
+      "assignmentRate": 77,
+      "riskScore": 5,
+      "riskLevel": "Low",
+      "createdAt": "2026-09-01T15:10:06.556Z",
+      "updatedAt": "2026-09-01T15:10:06.556Z"
+    },
+    {
+      "_id": "953df041-e67b-4d60-8c16-9225cf07ab27",
+      "studentId": "02396502723",
+      "evaluationCycle": "Current Update",
+      "date": "2026-09-01",
+      "attendance": 85,
+      "internalMarks": 84,
+      "assignmentRate": 77,
+      "riskScore": 5,
+      "riskLevel": "Low",
+      "createdAt": "2026-09-01T15:19:24.660Z",
+      "updatedAt": "2026-09-01T15:19:24.660Z"
     }
   ],
   "predictions": [
@@ -6487,6 +6586,58 @@
       "model_algorithm": "Random Forest",
       "createdAt": "2026-09-01T11:20:43.611Z",
       "updatedAt": "2026-09-01T11:20:43.611Z"
+    },
+    {
+      "_id": "12619517-0499-4ce2-be4e-6fda584ee305",
+      "studentId": "02396502723",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 0.7999999999999999,
+      "probabilities": {
+        "low": 0.8,
+        "moderate": 0.16,
+        "high": 0.04
+      },
+      "confidence_percentage": 92.5,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Academic Indicators",
+          "impact": "Positive",
+          "value": "Avg 78%",
+          "benchmark": "Stable standing",
+          "description": "Student demonstrates balanced performance across coursework and attendance."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-01T15:10:06.526Z",
+      "updatedAt": "2026-09-01T15:10:06.526Z"
+    },
+    {
+      "_id": "7ba2cfd8-0394-4279-a639-cf64f85a0e49",
+      "studentId": "02396502723",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 0.7999999999999999,
+      "probabilities": {
+        "low": 0.8,
+        "moderate": 0.16,
+        "high": 0.04
+      },
+      "confidence_percentage": 92.5,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Academic Indicators",
+          "impact": "Positive",
+          "value": "Avg 84%",
+          "benchmark": "Stable standing",
+          "description": "Student demonstrates balanced performance across coursework and attendance."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-01T15:19:24.624Z",
+      "updatedAt": "2026-09-01T15:19:24.624Z"
     }
   ],
   "recommendations": [
@@ -7441,6 +7592,26 @@
       "motivationalNote": "Academic setbacks are solvable through structured consistency. Early intervention now creates the fastest path to strong semester results.",
       "createdAt": "2026-09-01T11:20:43.628Z",
       "updatedAt": "2026-09-01T11:20:43.628Z"
+    },
+    {
+      "_id": "8281e80e-9e81-43b3-a6f2-4e977911db2c",
+      "studentId": "02396502723",
+      "predictionId": "7ba2cfd8-0394-4279-a639-cf64f85a0e49",
+      "immediatePriority": "Maintain your excellent academic trajectory (85% attendance, 84% assessment average) and explore advanced domain projects.",
+      "studyFocus": [
+        "Engage in advanced topic exploration and open-ended practical projects.",
+        "Leverage your strong mastery in Data Structures & Algorithms for competitive coding or academic research.",
+        "Assist peers through study circles to further solidify complex theoretical concepts."
+      ],
+      "attendanceStrategy": "Outstanding attendance at 85%. Keep leading by example.",
+      "assignmentActionPlan": "Maintain high quality and thorough documentation on all submissions.",
+      "suggestedWeeklyRoutine": "Maintain 1 - 1.5 hours daily for regular coursework, plus additional self-directed project development.",
+      "motivationalNote": "Great work! Consistent habits have placed you in a strong academic position. Keep pushing your intellectual curiosity.",
+      "source": "deterministic_rules",
+      "modelName": "EduSense Deterministic Academic Guidance Engine",
+      "generatedAt": "2026-09-01T15:19:24.712Z",
+      "createdAt": "2026-09-01T15:19:24.712Z",
+      "updatedAt": "2026-09-01T15:19:24.712Z"
     }
   ],
   "interventions": [
@@ -7548,6 +7719,86 @@
       "details": "User student1@edusense.edu logged in successfully.",
       "createdAt": "2026-09-01T11:27:16.971Z",
       "updatedAt": "2026-09-01T11:27:16.971Z"
+    },
+    {
+      "_id": "90fc324e-4de2-4784-9b0b-22d4cda13aa5",
+      "userId": "usr_student_01",
+      "userName": "Rahul Sharma",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User student1@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-01T15:07:07.893Z",
+      "updatedAt": "2026-09-01T15:07:07.893Z"
+    },
+    {
+      "_id": "2467b531-1276-4626-a2a5-1fc66aff0e72",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "userName": "Vikas Mishra",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User kmr.vik136@gmail.com logged in successfully.",
+      "createdAt": "2026-09-01T15:07:52.748Z",
+      "updatedAt": "2026-09-01T15:07:52.748Z"
+    },
+    {
+      "_id": "df66ab53-cb61-4401-b9b6-f386b1269e6f",
+      "userId": "usr_admin_01",
+      "userName": "System Administrator",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "details": "User admin@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-01T15:13:50.081Z",
+      "updatedAt": "2026-09-01T15:13:50.081Z"
+    },
+    {
+      "_id": "4de7834b-22a9-4bb8-b79c-aa383256a292",
+      "userId": "usr_student_01",
+      "userName": "Rahul Sharma",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User student1@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-01T15:17:43.319Z",
+      "updatedAt": "2026-09-01T15:17:43.319Z"
+    },
+    {
+      "_id": "66bb5d90-26ef-4391-b129-ef7a5637719d",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "userName": "Vikas Mishra",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User kmr.vik136@gmail.com logged in successfully.",
+      "createdAt": "2026-09-01T15:18:28.003Z",
+      "updatedAt": "2026-09-01T15:18:28.003Z"
+    },
+    {
+      "_id": "d66c6780-9b83-4895-af75-dc3904c1db91",
+      "userId": "usr_faculty_01",
+      "userName": "Prof. Sunita Rao",
+      "role": "faculty",
+      "action": "USER_LOGIN",
+      "details": "User faculty@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-01T15:19:56.275Z",
+      "updatedAt": "2026-09-01T15:19:56.275Z"
+    },
+    {
+      "_id": "1080f08a-e75e-4d9f-80b5-0c24e4c53ab2",
+      "userId": "usr_admin_01",
+      "userName": "System Administrator",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "details": "User admin@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-01T15:20:17.237Z",
+      "updatedAt": "2026-09-01T15:20:17.237Z"
+    },
+    {
+      "_id": "14a55cc3-de52-46f3-9003-103b73ba954f",
+      "userId": "usr_student_01",
+      "userName": "Rahul Sharma",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User student1@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-01T15:27:42.615Z",
+      "updatedAt": "2026-09-01T15:27:42.615Z"
     }
   ]
 }

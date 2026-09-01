@@ -3,12 +3,33 @@
  */
 
 const db = require('../models/db');
-const mlService = require('../services/mlService');
 const llmService = require('../services/llmService');
+const {
+  hasAcademicData,
+  getLatestPrediction,
+  getLatestRecommendation,
+  refreshStudentIntelligence,
+  validateAcademicPayload,
+  normalizeSubjects
+} = require('../services/academicService');
 
 function getStudentForUser(user) {
-  return db.findOne('students', { email: user.email }) ||
+  return db.findOne('students', { userId: user.id || user._id }) ||
+         db.findOne('students', { email: user.email }) ||
          (user.studentId ? db.findOne('students', { studentId: user.studentId }) : null);
+}
+
+function canAccessStudent(user, student) {
+  if (user.role === 'admin') return true;
+  if (user.role === 'student') {
+    return user.email === student.email || user.studentId === student.studentId || student.userId === (user.id || user._id);
+  }
+  if (user.role === 'faculty') {
+    return Array.isArray(user.assignedStudentIds)
+      ? user.assignedStudentIds.includes(student.studentId)
+      : user.department && student.department && user.department === student.department;
+  }
+  return false;
 }
 
 exports.getMyProfile = async (req, res) => {
@@ -18,52 +39,14 @@ exports.getMyProfile = async (req, res) => {
       return res.status(404).json({ success: false, error: 'Student academic record not found.' });
     }
 
-    // Fetch latest prediction or compute if none
-    let prediction = db.findOne('predictions', { studentId: student.studentId });
-    if (!prediction) {
-      const mlFeatures = {
-        student_id: student.studentId,
-        attendance_pct: student.attendancePct,
-        assignment_completion_rate: student.assignmentCompletionRate,
-        assignment_avg_score: student.assignmentAvgScore || student.internalTestAvg,
-        internal_test_avg: student.internalTestAvg,
-        previous_exam_score: student.previousExamScore,
-        performance_trend: student.performanceTrend,
-        study_engagement_score: student.studyEngagementScore || 75,
-        subject_failure_count: student.subjectFailureCount || 0,
-        score_dsa: (student.subjects && student.subjects.find(s => s.name.includes('Data Structures'))?.score) || student.internalTestAvg,
-        score_dbms: (student.subjects && student.subjects.find(s => s.name.includes('Database'))?.score) || student.internalTestAvg,
-        score_maths: (student.subjects && student.subjects.find(s => s.name.includes('Mathematics'))?.score) || student.internalTestAvg,
-        score_os: (student.subjects && student.subjects.find(s => s.name.includes('Operating'))?.score) || student.internalTestAvg,
-        score_cn: (student.subjects && student.subjects.find(s => s.name.includes('Networks'))?.score) || student.internalTestAvg,
-      };
-
-      const mlResult = await mlService.predictStudent(mlFeatures);
-      prediction = db.create('predictions', {
-        studentId: student.studentId,
-        ...mlResult
-      });
-
-      // Update student document with latest risk level & score
-      db.updateOne('students', { _id: student._id }, {
-        currentRiskLevel: mlResult.risk_level,
-        currentRiskScore: mlResult.risk_score,
-        lastPredictedAt: new Date().toISOString()
-      });
+    let prediction = getLatestPrediction(student.studentId);
+    let recommendation = getLatestRecommendation(student.studentId);
+    if (hasAcademicData(student) && (!prediction || !recommendation)) {
+      const refreshed = await refreshStudentIntelligence(student);
+      prediction = refreshed.prediction;
+      recommendation = refreshed.recommendation;
     }
 
-    // Fetch latest recommendation or generate
-    let recommendation = db.findOne('recommendations', { studentId: student.studentId });
-    if (!recommendation) {
-      const guidance = await llmService.generateGuidance(student, prediction);
-      recommendation = db.create('recommendations', {
-        studentId: student.studentId,
-        predictionId: prediction._id,
-        ...guidance
-      });
-    }
-
-    // Fetch progress history
     const progressHistory = db.find('academic_records', { studentId: student.studentId }) || [];
 
     return res.json({
@@ -86,13 +69,12 @@ exports.getStudentById = async (req, res) => {
       return res.status(404).json({ success: false, error: 'Student not found.' });
     }
 
-    // Role check: student can only view self
-    if (req.user.role === 'student' && req.user.email !== student.email && req.user.studentId !== student.studentId) {
-      return res.status(403).json({ success: false, error: 'Access denied: You can only view your own academic profile.' });
+    if (!canAccessStudent(req.user, student)) {
+      return res.status(403).json({ success: false, error: 'Access denied for this student record.' });
     }
 
-    const prediction = db.findOne('predictions', { studentId: student.studentId });
-    const recommendation = db.findOne('recommendations', { studentId: student.studentId });
+    const prediction = getLatestPrediction(student.studentId);
+    const recommendation = getLatestRecommendation(student.studentId);
     const interventions = db.find('interventions', { studentId: student.studentId });
     const progressHistory = db.find('academic_records', { studentId: student.studentId });
 
@@ -119,38 +101,14 @@ exports.getRiskAnalysis = async (req, res) => {
     if (!student) {
       return res.status(404).json({ success: false, error: 'Student not found.' });
     }
+    if (!canAccessStudent(req.user, student)) {
+      return res.status(403).json({ success: false, error: 'Access denied for this student record.' });
+    }
+    if (!hasAcademicData(student)) {
+      return res.status(400).json({ success: false, error: 'Academic data is required before risk analysis can be calculated.' });
+    }
 
-    const mlFeatures = {
-      student_id: student.studentId,
-      attendance_pct: student.attendancePct,
-      assignment_completion_rate: student.assignmentCompletionRate,
-      assignment_avg_score: student.assignmentAvgScore || student.internalTestAvg,
-      internal_test_avg: student.internalTestAvg,
-      previous_exam_score: student.previousExamScore,
-      performance_trend: student.performanceTrend,
-      study_engagement_score: student.studyEngagementScore || 75,
-      subject_failure_count: student.subjectFailureCount || 0,
-      score_dsa: (student.subjects && student.subjects.find(s => s.name.includes('Data Structures'))?.score) || student.internalTestAvg,
-      score_dbms: (student.subjects && student.subjects.find(s => s.name.includes('Database'))?.score) || student.internalTestAvg,
-      score_maths: (student.subjects && student.subjects.find(s => s.name.includes('Mathematics'))?.score) || student.internalTestAvg,
-      score_os: (student.subjects && student.subjects.find(s => s.name.includes('Operating'))?.score) || student.internalTestAvg,
-      score_cn: (student.subjects && student.subjects.find(s => s.name.includes('Networks'))?.score) || student.internalTestAvg,
-    };
-
-    const mlResult = await mlService.predictStudent(mlFeatures);
-
-    // Save prediction record
-    const prediction = db.create('predictions', {
-      studentId: student.studentId,
-      ...mlResult
-    });
-
-    // Update student state
-    db.updateOne('students', { _id: student._id }, {
-      currentRiskLevel: mlResult.risk_level,
-      currentRiskScore: mlResult.risk_score,
-      lastPredictedAt: new Date().toISOString()
-    });
+    const { prediction } = await refreshStudentIntelligence(student);
 
     return res.json({
       success: true,
@@ -172,21 +130,19 @@ exports.getRecommendations = async (req, res) => {
     if (!student) {
       return res.status(404).json({ success: false, error: 'Student not found.' });
     }
-
-    let prediction = db.findOne('predictions', { studentId: student.studentId });
-    if (!prediction) {
-      const mlResult = await mlService.predictStudent({
-        student_id: student.studentId,
-        attendance_pct: student.attendancePct,
-        assignment_completion_rate: student.assignmentCompletionRate,
-        internal_test_avg: student.internalTestAvg,
-        previous_exam_score: student.previousExamScore,
-        performance_trend: student.performanceTrend
-      });
-      prediction = db.create('predictions', { studentId: student.studentId, ...mlResult });
+    if (!canAccessStudent(req.user, student)) {
+      return res.status(403).json({ success: false, error: 'Access denied for this student record.' });
+    }
+    if (!hasAcademicData(student)) {
+      return res.status(400).json({ success: false, error: 'Academic data is required before recommendations can be generated.' });
     }
 
-    let recommendation = db.findOne('recommendations', { studentId: student.studentId });
+    let prediction = getLatestPrediction(student.studentId);
+    if (!prediction) {
+      prediction = (await refreshStudentIntelligence(student)).prediction;
+    }
+
+    let recommendation = getLatestRecommendation(student.studentId);
     if (!recommendation) {
       const guidance = await llmService.generateGuidance(student, prediction);
       recommendation = db.create('recommendations', {
@@ -215,12 +171,14 @@ exports.regenerateRecommendations = async (req, res) => {
     if (!student) {
       return res.status(404).json({ success: false, error: 'Student not found.' });
     }
+    if (!canAccessStudent(req.user, student)) {
+      return res.status(403).json({ success: false, error: 'Access denied for this student record.' });
+    }
+    if (!hasAcademicData(student)) {
+      return res.status(400).json({ success: false, error: 'Academic data is required before recommendations can be generated.' });
+    }
 
-    const prediction = db.findOne('predictions', { studentId: student.studentId }) || {
-      risk_level: student.currentRiskLevel || 'Moderate',
-      risk_score: student.currentRiskScore || 50,
-      contributing_factors: []
-    };
+    const prediction = getLatestPrediction(student.studentId) || (await refreshStudentIntelligence(student)).prediction;
 
     const guidance = await llmService.generateGuidance(student, prediction);
     
@@ -252,11 +210,57 @@ exports.getProgressHistory = async (req, res) => {
     if (!student) {
       return res.status(404).json({ success: false, error: 'Student not found.' });
     }
+    if (!canAccessStudent(req.user, student)) {
+      return res.status(403).json({ success: false, error: 'Access denied for this student record.' });
+    }
 
     const history = db.find('academic_records', { studentId: student.studentId });
     return res.json({
       success: true,
       history
+    });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+exports.updateMyAcademicData = async (req, res) => {
+  try {
+    const student = getStudentForUser(req.user);
+    if (!student) {
+      return res.status(404).json({ success: false, error: 'Student academic record not found.' });
+    }
+
+    const errors = validateAcademicPayload(req.body);
+    if (errors.length > 0) {
+      return res.status(400).json({ success: false, error: 'Academic data validation failed.', errors });
+    }
+
+    const updatedStudent = db.updateOne('students', { _id: student._id }, {
+      userId: req.user.id || req.user._id,
+      name: student.name || req.user.name,
+      email: student.email || req.user.email,
+      attendancePct: Number(req.body.attendancePct),
+      assignmentCompletionRate: Number(req.body.assignmentCompletionRate),
+      assignmentAvgScore: Number(req.body.assignmentAvgScore ?? req.body.internalTestAvg),
+      internalTestAvg: Number(req.body.internalTestAvg),
+      previousExamScore: Number(req.body.previousExamScore),
+      performanceTrend: Number(req.body.performanceTrend ?? 0),
+      studyEngagementScore: Number(req.body.studyEngagementScore ?? 75),
+      subjectFailureCount: normalizeSubjects(req.body.subjects).filter((s) => s.score < 50).length,
+      subjects: normalizeSubjects(req.body.subjects),
+      academicDataComplete: true,
+      dataSource: 'student_entry'
+    });
+
+    const refreshed = await refreshStudentIntelligence(updatedStudent, { createHistory: true });
+
+    return res.json({
+      success: true,
+      student: refreshed.student || updatedStudent,
+      prediction: refreshed.prediction,
+      recommendation: refreshed.recommendation,
+      message: 'Academic data updated and risk analysis refreshed.'
     });
   } catch (err) {
     return res.status(500).json({ success: false, error: err.message });

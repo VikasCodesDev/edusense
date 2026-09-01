@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import api from '@/lib/api';
 import { BookOpen, Calendar, CheckSquare, TrendingDown, TrendingUp, AlertCircle, Sparkles } from 'lucide-react';
 
@@ -21,6 +22,16 @@ export default function SubjectsPage() {
   }
 
   const student = data?.student;
+  const hasAcademicData = Boolean(student?.academicDataComplete || (student?.attendancePct !== undefined && student?.internalTestAvg !== undefined && student?.subjects?.length));
+  if (!hasAcademicData) {
+    return (
+      <div className="max-w-xl mx-auto my-16 px-4 text-center space-y-4">
+        <h2 className="text-xl font-bold text-white">No Subject Records Yet</h2>
+        <p className="text-sm text-slate-400">Add subject-wise marks, attendance, and assignment completion to view diagnostics.</p>
+        <Link href="/student/profile" className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium inline-flex">Update Academic Data</Link>
+      </div>
+    );
+  }
   const subjects = student?.subjects || [];
 
   return (
@@ -38,9 +49,9 @@ export default function SubjectsPage() {
       {/* Grid of Subject Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {subjects.map((sub: any, idx: number) => {
-          const score = sub.score || sub.internalScore || 60;
-          const att = sub.attendance || student.attendancePct;
-          const comp = sub.assignmentCompletion || student.assignmentCompletionRate;
+          const score = sub.score ?? sub.internalScore ?? 0;
+          const att = sub.attendance ?? student.attendancePct;
+          const comp = sub.assignmentCompletion ?? student.assignmentCompletionRate;
           const isAtRisk = score < 50 || att < 65;
 
           return (

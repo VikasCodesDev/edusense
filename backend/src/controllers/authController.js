@@ -7,6 +7,10 @@ const jwt = require('jsonwebtoken');
 const db = require('../models/db');
 const { JWT_SECRET } = require('../middleware/auth');
 
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -40,6 +44,7 @@ exports.login = async (req, res) => {
     });
 
     const { passwordHash, ...safeUser } = user;
+    safeUser.id = user._id;
     return res.json({
       success: true,
       token,
@@ -53,14 +58,33 @@ exports.login = async (req, res) => {
 exports.register = async (req, res) => {
   try {
     const { name, email, password, role, studentId, department } = req.body;
-    if (!name || !email || !password || !role) {
-      return res.status(400).json({ success: false, error: 'Name, email, password, and role are required.' });
+    const requestedRole = String(role || 'student').toLowerCase();
+    if (requestedRole !== 'student') {
+      return res.status(403).json({ success: false, error: 'Public registration is limited to student accounts.' });
+    }
+
+    if (!name || !email || !password || !studentId) {
+      return res.status(400).json({ success: false, error: 'Name, email, password, and student ID are required.' });
     }
 
     const normalizedEmail = email.toLowerCase().trim();
+    if (!isValidEmail(normalizedEmail)) {
+      return res.status(400).json({ success: false, error: 'A valid email address is required.' });
+    }
+
     const existing = db.findOne('users', { email: normalizedEmail });
     if (existing) {
       return res.status(400).json({ success: false, error: 'A user with this email already exists.' });
+    }
+
+    const normalizedStudentId = studentId.trim();
+    const studentIdUser = db.findOne('users', { studentId: normalizedStudentId });
+    if (studentIdUser) {
+      return res.status(400).json({ success: false, error: 'A user with this student ID already exists.' });
+    }
+    const existingStudent = db.findOne('students', { studentId: normalizedStudentId });
+    if (existingStudent && existingStudent.email && existingStudent.email !== normalizedEmail) {
+      return res.status(400).json({ success: false, error: 'This student ID is already linked to another email.' });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -70,40 +94,30 @@ exports.register = async (req, res) => {
       name: name.trim(),
       email: normalizedEmail,
       passwordHash,
-      role: role.toLowerCase(),
-      studentId: studentId ? studentId.trim() : null,
+      role: 'student',
+      studentId: normalizedStudentId,
       department: department || 'Computer Science & Engineering'
     });
 
-    // If student, ensure student record is also linked
-    if (role.toLowerCase() === 'student' && studentId) {
-      const existingStudent = db.findOne('students', { studentId: studentId.trim() });
-      if (!existingStudent) {
-        db.create('students', {
-          studentId: studentId.trim(),
-          name: name.trim(),
-          email: normalizedEmail,
-          course: 'B.Tech Computer Science',
-          semester: 4,
-          department: department || 'Computer Science & Engineering',
-          attendancePct: 75.0,
-          assignmentCompletionRate: 80.0,
-          internalTestAvg: 65.0,
-          previousExamScore: 68.0,
-          performanceTrend: 0.0,
-          studyEngagementScore: 75.0,
-          subjectFailureCount: 0,
-          currentRiskLevel: 'Moderate',
-          currentRiskScore: 45,
-          subjects: [
-            { name: 'Data Structures & Algorithms', score: 65, attendance: 75, assignmentCompletion: 80, trend: 'stable' },
-            { name: 'Database Management Systems', score: 70, attendance: 78, assignmentCompletion: 85, trend: 'improving' },
-            { name: 'Applied Mathematics', score: 60, attendance: 72, assignmentCompletion: 75, trend: 'declining' },
-            { name: 'Operating Systems', score: 68, attendance: 76, assignmentCompletion: 80, trend: 'stable' },
-            { name: 'Computer Networks', score: 64, attendance: 74, assignmentCompletion: 78, trend: 'stable' }
-          ]
-        });
-      }
+    if (existingStudent) {
+      db.updateOne('students', { _id: existingStudent._id }, {
+        userId: newUser._id,
+        name: name.trim(),
+        email: normalizedEmail,
+        department: existingStudent.department || department || 'Computer Science & Engineering'
+      });
+    } else {
+      db.create('students', {
+        userId: newUser._id,
+        studentId: normalizedStudentId,
+        name: name.trim(),
+        email: normalizedEmail,
+        course: 'B.Tech Computer Science',
+        semester: 4,
+        department: department || 'Computer Science & Engineering',
+        academicDataComplete: false,
+        subjects: []
+      });
     }
 
     const token = jwt.sign(
@@ -113,6 +127,7 @@ exports.register = async (req, res) => {
     );
 
     const { passwordHash: _, ...safeUser } = newUser;
+    safeUser.id = newUser._id;
     return res.status(201).json({
       success: true,
       token,

@@ -117,9 +117,25 @@ export default function StudentDashboard() {
   }
 
   const { student, prediction, recommendation, progressHistory } = data;
+  const hasAcademicData = Boolean(student?.academicDataComplete || (student?.attendancePct !== undefined && student?.internalTestAvg !== undefined && student?.subjects?.length));
+  if (!hasAcademicData) {
+    return (
+      <div className="max-w-xl mx-auto my-16 px-4 text-center space-y-4">
+        <div className="w-12 h-12 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center mx-auto">
+          <BookOpen className="w-6 h-6" />
+        </div>
+        <h2 className="text-xl font-bold text-white">Academic Data Required</h2>
+        <p className="text-sm text-slate-400">Enter your attendance, marks, assignments, and subject records to generate your dashboard and ML risk analysis.</p>
+        <Link href="/student/profile" className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium inline-flex items-center gap-2">
+          <span>Update Academic Data</span>
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+    );
+  }
   const subjects = student.subjects || [];
   const riskLevel = prediction?.risk_level || student.currentRiskLevel || 'Moderate';
-  const riskScore = prediction?.risk_score !== undefined ? prediction.risk_score : student.currentRiskScore || 50;
+  const riskScore = prediction?.risk_score !== undefined ? prediction.risk_score : (student.currentRiskScore ?? 0);
 
   // Chart data from progress history or fallback
   const chartData = (progressHistory && progressHistory.length > 0)
@@ -129,14 +145,10 @@ export default function StudentDashboard() {
         marks: p.internalMarks,
         risk: p.riskScore
       }))
-    : [
-        { cycle: 'T1', attendance: student.attendancePct + 5, marks: student.internalTestAvg + 4, risk: 35 },
-        { cycle: 'T2', attendance: student.attendancePct + 2, marks: student.internalTestAvg + 1, risk: 48 },
-        { cycle: 'T3', attendance: student.attendancePct, marks: student.internalTestAvg, risk: riskScore }
-      ];
+    : [{ cycle: 'Current', attendance: student.attendancePct, marks: student.internalTestAvg, risk: riskScore }];
 
-  const weakSubjects = subjects.filter((s: any) => (s.score || s.internalScore) < 55);
-  const strongSubjects = subjects.filter((s: any) => (s.score || s.internalScore) >= 75);
+  const weakSubjects = subjects.filter((s: any) => (s.score ?? s.internalScore) < 55);
+  const strongSubjects = subjects.filter((s: any) => (s.score ?? s.internalScore) >= 75);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
@@ -446,8 +458,8 @@ export default function StudentDashboard() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {subjects.map((sub: any, idx: number) => {
-            const score = sub.score || sub.internalScore || 60;
-            const att = sub.attendance || student.attendancePct;
+            const score = sub.score ?? sub.internalScore ?? 0;
+            const att = sub.attendance ?? student.attendancePct;
             const isWeak = score < 50 || att < 65;
 
             return (

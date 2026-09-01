@@ -96,7 +96,7 @@ export default function StudentDetailPage() {
   const { student, prediction, recommendation, interventions } = data;
   const subjects = student?.subjects || [];
   const riskLevel = prediction?.risk_level || student?.currentRiskLevel || 'Moderate';
-  const riskScore = prediction?.risk_score !== undefined ? prediction.risk_score : student?.currentRiskScore || 50;
+  const riskScore = prediction?.risk_score !== undefined ? prediction.risk_score : (student?.currentRiskScore ?? 0);
   const factors = prediction?.contributing_factors || [];
 
   return (
@@ -205,7 +205,7 @@ export default function StudentDetailPage() {
               {subjects.map((sub: any, idx: number) => (
                 <div key={idx} className="p-3 bg-slate-900/60 rounded-xl border border-slate-800 text-xs flex items-center justify-between">
                   <span className="font-medium text-white">{sub.name}</span>
-                  <span className="font-mono font-bold text-indigo-400">{sub.score || sub.internalScore}%</span>
+                  <span className="font-mono font-bold text-indigo-400">{sub.score ?? sub.internalScore ?? 0}%</span>
                 </div>
               ))}
             </div>

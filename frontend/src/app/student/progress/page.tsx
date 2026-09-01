@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import api from '@/lib/api';
 import RiskBadge from '@/components/RiskBadge';
 import {
@@ -32,6 +33,25 @@ export default function ProgressPage() {
   }
 
   const history = data?.progressHistory || [];
+  const student = data?.student;
+  const hasAcademicData = Boolean(student?.academicDataComplete || (student?.attendancePct !== undefined && student?.internalTestAvg !== undefined && student?.subjects?.length));
+  if (!hasAcademicData) {
+    return (
+      <div className="max-w-xl mx-auto my-16 px-4 text-center space-y-4">
+        <h2 className="text-xl font-bold text-white">No Progress History Yet</h2>
+        <p className="text-sm text-slate-400">Update your academic data to create your first real progress checkpoint.</p>
+        <Link href="/student/profile" className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium inline-flex">Update Academic Data</Link>
+      </div>
+    );
+  }
+  if (history.length === 0) {
+    return (
+      <div className="max-w-xl mx-auto my-16 px-4 text-center space-y-4">
+        <h2 className="text-xl font-bold text-white">Not Enough History Yet</h2>
+        <p className="text-sm text-slate-400">Your current academic data is saved. Additional updates will build a real trajectory over time.</p>
+      </div>
+    );
+  }
   const chartData = history.map((h: any) => ({
     date: h.date || h.evaluationCycle,
     cycle: h.evaluationCycle || h.date,

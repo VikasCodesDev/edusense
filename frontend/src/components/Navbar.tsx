@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import {
   GraduationCap,
@@ -18,13 +18,15 @@ import {
   LogOut,
   ChevronDown,
   UserCheck,
+  User,
   Menu,
   X
 } from 'lucide-react';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { user, logout, switchDemoAccount } = useAuth();
+  const router = useRouter();
+  const { user, loading, logout, switchDemoAccount } = useAuth();
   const [demoOpen, setDemoOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -39,6 +41,7 @@ export default function Navbar() {
     { href: '/student/risk-analysis', label: 'Risk Analysis', icon: AlertTriangle },
     { href: '/student/recommendations', label: 'AI Guidance', icon: Lightbulb },
     { href: '/student/progress', label: 'Progress', icon: History },
+    { href: '/student/profile', label: 'Academic Data', icon: User },
   ];
 
   const facultyLinks = [
@@ -55,6 +58,19 @@ export default function Navbar() {
   ];
 
   const currentLinks = isStudent ? studentLinks : isFaculty ? facultyLinks : isAdmin ? adminLinks : [];
+
+  useEffect(() => {
+    if (loading || pathname === '/' || pathname.startsWith('/login')) return;
+    const protectedPath = pathname.startsWith('/student') || pathname.startsWith('/faculty') || pathname.startsWith('/admin');
+    if (!user && protectedPath) {
+      router.replace('/login');
+      return;
+    }
+    if (!user) return;
+    if (pathname.startsWith('/student') && user.role !== 'student') router.replace(user.role === 'faculty' ? '/faculty/dashboard' : '/admin/dashboard');
+    if (pathname.startsWith('/faculty') && user.role !== 'faculty') router.replace(user.role === 'student' ? '/student/dashboard' : '/admin/dashboard');
+    if (pathname.startsWith('/admin') && user.role !== 'admin') router.replace(user.role === 'student' ? '/student/dashboard' : '/faculty/dashboard');
+  }, [loading, pathname, router, user]);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#090d16]/90 backdrop-blur-md border-b border-slate-800/80">

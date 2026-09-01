@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import { GraduationCap, Lock, Mail, User, Building, AlertCircle, CheckCircle2, ArrowRight } from 'lucide-react';
+import { GraduationCap, Lock, Mail, User, AlertCircle, ArrowRight } from 'lucide-react';
 import MagneticButton from '@/components/MagneticButton';
 
 export default function LoginPage() {
@@ -39,15 +39,13 @@ export default function LoginPage() {
         const regRes = await fetch('/api/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, password, role, studentId })
+          body: JSON.stringify({ name, email, password, role: 'student', studentId })
         });
         const data = await regRes.json();
         if (data.success) {
           const logRes = await login(email, password);
           if (logRes.success) {
-            if (role === 'student') router.push('/student/dashboard');
-            else if (role === 'faculty') router.push('/faculty/dashboard');
-            else router.push('/admin/dashboard');
+            router.push('/student/dashboard');
           }
         } else {
           setError(data.error || 'Registration failed.');
@@ -188,31 +186,16 @@ export default function LoginPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5">Role</label>
-                <select
-                  value={role}
-                  onChange={(e: any) => setRole(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-indigo-500"
-                >
-                  <option value="student">Student</option>
-                  <option value="faculty">Faculty Member</option>
-                  <option value="admin">Administrator</option>
-                </select>
+                <label className="block text-xs font-medium text-slate-300 mb-1.5">Student ID / Roll No</label>
+                <input
+                  type="text"
+                  required
+                  value={studentId}
+                  onChange={(e) => setStudentId(e.target.value)}
+                  placeholder="e.g. EDU2024CS099"
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                />
               </div>
-
-              {role === 'student' && (
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">Student ID / Roll No</label>
-                  <input
-                    type="text"
-                    required
-                    value={studentId}
-                    onChange={(e) => setStudentId(e.target.value)}
-                    placeholder="e.g. EDU2024CS099"
-                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
-                  />
-                </div>
-              )}
             </>
           )}
 

@@ -30,6 +30,7 @@ function requireAuth(req, res, next) {
 
     // Attach sanitized user to request object
     const { passwordHash, ...safeUser } = user;
+    safeUser.id = user._id;
     req.user = safeUser;
     next();
   } catch (err) {

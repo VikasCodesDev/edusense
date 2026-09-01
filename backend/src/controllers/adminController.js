@@ -8,6 +8,98 @@ const csvParser = require('csv-parser');
 const stream = require('stream');
 const db = require('../models/db');
 const mlService = require('../services/mlService');
+const { getLatestPrediction } = require('../services/academicService');
+
+const REQUIRED_IMPORT_COLUMNS = [
+  'student_id',
+  'name',
+  'email',
+  'attendance_pct',
+  'assignment_completion_rate',
+  'internal_test_avg',
+  'previous_exam_score',
+  'score_dsa',
+  'score_dbms',
+  'score_maths',
+  'score_os',
+  'score_cn'
+];
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function normalizeImportRow(row) {
+  return Object.entries(row).reduce((acc, [key, value]) => {
+    acc[String(key).trim().toLowerCase()] = typeof value === 'string' ? value.trim() : value;
+    return acc;
+  }, {});
+}
+
+function validateImportRows(records) {
+  const normalized = records.map(normalizeImportRow);
+  const detectedColumns = Object.keys(normalized[0] || {});
+  const missingColumns = REQUIRED_IMPORT_COLUMNS.filter((column) => !detectedColumns.includes(column));
+  const valid = [];
+  const invalid = [];
+  const seen = new Set();
+
+  normalized.forEach((row, idx) => {
+    const errors = [];
+    const studentId = String(row.student_id || row.roll_no || '').trim();
+    if (!studentId) errors.push('Missing student_id');
+    if (studentId && seen.has(studentId)) errors.push('Duplicate student_id in upload');
+    if (studentId) seen.add(studentId);
+    if (!row.name) errors.push('Missing name');
+    if (!row.email || !isValidEmail(String(row.email).toLowerCase())) errors.push('Invalid email');
+
+    REQUIRED_IMPORT_COLUMNS.forEach((column) => {
+      if (row[column] === undefined || row[column] === null || row[column] === '') {
+        errors.push(`Missing required value: ${column}`);
+      }
+    });
+
+    ['attendance_pct', 'assignment_completion_rate', 'assignment_avg_score', 'internal_test_avg', 'previous_exam_score', 'study_engagement_score', 'score_dsa', 'score_dbms', 'score_maths', 'score_os', 'score_cn'].forEach((column) => {
+      if (row[column] === undefined || row[column] === null || row[column] === '') return;
+      const value = Number(row[column]);
+      if (!Number.isFinite(value)) errors.push(`${column} must be numeric`);
+      else if (value < 0 || value > 100) errors.push(`${column} must be between 0 and 100`);
+    });
+
+    if (row.performance_trend !== undefined && row.performance_trend !== '' && !Number.isFinite(Number(row.performance_trend))) {
+      errors.push('performance_trend must be numeric');
+    }
+    if (row.subject_failure_count !== undefined && row.subject_failure_count !== '' && Number(row.subject_failure_count) < 0) {
+      errors.push('subject_failure_count cannot be negative');
+    }
+
+    const userForStudentId = studentId ? db.findOne('users', { studentId }) : null;
+    if (userForStudentId && userForStudentId.email !== String(row.email || '').toLowerCase()) {
+      errors.push('student_id belongs to a different registered email');
+    }
+
+    if (missingColumns.length > 0) {
+      errors.push(`Missing required columns: ${missingColumns.join(', ')}`);
+    }
+
+    if (errors.length > 0) {
+      invalid.push({ row_number: idx + 1, student_id: studentId || 'N/A', errors, raw_data: row });
+    } else {
+      valid.push(row);
+    }
+  });
+
+  return {
+    total_records: records.length,
+    valid_count: valid.length,
+    invalid_count: invalid.length,
+    duplicate_count: invalid.filter((row) => row.errors.some((err) => err.includes('Duplicate student_id'))).length,
+    validation_errors: invalid,
+    all_valid_records: valid,
+    preview_valid_records: valid.slice(0, 10),
+    is_ready_for_import: invalid.length === 0
+  };
+}
 
 exports.getOverview = async (req, res) => {
   try {
@@ -52,13 +144,26 @@ exports.getUsers = async (req, res) => {
 exports.createUser = async (req, res) => {
   try {
     const { name, email, password, role, studentId, department } = req.body;
+    const normalizedRole = String(role || '').toLowerCase();
     if (!name || !email || !password || !role) {
       return res.status(400).json({ success: false, error: 'Name, email, password, and role are required.' });
     }
+    if (!['student', 'faculty', 'admin'].includes(normalizedRole)) {
+      return res.status(400).json({ success: false, error: 'Invalid role requested.' });
+    }
+    if (normalizedRole === 'student' && !studentId) {
+      return res.status(400).json({ success: false, error: 'Student ID is required for student accounts.' });
+    }
 
     const normalizedEmail = email.toLowerCase().trim();
+    if (!isValidEmail(normalizedEmail)) {
+      return res.status(400).json({ success: false, error: 'A valid email address is required.' });
+    }
     if (db.findOne('users', { email: normalizedEmail })) {
       return res.status(400).json({ success: false, error: 'User with this email already exists.' });
+    }
+    if (studentId && db.findOne('users', { studentId: studentId.trim() })) {
+      return res.status(400).json({ success: false, error: 'User with this student ID already exists.' });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -68,10 +173,33 @@ exports.createUser = async (req, res) => {
       name: name.trim(),
       email: normalizedEmail,
       passwordHash,
-      role: role.toLowerCase(),
+      role: normalizedRole,
       studentId: studentId ? studentId.trim() : null,
       department: department || 'Computer Science & Engineering'
     });
+
+    if (normalizedRole === 'student') {
+      const existingStudent = db.findOne('students', { studentId: studentId.trim() });
+      if (existingStudent) {
+        db.updateOne('students', { _id: existingStudent._id }, {
+          userId: user._id,
+          name: existingStudent.name || name.trim(),
+          email: existingStudent.email || normalizedEmail
+        });
+      } else {
+        db.create('students', {
+          userId: user._id,
+          studentId: studentId.trim(),
+          name: name.trim(),
+          email: normalizedEmail,
+          course: 'B.Tech Computer Science',
+          semester: 4,
+          department: department || 'Computer Science & Engineering',
+          academicDataComplete: false,
+          subjects: []
+        });
+      }
+    }
 
     db.create('activity_logs', {
       userId: req.user.id,
@@ -95,8 +223,23 @@ exports.deleteUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({ success: false, error: 'User not found.' });
     }
+    if (user._id === req.user.id) {
+      return res.status(400).json({ success: false, error: 'Administrators cannot delete their own active account.' });
+    }
 
     db.deleteOne('users', { _id: id });
+    if (user.role === 'student') {
+      const student = db.findOne('students', { userId: user._id }) ||
+        db.findOne('students', { email: user.email }) ||
+        (user.studentId ? db.findOne('students', { studentId: user.studentId }) : null);
+      if (student) {
+        db.deleteOne('students', { _id: student._id });
+        db.deleteMany('academic_records', { studentId: student.studentId });
+        db.deleteMany('predictions', { studentId: student.studentId });
+        db.deleteMany('recommendations', { studentId: student.studentId });
+        db.deleteMany('interventions', { studentId: student.studentId });
+      }
+    }
     db.create('activity_logs', {
       userId: req.user.id,
       userName: req.user.name,
@@ -142,8 +285,7 @@ exports.previewDatasetImport = async (req, res) => {
 
     detectedColumns = Object.keys(records[0]);
 
-    // Send for validation
-    const validationReport = await mlService.validateDataset(records);
+    const validationReport = validateImportRows(records);
 
     return res.json({
       success: true,
@@ -163,9 +305,14 @@ exports.confirmDatasetImport = async (req, res) => {
     if (!validRecords || !Array.isArray(validRecords) || validRecords.length === 0) {
       return res.status(400).json({ success: false, error: 'No valid records to import.' });
     }
+    const validation = validateImportRows(validRecords);
+    if (validation.valid_count === 0) {
+      return res.status(400).json({ success: false, error: 'No valid records to import.', validation });
+    }
 
     // Run batch ML predictions on imported records
-    const mlBatchInput = validRecords.map(r => ({
+    const importableRecords = validation.all_valid_records;
+    const mlBatchInput = importableRecords.map(r => ({
       student_id: r.student_id || r.roll_no || `STU${Date.now()}`,
       attendance_pct: Number(r.attendance_pct || 75),
       assignment_completion_rate: Number(r.assignment_completion_rate || 75),
@@ -191,14 +338,17 @@ exports.confirmDatasetImport = async (req, res) => {
     let updatedCount = 0;
     let createdCount = 0;
 
-    validRecords.forEach(r => {
+    importableRecords.forEach(r => {
       const studentId = r.student_id || r.roll_no;
-      const pred = predictionMap[studentId] || { risk_level: 'Moderate', risk_score: 50 };
+      const pred = predictionMap[studentId];
+      if (!pred) {
+        return;
+      }
 
       const studentDoc = {
         studentId,
         name: r.name || `Student ${studentId}`,
-        email: r.email || `${studentId.toLowerCase()}@university.edu`,
+        email: String(r.email).toLowerCase(),
         course: r.course || 'B.Tech Computer Science',
         semester: Number(r.semester) || 4,
         department: r.department || 'Computer Science & Engineering',
@@ -209,7 +359,7 @@ exports.confirmDatasetImport = async (req, res) => {
         previousExamScore: Number(r.previous_exam_score || 68),
         performanceTrend: Number(r.performance_trend || 0),
         studyEngagementScore: Number(r.study_engagement_score || 75),
-        subjectFailureCount: Number(r.subject_failure_count || 0),
+        subjectFailureCount: Number(r.subject_failure_count || [r.score_dsa, r.score_dbms, r.score_maths, r.score_os, r.score_cn].filter((score) => Number(score) < 50).length),
         currentRiskLevel: pred.risk_level,
         currentRiskScore: pred.risk_score,
         lastPredictedAt: new Date().toISOString(),
@@ -219,15 +369,18 @@ exports.confirmDatasetImport = async (req, res) => {
           { name: 'Applied Mathematics', score: Number(r.score_maths || 60), attendance: Number(r.attendance_pct || 75), assignmentCompletion: Number(r.assignment_completion_rate || 75), trend: 'declining' },
           { name: 'Operating Systems', score: Number(r.score_os || 68), attendance: Number(r.attendance_pct || 75), assignmentCompletion: Number(r.assignment_completion_rate || 75), trend: 'stable' },
           { name: 'Computer Networks', score: Number(r.score_cn || 64), attendance: Number(r.attendance_pct || 75), assignmentCompletion: Number(r.assignment_completion_rate || 75), trend: 'stable' }
-        ]
+        ],
+        academicDataComplete: true,
+        dataSource: 'admin_import'
       };
 
       const existing = db.findOne('students', { studentId });
       if (existing) {
-        db.updateOne('students', { _id: existing._id }, studentDoc);
+        db.updateOne('students', { _id: existing._id }, { ...studentDoc, userId: existing.userId });
         updatedCount++;
       } else {
-        db.create('students', studentDoc);
+        const linkedUser = db.findOne('users', { studentId }) || db.findOne('users', { email: studentDoc.email });
+        db.create('students', { ...studentDoc, userId: linkedUser?._id });
         createdCount++;
       }
 
@@ -244,6 +397,7 @@ exports.confirmDatasetImport = async (req, res) => {
       uploadedBy: req.user.name,
       uploadedByEmail: req.user.email,
       importedRecordsCount: validRecords.length,
+      rejectedRecordsCount: validation.invalid_count,
       createdCount,
       updatedCount,
       status: 'completed',
@@ -255,12 +409,14 @@ exports.confirmDatasetImport = async (req, res) => {
       userName: req.user.name,
       role: 'admin',
       action: 'DATASET_IMPORTED',
-      details: `Imported dataset "${filename}": ${createdCount} created, ${updatedCount} updated. ML predictions updated.`
+      details: `Imported dataset "${filename}": ${createdCount} created, ${updatedCount} updated, ${validation.invalid_count} rejected. ML predictions updated.`
     });
 
     return res.json({
       success: true,
-      message: `Successfully imported ${validRecords.length} records (${createdCount} created, ${updatedCount} updated).`,
+      message: `${importableRecords.length} records imported, ${validation.invalid_count} records rejected.`,
+      importedCount: importableRecords.length,
+      rejectedCount: validation.invalid_count,
       dataset: datasetDoc
     });
   } catch (err) {
@@ -301,7 +457,7 @@ exports.triggerModelRetrain = async (req, res) => {
       score_maths: (s.subjects && s.subjects[2]?.score) || s.internalTestAvg,
       score_os: (s.subjects && s.subjects[3]?.score) || s.internalTestAvg,
       score_cn: (s.subjects && s.subjects[4]?.score) || s.internalTestAvg,
-      risk_level: s.currentRiskLevel || 'Moderate'
+      risk_level: s.currentRiskLevel || getLatestPrediction(s.studentId)?.risk_level || 'Low'
     }));
 
     const result = await mlService.retrainModel(records);

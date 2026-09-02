@@ -50,6 +50,7 @@ function subjectScore(student, subjectName, fallback) {
 
 function prepareFeatures(student) {
   const internal = Number(student.internalTestAvg);
+  const subjects = Array.isArray(student.subjects) ? student.subjects : [];
   return {
     student_id: student.studentId,
     attendance_pct: Number(student.attendancePct),
@@ -59,7 +60,7 @@ function prepareFeatures(student) {
     previous_exam_score: Number(student.previousExamScore),
     performance_trend: Number(student.performanceTrend ?? 0),
     study_engagement_score: Number(student.studyEngagementScore ?? 75),
-    subject_failure_count: Number(student.subjectFailureCount ?? 0),
+    subject_failure_count: Number(student.subjectFailureCount ?? subjects.filter((s) => Number(s.score ?? s.internalScore ?? 0) < 50).length),
     score_dsa: subjectScore(student, 'Data Structures & Algorithms', internal),
     score_dbms: subjectScore(student, 'Database Management Systems', internal),
     score_maths: subjectScore(student, 'Applied Mathematics', internal),
@@ -128,6 +129,13 @@ function validateAcademicPayload(body) {
     errors.push('Performance trend must be numeric.');
   }
 
+  if (body.semester !== undefined && body.semester !== null && body.semester !== '') {
+    const semester = Number(body.semester);
+    if (!Number.isInteger(semester) || semester < 1 || semester > 8) {
+      errors.push('Semester must be an integer from 1 to 8.');
+    }
+  }
+
   if (!Array.isArray(body.subjects) || body.subjects.length === 0) {
     errors.push('At least one subject record is required.');
   } else {
@@ -149,6 +157,7 @@ function validateAcademicPayload(body) {
 
 function normalizeSubjects(subjects) {
   return subjects.map((subject) => ({
+    id: subject.id || subject._id || String(subject.name).trim().toLowerCase().replace(/[^a-z0-9]+/g, '-'),
     name: String(subject.name).trim(),
     score: Number(subject.score),
     attendance: Number(subject.attendance),

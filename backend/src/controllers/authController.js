@@ -6,14 +6,23 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('../models/db');
 const { JWT_SECRET } = require('../middleware/auth');
+const REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function normalizeSemester(value) {
+  const semester = Number(value);
+  if (!Number.isInteger(semester) || semester < 1 || semester > 8) {
+    return null;
+  }
+  return semester;
+}
+
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
     if (!email || !password) {
       return res.status(400).json({ success: false, error: 'Email and password are required.' });
     }
@@ -26,6 +35,11 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.passwordHash);
     if (!isMatch) {
       return res.status(401).json({ success: false, error: 'Invalid email or password.' });
+    }
+
+    const requestedRole = role ? String(role).toLowerCase() : null;
+    if (requestedRole && requestedRole !== user.role) {
+      return res.status(403).json({ success: false, error: `This account is provisioned as ${user.role}. Please use the matching login role.` });
     }
 
     const token = jwt.sign(
@@ -57,7 +71,7 @@ exports.login = async (req, res) => {
 
 exports.register = async (req, res) => {
   try {
-    const { name, email, password, role, studentId, department } = req.body;
+    const { name, email, password, role, studentId, department, semester } = req.body;
     const requestedRole = String(role || 'student').toLowerCase();
     if (requestedRole !== 'student') {
       return res.status(403).json({ success: false, error: 'Public registration is limited to student accounts.' });
@@ -71,6 +85,9 @@ exports.register = async (req, res) => {
     if (!isValidEmail(normalizedEmail)) {
       return res.status(400).json({ success: false, error: 'A valid email address is required.' });
     }
+    if (normalizedEmail === REAL_ADMIN_EMAIL) {
+      return res.status(403).json({ success: false, error: 'This email is reserved for the authorized administrator account.' });
+    }
 
     const existing = db.findOne('users', { email: normalizedEmail });
     if (existing) {
@@ -83,8 +100,13 @@ exports.register = async (req, res) => {
       return res.status(400).json({ success: false, error: 'A user with this student ID already exists.' });
     }
     const existingStudent = db.findOne('students', { studentId: normalizedStudentId });
-    if (existingStudent && existingStudent.email && existingStudent.email !== normalizedEmail) {
-      return res.status(400).json({ success: false, error: 'This student ID is already linked to another email.' });
+    if (existingStudent) {
+      return res.status(400).json({ success: false, error: 'This student ID is already linked to an existing academic record.' });
+    }
+
+    const normalizedSemester = normalizeSemester(semester ?? 1);
+    if (!normalizedSemester) {
+      return res.status(400).json({ success: false, error: 'Semester must be an integer from 1 to 8.' });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -99,26 +121,17 @@ exports.register = async (req, res) => {
       department: department || 'Computer Science & Engineering'
     });
 
-    if (existingStudent) {
-      db.updateOne('students', { _id: existingStudent._id }, {
-        userId: newUser._id,
-        name: name.trim(),
-        email: normalizedEmail,
-        department: existingStudent.department || department || 'Computer Science & Engineering'
-      });
-    } else {
-      db.create('students', {
-        userId: newUser._id,
-        studentId: normalizedStudentId,
-        name: name.trim(),
-        email: normalizedEmail,
-        course: 'B.Tech Computer Science',
-        semester: 4,
-        department: department || 'Computer Science & Engineering',
-        academicDataComplete: false,
-        subjects: []
-      });
-    }
+    db.create('students', {
+      userId: newUser._id,
+      studentId: normalizedStudentId,
+      name: name.trim(),
+      email: normalizedEmail,
+      course: 'B.Tech Computer Science',
+      semester: normalizedSemester,
+      department: department || 'Computer Science & Engineering',
+      academicDataComplete: false,
+      subjects: []
+    });
 
     const token = jwt.sign(
       { id: newUser._id, email: newUser.email, role: newUser.role, name: newUser.name },

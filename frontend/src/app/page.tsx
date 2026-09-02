@@ -71,9 +71,7 @@ export default function LandingPage() {
           <div className="max-w-4xl mx-auto space-y-4">
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
               Identify academic risk earlier.{' '}
-              <span className="gradient-indigo bg-clip-text text-transparent">
-                Understand what affects performance.
-              </span>{' '}
+                Understand what affects performance.{' '}
               Get personalized guidance.
             </h1>
             <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">

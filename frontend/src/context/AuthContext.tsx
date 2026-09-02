@@ -18,7 +18,7 @@ interface AuthContextType {
   studentData: any | null;
   token: string | null;
   loading: boolean;
-  login: (email: string, pass: string) => Promise<{ success: boolean; role?: string; error?: string }>;
+  login: (email: string, pass: string, role?: 'student' | 'faculty' | 'admin') => Promise<{ success: boolean; role?: string; error?: string }>;
   logout: () => void;
   switchDemoAccount: (role: 'student' | 'faculty' | 'admin', email?: string) => Promise<boolean>;
   refreshUser: () => Promise<void>;
@@ -64,9 +64,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     refreshUser();
   }, []);
 
-  const login = async (email: string, pass: string) => {
+  const login = async (email: string, pass: string, role?: 'student' | 'faculty' | 'admin') => {
     try {
-      const res = await api.post('/auth/login', { email, password: pass });
+      const res = await api.post('/auth/login', { email, password: pass, role });
       if (res.data && res.data.success) {
         const receivedToken = res.data.token;
         const receivedUser = res.data.user;
@@ -110,7 +110,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       targetPass = 'Student@123';
     }
 
-    const result = await login(targetEmail, targetPass);
+    const result = await login(targetEmail, targetPass, role);
     if (result.success) {
       if (typeof window !== 'undefined') {
         if (role === 'student') window.location.href = '/student/dashboard';

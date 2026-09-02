@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import api from '@/lib/api';
-import { Users, UserPlus, Trash2, Shield, Mail, CheckCircle2, AlertCircle, X } from 'lucide-react';
+import { Users, UserPlus, Trash2, UserCheck, X } from 'lucide-react';
 
 export default function UserManagementPage() {
   const [users, setUsers] = useState<any[]>([]);
@@ -14,6 +14,13 @@ export default function UserManagementPage() {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState<'student' | 'faculty' | 'admin'>('student');
   const [studentId, setStudentId] = useState('');
+  const [facultyId, setFacultyId] = useState('');
+  const [department, setDepartment] = useState('Computer Science & Engineering');
+  const [semester, setSemester] = useState(1);
+  const [section, setSection] = useState('');
+  const [assignedStudentIds, setAssignedStudentIds] = useState('');
+  const [assignedSemester, setAssignedSemester] = useState('');
+  const [assignedSection, setAssignedSection] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -40,13 +47,33 @@ export default function UserManagementPage() {
     try {
       setSaving(true);
       setError(null);
-      const res = await api.post('/admin/users', { name, email, password, role, studentId });
+      const res = await api.post('/admin/users', {
+        name,
+        email,
+        password,
+        role,
+        studentId,
+        facultyId,
+        department,
+        semester,
+        section,
+        assignedStudentIds,
+        assignedSemester,
+        assignedSection
+      });
       if (res.data.success) {
         setModalOpen(false);
         setName('');
         setEmail('');
         setPassword('');
         setStudentId('');
+        setFacultyId('');
+        setDepartment('Computer Science & Engineering');
+        setSemester(1);
+        setSection('');
+        setAssignedStudentIds('');
+        setAssignedSemester('');
+        setAssignedSection('');
         await fetchUsers();
       }
     } catch (err: any) {
@@ -65,6 +92,29 @@ export default function UserManagementPage() {
       }
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const handleAssignStudents = async (u: any) => {
+    const current = Array.isArray(u.assignedStudentIds) ? u.assignedStudentIds.join(', ') : '';
+    const next = prompt('Enter assigned student IDs separated by commas or new lines.', current);
+    if (next === null) return;
+    const currentSemester = u.assignedSemester ? String(u.assignedSemester) : '';
+    const semesterNext = prompt('Optional assigned semester (1-8). Leave blank to use only student IDs/section.', currentSemester);
+    if (semesterNext === null) return;
+    const sectionNext = prompt('Optional assigned section. Leave blank if not applicable.', u.assignedSection || '');
+    if (sectionNext === null) return;
+    try {
+      const res = await api.put(`/admin/users/${u._id}/assign-students`, {
+        assignedStudentIds: next,
+        assignedSemester: semesterNext,
+        assignedSection: sectionNext
+      });
+      if (res.data.success) {
+        await fetchUsers();
+      }
+    } catch (err: any) {
+      alert(err.response?.data?.error || err.message || 'Unable to update faculty assignments.');
     }
   };
 
@@ -139,16 +189,27 @@ export default function UserManagementPage() {
                       {u.role}
                     </span>
                   </td>
-                  <td className="py-3.5 px-4 font-mono text-slate-400">{u.studentId || u.department || 'N/A'}</td>
+                  <td className="py-3.5 px-4 font-mono text-slate-400">{u.studentId || u.facultyId || u.department || 'N/A'}</td>
                   <td className="py-3.5 px-4 text-slate-500">{u.createdAt ? u.createdAt.split('T')[0] : '2026-09-01'}</td>
                   <td className="py-3.5 px-4 text-right">
-                    <button
-                      onClick={() => handleDeleteUser(u._id)}
-                      title="Delete User"
-                      className="p-1.5 text-slate-400 hover:text-rose-400 transition-colors"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                    <div className="inline-flex items-center gap-1">
+                      {u.role === 'faculty' && u.email !== 'faculty@edusense.edu' && (
+                        <button
+                          onClick={() => handleAssignStudents(u)}
+                          title="Assign Students"
+                          className="p-1.5 text-slate-400 hover:text-indigo-400 transition-colors"
+                        >
+                          <UserCheck className="w-4 h-4" />
+                        </button>
+                      )}
+                      <button
+                        onClick={() => handleDeleteUser(u._id)}
+                        title="Delete User"
+                        className="p-1.5 text-slate-400 hover:text-rose-400 transition-colors"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -220,22 +281,109 @@ export default function UserManagementPage() {
                 >
                   <option value="student">Student</option>
                   <option value="faculty">Faculty</option>
-                  <option value="admin">Administrator</option>
                 </select>
               </div>
 
+              <div>
+                <label className="block text-slate-300 font-medium mb-1">Department</label>
+                <input
+                  type="text"
+                  value={department}
+                  onChange={(e) => setDepartment(e.target.value)}
+                  placeholder="Computer Science & Engineering"
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                />
+              </div>
+
               {role === 'student' && (
-                <div>
-                  <label className="block text-slate-300 font-medium mb-1">Student Roll Number</label>
-                  <input
-                    type="text"
-                    required
-                    value={studentId}
-                    onChange={(e) => setStudentId(e.target.value)}
-                    placeholder="e.g. EDU2024CS055"
-                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
-                  />
-                </div>
+                <>
+                  <div>
+                    <label className="block text-slate-300 font-medium mb-1">Student Roll Number</label>
+                    <input
+                      type="text"
+                      required
+                      value={studentId}
+                      onChange={(e) => setStudentId(e.target.value)}
+                      placeholder="e.g. EDU2024CS055"
+                      className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-slate-300 font-medium mb-1">Semester</label>
+                    <select
+                      value={semester}
+                      onChange={(e) => setSemester(Number(e.target.value))}
+                      className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-indigo-500"
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+                        <option key={sem} value={sem}>Semester {sem}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-slate-300 font-medium mb-1">Section</label>
+                    <input
+                      type="text"
+                      value={section}
+                      onChange={(e) => setSection(e.target.value)}
+                      placeholder="e.g. A"
+                      className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                    />
+                  </div>
+                </>
+              )}
+
+              {role === 'faculty' && (
+                <>
+                  <div>
+                    <label className="block text-slate-300 font-medium mb-1">Faculty ID</label>
+                    <input
+                      type="text"
+                      value={facultyId}
+                      onChange={(e) => setFacultyId(e.target.value)}
+                      placeholder="e.g. FAC-CS-012"
+                      className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-slate-300 font-medium mb-1">Assigned Student IDs</label>
+                    <textarea
+                      value={assignedStudentIds}
+                      onChange={(e) => setAssignedStudentIds(e.target.value)}
+                      placeholder="REAL2026CS001, REAL2026CS002"
+                      className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 min-h-20"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-slate-300 font-medium mb-1">Assigned Semester</label>
+                      <select
+                        value={assignedSemester}
+                        onChange={(e) => setAssignedSemester(e.target.value)}
+                        className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-indigo-500"
+                      >
+                        <option value="">Any</option>
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+                          <option key={sem} value={sem}>Semester {sem}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-slate-300 font-medium mb-1">Assigned Section</label>
+                      <input
+                        type="text"
+                        value={assignedSection}
+                        onChange={(e) => setAssignedSection(e.target.value)}
+                        placeholder="A"
+                        className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                      />
+                    </div>
+                  </div>
+                </>
               )}
 
               <div className="flex justify-end gap-2 pt-2">

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import api from '@/lib/api';
-import { Mail, GraduationCap, Building, Shield, Save, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Mail, GraduationCap, Building, Shield, Save, AlertCircle, CheckCircle2, Plus, Trash2 } from 'lucide-react';
 import RiskBadge from '@/components/RiskBadge';
 
 export default function ProfilePage() {
@@ -15,35 +15,26 @@ export default function ProfilePage() {
     assignmentCompletionRate: '',
     previousExamScore: '',
     performanceTrend: '',
+    semester: 1,
     subjects: []
   });
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const defaultSubjects = [
-    'Data Structures & Algorithms',
-    'Database Management Systems',
-    'Applied Mathematics',
-    'Operating Systems',
-    'Computer Networks'
-  ];
-
   useEffect(() => {
     api.get('/students/me').then((res) => {
       if (res.data.success) {
         const loaded = res.data.student;
         setStudent(loaded);
-        const subjects = loaded.subjects?.length
-          ? loaded.subjects
-          : defaultSubjects.map((name) => ({ name, score: '', attendance: '', assignmentCompletion: '', trend: 'stable' }));
         setForm({
           attendancePct: loaded.attendancePct ?? '',
           internalTestAvg: loaded.internalTestAvg ?? '',
           assignmentCompletionRate: loaded.assignmentCompletionRate ?? '',
           previousExamScore: loaded.previousExamScore ?? '',
           performanceTrend: loaded.performanceTrend ?? 0,
-          subjects
+          semester: loaded.semester ?? 1,
+          subjects: loaded.subjects || []
         });
       }
     }).catch((err) => setError(err.response?.data?.error || err.message));
@@ -53,6 +44,23 @@ export default function ProfilePage() {
     setForm((prev: any) => ({
       ...prev,
       subjects: prev.subjects.map((subject: any, index: number) => index === idx ? { ...subject, [field]: value } : subject)
+    }));
+  };
+
+  const addSubject = () => {
+    setForm((prev: any) => ({
+      ...prev,
+      subjects: [
+        ...prev.subjects,
+        { id: `subject-${Date.now()}`, name: '', score: '', attendance: '', assignmentCompletion: '', trend: 'stable' }
+      ]
+    }));
+  };
+
+  const removeSubject = (idx: number) => {
+    setForm((prev: any) => ({
+      ...prev,
+      subjects: prev.subjects.filter((_: any, index: number) => index !== idx)
     }));
   };
 
@@ -129,7 +137,7 @@ export default function ProfilePage() {
               <Shield className="w-4 h-4 text-indigo-400" />
               <span>Current Semester</span>
             </span>
-            <p className="text-sm font-semibold text-white">Semester {student?.semester || 4}</p>
+            <p className="text-sm font-semibold text-white">Semester {student?.semester || form.semester || 1}</p>
           </div>
         </div>
       </div>
@@ -154,6 +162,20 @@ export default function ProfilePage() {
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          <div>
+            <label className="block text-slate-300 font-medium mb-1.5">Current Semester</label>
+            <select
+              required
+              value={form.semester}
+              onChange={(e) => setForm((prev: any) => ({ ...prev, semester: Number(e.target.value) }))}
+              className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-indigo-500"
+            >
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+                <option key={sem} value={sem}>Semester {sem}</option>
+              ))}
+            </select>
+          </div>
+
           {[
             ['attendancePct', 'Attendance %'],
             ['internalTestAvg', 'Assessment / Internal Marks'],
@@ -178,7 +200,17 @@ export default function ProfilePage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-sm font-bold text-white">Subject-wise Academic Records</h3>
+          <div className="flex items-center justify-between gap-3">
+            <h3 className="text-sm font-bold text-white">Subject-wise Academic Records</h3>
+            <button
+              type="button"
+              onClick={addSubject}
+              className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium inline-flex items-center gap-1.5"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>Add Subject</span>
+            </button>
+          </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs text-slate-300">
               <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-slate-900/60 border-b border-slate-800">
@@ -187,12 +219,21 @@ export default function ProfilePage() {
                   <th className="py-2.5 px-3">Marks</th>
                   <th className="py-2.5 px-3">Attendance</th>
                   <th className="py-2.5 px-3">Assignments</th>
+                  <th className="py-2.5 px-3 text-right">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800">
                 {form.subjects.map((subject: any, idx: number) => (
-                  <tr key={subject.name || idx}>
-                    <td className="py-2.5 px-3 font-medium text-white">{subject.name}</td>
+                  <tr key={subject.id || subject.name || idx}>
+                    <td className="py-2.5 px-3 font-medium text-white">
+                      <input
+                        type="text"
+                        required
+                        value={subject.name}
+                        onChange={(e) => updateSubject(idx, 'name', e.target.value)}
+                        className="min-w-56 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500"
+                      />
+                    </td>
                     {['score', 'attendance', 'assignmentCompletion'].map((field) => (
                       <td key={field} className="py-2.5 px-3">
                         <input
@@ -207,6 +248,16 @@ export default function ProfilePage() {
                         />
                       </td>
                     ))}
+                    <td className="py-2.5 px-3 text-right">
+                      <button
+                        type="button"
+                        onClick={() => removeSubject(idx)}
+                        title="Remove Subject"
+                        className="p-1.5 text-slate-400 hover:text-rose-400 transition-colors"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

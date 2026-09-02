@@ -16,6 +16,7 @@ export default function LoginPage() {
   const [name, setName] = useState('');
   const [role, setRole] = useState<'student' | 'faculty' | 'admin'>('student');
   const [studentId, setStudentId] = useState('');
+  const [semester, setSemester] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,7 +27,7 @@ export default function LoginPage() {
 
     try {
       if (mode === 'login') {
-        const res = await login(email, password);
+        const res = await login(email, password, role);
         if (res.success) {
           if (res.role === 'student') router.push('/student/dashboard');
           else if (res.role === 'faculty') router.push('/faculty/dashboard');
@@ -39,7 +40,7 @@ export default function LoginPage() {
         const regRes = await fetch('/api/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, password, role: 'student', studentId })
+          body: JSON.stringify({ name, email, password, role: 'student', studentId, semester })
         });
         const data = await regRes.json();
         if (data.success) {
@@ -196,7 +197,41 @@ export default function LoginPage() {
                   className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
                 />
               </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-300 mb-1.5">Semester</label>
+                <select
+                  required
+                  value={semester}
+                  onChange={(e) => setSemester(Number(e.target.value))}
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-indigo-500"
+                >
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+                    <option key={sem} value={sem}>Semester {sem}</option>
+                  ))}
+                </select>
+              </div>
             </>
+          )}
+
+          {mode === 'login' && (
+            <div>
+              <label className="block text-xs font-medium text-slate-300 mb-1.5">Continue as</label>
+              <select
+                value={role}
+                onChange={(e: any) => setRole(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-indigo-500"
+              >
+                <option value="student">Student Login</option>
+                <option value="faculty">Faculty Login</option>
+                <option value="admin">Administrator Login</option>
+              </select>
+              {role !== 'student' && (
+                <p className="text-[11px] text-slate-500 mt-1.5">
+                  Faculty and administrator accounts are provisioned by authorized administrators.
+                </p>
+              )}
+            </div>
           )}
 
           <div>

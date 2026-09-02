@@ -8,6 +8,9 @@ const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
 const DB_FILE = path.join(__dirname, '..', '..', 'data', 'edusense_db.json');
+const REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
+const REAL_ADMIN_PASSWORD_HASH = '$2b$10$WKVJ5eozWbrQFdSW7HwccunLZR7pwmoMdX5zJjnduY/C8tL4dnkLa';
+const REAL_ADMIN_ID = 'usr_real_admin_01';
 
 class DatabaseStore {
   constructor() {
@@ -36,15 +39,69 @@ class DatabaseStore {
         if (fileContent.trim()) {
           const parsed = JSON.parse(fileContent);
           this.data = { ...this.data, ...parsed };
+          if (this.ensureRealAdmin()) {
+            this.save();
+          }
           console.log(`[Database] Loaded persistent data from ${DB_FILE}`);
         }
       } else {
+        this.ensureRealAdmin();
         this.save();
         console.log(`[Database] Initialized new persistent store at ${DB_FILE}`);
       }
     } catch (err) {
       console.error('[Database] Initialization error:', err.message);
     }
+  }
+
+  ensureRealAdmin() {
+    const users = this.getCollection('users');
+    const students = this.getCollection('students');
+    const now = new Date().toISOString();
+    const existing = users.find((user) => user.email === REAL_ADMIN_EMAIL);
+    let changed = false;
+
+    if (existing) {
+      changed = existing.name !== 'Admin' ||
+        existing.passwordHash !== REAL_ADMIN_PASSWORD_HASH ||
+        existing.role !== 'admin' ||
+        existing.studentId !== undefined ||
+        existing.assignedStudentIds !== undefined;
+      existing._id = existing._id || REAL_ADMIN_ID;
+      existing.name = 'Admin';
+      existing.email = REAL_ADMIN_EMAIL;
+      existing.passwordHash = REAL_ADMIN_PASSWORD_HASH;
+      existing.role = 'admin';
+      delete existing.studentId;
+      delete existing.assignedStudentIds;
+      existing.department = existing.department || 'Administration';
+      existing.updatedAt = now;
+    } else {
+      users.push({
+        _id: REAL_ADMIN_ID,
+        name: 'Admin',
+        email: REAL_ADMIN_EMAIL,
+        passwordHash: REAL_ADMIN_PASSWORD_HASH,
+        role: 'admin',
+        department: 'Administration',
+        createdAt: now,
+        updatedAt: now
+      });
+      changed = true;
+    }
+
+    const realAdminUser = users.find((user) => user.email === REAL_ADMIN_EMAIL);
+    students.forEach((student) => {
+      if (student.userId === realAdminUser._id || student.email === REAL_ADMIN_EMAIL) {
+        if (student.userId !== undefined) {
+          delete student.userId;
+          student.updatedAt = now;
+          changed = true;
+        }
+      }
+    });
+
+    return changed;
   }
 
   save() {

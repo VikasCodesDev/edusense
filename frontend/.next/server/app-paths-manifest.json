@@ -1,14 +1,10 @@
 {
-  "/student/performance/page": "app/student/performance/page.js",
-  "/login/page": "app/login/page.js",
-  "/student/risk-analysis/page": "app/student/risk-analysis/page.js",
-  "/student/profile/page": "app/student/profile/page.js",
-  "/student/progress/page": "app/student/progress/page.js",
-  "/faculty/dashboard/page": "app/faculty/dashboard/page.js",
-  "/student/subjects/page": "app/student/subjects/page.js",
-  "/faculty/analytics/page": "app/faculty/analytics/page.js",
-  "/student/recommendations/page": "app/student/recommendations/page.js",
   "/admin/dashboard/page": "app/admin/dashboard/page.js",
-  "/student/dashboard/page": "app/student/dashboard/page.js",
-  "/admin/data-import/page": "app/admin/data-import/page.js"
+  "/login/page": "app/login/page.js",
+  "/faculty/dashboard/page": "app/faculty/dashboard/page.js",
+  "/faculty/students/[id]/page": "app/faculty/students/[id]/page.js",
+  "/admin/data-import/page": "app/admin/data-import/page.js",
+  "/faculty/analytics/page": "app/faculty/analytics/page.js",
+  "/admin/model-management/page": "app/admin/model-management/page.js",
+  "/admin/users/page": "app/admin/users/page.js"
 }

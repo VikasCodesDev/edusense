@@ -12,6 +12,8 @@ const {
   validateAcademicPayload,
   normalizeSubjects
 } = require('../services/academicService');
+const REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
+const DEMO_ADMIN_EMAIL = 'admin@edusense.edu';
 
 function getStudentForUser(user) {
   return db.findOne('students', { userId: user.id || user._id }) ||
@@ -19,15 +21,30 @@ function getStudentForUser(user) {
          (user.studentId ? db.findOne('students', { studentId: user.studentId }) : null);
 }
 
+function isDemoStudentRecord(student) {
+  return !student.userId && !student.dataSource;
+}
+
 function canAccessStudent(user, student) {
-  if (user.role === 'admin') return true;
+  if (user.role === 'admin') {
+    if (user.email === REAL_ADMIN_EMAIL) return !isDemoStudentRecord(student);
+    if (user.email === DEMO_ADMIN_EMAIL) return isDemoStudentRecord(student);
+    return false;
+  }
   if (user.role === 'student') {
     return user.email === student.email || user.studentId === student.studentId || student.userId === (user.id || user._id);
   }
   if (user.role === 'faculty') {
-    return Array.isArray(user.assignedStudentIds)
-      ? user.assignedStudentIds.includes(student.studentId)
-      : user.department && student.department && user.department === student.department;
+    if (user._id === 'usr_faculty_01' || user.id === 'usr_faculty_01' || user.email === 'faculty@edusense.edu') {
+      return isDemoStudentRecord(student) && user.department && student.department && user.department === student.department;
+    }
+    if (Array.isArray(user.assignedStudentIds) && user.assignedStudentIds.includes(student.studentId)) return true;
+    if (user.assignedSemester || user.assignedSection) {
+      const semesterMatch = user.assignedSemester ? String(student.semester) === String(user.assignedSemester) : true;
+      const sectionMatch = user.assignedSection ? String(student.section || '').toLowerCase() === String(user.assignedSection).toLowerCase() : true;
+      return !isDemoStudentRecord(student) && semesterMatch && sectionMatch;
+    }
+    return false;
   }
   return false;
 }
@@ -240,6 +257,9 @@ exports.updateMyAcademicData = async (req, res) => {
       userId: req.user.id || req.user._id,
       name: student.name || req.user.name,
       email: student.email || req.user.email,
+      semester: req.body.semester !== undefined && req.body.semester !== null && req.body.semester !== ''
+        ? Number(req.body.semester)
+        : student.semester,
       attendancePct: Number(req.body.attendancePct),
       assignmentCompletionRate: Number(req.body.assignmentCompletionRate),
       assignmentAvgScore: Number(req.body.assignmentAvgScore ?? req.body.internalTestAvg),

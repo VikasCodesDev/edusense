@@ -24,9 +24,60 @@ const REQUIRED_IMPORT_COLUMNS = [
   'score_os',
   'score_cn'
 ];
+const REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
+const DEMO_ADMIN_EMAIL = 'admin@edusense.edu';
+const DEMO_USER_IDS = new Set(['usr_admin_01', 'usr_faculty_01', 'usr_student_01', 'usr_student_02', 'usr_student_03']);
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isRealAdmin(user) {
+  return user && user.role === 'admin' && user.email === REAL_ADMIN_EMAIL;
+}
+
+function normalizeSemester(value, fallback = 1) {
+  const semester = Number(value ?? fallback);
+  if (!Number.isInteger(semester) || semester < 1 || semester > 8) {
+    return null;
+  }
+  return semester;
+}
+
+function normalizeAssignedStudentIds(value) {
+  if (Array.isArray(value)) {
+    return value.map((id) => String(id).trim()).filter(Boolean);
+  }
+  if (typeof value === 'string') {
+    return value.split(/[\n,]+/).map((id) => id.trim()).filter(Boolean);
+  }
+  return [];
+}
+
+function isDemoStudentRecord(student) {
+  return student && !student.userId && !student.dataSource;
+}
+
+function isDemoUser(user) {
+  return DEMO_USER_IDS.has(user._id);
+}
+
+function scopeRealStudents(students) {
+  return students.filter((student) => !isDemoStudentRecord(student));
+}
+
+function valueOrDefault(value, fallback) {
+  return value === undefined || value === null || value === '' ? fallback : value;
+}
+
+function numberOrDefault(value, fallback) {
+  return Number(valueOrDefault(value, fallback));
+}
+
+function validateAssignedStudentIds(ids) {
+  const missing = ids.filter((studentId) => !db.findOne('students', { studentId }));
+  const demo = ids.filter((studentId) => isDemoStudentRecord(db.findOne('students', { studentId })));
+  return { missing, demo };
 }
 
 function normalizeImportRow(row) {
@@ -72,10 +123,20 @@ function validateImportRows(records) {
     if (row.subject_failure_count !== undefined && row.subject_failure_count !== '' && Number(row.subject_failure_count) < 0) {
       errors.push('subject_failure_count cannot be negative');
     }
+    if (row.semester !== undefined && row.semester !== '') {
+      const semester = Number(row.semester);
+      if (!Number.isInteger(semester) || semester < 1 || semester > 8) {
+        errors.push('semester must be an integer from 1 to 8');
+      }
+    }
 
     const userForStudentId = studentId ? db.findOne('users', { studentId }) : null;
     if (userForStudentId && userForStudentId.email !== String(row.email || '').toLowerCase()) {
       errors.push('student_id belongs to a different registered email');
+    }
+    const existingStudent = studentId ? db.findOne('students', { studentId }) : null;
+    if (isDemoStudentRecord(existingStudent)) {
+      errors.push('demo student records are protected from real imports');
     }
 
     if (missingColumns.length > 0) {
@@ -103,12 +164,26 @@ function validateImportRows(records) {
 
 exports.getOverview = async (req, res) => {
   try {
-    const totalUsers = db.countDocuments('users');
-    const totalStudents = db.countDocuments('students');
-    const totalFaculty = db.countDocuments('users', { role: 'faculty' });
-    const totalPredictions = db.countDocuments('predictions');
-    const totalDatasets = db.countDocuments('datasets');
-    const recentLogs = db.find('activity_logs').slice(-10).reverse();
+    const users = db.find('users');
+    const students = isRealAdmin(req.user) ? scopeRealStudents(db.find('students')) : db.find('students');
+    const realStudentIds = new Set(students.map((student) => student.studentId));
+    const totalUsers = isRealAdmin(req.user)
+      ? users.filter((user) => !isDemoUser(user)).length
+      : users.length;
+    const totalStudents = students.length;
+    const totalFaculty = isRealAdmin(req.user)
+      ? users.filter((user) => user.role === 'faculty' && user.email !== 'faculty@edusense.edu').length
+      : db.countDocuments('users', { role: 'faculty' });
+    const totalPredictions = isRealAdmin(req.user)
+      ? db.find('predictions').filter((prediction) => realStudentIds.has(prediction.studentId)).length
+      : db.countDocuments('predictions');
+    const totalDatasets = isRealAdmin(req.user)
+      ? db.find('datasets').filter((dataset) => dataset.uploadedByEmail === REAL_ADMIN_EMAIL).length
+      : db.countDocuments('datasets');
+    const recentLogs = db.find('activity_logs')
+      .filter((log) => !isRealAdmin(req.user) || !DEMO_USER_IDS.has(log.userId))
+      .slice(-10)
+      .reverse();
 
     const mlHealth = await mlService.healthCheck();
 
@@ -131,7 +206,9 @@ exports.getOverview = async (req, res) => {
 
 exports.getUsers = async (req, res) => {
   try {
-    const users = db.find('users').map(u => {
+    const users = db.find('users')
+      .filter((u) => !isRealAdmin(req.user) || !isDemoUser(u))
+      .map(u => {
       const { passwordHash, ...safe } = u;
       return safe;
     });
@@ -143,7 +220,11 @@ exports.getUsers = async (req, res) => {
 
 exports.createUser = async (req, res) => {
   try {
-    const { name, email, password, role, studentId, department } = req.body;
+    if (!isRealAdmin(req.user)) {
+      return res.status(403).json({ success: false, error: 'Only the authorized real administrator can provision real accounts.' });
+    }
+
+    const { name, email, password, role, studentId, facultyId, department, semester, section, assignedStudentIds, assignedSemester, assignedSection, status } = req.body;
     const normalizedRole = String(role || '').toLowerCase();
     if (!name || !email || !password || !role) {
       return res.status(400).json({ success: false, error: 'Name, email, password, and role are required.' });
@@ -151,19 +232,43 @@ exports.createUser = async (req, res) => {
     if (!['student', 'faculty', 'admin'].includes(normalizedRole)) {
       return res.status(400).json({ success: false, error: 'Invalid role requested.' });
     }
+    if (normalizedRole === 'admin') {
+      return res.status(403).json({ success: false, error: 'Additional administrator accounts cannot be created.' });
+    }
     if (normalizedRole === 'student' && !studentId) {
       return res.status(400).json({ success: false, error: 'Student ID is required for student accounts.' });
+    }
+    const normalizedSemester = normalizedRole === 'student' ? normalizeSemester(semester ?? 1) : null;
+    if (normalizedRole === 'student' && !normalizedSemester) {
+      return res.status(400).json({ success: false, error: 'Semester must be an integer from 1 to 8.' });
     }
 
     const normalizedEmail = email.toLowerCase().trim();
     if (!isValidEmail(normalizedEmail)) {
       return res.status(400).json({ success: false, error: 'A valid email address is required.' });
     }
+    if (normalizedEmail === DEMO_ADMIN_EMAIL || normalizedEmail === 'faculty@edusense.edu' || normalizedEmail === REAL_ADMIN_EMAIL) {
+      return res.status(400).json({ success: false, error: 'This email is reserved or already protected.' });
+    }
     if (db.findOne('users', { email: normalizedEmail })) {
       return res.status(400).json({ success: false, error: 'User with this email already exists.' });
     }
     if (studentId && db.findOne('users', { studentId: studentId.trim() })) {
       return res.status(400).json({ success: false, error: 'User with this student ID already exists.' });
+    }
+    if (normalizedRole === 'student') {
+      const existingStudent = db.findOne('students', { studentId: studentId.trim() });
+      if (isDemoStudentRecord(existingStudent)) {
+        return res.status(400).json({ success: false, error: 'Demo student records are protected from real account provisioning.' });
+      }
+    }
+    const normalizedAssignments = normalizedRole === 'faculty' ? normalizeAssignedStudentIds(assignedStudentIds) : [];
+    const assignmentErrors = validateAssignedStudentIds(normalizedAssignments);
+    if (assignmentErrors.missing.length > 0) {
+      return res.status(400).json({ success: false, error: `Assigned student IDs not found: ${assignmentErrors.missing.join(', ')}` });
+    }
+    if (assignmentErrors.demo.length > 0) {
+      return res.status(400).json({ success: false, error: `Demo student IDs cannot be assigned to real faculty accounts: ${assignmentErrors.demo.join(', ')}` });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -175,7 +280,12 @@ exports.createUser = async (req, res) => {
       passwordHash,
       role: normalizedRole,
       studentId: studentId ? studentId.trim() : null,
-      department: department || 'Computer Science & Engineering'
+      facultyId: normalizedRole === 'faculty' && facultyId ? facultyId.trim() : undefined,
+      department: department || 'Computer Science & Engineering',
+      status: status || 'active',
+      assignedStudentIds: normalizedRole === 'faculty' ? normalizedAssignments : undefined,
+      assignedSemester: normalizedRole === 'faculty' && assignedSemester ? Number(assignedSemester) : undefined,
+      assignedSection: normalizedRole === 'faculty' && assignedSection ? String(assignedSection).trim() : undefined
     });
 
     if (normalizedRole === 'student') {
@@ -184,7 +294,8 @@ exports.createUser = async (req, res) => {
         db.updateOne('students', { _id: existingStudent._id }, {
           userId: user._id,
           name: existingStudent.name || name.trim(),
-          email: existingStudent.email || normalizedEmail
+          email: existingStudent.email || normalizedEmail,
+          semester: existingStudent.semester || normalizedSemester
         });
       } else {
         db.create('students', {
@@ -193,8 +304,9 @@ exports.createUser = async (req, res) => {
           name: name.trim(),
           email: normalizedEmail,
           course: 'B.Tech Computer Science',
-          semester: 4,
+          semester: normalizedSemester,
           department: department || 'Computer Science & Engineering',
+          section: section ? String(section).trim() : undefined,
           academicDataComplete: false,
           subjects: []
         });
@@ -216,8 +328,65 @@ exports.createUser = async (req, res) => {
   }
 };
 
+exports.assignStudentsToFaculty = async (req, res) => {
+  try {
+    if (!isRealAdmin(req.user)) {
+      return res.status(403).json({ success: false, error: 'Only the authorized real administrator can update faculty assignments.' });
+    }
+
+    const { id } = req.params;
+    const faculty = db.findById('users', id);
+    if (!faculty || faculty.role !== 'faculty') {
+      return res.status(404).json({ success: false, error: 'Faculty account not found.' });
+    }
+    if (faculty._id === 'usr_faculty_01' || faculty.email === 'faculty@edusense.edu') {
+      return res.status(400).json({ success: false, error: 'Demo faculty assignments are protected.' });
+    }
+
+    const assignedStudentIds = normalizeAssignedStudentIds(req.body.assignedStudentIds);
+    const assignmentErrors = validateAssignedStudentIds(assignedStudentIds);
+    if (assignmentErrors.missing.length > 0) {
+      return res.status(400).json({ success: false, error: `Assigned student IDs not found: ${assignmentErrors.missing.join(', ')}` });
+    }
+    if (assignmentErrors.demo.length > 0) {
+      return res.status(400).json({ success: false, error: `Demo student IDs cannot be assigned to real faculty accounts: ${assignmentErrors.demo.join(', ')}` });
+    }
+
+    const updates = { assignedStudentIds };
+    if (req.body.assignedSemester !== undefined && req.body.assignedSemester !== '') {
+      const assignedSemester = normalizeSemester(req.body.assignedSemester, null);
+      if (!assignedSemester) {
+        return res.status(400).json({ success: false, error: 'Assigned semester must be an integer from 1 to 8.' });
+      }
+      updates.assignedSemester = assignedSemester;
+    }
+    if (req.body.assignedSection !== undefined) {
+      updates.assignedSection = String(req.body.assignedSection || '').trim() || undefined;
+    }
+
+    const updated = db.updateOne('users', { _id: faculty._id }, updates);
+    const { passwordHash, ...safe } = updated;
+
+    db.create('activity_logs', {
+      userId: req.user.id,
+      userName: req.user.name,
+      role: 'admin',
+      action: 'FACULTY_ASSIGNMENTS_UPDATED',
+      details: `Updated student assignments for ${faculty.email}: ${assignedStudentIds.length} student(s).`
+    });
+
+    return res.json({ success: true, user: safe });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+};
+
 exports.deleteUser = async (req, res) => {
   try {
+    if (!isRealAdmin(req.user)) {
+      return res.status(403).json({ success: false, error: 'Only the authorized real administrator can delete real accounts.' });
+    }
+
     const { id } = req.params;
     const user = db.findById('users', id);
     if (!user) {
@@ -225,6 +394,9 @@ exports.deleteUser = async (req, res) => {
     }
     if (user._id === req.user.id) {
       return res.status(400).json({ success: false, error: 'Administrators cannot delete their own active account.' });
+    }
+    if (user.email === DEMO_ADMIN_EMAIL || user.email === 'faculty@edusense.edu' || String(user.email || '').startsWith('student')) {
+      return res.status(400).json({ success: false, error: 'Demo accounts are protected.' });
     }
 
     db.deleteOne('users', { _id: id });
@@ -256,6 +428,10 @@ exports.deleteUser = async (req, res) => {
 
 exports.previewDatasetImport = async (req, res) => {
   try {
+    if (!isRealAdmin(req.user)) {
+      return res.status(403).json({ success: false, error: 'Only the authorized real administrator can import institutional data.' });
+    }
+
     let records = [];
     let detectedColumns = [];
     let filename = 'manual_input.csv';
@@ -301,6 +477,10 @@ exports.previewDatasetImport = async (req, res) => {
 
 exports.confirmDatasetImport = async (req, res) => {
   try {
+    if (!isRealAdmin(req.user)) {
+      return res.status(403).json({ success: false, error: 'Only the authorized real administrator can import institutional data.' });
+    }
+
     const { filename, validRecords } = req.body;
     if (!validRecords || !Array.isArray(validRecords) || validRecords.length === 0) {
       return res.status(400).json({ success: false, error: 'No valid records to import.' });
@@ -314,19 +494,19 @@ exports.confirmDatasetImport = async (req, res) => {
     const importableRecords = validation.all_valid_records;
     const mlBatchInput = importableRecords.map(r => ({
       student_id: r.student_id || r.roll_no || `STU${Date.now()}`,
-      attendance_pct: Number(r.attendance_pct || 75),
-      assignment_completion_rate: Number(r.assignment_completion_rate || 75),
-      assignment_avg_score: Number(r.assignment_avg_score || 70),
-      internal_test_avg: Number(r.internal_test_avg || 65),
-      previous_exam_score: Number(r.previous_exam_score || 68),
-      performance_trend: Number(r.performance_trend || 0),
-      study_engagement_score: Number(r.study_engagement_score || 75),
-      subject_failure_count: Number(r.subject_failure_count || 0),
-      score_dsa: Number(r.score_dsa || 65),
-      score_dbms: Number(r.score_dbms || 70),
-      score_maths: Number(r.score_maths || 60),
-      score_os: Number(r.score_os || 68),
-      score_cn: Number(r.score_cn || 65)
+      attendance_pct: numberOrDefault(r.attendance_pct, 75),
+      assignment_completion_rate: numberOrDefault(r.assignment_completion_rate, 75),
+      assignment_avg_score: numberOrDefault(r.assignment_avg_score, 70),
+      internal_test_avg: numberOrDefault(r.internal_test_avg, 65),
+      previous_exam_score: numberOrDefault(r.previous_exam_score, 68),
+      performance_trend: numberOrDefault(r.performance_trend, 0),
+      study_engagement_score: numberOrDefault(r.study_engagement_score, 75),
+      subject_failure_count: numberOrDefault(r.subject_failure_count, 0),
+      score_dsa: numberOrDefault(r.score_dsa, 65),
+      score_dbms: numberOrDefault(r.score_dbms, 70),
+      score_maths: numberOrDefault(r.score_maths, 60),
+      score_os: numberOrDefault(r.score_os, 68),
+      score_cn: numberOrDefault(r.score_cn, 65)
     }));
 
     const batchPredictions = await mlService.predictBatch(mlBatchInput);
@@ -350,25 +530,26 @@ exports.confirmDatasetImport = async (req, res) => {
         name: r.name || `Student ${studentId}`,
         email: String(r.email).toLowerCase(),
         course: r.course || 'B.Tech Computer Science',
-        semester: Number(r.semester) || 4,
+        semester: numberOrDefault(r.semester, 1),
         department: r.department || 'Computer Science & Engineering',
-        attendancePct: Number(r.attendance_pct || 75),
-        assignmentCompletionRate: Number(r.assignment_completion_rate || 75),
-        assignmentAvgScore: Number(r.assignment_avg_score || 70),
-        internalTestAvg: Number(r.internal_test_avg || 65),
-        previousExamScore: Number(r.previous_exam_score || 68),
-        performanceTrend: Number(r.performance_trend || 0),
-        studyEngagementScore: Number(r.study_engagement_score || 75),
-        subjectFailureCount: Number(r.subject_failure_count || [r.score_dsa, r.score_dbms, r.score_maths, r.score_os, r.score_cn].filter((score) => Number(score) < 50).length),
+        section: r.section ? String(r.section).trim() : undefined,
+        attendancePct: numberOrDefault(r.attendance_pct, 75),
+        assignmentCompletionRate: numberOrDefault(r.assignment_completion_rate, 75),
+        assignmentAvgScore: numberOrDefault(r.assignment_avg_score, 70),
+        internalTestAvg: numberOrDefault(r.internal_test_avg, 65),
+        previousExamScore: numberOrDefault(r.previous_exam_score, 68),
+        performanceTrend: numberOrDefault(r.performance_trend, 0),
+        studyEngagementScore: numberOrDefault(r.study_engagement_score, 75),
+        subjectFailureCount: numberOrDefault(r.subject_failure_count, [r.score_dsa, r.score_dbms, r.score_maths, r.score_os, r.score_cn].filter((score) => Number(score) < 50).length),
         currentRiskLevel: pred.risk_level,
         currentRiskScore: pred.risk_score,
         lastPredictedAt: new Date().toISOString(),
         subjects: [
-          { name: 'Data Structures & Algorithms', score: Number(r.score_dsa || 65), attendance: Number(r.attendance_pct || 75), assignmentCompletion: Number(r.assignment_completion_rate || 75), trend: 'stable' },
-          { name: 'Database Management Systems', score: Number(r.score_dbms || 70), attendance: Number(r.attendance_pct || 75), assignmentCompletion: Number(r.assignment_completion_rate || 75), trend: 'improving' },
-          { name: 'Applied Mathematics', score: Number(r.score_maths || 60), attendance: Number(r.attendance_pct || 75), assignmentCompletion: Number(r.assignment_completion_rate || 75), trend: 'declining' },
-          { name: 'Operating Systems', score: Number(r.score_os || 68), attendance: Number(r.attendance_pct || 75), assignmentCompletion: Number(r.assignment_completion_rate || 75), trend: 'stable' },
-          { name: 'Computer Networks', score: Number(r.score_cn || 64), attendance: Number(r.attendance_pct || 75), assignmentCompletion: Number(r.assignment_completion_rate || 75), trend: 'stable' }
+          { name: 'Data Structures & Algorithms', score: numberOrDefault(r.score_dsa, 65), attendance: numberOrDefault(r.attendance_pct, 75), assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75), trend: 'stable' },
+          { name: 'Database Management Systems', score: numberOrDefault(r.score_dbms, 70), attendance: numberOrDefault(r.attendance_pct, 75), assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75), trend: 'improving' },
+          { name: 'Applied Mathematics', score: numberOrDefault(r.score_maths, 60), attendance: numberOrDefault(r.attendance_pct, 75), assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75), trend: 'declining' },
+          { name: 'Operating Systems', score: numberOrDefault(r.score_os, 68), attendance: numberOrDefault(r.attendance_pct, 75), assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75), trend: 'stable' },
+          { name: 'Computer Networks', score: numberOrDefault(r.score_cn, 64), attendance: numberOrDefault(r.attendance_pct, 75), assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75), trend: 'stable' }
         ],
         academicDataComplete: true,
         dataSource: 'admin_import'
@@ -482,7 +663,9 @@ exports.triggerModelRetrain = async (req, res) => {
 
 exports.getActivityLogs = async (req, res) => {
   try {
-    const logs = db.find('activity_logs').reverse();
+    const logs = db.find('activity_logs')
+      .filter((log) => !isRealAdmin(req.user) || !DEMO_USER_IDS.has(log.userId))
+      .reverse();
     return res.json({ success: true, logs });
   } catch (err) {
     return res.status(500).json({ success: false, error: err.message });

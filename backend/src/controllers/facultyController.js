@@ -4,14 +4,34 @@
 
 const db = require('../models/db');
 const { getLatestPrediction, getLatestRecommendation, hasAcademicData } = require('../services/academicService');
+const REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
+const DEMO_ADMIN_EMAIL = 'admin@edusense.edu';
+
+function isDemoStudentRecord(student) {
+  return !student.userId && !student.dataSource;
+}
 
 function scopeStudentsForFaculty(user) {
   const students = db.find('students').filter(hasAcademicData);
-  if (user.role === 'admin') return students;
+  if (user.role === 'admin') {
+    if (user.email === REAL_ADMIN_EMAIL) return students.filter((s) => !isDemoStudentRecord(s));
+    if (user.email === DEMO_ADMIN_EMAIL) return students.filter(isDemoStudentRecord);
+    return [];
+  }
+  if (user._id === 'usr_faculty_01' || user.id === 'usr_faculty_01' || user.email === 'faculty@edusense.edu') {
+    return students.filter((s) => isDemoStudentRecord(s) && user.department && s.department && s.department === user.department);
+  }
   if (Array.isArray(user.assignedStudentIds) && user.assignedStudentIds.length > 0) {
     return students.filter((s) => user.assignedStudentIds.includes(s.studentId));
   }
-  return students.filter((s) => user.department && s.department && s.department === user.department);
+  if (user.assignedSemester || user.assignedSection) {
+    return students.filter((s) => {
+      const semesterMatch = user.assignedSemester ? String(s.semester) === String(user.assignedSemester) : true;
+      const sectionMatch = user.assignedSection ? String(s.section || '').toLowerCase() === String(user.assignedSection).toLowerCase() : true;
+      return !isDemoStudentRecord(s) && semesterMatch && sectionMatch;
+    });
+  }
+  return [];
 }
 
 function canAccessStudent(user, student) {
@@ -30,13 +50,7 @@ exports.getDashboardOverview = async (req, res) => {
     let totalAttendance = 0;
     let totalMarks = 0;
 
-    const subjectsSummary = {
-      'Data Structures & Algorithms': { total: 0, count: 0 },
-      'Database Management Systems': { total: 0, count: 0 },
-      'Applied Mathematics': { total: 0, count: 0 },
-      'Operating Systems': { total: 0, count: 0 },
-      'Computer Networks': { total: 0, count: 0 }
-    };
+    const subjectsSummary = {};
 
     const attentionList = [];
     const earlyWarningAlerts = [];
@@ -53,7 +67,10 @@ exports.getDashboardOverview = async (req, res) => {
       // Aggregate subject marks
       if (s.subjects && Array.isArray(s.subjects)) {
         s.subjects.forEach(sub => {
-          if (subjectsSummary[sub.name]) {
+          if (sub.name) {
+            if (!subjectsSummary[sub.name]) {
+              subjectsSummary[sub.name] = { total: 0, count: 0 };
+            }
             subjectsSummary[sub.name].total += Number(sub.score || 0);
             subjectsSummary[sub.name].count++;
           }

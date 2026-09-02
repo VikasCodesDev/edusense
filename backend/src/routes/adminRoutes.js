@@ -8,6 +8,7 @@ const { requireAuth, requireRole } = require('../middleware/auth');
 router.get('/overview', requireAuth, requireRole('admin'), adminController.getOverview);
 router.get('/users', requireAuth, requireRole('admin'), adminController.getUsers);
 router.post('/users', requireAuth, requireRole('admin'), adminController.createUser);
+router.put('/users/:id/assign-students', requireAuth, requireRole('admin'), adminController.assignStudentsToFaculty);
 router.delete('/users/:id', requireAuth, requireRole('admin'), adminController.deleteUser);
 router.post('/import/preview', requireAuth, requireRole('admin'), upload.single('file'), adminController.previewDatasetImport);
 router.post('/import/confirm', requireAuth, requireRole('admin'), adminController.confirmDatasetImport);

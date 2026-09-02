@@ -1,8 +1,0 @@
-{
-  "/admin/dashboard/page": "app/admin/dashboard/page.js",
-  "/admin/data-import/page": "app/admin/data-import/page.js",
-  "/login/page": "app/login/page.js",
-  "/faculty/analytics/page": "app/faculty/analytics/page.js",
-  "/admin/model-management/page": "app/admin/model-management/page.js",
-  "/admin/users/page": "app/admin/users/page.js"
-}

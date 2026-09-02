@@ -8,22 +8,40 @@ const csvParser = require('csv-parser');
 const stream = require('stream');
 const db = require('../models/db');
 const mlService = require('../services/mlService');
-const { getLatestPrediction } = require('../services/academicService');
+const { getLatestPrediction, prepareFeatures } = require('../services/academicService');
 
 const REQUIRED_IMPORT_COLUMNS = [
   'student_id',
   'name',
-  'email',
   'attendance_pct',
   'assignment_completion_rate',
   'internal_test_avg',
-  'previous_exam_score',
-  'score_dsa',
-  'score_dbms',
-  'score_maths',
-  'score_os',
-  'score_cn'
+  'previous_exam_score'
 ];
+const IMPORT_COLUMN_ALIASES = {
+  student_id: ['studentid', 'studentnumber', 'studentno', 'rollno', 'rollnumber', 'registrationno', 'enrollmentno'],
+  name: ['studentname', 'fullname', 'full name'],
+  email: ['emailid', 'studentemail', 'emailaddress'],
+  attendance_pct: ['attendance', 'attendancepercentage', 'attendancepercent', 'attendancerate'],
+  assignment_completion_rate: ['assignment', 'assignmentcompletion', 'assignmentpercentage', 'assignmentpercent', 'assignmentrate'],
+  assignment_avg_score: ['assignmentscore', 'assignmentaverage', 'assignmentaveragescore', 'avgassignmentscore'],
+  internal_test_avg: ['internalmarks', 'internalmark', 'internaltest', 'internaltestaverage', 'internalassessment', 'assessmentmarks'],
+  previous_exam_score: ['previousscore', 'previousexam', 'previousexammarks', 'previoussemesterScore'],
+  performance_trend: ['trend', 'performancetrend', 'scoretrend'],
+  study_engagement_score: ['engagementscore', 'studyengagement', 'studyengagementscore'],
+  subject_failure_count: ['failedsubjects', 'subjectfailures', 'failurecount'],
+  score_dsa: ['dsa', 'dsascore', 'datastructures', 'datastructuresalgorithms', 'datastructuresalgorithmscore'],
+  score_dbms: ['dbms', 'dbmsscore', 'databasemanagementsystems', 'databasemanagementsystemsscore'],
+  score_maths: ['math', 'maths', 'mathscore', 'mathsscore', 'mathematics', 'mathematicsscore', 'appliedmathematics'],
+  score_os: ['os', 'osscore', 'operatingsystems', 'operatingsystemsscore'],
+  score_cn: ['cn', 'cnscore', 'computerNetworks', 'computernetworks', 'computernetworksscore']
+};
+const OPTIONAL_IMPORT_ALIASES = {
+  assignment_avg_score: ['assignmentscore', 'assignmentaverage', 'assignmentaveragescore', 'avgassignmentscore'],
+  performance_trend: ['trend', 'performancetrend', 'scoretrend'],
+  study_engagement_score: ['engagementscore', 'studyengagement', 'studyengagementscore'],
+  subject_failure_count: ['failedsubjects', 'subjectfailures', 'failurecount']
+};
 const REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
 const DEMO_ADMIN_EMAIL = 'admin@edusense.edu';
 const DEMO_USER_IDS = new Set(['usr_admin_01', 'usr_faculty_01', 'usr_student_01', 'usr_student_02', 'usr_student_03']);
@@ -80,11 +98,52 @@ function validateAssignedStudentIds(ids) {
   return { missing, demo };
 }
 
+function normalizedHeader(value) {
+  return String(value).trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+const CANONICAL_HEADERS = new Set([
+  ...[
+    ...REQUIRED_IMPORT_COLUMNS,
+    'assignment_avg_score',
+    'performance_trend',
+    'study_engagement_score',
+    'subject_failure_count',
+    'course',
+    'semester',
+    'department',
+    'section',
+    'subjects',
+    'risk_level'
+  ].map(normalizedHeader)
+]);
+
+function subjectNameFromHeader(header) {
+  const trimmed = String(header).trim().replace(/[_-]+/g, ' ').replace(/\s+/g, ' ');
+  const name = trimmed.replace(/\s+(score|marks|mark|grade|percentage|percent)$/i, '').trim();
+  return name.replace(/^score\s+/i, '').trim() || trimmed;
+}
+
 function normalizeImportRow(row) {
-  return Object.entries(row).reduce((acc, [key, value]) => {
-    acc[String(key).trim().toLowerCase()] = typeof value === 'string' ? value.trim() : value;
+  const normalized = Object.entries(row).reduce((acc, [key, value]) => {
+    const cleanValue = typeof value === 'string' ? value.trim() : value;
+    const canonical = [...REQUIRED_IMPORT_COLUMNS, ...Object.keys(OPTIONAL_IMPORT_ALIASES)].find((column) => (
+      normalizedHeader(column) === normalizedHeader(key) ||
+      [...(IMPORT_COLUMN_ALIASES[column] || []), ...(OPTIONAL_IMPORT_ALIASES[column] || [])]
+        .some((alias) => normalizedHeader(alias) === normalizedHeader(key))
+    ));
+    const normalizedKey = normalizedHeader(key);
+    if (canonical || CANONICAL_HEADERS.has(normalizedKey)) {
+      acc[canonical || normalizedKey] = cleanValue;
+    } else if (cleanValue !== undefined && cleanValue !== null && cleanValue !== '' && Number.isFinite(Number(cleanValue))) {
+      acc.subjects = [...(acc.subjects || []), {
+        name: subjectNameFromHeader(key),
+        score: Number(cleanValue)
+      }];
+    }
     return acc;
   }, {});
+  return normalized;
 }
 
 function validateImportRows(records) {
@@ -97,12 +156,12 @@ function validateImportRows(records) {
 
   normalized.forEach((row, idx) => {
     const errors = [];
-    const studentId = String(row.student_id || row.roll_no || '').trim();
+    const studentId = String(row.student_id ?? '').trim();
     if (!studentId) errors.push('Missing student_id');
     if (studentId && seen.has(studentId)) errors.push('Duplicate student_id in upload');
     if (studentId) seen.add(studentId);
-    if (!row.name) errors.push('Missing name');
-    if (!row.email || !isValidEmail(String(row.email).toLowerCase())) errors.push('Invalid email');
+    if (row.name === undefined || row.name === null || row.name === '') errors.push('Missing name');
+    if (row.email !== undefined && row.email !== null && row.email !== '' && !isValidEmail(String(row.email).toLowerCase())) errors.push('Invalid email');
 
     REQUIRED_IMPORT_COLUMNS.forEach((column) => {
       if (row[column] === undefined || row[column] === null || row[column] === '') {
@@ -110,7 +169,7 @@ function validateImportRows(records) {
       }
     });
 
-    ['attendance_pct', 'assignment_completion_rate', 'assignment_avg_score', 'internal_test_avg', 'previous_exam_score', 'study_engagement_score', 'score_dsa', 'score_dbms', 'score_maths', 'score_os', 'score_cn'].forEach((column) => {
+    ['attendance_pct', 'assignment_completion_rate', 'assignment_avg_score', 'internal_test_avg', 'previous_exam_score', 'study_engagement_score'].forEach((column) => {
       if (row[column] === undefined || row[column] === null || row[column] === '') return;
       const value = Number(row[column]);
       if (!Number.isFinite(value)) errors.push(`${column} must be numeric`);
@@ -127,6 +186,14 @@ function validateImportRows(records) {
       const semester = Number(row.semester);
       if (!Number.isInteger(semester) || semester < 1 || semester > 8) {
         errors.push('semester must be an integer from 1 to 8');
+      }
+
+      if (!Array.isArray(row.subjects) || row.subjects.length === 0) {
+        errors.push('At least one numeric subject score is required');
+      } else {
+        row.subjects.forEach((subject) => {
+          if (subject.score < 0 || subject.score > 100) errors.push(`${subject.name} score must be between 0 and 100`);
+        });
       }
     }
 
@@ -440,7 +507,8 @@ exports.previewDatasetImport = async (req, res) => {
       filename = req.file.originalname;
       const fileBuffer = req.file.buffer;
 
-      if (filename.endsWith('.xlsx') || filename.endsWith('.xls')) {
+      const extension = filename.toLowerCase();
+      if (extension.endsWith('.xlsx') || extension.endsWith('.xls')) {
         const workbook = xlsx.read(fileBuffer, { type: 'buffer' });
         const sheetName = workbook.SheetNames[0];
         records = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
@@ -492,21 +560,17 @@ exports.confirmDatasetImport = async (req, res) => {
 
     // Run batch ML predictions on imported records
     const importableRecords = validation.all_valid_records;
-    const mlBatchInput = importableRecords.map(r => ({
-      student_id: r.student_id || r.roll_no || `STU${Date.now()}`,
-      attendance_pct: numberOrDefault(r.attendance_pct, 75),
-      assignment_completion_rate: numberOrDefault(r.assignment_completion_rate, 75),
-      assignment_avg_score: numberOrDefault(r.assignment_avg_score, 70),
-      internal_test_avg: numberOrDefault(r.internal_test_avg, 65),
-      previous_exam_score: numberOrDefault(r.previous_exam_score, 68),
-      performance_trend: numberOrDefault(r.performance_trend, 0),
-      study_engagement_score: numberOrDefault(r.study_engagement_score, 75),
-      subject_failure_count: numberOrDefault(r.subject_failure_count, 0),
-      score_dsa: numberOrDefault(r.score_dsa, 65),
-      score_dbms: numberOrDefault(r.score_dbms, 70),
-      score_maths: numberOrDefault(r.score_maths, 60),
-      score_os: numberOrDefault(r.score_os, 68),
-      score_cn: numberOrDefault(r.score_cn, 65)
+    const mlBatchInput = importableRecords.map(r => prepareFeatures({
+      studentId: r.student_id,
+      attendancePct: r.attendance_pct,
+      assignmentCompletionRate: r.assignment_completion_rate,
+      assignmentAvgScore: r.assignment_avg_score,
+      internalTestAvg: r.internal_test_avg,
+      previousExamScore: r.previous_exam_score,
+      performanceTrend: r.performance_trend,
+      studyEngagementScore: r.study_engagement_score,
+      subjectFailureCount: r.subject_failure_count,
+      subjects: r.subjects
     }));
 
     const batchPredictions = await mlService.predictBatch(mlBatchInput);
@@ -528,7 +592,7 @@ exports.confirmDatasetImport = async (req, res) => {
       const studentDoc = {
         studentId,
         name: r.name || `Student ${studentId}`,
-        email: String(r.email).toLowerCase(),
+        email: r.email ? String(r.email).toLowerCase() : undefined,
         course: r.course || 'B.Tech Computer Science',
         semester: numberOrDefault(r.semester, 1),
         department: r.department || 'Computer Science & Engineering',
@@ -540,17 +604,16 @@ exports.confirmDatasetImport = async (req, res) => {
         previousExamScore: numberOrDefault(r.previous_exam_score, 68),
         performanceTrend: numberOrDefault(r.performance_trend, 0),
         studyEngagementScore: numberOrDefault(r.study_engagement_score, 75),
-        subjectFailureCount: numberOrDefault(r.subject_failure_count, [r.score_dsa, r.score_dbms, r.score_maths, r.score_os, r.score_cn].filter((score) => Number(score) < 50).length),
+        subjectFailureCount: numberOrDefault(r.subject_failure_count, r.subjects.filter((subject) => subject.score < 50).length),
+        subjects: r.subjects.map((subject) => ({
+          ...subject,
+          attendance: numberOrDefault(r.attendance_pct, 75),
+          assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75),
+          trend: 'stable'
+        })),
         currentRiskLevel: pred.risk_level,
         currentRiskScore: pred.risk_score,
         lastPredictedAt: new Date().toISOString(),
-        subjects: [
-          { name: 'Data Structures & Algorithms', score: numberOrDefault(r.score_dsa, 65), attendance: numberOrDefault(r.attendance_pct, 75), assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75), trend: 'stable' },
-          { name: 'Database Management Systems', score: numberOrDefault(r.score_dbms, 70), attendance: numberOrDefault(r.attendance_pct, 75), assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75), trend: 'improving' },
-          { name: 'Applied Mathematics', score: numberOrDefault(r.score_maths, 60), attendance: numberOrDefault(r.attendance_pct, 75), assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75), trend: 'declining' },
-          { name: 'Operating Systems', score: numberOrDefault(r.score_os, 68), attendance: numberOrDefault(r.attendance_pct, 75), assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75), trend: 'stable' },
-          { name: 'Computer Networks', score: numberOrDefault(r.score_cn, 64), attendance: numberOrDefault(r.attendance_pct, 75), assignmentCompletion: numberOrDefault(r.assignment_completion_rate, 75), trend: 'stable' }
-        ],
         academicDataComplete: true,
         dataSource: 'admin_import'
       };

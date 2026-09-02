@@ -51,6 +51,17 @@ function subjectScore(student, subjectName, fallback) {
 function prepareFeatures(student) {
   const internal = Number(student.internalTestAvg);
   const subjects = Array.isArray(student.subjects) ? student.subjects : [];
+  const subjectScores = subjects
+    .map((subject) => Number(subject.score ?? subject.internalScore))
+    .filter(Number.isFinite);
+  const subjectAverage = subjectScores.length > 0
+    ? subjectScores.reduce((sum, score) => sum + score, 0) / subjectScores.length
+    : internal;
+  const subjectFailures = subjectScores.filter((score) => score < 50).length;
+  const knownSubjectScore = (name) => {
+    const subject = subjects.find((item) => String(item.name || '').toLowerCase().includes(name));
+    return subject ? Number(subject.score ?? subject.internalScore) : subjectAverage;
+  };
   return {
     student_id: student.studentId,
     attendance_pct: Number(student.attendancePct),
@@ -60,12 +71,12 @@ function prepareFeatures(student) {
     previous_exam_score: Number(student.previousExamScore),
     performance_trend: Number(student.performanceTrend ?? 0),
     study_engagement_score: Number(student.studyEngagementScore ?? 75),
-    subject_failure_count: Number(student.subjectFailureCount ?? subjects.filter((s) => Number(s.score ?? s.internalScore ?? 0) < 50).length),
-    score_dsa: subjectScore(student, 'Data Structures & Algorithms', internal),
-    score_dbms: subjectScore(student, 'Database Management Systems', internal),
-    score_maths: subjectScore(student, 'Applied Mathematics', internal),
-    score_os: subjectScore(student, 'Operating Systems', internal),
-    score_cn: subjectScore(student, 'Computer Networks', internal)
+    subject_failure_count: Number(student.subjectFailureCount ?? subjectFailures),
+    score_dsa: knownSubjectScore('data structures'),
+    score_dbms: knownSubjectScore('database management'),
+    score_maths: knownSubjectScore('math'),
+    score_os: knownSubjectScore('operating system'),
+    score_cn: knownSubjectScore('computer network')
   };
 }
 

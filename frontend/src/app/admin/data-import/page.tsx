@@ -74,15 +74,15 @@ export default function DataImportPage() {
           semester: s.semester,
           attendance_pct: s.attendancePct,
           assignment_completion_rate: s.assignmentCompletionRate,
-          assignment_avg_score: s.assignmentAvgScore || 75,
+          assignment_avg_score: s.assignmentAvgScore ?? 75,
           internal_test_avg: s.internalTestAvg,
           previous_exam_score: s.previousExamScore,
           performance_trend: s.performanceTrend,
-          score_dsa: (s.subjects && s.subjects[0]?.score) || s.internalTestAvg,
-          score_dbms: (s.subjects && s.subjects[1]?.score) || s.internalTestAvg,
-          score_maths: (s.subjects && s.subjects[2]?.score) || s.internalTestAvg,
-          score_os: (s.subjects && s.subjects[3]?.score) || s.internalTestAvg,
-          score_cn: (s.subjects && s.subjects[4]?.score) || s.internalTestAvg
+          score_dsa: s.subjects?.[0]?.score ?? s.internalTestAvg,
+          score_dbms: s.subjects?.[1]?.score ?? s.internalTestAvg,
+          score_maths: s.subjects?.[2]?.score ?? s.internalTestAvg,
+          score_os: s.subjects?.[3]?.score ?? s.internalTestAvg,
+          score_cn: s.subjects?.[4]?.score ?? s.internalTestAvg
         }));
 
         // Add 2 deliberate edge cases for validation showcase

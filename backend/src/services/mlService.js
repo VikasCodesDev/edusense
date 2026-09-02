@@ -102,14 +102,17 @@ class MLServiceClient {
   }
 
   calculateLocalPrediction(features) {
-    const att = Number(features.attendance_pct || features.attendance || 75);
-    const assignComp = Number(features.assignment_completion_rate || 75);
-    const internal = Number(features.internal_test_avg || 65);
-    const trend = Number(features.performance_trend || 0);
-    const failures = Number(features.subject_failure_count || 0);
-    const dsa = Number(features.score_dsa || internal);
-    const maths = Number(features.score_maths || internal);
-    const dbms = Number(features.score_dbms || internal);
+    const valueOrFallback = (value, fallback) => (
+      value === undefined || value === null || value === '' ? fallback : value
+    );
+    const att = Number(valueOrFallback(features.attendance_pct ?? features.attendance, 75));
+    const assignComp = Number(valueOrFallback(features.assignment_completion_rate, 75));
+    const internal = Number(valueOrFallback(features.internal_test_avg, 65));
+    const trend = Number(valueOrFallback(features.performance_trend, 0));
+    const failures = Number(valueOrFallback(features.subject_failure_count, 0));
+    const dsa = Number(valueOrFallback(features.score_dsa, internal));
+    const maths = Number(valueOrFallback(features.score_maths, internal));
+    const dbms = Number(valueOrFallback(features.score_dbms, internal));
 
     // Calculate academic risk index
     let riskPoints = 0;

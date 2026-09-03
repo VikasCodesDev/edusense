@@ -4,7 +4,8 @@
 
 import axios from 'axios';
 
-export const API_BASE = '/api';
+export const API_BASE =
+  process.env.NEXT_PUBLIC_API_URL || '/api';
 
 const api = axios.create({
   baseURL: API_BASE,

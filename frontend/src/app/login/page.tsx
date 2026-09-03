@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import api from '@/lib/api';
 import { GraduationCap, Lock, Mail, User, AlertCircle, ArrowRight } from 'lucide-react';
 import MagneticButton from '@/components/MagneticButton';
 
@@ -37,12 +38,8 @@ export default function LoginPage() {
         }
       } else {
         // Register flow
-        const regRes = await fetch('/api/auth/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, password, role: 'student', studentId, semester })
-        });
-        const data = await regRes.json();
+        const regRes = await api.post('/auth/register', { name, email, password, role: 'student', studentId, semester });
+        const data = regRes.data;
         if (data.success) {
           const logRes = await login(email, password);
           if (logRes.success) {

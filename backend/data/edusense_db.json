@@ -61,7 +61,7 @@
       "role": "admin",
       "department": "Computer Science & Engineering",
       "createdAt": "2026-09-01T15:07:52.679Z",
-      "updatedAt": "2026-09-02T15:07:50.375Z"
+      "updatedAt": "2026-09-02T16:34:10.639Z"
     },
     {
       "_id": "d4e38709-285b-4c6d-9ea0-9bb7c06b5a87",
@@ -116,6 +116,33 @@
       "assignedSection": "A",
       "createdAt": "2026-09-02T14:21:55.699Z",
       "updatedAt": "2026-09-02T14:21:55.699Z"
+    },
+    {
+      "_id": "279bcdeb-68c3-433f-8bbe-f457eb709b89",
+      "name": "Rahul Malhotra",
+      "email": "rahul@gamil.com",
+      "passwordHash": "$2b$10$22Q0nRpsp/Fei1DxYrg5XOM.XQUJCTNhwZTxStROnemGzLvtFo9zK",
+      "role": "student",
+      "studentId": "ABC12345",
+      "department": "Computer Science & Engineering",
+      "createdAt": "2026-09-02T16:35:57.883Z",
+      "updatedAt": "2026-09-02T16:35:57.883Z"
+    },
+    {
+      "_id": "23b35d98-c00c-4494-bdce-057f0579dad1",
+      "name": "Dr. Vijay",
+      "email": "vijay@gmail.com",
+      "passwordHash": "$2b$10$C.ij31086S3JPOgsLKSF8.agHZR0qTYMUvj5sb5M1YkmzDj.Lkxba",
+      "role": "faculty",
+      "studentId": null,
+      "facultyId": "VIJ7682",
+      "department": "Computer Science & Engineering",
+      "status": "active",
+      "assignedStudentIds": [
+        "ABC12345"
+      ],
+      "createdAt": "2026-09-02T16:42:22.401Z",
+      "updatedAt": "2026-09-02T16:42:22.401Z"
     }
   ],
   "students": [
@@ -6508,11 +6535,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:05.333Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.120Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.467Z",
-      "updatedAt": "2026-09-02T16:10:05.333Z"
+      "updatedAt": "2026-09-02T16:40:06.120Z"
     },
     {
       "_id": "effee661-540a-49ad-a6b2-59b212660503",
@@ -6561,11 +6588,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:05.356Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.143Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.499Z",
-      "updatedAt": "2026-09-02T16:10:05.357Z"
+      "updatedAt": "2026-09-02T16:40:06.143Z"
     },
     {
       "_id": "341e9a56-8c12-43fb-baa0-ea6a3353f113",
@@ -6614,11 +6641,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 50,
-      "lastPredictedAt": "2026-09-02T16:10:05.403Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.181Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.547Z",
-      "updatedAt": "2026-09-02T16:10:05.403Z"
+      "updatedAt": "2026-09-02T16:40:06.181Z"
     },
     {
       "_id": "5639b40b-1748-470e-bfb6-04a9d0e94a8e",
@@ -6667,11 +6694,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:05.445Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.223Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.595Z",
-      "updatedAt": "2026-09-02T16:10:05.445Z"
+      "updatedAt": "2026-09-02T16:40:06.223Z"
     },
     {
       "_id": "631cf96a-7c64-42fc-978d-495e0b5b63e7",
@@ -6720,11 +6747,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 48,
-      "lastPredictedAt": "2026-09-02T16:10:05.479Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.259Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.626Z",
-      "updatedAt": "2026-09-02T16:10:05.479Z"
+      "updatedAt": "2026-09-02T16:40:06.259Z"
     },
     {
       "_id": "43d4469a-33c0-4988-adf0-f27747b06735",
@@ -6773,11 +6800,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:05.512Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.301Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.673Z",
-      "updatedAt": "2026-09-02T16:10:05.512Z"
+      "updatedAt": "2026-09-02T16:40:06.301Z"
     },
     {
       "_id": "8eb018d8-c680-426a-a164-9a28df6a6414",
@@ -6826,11 +6853,11 @@
       ],
       "currentRiskLevel": "High",
       "currentRiskScore": 98,
-      "lastPredictedAt": "2026-09-02T16:10:05.545Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.342Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.709Z",
-      "updatedAt": "2026-09-02T16:10:05.546Z"
+      "updatedAt": "2026-09-02T16:40:06.342Z"
     },
     {
       "_id": "b79eb8de-da98-4d0f-ad0d-68ef03d90043",
@@ -6879,11 +6906,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:05.592Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.380Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.739Z",
-      "updatedAt": "2026-09-02T16:10:05.592Z"
+      "updatedAt": "2026-09-02T16:40:06.381Z"
     },
     {
       "_id": "5896da85-4dbb-41f2-a7d5-b5b33d48727f",
@@ -6932,11 +6959,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 23,
-      "lastPredictedAt": "2026-09-02T16:10:05.636Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.429Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.773Z",
-      "updatedAt": "2026-09-02T16:10:05.636Z"
+      "updatedAt": "2026-09-02T16:40:06.429Z"
     },
     {
       "_id": "112ce9c5-8a54-4f97-8df5-08d24927065b",
@@ -6985,11 +7012,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:05.671Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.474Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.808Z",
-      "updatedAt": "2026-09-02T16:10:05.671Z"
+      "updatedAt": "2026-09-02T16:40:06.474Z"
     },
     {
       "_id": "12e9f2a4-7f33-4632-88d6-fe65ce60a103",
@@ -7038,11 +7065,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 56,
-      "lastPredictedAt": "2026-09-02T16:10:05.709Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.515Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.839Z",
-      "updatedAt": "2026-09-02T16:10:05.709Z"
+      "updatedAt": "2026-09-02T16:40:06.515Z"
     },
     {
       "_id": "4c7d47cc-75d8-474e-b93c-0ec985cc3ecc",
@@ -7091,11 +7118,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:05.763Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.564Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.875Z",
-      "updatedAt": "2026-09-02T16:10:05.763Z"
+      "updatedAt": "2026-09-02T16:40:06.564Z"
     },
     {
       "_id": "efd1bc33-153c-4ece-b5c4-7c6eb5c03d57",
@@ -7144,11 +7171,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 50,
-      "lastPredictedAt": "2026-09-02T16:10:05.801Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.604Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.917Z",
-      "updatedAt": "2026-09-02T16:10:05.801Z"
+      "updatedAt": "2026-09-02T16:40:06.604Z"
     },
     {
       "_id": "ce966314-7397-41e2-8aec-44ba03823251",
@@ -7197,11 +7224,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:05.831Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.647Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.958Z",
-      "updatedAt": "2026-09-02T16:10:05.831Z"
+      "updatedAt": "2026-09-02T16:40:06.647Z"
     },
     {
       "_id": "b7293e98-b8e0-4a02-9bca-7c009177e1df",
@@ -7250,11 +7277,11 @@
       ],
       "currentRiskLevel": "High",
       "currentRiskScore": 100,
-      "lastPredictedAt": "2026-09-02T16:10:05.878Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.680Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:18.996Z",
-      "updatedAt": "2026-09-02T16:10:05.878Z"
+      "updatedAt": "2026-09-02T16:40:06.680Z"
     },
     {
       "_id": "440d4d8c-90fd-42e7-b1ea-6d175f43a449",
@@ -7303,11 +7330,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:05.923Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.714Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.041Z",
-      "updatedAt": "2026-09-02T16:10:05.924Z"
+      "updatedAt": "2026-09-02T16:40:06.714Z"
     },
     {
       "_id": "b6f8af86-c4e1-4217-8216-23e54c44a65b",
@@ -7356,11 +7383,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 44,
-      "lastPredictedAt": "2026-09-02T16:10:05.970Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.758Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.077Z",
-      "updatedAt": "2026-09-02T16:10:05.970Z"
+      "updatedAt": "2026-09-02T16:40:06.758Z"
     },
     {
       "_id": "9807f833-d6af-4612-a68e-23033fffb1fd",
@@ -7409,11 +7436,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:05.997Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.798Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.127Z",
-      "updatedAt": "2026-09-02T16:10:05.997Z"
+      "updatedAt": "2026-09-02T16:40:06.798Z"
     },
     {
       "_id": "baff63de-d13c-45fc-a209-425d08bc9f8c",
@@ -7462,11 +7489,11 @@
       ],
       "currentRiskLevel": "High",
       "currentRiskScore": 97,
-      "lastPredictedAt": "2026-09-02T16:10:06.022Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.832Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.171Z",
-      "updatedAt": "2026-09-02T16:10:06.022Z"
+      "updatedAt": "2026-09-02T16:40:06.832Z"
     },
     {
       "_id": "13634e7f-9ff7-41aa-b148-bb50eefb8492",
@@ -7515,11 +7542,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.053Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.868Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.209Z",
-      "updatedAt": "2026-09-02T16:10:06.053Z"
+      "updatedAt": "2026-09-02T16:40:06.868Z"
     },
     {
       "_id": "12f13417-4d9d-4655-a13d-a4f3da340d34",
@@ -7568,11 +7595,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 50,
-      "lastPredictedAt": "2026-09-02T16:10:06.067Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.901Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.244Z",
-      "updatedAt": "2026-09-02T16:10:06.068Z"
+      "updatedAt": "2026-09-02T16:40:06.901Z"
     },
     {
       "_id": "eacb2aad-385b-4073-906a-8aa879620d7c",
@@ -7621,11 +7648,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.103Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.943Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.287Z",
-      "updatedAt": "2026-09-02T16:10:06.103Z"
+      "updatedAt": "2026-09-02T16:40:06.943Z"
     },
     {
       "_id": "64a1e755-891f-4a67-b90b-d239b2623c42",
@@ -7674,11 +7701,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 50,
-      "lastPredictedAt": "2026-09-02T16:10:06.150Z",
+      "lastPredictedAt": "2026-09-02T16:40:06.966Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.328Z",
-      "updatedAt": "2026-09-02T16:10:06.150Z"
+      "updatedAt": "2026-09-02T16:40:06.966Z"
     },
     {
       "_id": "507eb641-9430-47e0-9348-648dbd0fd3ca",
@@ -7727,11 +7754,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.186Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.012Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.369Z",
-      "updatedAt": "2026-09-02T16:10:06.186Z"
+      "updatedAt": "2026-09-02T16:40:07.012Z"
     },
     {
       "_id": "784c538e-0881-41f4-8a96-1f21a1ad8bdf",
@@ -7780,11 +7807,11 @@
       ],
       "currentRiskLevel": "High",
       "currentRiskScore": 98,
-      "lastPredictedAt": "2026-09-02T16:10:06.230Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.049Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.410Z",
-      "updatedAt": "2026-09-02T16:10:06.230Z"
+      "updatedAt": "2026-09-02T16:40:07.049Z"
     },
     {
       "_id": "72223b32-d911-4d1d-b81e-10766be3e626",
@@ -7833,11 +7860,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.252Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.083Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.446Z",
-      "updatedAt": "2026-09-02T16:10:06.252Z"
+      "updatedAt": "2026-09-02T16:40:07.083Z"
     },
     {
       "_id": "dcec03f8-d5cd-40f6-b4d9-083035385c68",
@@ -7886,11 +7913,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 50,
-      "lastPredictedAt": "2026-09-02T16:10:06.297Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.112Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.486Z",
-      "updatedAt": "2026-09-02T16:10:06.297Z"
+      "updatedAt": "2026-09-02T16:40:07.112Z"
     },
     {
       "_id": "8fd3a711-1f4c-4123-a30f-e3a2244bdf33",
@@ -7939,11 +7966,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.337Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.157Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.535Z",
-      "updatedAt": "2026-09-02T16:10:06.337Z"
+      "updatedAt": "2026-09-02T16:40:07.157Z"
     },
     {
       "_id": "9596829f-4b0f-492b-8796-0fe070a3f5f4",
@@ -7992,11 +8019,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 54,
-      "lastPredictedAt": "2026-09-02T16:10:06.379Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.199Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.587Z",
-      "updatedAt": "2026-09-02T16:10:06.379Z"
+      "updatedAt": "2026-09-02T16:40:07.199Z"
     },
     {
       "_id": "639f7d88-145d-4e33-a9f1-d499d4617c96",
@@ -8045,11 +8072,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.416Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.220Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.632Z",
-      "updatedAt": "2026-09-02T16:10:06.416Z"
+      "updatedAt": "2026-09-02T16:40:07.221Z"
     },
     {
       "_id": "444e4a5e-71db-4df2-8d9a-a20d3f231ba3",
@@ -8098,11 +8125,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 48,
-      "lastPredictedAt": "2026-09-02T16:10:06.431Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.257Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.668Z",
-      "updatedAt": "2026-09-02T16:10:06.431Z"
+      "updatedAt": "2026-09-02T16:40:07.258Z"
     },
     {
       "_id": "216e8c73-3af1-4c68-8919-f0075c4f50cc",
@@ -8151,11 +8178,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.460Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.281Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.703Z",
-      "updatedAt": "2026-09-02T16:10:06.460Z"
+      "updatedAt": "2026-09-02T16:40:07.281Z"
     },
     {
       "_id": "087ccb1a-2fc6-4cb4-8eae-9181041798a4",
@@ -8204,11 +8231,11 @@
       ],
       "currentRiskLevel": "High",
       "currentRiskScore": 84,
-      "lastPredictedAt": "2026-09-02T16:10:06.491Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.312Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.735Z",
-      "updatedAt": "2026-09-02T16:10:06.491Z"
+      "updatedAt": "2026-09-02T16:40:07.312Z"
     },
     {
       "_id": "06e1110e-b6b8-4127-80c2-3e512a0e2190",
@@ -8257,11 +8284,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.524Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.324Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.782Z",
-      "updatedAt": "2026-09-02T16:10:06.524Z"
+      "updatedAt": "2026-09-02T16:40:07.324Z"
     },
     {
       "_id": "3153ae9b-8859-4c69-9aed-e3c67928726e",
@@ -8310,11 +8337,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 50,
-      "lastPredictedAt": "2026-09-02T16:10:06.537Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.345Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.820Z",
-      "updatedAt": "2026-09-02T16:10:06.537Z"
+      "updatedAt": "2026-09-02T16:40:07.345Z"
     },
     {
       "_id": "ad50e80b-c6f9-4065-90ff-a481c74db159",
@@ -8363,11 +8390,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.571Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.384Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.862Z",
-      "updatedAt": "2026-09-02T16:10:06.571Z"
+      "updatedAt": "2026-09-02T16:40:07.384Z"
     },
     {
       "_id": "64f7e25b-6c1d-41e4-a716-0819055a4a66",
@@ -8416,11 +8443,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.605Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.409Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.893Z",
-      "updatedAt": "2026-09-02T16:10:06.605Z"
+      "updatedAt": "2026-09-02T16:40:07.409Z"
     },
     {
       "_id": "ed1ffbcc-c8e5-4089-b0e6-1b405b9d496a",
@@ -8469,11 +8496,11 @@
       ],
       "currentRiskLevel": "High",
       "currentRiskScore": 100,
-      "lastPredictedAt": "2026-09-02T16:10:06.647Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.454Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.935Z",
-      "updatedAt": "2026-09-02T16:10:06.647Z"
+      "updatedAt": "2026-09-02T16:40:07.454Z"
     },
     {
       "_id": "6b2d1ce0-0970-4ec8-895d-ee2590cf09ff",
@@ -8522,11 +8549,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.686Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.480Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:19.991Z",
-      "updatedAt": "2026-09-02T16:10:06.686Z"
+      "updatedAt": "2026-09-02T16:40:07.480Z"
     },
     {
       "_id": "e5fb7797-a005-42b0-a4cc-972c2bb3ea4f",
@@ -8575,11 +8602,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 50,
-      "lastPredictedAt": "2026-09-02T16:10:06.735Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.524Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.030Z",
-      "updatedAt": "2026-09-02T16:10:06.735Z"
+      "updatedAt": "2026-09-02T16:40:07.524Z"
     },
     {
       "_id": "9db61b29-532e-4cd6-aab3-240e144b38c7",
@@ -8628,11 +8655,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.767Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.545Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.072Z",
-      "updatedAt": "2026-09-02T16:10:06.768Z"
+      "updatedAt": "2026-09-02T16:40:07.545Z"
     },
     {
       "_id": "6e6b32ab-107b-442f-a276-f2c61ed4bf34",
@@ -8681,11 +8708,11 @@
       ],
       "currentRiskLevel": "High",
       "currentRiskScore": 97,
-      "lastPredictedAt": "2026-09-02T16:10:06.799Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.581Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.120Z",
-      "updatedAt": "2026-09-02T16:10:06.799Z"
+      "updatedAt": "2026-09-02T16:40:07.581Z"
     },
     {
       "_id": "c37530e9-4b9a-464c-8e21-abf1f66b9fdc",
@@ -8734,11 +8761,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.812Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.628Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.159Z",
-      "updatedAt": "2026-09-02T16:10:06.812Z"
+      "updatedAt": "2026-09-02T16:40:07.628Z"
     },
     {
       "_id": "8e6792ab-dfeb-4063-a74d-70ae4eec5ad3",
@@ -8787,11 +8814,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 36,
-      "lastPredictedAt": "2026-09-02T16:10:06.847Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.670Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.193Z",
-      "updatedAt": "2026-09-02T16:10:06.847Z"
+      "updatedAt": "2026-09-02T16:40:07.671Z"
     },
     {
       "_id": "e8129e61-b803-4ea0-82f1-2a748eafb34c",
@@ -8840,11 +8867,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.886Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.714Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.233Z",
-      "updatedAt": "2026-09-02T16:10:06.886Z"
+      "updatedAt": "2026-09-02T16:40:07.714Z"
     },
     {
       "_id": "9623c9b3-5d92-4f8f-8603-6d26c5a004e2",
@@ -8893,11 +8920,11 @@
       ],
       "currentRiskLevel": "High",
       "currentRiskScore": 94,
-      "lastPredictedAt": "2026-09-02T16:10:06.918Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.737Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.270Z",
-      "updatedAt": "2026-09-02T16:10:06.918Z"
+      "updatedAt": "2026-09-02T16:40:07.737Z"
     },
     {
       "_id": "e444699f-03d0-40fc-9319-9845097d4b38",
@@ -8946,11 +8973,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:06.952Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.773Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.310Z",
-      "updatedAt": "2026-09-02T16:10:06.952Z"
+      "updatedAt": "2026-09-02T16:40:07.773Z"
     },
     {
       "_id": "489b93ec-f87f-4fe7-82ef-af9a3d1882e2",
@@ -8999,11 +9026,11 @@
       ],
       "currentRiskLevel": "Moderate",
       "currentRiskScore": 50,
-      "lastPredictedAt": "2026-09-02T16:10:07.002Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.805Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.350Z",
-      "updatedAt": "2026-09-02T16:10:07.002Z"
+      "updatedAt": "2026-09-02T16:40:07.805Z"
     },
     {
       "_id": "4369b04b-30e1-4d13-b896-ce1e96f119e3",
@@ -9052,11 +9079,11 @@
       ],
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
-      "lastPredictedAt": "2026-09-02T16:10:07.050Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.820Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.395Z",
-      "updatedAt": "2026-09-02T16:10:07.050Z"
+      "updatedAt": "2026-09-02T16:40:07.820Z"
     },
     {
       "_id": "579e95b5-f825-47fe-8e66-b4d4ada03196",
@@ -9105,11 +9132,78 @@
       ],
       "currentRiskLevel": "High",
       "currentRiskScore": 100,
-      "lastPredictedAt": "2026-09-02T16:10:07.103Z",
+      "lastPredictedAt": "2026-09-02T16:40:07.841Z",
       "academicDataComplete": true,
       "dataSource": "admin_import",
       "createdAt": "2026-09-02T16:09:20.434Z",
-      "updatedAt": "2026-09-02T16:10:07.103Z"
+      "updatedAt": "2026-09-02T16:40:07.842Z"
+    },
+    {
+      "_id": "ad5a09cf-6701-46f4-a432-9d84080a6379",
+      "userId": "279bcdeb-68c3-433f-8bbe-f457eb709b89",
+      "studentId": "ABC12345",
+      "name": "Rahul Malhotra",
+      "email": "rahul@gamil.com",
+      "course": "B.Tech Computer Science",
+      "semester": 7,
+      "department": "Computer Science & Engineering",
+      "academicDataComplete": true,
+      "subjects": [
+        {
+          "id": "subject-1788366983359",
+          "name": "1",
+          "score": 78,
+          "attendance": 89,
+          "assignmentCompletion": 78,
+          "trend": "stable"
+        },
+        {
+          "id": "subject-1788366983509",
+          "name": "2",
+          "score": 89,
+          "attendance": 78,
+          "assignmentCompletion": 89,
+          "trend": "stable"
+        },
+        {
+          "id": "subject-1788366983654",
+          "name": "3",
+          "score": 78,
+          "attendance": 89,
+          "assignmentCompletion": 78,
+          "trend": "stable"
+        },
+        {
+          "id": "subject-1788366983821",
+          "name": "4",
+          "score": 89,
+          "attendance": 78,
+          "assignmentCompletion": 89,
+          "trend": "stable"
+        },
+        {
+          "id": "subject-1788366984021",
+          "name": "5",
+          "score": 78,
+          "attendance": 89,
+          "assignmentCompletion": 78,
+          "trend": "stable"
+        }
+      ],
+      "createdAt": "2026-09-02T16:35:57.886Z",
+      "updatedAt": "2026-09-02T16:38:25.900Z",
+      "attendancePct": 89,
+      "assignmentCompletionRate": 84,
+      "assignmentAvgScore": 74,
+      "internalTestAvg": 74,
+      "previousExamScore": 78,
+      "performanceTrend": 85.9,
+      "studyEngagementScore": 75,
+      "subjectFailureCount": 0,
+      "dataSource": "student_entry",
+      "currentRiskLevel": "Low",
+      "currentRiskScore": 5,
+      "lastPredictedAt": "2026-09-02T16:38:25.900Z"
     }
   ],
   "academic_records": [
@@ -11023,6 +11117,19 @@
       "riskLevel": "Low",
       "createdAt": "2026-09-02T09:44:44.463Z",
       "updatedAt": "2026-09-02T09:44:44.463Z"
+    },
+    {
+      "_id": "a5d5b28f-de20-4b99-b2fe-bff33c66d668",
+      "studentId": "ABC12345",
+      "evaluationCycle": "Current Update",
+      "date": "2026-09-02",
+      "attendance": 89,
+      "internalMarks": 74,
+      "assignmentRate": 84,
+      "riskScore": 5,
+      "riskLevel": "Low",
+      "createdAt": "2026-09-02T16:37:03.817Z",
+      "updatedAt": "2026-09-02T16:37:03.817Z"
     }
   ],
   "predictions": [
@@ -24833,6 +24940,1680 @@
       "model_algorithm": "Random Forest",
       "createdAt": "2026-09-02T16:10:07.122Z",
       "updatedAt": "2026-09-02T16:10:07.122Z"
+    },
+    {
+      "_id": "6232b1a3-2e05-44e9-bb98-dafbf498e76f",
+      "studentId": "ABC12345",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "89.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 89.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Improving Academic Momentum",
+          "impact": "Positive",
+          "value": "+85.9%",
+          "benchmark": "Positive trajectory",
+          "description": "Recent assessment scores have increased by 85.9%."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:37:03.788Z",
+      "updatedAt": "2026-09-02T16:37:03.788Z"
+    },
+    {
+      "_id": "fc614c60-f3b9-4994-b4d6-47d864704628",
+      "studentId": "ABC12345",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "89.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 89.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Improving Academic Momentum",
+          "impact": "Positive",
+          "value": "+85.9%",
+          "benchmark": "Positive trajectory",
+          "description": "Recent assessment scores have increased by 85.9%."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:38:25.896Z",
+      "updatedAt": "2026-09-02T16:38:25.896Z"
+    },
+    {
+      "_id": "a56dbafa-0e3f-4b7b-bcd0-092ecdca5be9",
+      "studentId": "TEST059",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "77.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (77.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.124Z",
+      "updatedAt": "2026-09-02T16:40:06.124Z"
+    },
+    {
+      "_id": "0dffb6e5-6c8d-4294-9f93-9916a673d6b9",
+      "studentId": "TEST060",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "90.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 90.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "85.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (85.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.163Z",
+      "updatedAt": "2026-09-02T16:40:06.163Z"
+    },
+    {
+      "_id": "9aed0190-25e6-42c0-a4d7-aa4394672914",
+      "studentId": "TEST061",
+      "risk_level": "Moderate",
+      "risk_score": 50,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 1,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "69.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 69.0%, which borders the risk threshold."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.198Z",
+      "updatedAt": "2026-09-02T16:40:06.198Z"
+    },
+    {
+      "_id": "eb2e3a3a-296a-450c-90da-14738d6f97c7",
+      "studentId": "TEST062",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "95.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 95.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "91.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (91.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.243Z",
+      "updatedAt": "2026-09-02T16:40:06.243Z"
+    },
+    {
+      "_id": "59c47221-4b93-4a69-8923-f682ed81d582",
+      "studentId": "TEST063",
+      "risk_level": "Moderate",
+      "risk_score": 48,
+      "risk_probability": 0.9667,
+      "probabilities": {
+        "low": 0.0333,
+        "moderate": 0.9667,
+        "high": 0
+      },
+      "confidence_percentage": 96.7,
+      "contributing_factors": [
+        {
+          "factor": "Overall Academic Equilibrium",
+          "impact": "Neutral/Positive",
+          "value": "Avg 65.0%",
+          "benchmark": "Stable standing",
+          "description": "Student displays balanced indicators across attendance and assessments."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.282Z",
+      "updatedAt": "2026-09-02T16:40:06.282Z"
+    },
+    {
+      "_id": "a4b3db20-1857-478a-9ac2-61788e6cee0f",
+      "studentId": "TEST064",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "87.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 87.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "82.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (82.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.316Z",
+      "updatedAt": "2026-09-02T16:40:06.316Z"
+    },
+    {
+      "_id": "01cc5022-ffbd-472d-8806-2742187e7f74",
+      "studentId": "TEST065",
+      "risk_level": "High",
+      "risk_score": 98,
+      "risk_probability": 0.95,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0.05,
+        "high": 0.95
+      },
+      "confidence_percentage": 95,
+      "contributing_factors": [
+        {
+          "factor": "Critical Attendance Shortage",
+          "impact": "High Negative",
+          "value": "62.0%",
+          "benchmark": "Minimum required is 75%",
+          "description": "Lecture attendance of 62.0% is substantially below institutional minimum."
+        },
+        {
+          "factor": "Low Assignment Submission Rate",
+          "impact": "Moderate Negative",
+          "value": "58.0%",
+          "benchmark": "Target >= 85%",
+          "description": "Only 58.0% of required assignments have been submitted."
+        },
+        {
+          "factor": "Subject-Specific Difficulty",
+          "impact": "High Negative",
+          "value": "Data Structures (48.0%), Mathematics (48.0%), DBMS (48.0%)",
+          "benchmark": "Passing score >= 50%",
+          "description": "Below-threshold performance detected in: Data Structures (48.0%), Mathematics (48.0%), DBMS (48.0%)."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "3 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 3 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.357Z",
+      "updatedAt": "2026-09-02T16:40:06.357Z"
+    },
+    {
+      "_id": "f3313bef-9484-49ab-bc4d-2c0c179bfe9d",
+      "studentId": "TEST066",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "92.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 92.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "88.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (88.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.403Z",
+      "updatedAt": "2026-09-02T16:40:06.403Z"
+    },
+    {
+      "_id": "5d304eec-3a3a-4817-bcee-5a668f30c28b",
+      "studentId": "TEST067",
+      "risk_level": "Low",
+      "risk_score": 23,
+      "risk_probability": 0.6097,
+      "probabilities": {
+        "low": 0.6097,
+        "moderate": 0.3903,
+        "high": 0
+      },
+      "confidence_percentage": 61,
+      "contributing_factors": [
+        {
+          "factor": "Overall Academic Equilibrium",
+          "impact": "Neutral/Positive",
+          "value": "Avg 68.0%",
+          "benchmark": "Stable standing",
+          "description": "Student displays balanced indicators across attendance and assessments."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.448Z",
+      "updatedAt": "2026-09-02T16:40:06.448Z"
+    },
+    {
+      "_id": "b9898e2f-2106-4aac-a210-fa778663caaf",
+      "studentId": "TEST068",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "79.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (79.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.492Z",
+      "updatedAt": "2026-09-02T16:40:06.492Z"
+    },
+    {
+      "_id": "ebf46961-ee0a-46f1-90d6-da353b3b81a9",
+      "studentId": "TEST069",
+      "risk_level": "Moderate",
+      "risk_score": 56,
+      "risk_probability": 0.8833,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0.8833,
+        "high": 0.1167
+      },
+      "confidence_percentage": 88.3,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "67.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 67.0%, which borders the risk threshold."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "1 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 1 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.537Z",
+      "updatedAt": "2026-09-02T16:40:06.537Z"
+    },
+    {
+      "_id": "3a217337-de9f-48ed-b38b-11af66450b07",
+      "studentId": "TEST070",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "89.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 89.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "85.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (85.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.581Z",
+      "updatedAt": "2026-09-02T16:40:06.581Z"
+    },
+    {
+      "_id": "1d41819d-a691-47e2-82b8-1a7d129548a0",
+      "studentId": "TEST071",
+      "risk_level": "Moderate",
+      "risk_score": 50,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 1,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "73.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 73.0%, which borders the risk threshold."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.630Z",
+      "updatedAt": "2026-09-02T16:40:06.630Z"
+    },
+    {
+      "_id": "95b46ce9-0165-47e6-a8af-d32f1982770d",
+      "studentId": "TEST072",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "93.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 93.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "89.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (89.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.665Z",
+      "updatedAt": "2026-09-02T16:40:06.665Z"
+    },
+    {
+      "_id": "52b1e5eb-c2d9-4f24-9185-fdf8e38d7208",
+      "studentId": "TEST073",
+      "risk_level": "High",
+      "risk_score": 100,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0,
+        "high": 1
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Critical Attendance Shortage",
+          "impact": "High Negative",
+          "value": "59.0%",
+          "benchmark": "Minimum required is 75%",
+          "description": "Lecture attendance of 59.0% is substantially below institutional minimum."
+        },
+        {
+          "factor": "Low Assignment Submission Rate",
+          "impact": "Moderate Negative",
+          "value": "54.0%",
+          "benchmark": "Target >= 85%",
+          "description": "Only 54.0% of required assignments have been submitted."
+        },
+        {
+          "factor": "Subject-Specific Difficulty",
+          "impact": "High Negative",
+          "value": "Data Structures (44.0%), Mathematics (44.0%), DBMS (44.0%)",
+          "benchmark": "Passing score >= 50%",
+          "description": "Below-threshold performance detected in: Data Structures (44.0%), Mathematics (44.0%), DBMS (44.0%)."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "4 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 4 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.698Z",
+      "updatedAt": "2026-09-02T16:40:06.698Z"
+    },
+    {
+      "_id": "38169690-0c84-4a73-978c-0ca670f451ec",
+      "studentId": "TEST074",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "86.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 86.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "81.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (81.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.738Z",
+      "updatedAt": "2026-09-02T16:40:06.738Z"
+    },
+    {
+      "_id": "e224cdb7-a65f-4150-9c1d-0964b77f5aa3",
+      "studentId": "TEST075",
+      "risk_level": "Moderate",
+      "risk_score": 44,
+      "risk_probability": 0.875,
+      "probabilities": {
+        "low": 0.125,
+        "moderate": 0.875,
+        "high": 0
+      },
+      "confidence_percentage": 87.5,
+      "contributing_factors": [
+        {
+          "factor": "Overall Academic Equilibrium",
+          "impact": "Neutral/Positive",
+          "value": "Avg 67.0%",
+          "benchmark": "Stable standing",
+          "description": "Student displays balanced indicators across attendance and assessments."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.778Z",
+      "updatedAt": "2026-09-02T16:40:06.778Z"
+    },
+    {
+      "_id": "963bc5b3-73d8-4cf0-9dad-a86543e8c0e6",
+      "studentId": "TEST076",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "91.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 91.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "87.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (87.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.824Z",
+      "updatedAt": "2026-09-02T16:40:06.824Z"
+    },
+    {
+      "_id": "d6972f0b-9dbf-4d22-98ef-0bf8808a1517",
+      "studentId": "TEST077",
+      "risk_level": "High",
+      "risk_score": 97,
+      "risk_probability": 0.9333,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0.0667,
+        "high": 0.9333
+      },
+      "confidence_percentage": 93.3,
+      "contributing_factors": [
+        {
+          "factor": "Critical Attendance Shortage",
+          "impact": "High Negative",
+          "value": "64.0%",
+          "benchmark": "Minimum required is 75%",
+          "description": "Lecture attendance of 64.0% is substantially below institutional minimum."
+        },
+        {
+          "factor": "Subject-Specific Difficulty",
+          "impact": "High Negative",
+          "value": "Data Structures (49.0%), Mathematics (49.0%), DBMS (49.0%)",
+          "benchmark": "Passing score >= 50%",
+          "description": "Below-threshold performance detected in: Data Structures (49.0%), Mathematics (49.0%), DBMS (49.0%)."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "2 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 2 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.851Z",
+      "updatedAt": "2026-09-02T16:40:06.851Z"
+    },
+    {
+      "_id": "1f4ab47d-3dca-4d9b-a591-19f776eeb52d",
+      "studentId": "TEST078",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "88.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 88.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "83.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (83.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.887Z",
+      "updatedAt": "2026-09-02T16:40:06.887Z"
+    },
+    {
+      "_id": "a5c5ccd7-9617-4da3-a5b7-c3755d2e3fda",
+      "studentId": "TEST079",
+      "risk_level": "Moderate",
+      "risk_score": 50,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 1,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "70.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 70.0%, which borders the risk threshold."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.925Z",
+      "updatedAt": "2026-09-02T16:40:06.925Z"
+    },
+    {
+      "_id": "f9fdec0c-3e8d-424a-bd5c-59db5402b171",
+      "studentId": "TEST080",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "77.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (77.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.959Z",
+      "updatedAt": "2026-09-02T16:40:06.959Z"
+    },
+    {
+      "_id": "e45f5da1-13f7-48ef-81f5-618f6c901175",
+      "studentId": "TEST081",
+      "risk_level": "Moderate",
+      "risk_score": 50,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 1,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Overall Academic Equilibrium",
+          "impact": "Neutral/Positive",
+          "value": "Avg 63.0%",
+          "benchmark": "Stable standing",
+          "description": "Student displays balanced indicators across attendance and assessments."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:06.990Z",
+      "updatedAt": "2026-09-02T16:40:06.990Z"
+    },
+    {
+      "_id": "4128f771-974a-4542-975b-8af1707887dd",
+      "studentId": "TEST082",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "94.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 94.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "90.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (90.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.029Z",
+      "updatedAt": "2026-09-02T16:40:07.029Z"
+    },
+    {
+      "_id": "fb9fcc1b-4cdb-4d42-b941-50751233e120",
+      "studentId": "TEST083",
+      "risk_level": "High",
+      "risk_score": 98,
+      "risk_probability": 0.9583,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0.0417,
+        "high": 0.9583
+      },
+      "confidence_percentage": 95.8,
+      "contributing_factors": [
+        {
+          "factor": "Critical Attendance Shortage",
+          "impact": "High Negative",
+          "value": "61.0%",
+          "benchmark": "Minimum required is 75%",
+          "description": "Lecture attendance of 61.0% is substantially below institutional minimum."
+        },
+        {
+          "factor": "Low Assignment Submission Rate",
+          "impact": "Moderate Negative",
+          "value": "57.0%",
+          "benchmark": "Target >= 85%",
+          "description": "Only 57.0% of required assignments have been submitted."
+        },
+        {
+          "factor": "Subject-Specific Difficulty",
+          "impact": "High Negative",
+          "value": "Data Structures (46.5%), Mathematics (46.5%), DBMS (46.5%)",
+          "benchmark": "Passing score >= 50%",
+          "description": "Below-threshold performance detected in: Data Structures (46.5%), Mathematics (46.5%), DBMS (46.5%)."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "3 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 3 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.064Z",
+      "updatedAt": "2026-09-02T16:40:07.064Z"
+    },
+    {
+      "_id": "75c8ba65-1781-474d-a361-9a722398dbae",
+      "studentId": "TEST084",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "85.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 85.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "80.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (80.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.086Z",
+      "updatedAt": "2026-09-02T16:40:07.086Z"
+    },
+    {
+      "_id": "6c123e56-2f02-4167-bfa3-00e5661c2fbe",
+      "studentId": "TEST085",
+      "risk_level": "Moderate",
+      "risk_score": 50,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 1,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "72.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 72.0%, which borders the risk threshold."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.142Z",
+      "updatedAt": "2026-09-02T16:40:07.142Z"
+    },
+    {
+      "_id": "447ee801-5bdb-4ac0-ad76-d3437dc9f9a3",
+      "studentId": "TEST086",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "90.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 90.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "86.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (86.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.182Z",
+      "updatedAt": "2026-09-02T16:40:07.182Z"
+    },
+    {
+      "_id": "c1afe54d-4e16-46f8-91a2-2f81fa642632",
+      "studentId": "TEST087",
+      "risk_level": "Moderate",
+      "risk_score": 54,
+      "risk_probability": 0.925,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0.925,
+        "high": 0.075
+      },
+      "confidence_percentage": 92.5,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "68.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 68.0%, which borders the risk threshold."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "1 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 1 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.213Z",
+      "updatedAt": "2026-09-02T16:40:07.213Z"
+    },
+    {
+      "_id": "4fb87d8b-b086-4aa5-bbf2-440d86cb61d8",
+      "studentId": "TEST088",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "76.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (76.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.238Z",
+      "updatedAt": "2026-09-02T16:40:07.238Z"
+    },
+    {
+      "_id": "196c8ce0-67ac-4712-951d-bae2feabe57b",
+      "studentId": "TEST089",
+      "risk_level": "Moderate",
+      "risk_score": 48,
+      "risk_probability": 0.95,
+      "probabilities": {
+        "low": 0.05,
+        "moderate": 0.95,
+        "high": 0
+      },
+      "confidence_percentage": 95,
+      "contributing_factors": [
+        {
+          "factor": "Overall Academic Equilibrium",
+          "impact": "Neutral/Positive",
+          "value": "Avg 65.0%",
+          "benchmark": "Stable standing",
+          "description": "Student displays balanced indicators across attendance and assessments."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.275Z",
+      "updatedAt": "2026-09-02T16:40:07.275Z"
+    },
+    {
+      "_id": "d5247710-256b-4c4e-92f5-39b88c78e445",
+      "studentId": "TEST090",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "96.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 96.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "92.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (92.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.288Z",
+      "updatedAt": "2026-09-02T16:40:07.288Z"
+    },
+    {
+      "_id": "48b8bc98-67b4-44ce-9af9-d27b1a93509c",
+      "studentId": "TEST091",
+      "risk_level": "High",
+      "risk_score": 84,
+      "risk_probability": 0.6806,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0.3194,
+        "high": 0.6806
+      },
+      "confidence_percentage": 68.1,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "66.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 66.0%, which borders the risk threshold."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "2 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 2 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.318Z",
+      "updatedAt": "2026-09-02T16:40:07.318Z"
+    },
+    {
+      "_id": "5c7bd82e-0d96-448e-b15d-afe0f08e1db6",
+      "studentId": "TEST092",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "87.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 87.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "82.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (82.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.331Z",
+      "updatedAt": "2026-09-02T16:40:07.331Z"
+    },
+    {
+      "_id": "d44f74ba-0685-4a9f-abb4-88ce98197ec2",
+      "studentId": "TEST093",
+      "risk_level": "Moderate",
+      "risk_score": 50,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 1,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "74.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 74.0%, which borders the risk threshold."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.364Z",
+      "updatedAt": "2026-09-02T16:40:07.364Z"
+    },
+    {
+      "_id": "a11d01b3-1502-44fd-8dca-e46b24f17445",
+      "studentId": "TEST094",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "78.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (78.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.390Z",
+      "updatedAt": "2026-09-02T16:40:07.390Z"
+    },
+    {
+      "_id": "8c6a162d-daaa-40cc-92a4-feebe44a6807",
+      "studentId": "TEST095",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "91.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 91.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "87.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (87.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.431Z",
+      "updatedAt": "2026-09-02T16:40:07.431Z"
+    },
+    {
+      "_id": "d0737b02-1dff-41c8-80bb-46a9deeac1d9",
+      "studentId": "TEST096",
+      "risk_level": "High",
+      "risk_score": 100,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0,
+        "high": 1
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Critical Attendance Shortage",
+          "impact": "High Negative",
+          "value": "58.0%",
+          "benchmark": "Minimum required is 75%",
+          "description": "Lecture attendance of 58.0% is substantially below institutional minimum."
+        },
+        {
+          "factor": "Low Assignment Submission Rate",
+          "impact": "Moderate Negative",
+          "value": "53.0%",
+          "benchmark": "Target >= 85%",
+          "description": "Only 53.0% of required assignments have been submitted."
+        },
+        {
+          "factor": "Subject-Specific Difficulty",
+          "impact": "High Negative",
+          "value": "Data Structures (43.0%), Mathematics (43.0%), DBMS (43.0%)",
+          "benchmark": "Passing score >= 50%",
+          "description": "Below-threshold performance detected in: Data Structures (43.0%), Mathematics (43.0%), DBMS (43.0%)."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "4 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 4 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.474Z",
+      "updatedAt": "2026-09-02T16:40:07.474Z"
+    },
+    {
+      "_id": "099abcfd-8c58-49b4-8cfe-0ffab5bec8b4",
+      "studentId": "TEST097",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "89.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 89.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "84.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (84.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.508Z",
+      "updatedAt": "2026-09-02T16:40:07.508Z"
+    },
+    {
+      "_id": "0322a6dd-1b5c-4992-b034-936d6539145d",
+      "studentId": "TEST098",
+      "risk_level": "Moderate",
+      "risk_score": 50,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 1,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "71.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 71.0%, which borders the risk threshold."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.531Z",
+      "updatedAt": "2026-09-02T16:40:07.532Z"
+    },
+    {
+      "_id": "5c92e332-1fa9-480c-ae8e-51ef5c80cc63",
+      "studentId": "TEST099",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "85.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 85.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "80.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (80.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.563Z",
+      "updatedAt": "2026-09-02T16:40:07.563Z"
+    },
+    {
+      "_id": "769fb4cc-5bf3-4b7d-9b3a-9dd8b2adacb3",
+      "studentId": "TEST100",
+      "risk_level": "High",
+      "risk_score": 97,
+      "risk_probability": 0.9417,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0.0583,
+        "high": 0.9417
+      },
+      "confidence_percentage": 94.2,
+      "contributing_factors": [
+        {
+          "factor": "Critical Attendance Shortage",
+          "impact": "High Negative",
+          "value": "63.0%",
+          "benchmark": "Minimum required is 75%",
+          "description": "Lecture attendance of 63.0% is substantially below institutional minimum."
+        },
+        {
+          "factor": "Low Assignment Submission Rate",
+          "impact": "Moderate Negative",
+          "value": "59.0%",
+          "benchmark": "Target >= 85%",
+          "description": "Only 59.0% of required assignments have been submitted."
+        },
+        {
+          "factor": "Subject-Specific Difficulty",
+          "impact": "High Negative",
+          "value": "Data Structures (48.25%), Mathematics (48.25%), DBMS (48.25%)",
+          "benchmark": "Passing score >= 50%",
+          "description": "Below-threshold performance detected in: Data Structures (48.25%), Mathematics (48.25%), DBMS (48.25%)."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "3 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 3 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.600Z",
+      "updatedAt": "2026-09-02T16:40:07.600Z"
+    },
+    {
+      "_id": "c5a93616-c3ea-49c5-8908-6a29cdd261f8",
+      "studentId": "TEST101",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "93.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 93.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "89.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (89.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.655Z",
+      "updatedAt": "2026-09-02T16:40:07.655Z"
+    },
+    {
+      "_id": "b300acd3-06ca-4374-881b-50fa272ea117",
+      "studentId": "TEST102",
+      "risk_level": "Moderate",
+      "risk_score": 36,
+      "risk_probability": 0.6986,
+      "probabilities": {
+        "low": 0.3014,
+        "moderate": 0.6986,
+        "high": 0
+      },
+      "confidence_percentage": 69.9,
+      "contributing_factors": [
+        {
+          "factor": "Overall Academic Equilibrium",
+          "impact": "Neutral/Positive",
+          "value": "Avg 68.0%",
+          "benchmark": "Stable standing",
+          "description": "Student displays balanced indicators across attendance and assessments."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.697Z",
+      "updatedAt": "2026-09-02T16:40:07.697Z"
+    },
+    {
+      "_id": "9ee8447e-0259-4bc5-afe2-4511b45c983b",
+      "studentId": "TEST103",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "86.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 86.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "81.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (81.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.729Z",
+      "updatedAt": "2026-09-02T16:40:07.729Z"
+    },
+    {
+      "_id": "74c81fc1-c23d-4fa0-9b92-89dfd445a11d",
+      "studentId": "TEST104",
+      "risk_level": "High",
+      "risk_score": 94,
+      "risk_probability": 0.8889,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0.1111,
+        "high": 0.8889
+      },
+      "confidence_percentage": 88.9,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "65.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 65.0%, which borders the risk threshold."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "2 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 2 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.743Z",
+      "updatedAt": "2026-09-02T16:40:07.743Z"
+    },
+    {
+      "_id": "24ace0d8-0384-4e79-9c4b-a83e96f026f2",
+      "studentId": "TEST105",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Consistent Attendance",
+          "impact": "Positive",
+          "value": "92.0%",
+          "benchmark": "Excellent attendance >= 85%",
+          "description": "Regular attendance of 92.0% provides strong academic foundation."
+        },
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "88.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (88.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.797Z",
+      "updatedAt": "2026-09-02T16:40:07.797Z"
+    },
+    {
+      "_id": "acd05ed3-e280-4940-9215-8c5030703342",
+      "studentId": "TEST106",
+      "risk_level": "Moderate",
+      "risk_score": 50,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 1,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Borderline Attendance",
+          "impact": "Moderate Negative",
+          "value": "73.0%",
+          "benchmark": "Recommended >= 75%",
+          "description": "Attendance is currently at 73.0%, which borders the risk threshold."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.812Z",
+      "updatedAt": "2026-09-02T16:40:07.812Z"
+    },
+    {
+      "_id": "5dfe2aac-eb9a-4e7f-83a5-6a078dc9ca4f",
+      "studentId": "TEST107",
+      "risk_level": "Low",
+      "risk_score": 5,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 1,
+        "moderate": 0,
+        "high": 0
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Strong Internal Assessment Marks",
+          "impact": "Positive",
+          "value": "75.0%",
+          "benchmark": "Target >= 75%",
+          "description": "High internal test average (75.0%) demonstrates subject mastery."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.825Z",
+      "updatedAt": "2026-09-02T16:40:07.825Z"
+    },
+    {
+      "_id": "708fe6a6-979c-4de9-8fcc-bd420daba03f",
+      "studentId": "TEST108",
+      "risk_level": "High",
+      "risk_score": 100,
+      "risk_probability": 1,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0,
+        "high": 1
+      },
+      "confidence_percentage": 100,
+      "contributing_factors": [
+        {
+          "factor": "Critical Attendance Shortage",
+          "impact": "High Negative",
+          "value": "60.0%",
+          "benchmark": "Minimum required is 75%",
+          "description": "Lecture attendance of 60.0% is substantially below institutional minimum."
+        },
+        {
+          "factor": "Low Assignment Submission Rate",
+          "impact": "Moderate Negative",
+          "value": "55.0%",
+          "benchmark": "Target >= 85%",
+          "description": "Only 55.0% of required assignments have been submitted."
+        },
+        {
+          "factor": "Subject-Specific Difficulty",
+          "impact": "High Negative",
+          "value": "Data Structures (44.75%), Mathematics (44.75%), DBMS (44.75%)",
+          "benchmark": "Passing score >= 50%",
+          "description": "Below-threshold performance detected in: Data Structures (44.75%), Mathematics (44.75%), DBMS (44.75%)."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "4 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 4 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-02T16:40:07.849Z",
+      "updatedAt": "2026-09-02T16:40:07.849Z"
     }
   ],
   "recommendations": [
@@ -25827,6 +27608,26 @@
       "generatedAt": "2026-09-02T09:44:44.516Z",
       "createdAt": "2026-09-02T09:44:44.516Z",
       "updatedAt": "2026-09-02T09:44:44.516Z"
+    },
+    {
+      "_id": "90fbb920-3021-44f1-aa3a-c8ea33de76d9",
+      "studentId": "ABC12345",
+      "predictionId": "fc614c60-f3b9-4994-b4d6-47d864704628",
+      "immediatePriority": "Maintain your excellent academic trajectory (89% attendance, 74% assessment average) and explore advanced domain projects.",
+      "studyFocus": [
+        "Engage in advanced topic exploration and open-ended practical projects.",
+        "Leverage your strong mastery in 1 for competitive coding or academic research.",
+        "Assist peers through study circles to further solidify complex theoretical concepts."
+      ],
+      "attendanceStrategy": "Outstanding attendance at 89%. Keep leading by example.",
+      "assignmentActionPlan": "Maintain high quality and thorough documentation on all submissions.",
+      "suggestedWeeklyRoutine": "Maintain 1 - 1.5 hours daily for regular coursework, plus additional self-directed project development.",
+      "motivationalNote": "Great work! Consistent habits have placed you in a strong academic position. Keep pushing your intellectual curiosity.",
+      "source": "deterministic_rules",
+      "modelName": "EduSense Deterministic Academic Guidance Engine",
+      "generatedAt": "2026-09-02T16:38:25.954Z",
+      "createdAt": "2026-09-02T16:38:25.954Z",
+      "updatedAt": "2026-09-02T16:38:25.954Z"
     }
   ],
   "interventions": [
@@ -26082,6 +27883,20 @@
       "importedAt": "2026-09-02T16:10:07.130Z",
       "createdAt": "2026-09-02T16:10:07.130Z",
       "updatedAt": "2026-09-02T16:10:07.130Z"
+    },
+    {
+      "_id": "65b15042-8426-4f66-b419-2ecdc55e79eb",
+      "filename": "EduSense_Dynamic_Subject_Test_50_More.xlsx",
+      "uploadedBy": "Admin",
+      "uploadedByEmail": "kmr.vik136@gmail.com",
+      "importedRecordsCount": 50,
+      "rejectedRecordsCount": 0,
+      "createdCount": 0,
+      "updatedCount": 50,
+      "status": "completed",
+      "importedAt": "2026-09-02T16:40:07.855Z",
+      "createdAt": "2026-09-02T16:40:07.855Z",
+      "updatedAt": "2026-09-02T16:40:07.855Z"
     }
   ],
   "activity_logs": [
@@ -27164,6 +28979,76 @@
       "details": "Updated student assignments for abc@gmail.com: 11 student(s).",
       "createdAt": "2026-09-02T16:12:08.971Z",
       "updatedAt": "2026-09-02T16:12:08.971Z"
+    },
+    {
+      "_id": "3340c69d-1726-45aa-9af1-76e2c38b66c3",
+      "userId": "279bcdeb-68c3-433f-8bbe-f457eb709b89",
+      "userName": "Rahul Malhotra",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User rahul@gamil.com logged in successfully.",
+      "createdAt": "2026-09-02T16:35:58.113Z",
+      "updatedAt": "2026-09-02T16:35:58.113Z"
+    },
+    {
+      "_id": "fc9a5189-c7cb-4c93-8a29-8260a9a1ebbc",
+      "userId": "usr_student_01",
+      "userName": "Rahul Sharma",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User student1@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-02T16:38:51.193Z",
+      "updatedAt": "2026-09-02T16:38:51.193Z"
+    },
+    {
+      "_id": "7658b681-cb06-407d-ac65-216973596804",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "userName": "Admin",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "details": "User kmr.vik136@gmail.com logged in successfully.",
+      "createdAt": "2026-09-02T16:39:44.056Z",
+      "updatedAt": "2026-09-02T16:39:44.056Z"
+    },
+    {
+      "_id": "349b4302-56fc-4ef3-8ce7-5a5affabd78d",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "userName": "Admin",
+      "role": "admin",
+      "action": "DATASET_IMPORTED",
+      "details": "Imported dataset \"EduSense_Dynamic_Subject_Test_50_More.xlsx\": 0 created, 50 updated, 0 rejected. ML predictions updated.",
+      "createdAt": "2026-09-02T16:40:07.862Z",
+      "updatedAt": "2026-09-02T16:40:07.862Z"
+    },
+    {
+      "_id": "a811618f-0ddd-4aa7-ad8e-4b84a2f8205b",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "userName": "Admin",
+      "role": "admin",
+      "action": "MODEL_RETRAINED",
+      "details": "Retrained ML models on 164 institutional records.",
+      "createdAt": "2026-09-02T16:40:22.970Z",
+      "updatedAt": "2026-09-02T16:40:22.970Z"
+    },
+    {
+      "_id": "aa7126d0-f431-406d-b2ef-37c3fb9cd23d",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "userName": "Admin",
+      "role": "admin",
+      "action": "USER_CREATED",
+      "details": "Created new user vijay@gmail.com with role faculty",
+      "createdAt": "2026-09-02T16:42:22.407Z",
+      "updatedAt": "2026-09-02T16:42:22.407Z"
+    },
+    {
+      "_id": "c2d680bb-00ee-4848-9cc4-e07cb5f5da52",
+      "userId": "23b35d98-c00c-4494-bdce-057f0579dad1",
+      "userName": "Dr. Vijay",
+      "role": "faculty",
+      "action": "USER_LOGIN",
+      "details": "User vijay@gmail.com logged in successfully.",
+      "createdAt": "2026-09-02T16:42:43.361Z",
+      "updatedAt": "2026-09-02T16:42:43.361Z"
     }
   ]
 }

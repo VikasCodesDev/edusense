@@ -276,7 +276,7 @@ async function seed() {
     db.create('recommendations', {
       studentId: student.studentId,
       predictionId: predDoc._id,
-      source: 'ai_groq',
+      source: 'deterministic_rules',
       modelName: 'llama-3.3-70b-versatile',
       ...guidance
     });

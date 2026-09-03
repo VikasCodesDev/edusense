@@ -61,7 +61,7 @@
       "role": "admin",
       "department": "Computer Science & Engineering",
       "createdAt": "2026-09-01T15:07:52.679Z",
-      "updatedAt": "2026-09-02T16:34:10.639Z"
+      "updatedAt": "2026-09-03T15:12:20.044Z"
     },
     {
       "_id": "d4e38709-285b-4c6d-9ea0-9bb7c06b5a87",
@@ -111,11 +111,12 @@
       "facultyId": "878787",
       "department": "Computer Science & Engineering",
       "status": "active",
-      "assignedStudentIds": [],
+      "assignedStudentIds": [
+        "ABC111"
+      ],
       "assignedSemester": 1,
-      "assignedSection": "A",
       "createdAt": "2026-09-02T14:21:55.699Z",
-      "updatedAt": "2026-09-02T14:21:55.699Z"
+      "updatedAt": "2026-09-03T15:19:27.772Z"
     },
     {
       "_id": "279bcdeb-68c3-433f-8bbe-f457eb709b89",
@@ -139,10 +140,22 @@
       "department": "Computer Science & Engineering",
       "status": "active",
       "assignedStudentIds": [
-        "ABC12345"
+        "ABC12345",
+        "ABC111"
       ],
       "createdAt": "2026-09-02T16:42:22.401Z",
-      "updatedAt": "2026-09-02T16:42:22.401Z"
+      "updatedAt": "2026-09-03T15:20:15.930Z"
+    },
+    {
+      "_id": "5ba37acb-21bc-4330-b840-e65c551a3216",
+      "name": "Dheeraj",
+      "email": "dheeraj@gmail.com",
+      "passwordHash": "$2b$10$go8fiuVRgS1Pb1HMHVe73OEcAfS9dmBuJR2OeLRScmxLKisdX0O2.",
+      "role": "student",
+      "studentId": "ABC111",
+      "department": "Computer Science & Engineering",
+      "createdAt": "2026-09-03T15:16:11.921Z",
+      "updatedAt": "2026-09-03T15:16:11.921Z"
     }
   ],
   "students": [
@@ -9204,6 +9217,73 @@
       "currentRiskLevel": "Low",
       "currentRiskScore": 5,
       "lastPredictedAt": "2026-09-02T16:38:25.900Z"
+    },
+    {
+      "_id": "8f4f0a1e-5ee3-4a38-9c4f-4832c6ec37e7",
+      "userId": "5ba37acb-21bc-4330-b840-e65c551a3216",
+      "studentId": "ABC111",
+      "name": "Dheeraj",
+      "email": "dheeraj@gmail.com",
+      "course": "B.Tech Computer Science",
+      "semester": 1,
+      "department": "Computer Science & Engineering",
+      "academicDataComplete": true,
+      "subjects": [
+        {
+          "id": "subject-1788448600362",
+          "name": "a",
+          "score": 45,
+          "attendance": 67,
+          "assignmentCompletion": 65,
+          "trend": "stable"
+        },
+        {
+          "id": "subject-1788448600514",
+          "name": "b",
+          "score": 76,
+          "attendance": 34,
+          "assignmentCompletion": 45,
+          "trend": "stable"
+        },
+        {
+          "id": "subject-1788448600666",
+          "name": "c",
+          "score": 23,
+          "attendance": 67,
+          "assignmentCompletion": 43,
+          "trend": "stable"
+        },
+        {
+          "id": "subject-1788448600818",
+          "name": "d",
+          "score": 54,
+          "attendance": 11,
+          "assignmentCompletion": 34,
+          "trend": "stable"
+        },
+        {
+          "id": "subject-1788448601283",
+          "name": "e",
+          "score": 33,
+          "attendance": 65,
+          "assignmentCompletion": 22,
+          "trend": "stable"
+        }
+      ],
+      "createdAt": "2026-09-03T15:16:11.927Z",
+      "updatedAt": "2026-09-03T15:17:21.790Z",
+      "attendancePct": 34,
+      "assignmentCompletionRate": 54,
+      "assignmentAvgScore": 56,
+      "internalTestAvg": 56,
+      "previousExamScore": 45,
+      "performanceTrend": 25,
+      "studyEngagementScore": 75,
+      "subjectFailureCount": 3,
+      "dataSource": "student_entry",
+      "currentRiskLevel": "High",
+      "currentRiskScore": 87,
+      "lastPredictedAt": "2026-09-03T15:17:21.790Z"
     }
   ],
   "academic_records": [
@@ -11130,6 +11210,19 @@
       "riskLevel": "Low",
       "createdAt": "2026-09-02T16:37:03.817Z",
       "updatedAt": "2026-09-02T16:37:03.817Z"
+    },
+    {
+      "_id": "d85344e8-eab5-4b13-84c1-7a280dcf4646",
+      "studentId": "ABC111",
+      "evaluationCycle": "Current Update",
+      "date": "2026-09-03",
+      "attendance": 34,
+      "internalMarks": 56,
+      "assignmentRate": 54,
+      "riskScore": 87,
+      "riskLevel": "High",
+      "createdAt": "2026-09-03T15:17:21.802Z",
+      "updatedAt": "2026-09-03T15:17:21.802Z"
     }
   ],
   "predictions": [
@@ -26614,6 +26707,60 @@
       "model_algorithm": "Random Forest",
       "createdAt": "2026-09-02T16:40:07.849Z",
       "updatedAt": "2026-09-02T16:40:07.849Z"
+    },
+    {
+      "_id": "532639b7-3641-4cf4-b4f5-a9c0d6862b68",
+      "studentId": "ABC111",
+      "risk_level": "High",
+      "risk_score": 87,
+      "risk_probability": 0.7464,
+      "probabilities": {
+        "low": 0,
+        "moderate": 0.2536,
+        "high": 0.7464
+      },
+      "confidence_percentage": 74.6,
+      "contributing_factors": [
+        {
+          "factor": "Critical Attendance Shortage",
+          "impact": "High Negative",
+          "value": "34.0%",
+          "benchmark": "Minimum required is 75%",
+          "description": "Lecture attendance of 34.0% is substantially below institutional minimum."
+        },
+        {
+          "factor": "Improving Academic Momentum",
+          "impact": "Positive",
+          "value": "+25.0%",
+          "benchmark": "Positive trajectory",
+          "description": "Recent assessment scores have increased by 25.0%."
+        },
+        {
+          "factor": "Low Assignment Submission Rate",
+          "impact": "Moderate Negative",
+          "value": "54.0%",
+          "benchmark": "Target >= 85%",
+          "description": "Only 54.0% of required assignments have been submitted."
+        },
+        {
+          "factor": "Subject-Specific Difficulty",
+          "impact": "High Negative",
+          "value": "Data Structures (46.2%), Mathematics (46.2%), DBMS (46.2%)",
+          "benchmark": "Passing score >= 50%",
+          "description": "Below-threshold performance detected in: Data Structures (46.2%), Mathematics (46.2%), DBMS (46.2%)."
+        },
+        {
+          "factor": "Backlog / Subject Failure Count",
+          "impact": "High Negative",
+          "value": "3 subject(s)",
+          "benchmark": "0 backlog subjects",
+          "description": "Student is currently failing 3 core academic course(s)."
+        }
+      ],
+      "model_version": "1.0.4",
+      "model_algorithm": "Random Forest",
+      "createdAt": "2026-09-03T15:17:21.784Z",
+      "updatedAt": "2026-09-03T15:17:21.784Z"
     }
   ],
   "recommendations": [
@@ -27628,6 +27775,26 @@
       "generatedAt": "2026-09-02T16:38:25.954Z",
       "createdAt": "2026-09-02T16:38:25.954Z",
       "updatedAt": "2026-09-02T16:38:25.954Z"
+    },
+    {
+      "_id": "8c095344-6616-4b6c-8a21-54438e97ecca",
+      "studentId": "ABC111",
+      "predictionId": "532639b7-3641-4cf4-b4f5-a9c0d6862b68",
+      "immediatePriority": "Restore lecture attendance above 75% and submit all pending assignments within the next two weeks.",
+      "studyFocus": [
+        "Subject a: Review core concepts and solve 10 practice problems daily.",
+        "Subject c: Attend a peer‑study session and complete the chapter quiz each night.",
+        "Subject d: Watch recorded lectures, take concise notes, and redo past internal assessment questions."
+      ],
+      "attendanceStrategy": "Contact the course coordinator to explain the shortage, obtain missed lecture notes, and attend at least two extra tutorial sessions per week while setting daily reminders to be present for every scheduled class.",
+      "assignmentActionPlan": "Create a weekly assignment calendar, break each task into 2‑hour blocks, use the campus library for a distraction‑free environment, and submit drafts to a study buddy for feedback before final submission.",
+      "suggestedWeeklyRoutine": "Study 5 hours on weekdays (2 hrs for weak subjects a/c, 1 hr for d/e, 1 hr for review, 1 hr for assignments) and 8 hours on weekends (3 hrs for deep subject work, 3 hrs for assignments, 2 hrs for attendance catch‑up and revision).",
+      "motivationalNote": "Dheeraj, focused effort on attendance and consistent assignment work will quickly rebuild your academic momentum—steady progress each day leads to lasting improvement.",
+      "source": "ai_groq",
+      "modelName": "openai/gpt-oss-120b",
+      "generatedAt": "2026-09-03T15:17:23.118Z",
+      "createdAt": "2026-09-03T15:17:23.118Z",
+      "updatedAt": "2026-09-03T15:17:23.118Z"
     }
   ],
   "interventions": [
@@ -29049,6 +29216,96 @@
       "details": "User vijay@gmail.com logged in successfully.",
       "createdAt": "2026-09-02T16:42:43.361Z",
       "updatedAt": "2026-09-02T16:42:43.361Z"
+    },
+    {
+      "_id": "266f418e-f56f-4eef-96d1-14dc59f3f029",
+      "userId": "usr_student_01",
+      "userName": "Rahul Sharma",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User student1@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-03T14:38:14.012Z",
+      "updatedAt": "2026-09-03T14:38:14.012Z"
+    },
+    {
+      "_id": "703e1281-a1f2-4be4-a565-a698194a1498",
+      "userId": "usr_faculty_01",
+      "userName": "Prof. Sunita Rao",
+      "role": "faculty",
+      "action": "USER_LOGIN",
+      "details": "User faculty@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-03T14:38:14.084Z",
+      "updatedAt": "2026-09-03T14:38:14.084Z"
+    },
+    {
+      "_id": "a4093d99-e25d-4ed9-882a-2ba125a7596e",
+      "userId": "usr_admin_01",
+      "userName": "System Administrator",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "details": "User admin@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-03T14:38:14.160Z",
+      "updatedAt": "2026-09-03T14:38:14.160Z"
+    },
+    {
+      "_id": "2a189765-40cd-464d-8503-a992c084e966",
+      "userId": "5ba37acb-21bc-4330-b840-e65c551a3216",
+      "userName": "Dheeraj",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User dheeraj@gmail.com logged in successfully.",
+      "createdAt": "2026-09-03T15:16:12.179Z",
+      "updatedAt": "2026-09-03T15:16:12.179Z"
+    },
+    {
+      "_id": "c24a5b0e-45bf-4800-92a9-53b1627f711a",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "userName": "Admin",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "details": "User kmr.vik136@gmail.com logged in successfully.",
+      "createdAt": "2026-09-03T15:18:35.124Z",
+      "updatedAt": "2026-09-03T15:18:35.124Z"
+    },
+    {
+      "_id": "b1d18303-fadd-4f0f-adfe-47c2d3602190",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "userName": "Admin",
+      "role": "admin",
+      "action": "FACULTY_ASSIGNMENTS_UPDATED",
+      "details": "Updated student assignments for xyz@gmail.com: 1 student(s).",
+      "createdAt": "2026-09-03T15:19:27.785Z",
+      "updatedAt": "2026-09-03T15:19:27.785Z"
+    },
+    {
+      "_id": "78501709-16ee-4835-9abb-3a8bdac9e242",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "userName": "Admin",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "details": "User kmr.vik136@gmail.com logged in successfully.",
+      "createdAt": "2026-09-03T15:19:59.790Z",
+      "updatedAt": "2026-09-03T15:19:59.790Z"
+    },
+    {
+      "_id": "fd342fb4-d2f7-43a6-9e33-c3acb79fab12",
+      "userId": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
+      "userName": "Admin",
+      "role": "admin",
+      "action": "FACULTY_ASSIGNMENTS_UPDATED",
+      "details": "Updated student assignments for vijay@gmail.com: 2 student(s).",
+      "createdAt": "2026-09-03T15:20:15.944Z",
+      "updatedAt": "2026-09-03T15:20:15.944Z"
+    },
+    {
+      "_id": "e27d096c-a643-41ab-a628-c7e1b002c52e",
+      "userId": "23b35d98-c00c-4494-bdce-057f0579dad1",
+      "userName": "Dr. Vijay",
+      "role": "faculty",
+      "action": "USER_LOGIN",
+      "details": "User vijay@gmail.com logged in successfully.",
+      "createdAt": "2026-09-03T15:20:32.818Z",
+      "updatedAt": "2026-09-03T15:20:32.818Z"
     }
   ]
 }

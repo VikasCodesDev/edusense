@@ -620,6 +620,7 @@ exports.confirmDatasetImport = async (req, res) => {
 
       const existing = db.findOne('students', { studentId });
       if (existing) {
+        db.deleteMany('recommendations', { studentId });
         db.updateOne('students', { _id: existing._id }, { ...studentDoc, userId: existing.userId });
         updatedCount++;
       } else {

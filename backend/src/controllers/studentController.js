@@ -58,7 +58,7 @@ exports.getMyProfile = async (req, res) => {
 
     let prediction = getLatestPrediction(student.studentId);
     let recommendation = getLatestRecommendation(student.studentId);
-    if (hasAcademicData(student) && (!prediction || !recommendation)) {
+    if (hasAcademicData(student) && (!prediction || !recommendation || (recommendation.source === 'deterministic_rules' && llmService.isGroqConfigured()))) {
       const refreshed = await refreshStudentIntelligence(student);
       prediction = refreshed.prediction;
       recommendation = refreshed.recommendation;
@@ -160,7 +160,7 @@ exports.getRecommendations = async (req, res) => {
     }
 
     let recommendation = getLatestRecommendation(student.studentId);
-    if (!recommendation) {
+    if (!recommendation || (recommendation.source === 'deterministic_rules' && llmService.isGroqConfigured())) {
       const guidance = await llmService.generateGuidance(student, prediction);
       recommendation = db.create('recommendations', {
         studentId: student.studentId,

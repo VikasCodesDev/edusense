@@ -6,22 +6,17 @@
 
 const bcrypt = require('bcryptjs');
 const path = require('path');
+require('dotenv').config();
 const db = require('../backend/src/models/db');
 const mlService = require('../backend/src/services/mlService');
 const llmService = require('../backend/src/services/llmService');
 
 async function seed() {
   console.log('[Seeder] Initializing EduSense Database Seeding...');
+  await db.ready;
 
   // Clear existing collections
-  db.data.users = [];
-  db.data.students = [];
-  db.data.academic_records = [];
-  db.data.predictions = [];
-  db.data.recommendations = [];
-  db.data.interventions = [];
-  db.data.datasets = [];
-  db.data.activity_logs = [];
+  await db.clearCollections();
 
   const salt = await bcrypt.genSalt(10);
   const studentPasswordHash = await bcrypt.hash('Student@123', salt);
@@ -369,6 +364,8 @@ async function seed() {
   });
 
   console.log('[Seeder] Database seeding completed successfully!');
+  await db.flush();
+  await db.close();
 }
 
 seed().catch(err => {

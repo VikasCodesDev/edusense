@@ -8,7 +8,7 @@
       "role": "admin",
       "department": "Academic Computing Center",
       "createdAt": "2026-09-01T11:20:40.387Z",
-      "updatedAt": "2026-09-01T11:20:40.388Z"
+      "updatedAt": "2026-09-03T15:12:20.044Z"
     },
     {
       "_id": "usr_faculty_01",
@@ -61,7 +61,7 @@
       "role": "admin",
       "department": "Computer Science & Engineering",
       "createdAt": "2026-09-01T15:07:52.679Z",
-      "updatedAt": "2026-09-03T15:12:20.044Z"
+      "updatedAt": "2026-09-05T07:40:38.477Z"
     },
     {
       "_id": "d4e38709-285b-4c6d-9ea0-9bb7c06b5a87",
@@ -29306,6 +29306,16 @@
       "details": "User vijay@gmail.com logged in successfully.",
       "createdAt": "2026-09-03T15:20:32.818Z",
       "updatedAt": "2026-09-03T15:20:32.818Z"
+    },
+    {
+      "_id": "ed7056f1-609d-461a-a29a-a935a45a71fb",
+      "userId": "usr_student_01",
+      "userName": "Rahul Sharma",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User student1@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-05T07:38:38.315Z",
+      "updatedAt": "2026-09-05T07:38:38.315Z"
     }
   ]
 }

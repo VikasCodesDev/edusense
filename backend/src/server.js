@@ -6,6 +6,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const db = require('./models/db');
 const authRoutes = require('./routes/authRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const facultyRoutes = require('./routes/facultyRoutes');
@@ -60,9 +61,16 @@ app.use((err, req, res, next) => {
 
 // Start Server if directly executed
 if (require.main === module) {
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`[EduSense Backend] Server listening on http://0.0.0.0:${PORT}`);
-  });
+  db.ready
+    .then(() => {
+      app.listen(PORT, '0.0.0.0', () => {
+        console.log(`[EduSense Backend] Server listening on http://0.0.0.0:${PORT}`);
+      });
+    })
+    .catch((err) => {
+      console.error(`[EduSense Backend] Database initialization failed: ${err.message}`);
+      process.exitCode = 1;
+    });
 }
 
 module.exports = app;

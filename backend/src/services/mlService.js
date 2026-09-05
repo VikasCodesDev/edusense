@@ -94,7 +94,7 @@ class MLServiceClient {
 
   async retrainModel(records = null, csvPath = null) {
     try {
-      const response = await axios.post(`${ML_SERVICE_URL}/model/train`, { records, csv_path: csvPath }, { timeout: 30000 });
+      const response = await axios.post(`${ML_SERVICE_URL}/model/train`, { records, csv_path: csvPath }, { timeout: 120000 });
       return response.data;
     } catch (err) {
       throw new Error(`ML retraining request failed: ${err.message}`);

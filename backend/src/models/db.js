@@ -175,9 +175,22 @@ class DatabaseStore {
 
   async persistCollection(collectionName) {
     const collection = this.mongoDb.collection(collectionName);
-    await collection.deleteMany({});
     const documents = this.data[collectionName];
-    if (documents.length > 0) await collection.insertMany(documents, { ordered: false });
+    const existing = await collection.find({}).toArray();
+    const desiredIds = new Set(documents.map((doc) => doc._id));
+    const operations = [
+      ...existing
+        .filter((doc) => !desiredIds.has(doc._id))
+        .map((doc) => ({ deleteOne: { filter: { _id: doc._id } } })),
+      ...documents.map((doc) => ({
+        replaceOne: {
+          filter: { _id: doc._id },
+          replacement: doc,
+          upsert: true
+        }
+      }))
+    ];
+    if (operations.length > 0) await collection.bulkWrite(operations, { ordered: true });
   }
 
   async persistAll() {

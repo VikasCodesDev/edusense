@@ -56,12 +56,12 @@
     {
       "_id": "f7888ff4-77fc-4a94-9ef8-5c319029a0c9",
       "name": "Admin",
-      "email": "kmr.vik136@gmail.com",
+      "email": "edusense.admin@gmail.com",
       "passwordHash": "$2b$10$WKVJ5eozWbrQFdSW7HwccunLZR7pwmoMdX5zJjnduY/C8tL4dnkLa",
       "role": "admin",
       "department": "Computer Science & Engineering",
       "createdAt": "2026-09-01T15:07:52.679Z",
-      "updatedAt": "2026-09-05T07:40:38.477Z"
+      "updatedAt": "2026-09-05T14:39:44.446Z"
     },
     {
       "_id": "d4e38709-285b-4c6d-9ea0-9bb7c06b5a87",

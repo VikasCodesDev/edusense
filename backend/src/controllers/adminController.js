@@ -42,7 +42,7 @@ const OPTIONAL_IMPORT_ALIASES = {
   study_engagement_score: ['engagementscore', 'studyengagement', 'studyengagementscore'],
   subject_failure_count: ['failedsubjects', 'subjectfailures', 'failurecount']
 };
-const REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
+const REAL_ADMIN_EMAIL = 'edusense.admin@gmail.com';
 const DEMO_ADMIN_EMAIL = 'admin@edusense.edu';
 const DEMO_USER_IDS = new Set(['usr_admin_01', 'usr_faculty_01', 'usr_student_01', 'usr_student_02', 'usr_student_03']);
 

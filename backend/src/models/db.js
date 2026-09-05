@@ -23,9 +23,10 @@ const COLLECTIONS = [
   'datasets',
   'activity_logs'
 ];
-const REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
+const REAL_ADMIN_EMAIL = 'edusense.admin@gmail.com';
+const LEGACY_REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
 const REAL_ADMIN_PASSWORD_HASH = '$2b$10$WKVJ5eozWbrQFdSW7HwccunLZR7pwmoMdX5zJjnduY/C8tL4dnkLa';
-const REAL_ADMIN_ID = 'usr_real_admin_01';
+const REAL_ADMIN_ID = 'f7888ff4-77fc-4a94-9ef8-5c319029a0c9';
 
 function emptyData() {
   return COLLECTIONS.reduce((data, collection) => {
@@ -120,7 +121,11 @@ class DatabaseStore {
     const users = this.getCollection('users');
     const students = this.getCollection('students');
     const now = new Date().toISOString();
-    const existing = users.find((user) => user.email === REAL_ADMIN_EMAIL);
+    const existing = users.find((user) => (
+      user._id === REAL_ADMIN_ID ||
+      user.email === REAL_ADMIN_EMAIL ||
+      user.email === LEGACY_REAL_ADMIN_EMAIL
+    ));
 
     if (existing) {
       existing._id = existing._id || REAL_ADMIN_ID;

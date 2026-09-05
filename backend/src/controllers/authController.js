@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('../models/db');
 const { JWT_SECRET } = require('../middleware/auth');
-const REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
+const REAL_ADMIN_EMAIL = 'edusense.admin@gmail.com';
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

@@ -4,7 +4,7 @@
 
 const db = require('../models/db');
 const { getLatestPrediction, getLatestRecommendation, hasAcademicData } = require('../services/academicService');
-const REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';
+const REAL_ADMIN_EMAIL = 'edusense.admin@gmail.com';
 const DEMO_ADMIN_EMAIL = 'admin@edusense.edu';
 
 function isDemoStudentRecord(student) {

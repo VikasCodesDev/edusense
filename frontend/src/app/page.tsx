@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import MagneticButton from '@/components/MagneticButton';
@@ -23,8 +23,15 @@ import {
   Compass
 } from 'lucide-react';
 
+const HERO_LINES = [
+  'Identify academic risk earlier.',
+  'Understand what affects performance.',
+  'Get personalized guidance.'
+];
+
 export default function LandingPage() {
   const { user, switchDemoAccount } = useAuth();
+  const [typedHeroLines, setTypedHeroLines] = useState<string[]>([]);
 
   // Interactive Live Simulator state
   const [simAttendance, setSimAttendance] = useState(62);
@@ -54,6 +61,32 @@ export default function LandingPage() {
 
   const simRisk = calculateSimulatedRisk();
 
+  useEffect(() => {
+    let lineIndex = 0;
+    let characterIndex = 0;
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const typeNextCharacter = () => {
+      const line = HERO_LINES[lineIndex];
+      characterIndex += 1;
+      setTypedHeroLines((current) => [
+        ...current.slice(0, lineIndex),
+        line.slice(0, characterIndex)
+      ]);
+
+      if (characterIndex < line.length) {
+        timeoutId = setTimeout(typeNextCharacter, 34);
+      } else if (lineIndex < HERO_LINES.length - 1) {
+        lineIndex += 1;
+        characterIndex = 0;
+        timeoutId = setTimeout(typeNextCharacter, 180);
+      }
+    };
+
+    timeoutId = setTimeout(typeNextCharacter, 180);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <div className="space-y-24">
       {/* 1. HERO SECTION */}
@@ -69,10 +102,12 @@ export default function LandingPage() {
 
           {/* Main Hero Heading */}
           <div className="max-w-4xl mx-auto space-y-4">
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-              Identify academic risk earlier.{' '}
-                Understand what affects performance.{' '}
-              Get personalized guidance.
+            <h1 aria-label={HERO_LINES.join(' ')} className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+              {HERO_LINES.map((line, index) => (
+                <span key={line} className="block min-h-[1.2em]">
+                  {typedHeroLines[index] || ''}
+                </span>
+              ))}
             </h1>
             <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
               EduSense combines attendance, continuous assessments, assignment completion, and temporal performance trends into a multi-model ML risk predictor paired with LLM-guided academic intervention.

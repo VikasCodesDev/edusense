@@ -71,7 +71,7 @@ exports.login = async (req, res) => {
 
 exports.register = async (req, res) => {
   try {
-    const { name, email, password, role, studentId, department, semester } = req.body;
+    const { name, email, password, role, studentId, department, degree, semester } = req.body;
     const requestedRole = String(role || 'student').toLowerCase();
     if (requestedRole !== 'student') {
       return res.status(403).json({ success: false, error: 'Public registration is limited to student accounts.' });
@@ -118,7 +118,8 @@ exports.register = async (req, res) => {
       passwordHash,
       role: 'student',
       studentId: normalizedStudentId,
-      department: department || 'Computer Science & Engineering'
+      department: department || 'Computer Science & Engineering',
+      degree: degree || 'Bachelor of Technology (B.Tech)'
     });
 
     db.create('students', {
@@ -126,7 +127,8 @@ exports.register = async (req, res) => {
       studentId: normalizedStudentId,
       name: name.trim(),
       email: normalizedEmail,
-      course: 'B.Tech Computer Science',
+      course: degree || 'Bachelor of Technology (B.Tech)',
+      degree: degree || 'Bachelor of Technology (B.Tech)',
       semester: normalizedSemester,
       department: department || 'Computer Science & Engineering',
       academicDataComplete: false,

@@ -18,7 +18,7 @@ interface AuthContextType {
   studentData: any | null;
   token: string | null;
   loading: boolean;
-  login: (email: string, pass: string, role?: 'student' | 'faculty' | 'admin') => Promise<{ success: boolean; role?: string; error?: string }>;
+  login: (email: string, pass: string, role?: 'student' | 'faculty' | 'admin', rememberMe?: boolean) => Promise<{ success: boolean; role?: string; error?: string }>;
   logout: () => void;
   switchDemoAccount: (role: 'student' | 'faculty' | 'admin', email?: string) => Promise<boolean>;
   refreshUser: () => Promise<void>;
@@ -34,7 +34,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const refreshUser = async () => {
     try {
-      const savedToken = localStorage.getItem('edusense_token');
+      const savedToken = localStorage.getItem('edusense_token') || sessionStorage.getItem('edusense_token');
       if (!savedToken) {
         setUser(null);
         setStudentData(null);
@@ -47,12 +47,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (res.data && res.data.success) {
         setUser(res.data.user);
         setStudentData(res.data.student || null);
-        localStorage.setItem('edusense_user', JSON.stringify(res.data.user));
+        const userStorage = localStorage.getItem('edusense_token') ? localStorage : sessionStorage;
+        userStorage.setItem('edusense_user', JSON.stringify(res.data.user));
       }
     } catch (err) {
       console.warn('Session verification failed, logging out.');
       localStorage.removeItem('edusense_token');
       localStorage.removeItem('edusense_user');
+      sessionStorage.removeItem('edusense_token');
+      sessionStorage.removeItem('edusense_user');
       setUser(null);
       setToken(null);
     } finally {
@@ -64,14 +67,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     refreshUser();
   }, []);
 
-  const login = async (email: string, pass: string, role?: 'student' | 'faculty' | 'admin') => {
+  const login = async (email: string, pass: string, role?: 'student' | 'faculty' | 'admin', rememberMe = true) => {
     try {
       const res = await api.post('/auth/login', { email, password: pass, role });
       if (res.data && res.data.success) {
         const receivedToken = res.data.token;
         const receivedUser = res.data.user;
-        localStorage.setItem('edusense_token', receivedToken);
-        localStorage.setItem('edusense_user', JSON.stringify(receivedUser));
+        const storage = rememberMe ? localStorage : sessionStorage;
+        const otherStorage = rememberMe ? sessionStorage : localStorage;
+        otherStorage.removeItem('edusense_token');
+        otherStorage.removeItem('edusense_user');
+        storage.setItem('edusense_token', receivedToken);
+        storage.setItem('edusense_user', JSON.stringify(receivedUser));
         setToken(receivedToken);
         setUser(receivedUser);
         await refreshUser();
@@ -87,6 +94,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = () => {
     localStorage.removeItem('edusense_token');
     localStorage.removeItem('edusense_user');
+    sessionStorage.removeItem('edusense_token');
+    sessionStorage.removeItem('edusense_user');
     setUser(null);
     setStudentData(null);
     setToken(null);

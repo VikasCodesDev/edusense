@@ -260,6 +260,9 @@ exports.updateMyAcademicData = async (req, res) => {
       semester: req.body.semester !== undefined && req.body.semester !== null && req.body.semester !== ''
         ? Number(req.body.semester)
         : student.semester,
+      department: student.department,
+      course: student.course,
+      degree: student.degree || student.course,
       attendancePct: Number(req.body.attendancePct),
       assignmentCompletionRate: Number(req.body.assignmentCompletionRate),
       assignmentAvgScore: Number(req.body.assignmentAvgScore ?? req.body.internalTestAvg),

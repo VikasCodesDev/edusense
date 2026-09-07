@@ -17,7 +17,7 @@ const api = axios.create({
 // Attach Authorization token to requests automatically
 api.interceptors.request.use((config) => {
   if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('edusense_token');
+    const token = localStorage.getItem('edusense_token') || sessionStorage.getItem('edusense_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -34,6 +34,8 @@ api.interceptors.response.use(
       if (!window.location.pathname.startsWith('/login') && window.location.pathname !== '/') {
         localStorage.removeItem('edusense_token');
         localStorage.removeItem('edusense_user');
+        sessionStorage.removeItem('edusense_token');
+        sessionStorage.removeItem('edusense_user');
       }
     }
     return Promise.reject(error);

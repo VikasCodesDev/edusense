@@ -24,14 +24,18 @@ export default function DataImportPage() {
   const [importing, setImporting] = useState(false);
   const [importResult, setImportResult] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
+  const selectFile = (selectedFile: File) => {
+    if (/\.(csv|xlsx|xls)$/i.test(selectedFile.name)) {
+      setFile(selectedFile);
       setPreviewData(null);
       setImportResult(null);
       setError(null);
     }
+  };
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) selectFile(e.target.files[0]);
   };
 
   const handleRunValidation = async () => {
@@ -189,7 +193,10 @@ export default function DataImportPage() {
         {/* File Dropzone */}
         <div
           onClick={() => fileInputRef.current?.click()}
-          className="border-2 border-dashed border-slate-700 hover:border-indigo-500 rounded-xl p-8 text-center cursor-pointer bg-slate-900/40 hover:bg-slate-900/80 transition-all space-y-3"
+          onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+          onDragLeave={() => setIsDragging(false)}
+          onDrop={(e) => { e.preventDefault(); setIsDragging(false); if (e.dataTransfer.files[0]) selectFile(e.dataTransfer.files[0]); }}
+          className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer bg-slate-900/40 hover:bg-slate-900/80 transition-all space-y-3 ${isDragging ? 'border-indigo-400 bg-indigo-500/10' : 'border-slate-700 hover:border-indigo-500'}`}
         >
           <input
             ref={fileInputRef}

@@ -94,7 +94,7 @@ export default function Navbar() {
 
             {/* Desktop Navigation Links */}
             {user && (
-              <nav className="hidden md:flex items-center space-x-1">
+              <nav className="hidden xl:flex items-center space-x-1">
                 {currentLinks.map((link) => {
                   const Icon = link.icon;
                   const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
@@ -243,7 +243,7 @@ export default function Navbar() {
             {user && (
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-white"
+                className="xl:hidden p-1.5 rounded-lg text-slate-400 hover:text-white"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -253,7 +253,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation Dropdown */}
         {user && mobileMenuOpen && (
-          <div className="md:hidden py-3 border-t border-slate-800 space-y-1">
+          <div className="xl:hidden py-3 border-t border-slate-800 space-y-1">
             {currentLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;

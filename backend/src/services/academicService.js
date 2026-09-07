@@ -152,6 +152,10 @@ function validateAcademicPayload(body) {
   } else {
     body.subjects.forEach((subject, index) => {
       if (!subject.name || !String(subject.name).trim()) errors.push(`Subject ${index + 1} name is required.`);
+      const credits = Number(subject.credits);
+      if (subject.credits !== undefined && subject.credits !== null && subject.credits !== '' && (!Number.isFinite(credits) || credits < 0.5 || credits > 10)) {
+        errors.push(`${subject.name || `Subject ${index + 1}`} credits must be between 0.5 and 10.`);
+      }
       ['score', 'attendance', 'assignmentCompletion'].forEach((field) => {
         const value = Number(subject[field]);
         if (subject[field] === undefined || subject[field] === null || subject[field] === '') {
@@ -173,7 +177,9 @@ function normalizeSubjects(subjects) {
     score: Number(subject.score),
     attendance: Number(subject.attendance),
     assignmentCompletion: Number(subject.assignmentCompletion),
-    trend: subject.trend || 'stable'
+    trend: subject.trend || 'stable',
+    courseCode: String(subject.courseCode || subject.id || '').trim(),
+    credits: Number(subject.credits ?? 4)
   }));
 }
 

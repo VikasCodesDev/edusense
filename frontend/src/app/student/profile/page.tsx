@@ -52,7 +52,7 @@ export default function ProfilePage() {
       ...prev,
       subjects: [
         ...prev.subjects,
-        { id: `subject-${Date.now()}`, name: '', score: '', attendance: '', assignmentCompletion: '', trend: 'stable' }
+        { id: `subject-${Date.now()}`, name: '', courseCode: '', credits: 4, score: '', attendance: '', assignmentCompletion: '', trend: 'stable' }
       ]
     }));
   };
@@ -216,6 +216,8 @@ export default function ProfilePage() {
               <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-slate-900/60 border-b border-slate-800">
                 <tr>
                   <th className="py-2.5 px-3">Subject</th>
+                  <th className="py-2.5 px-3">Course Code</th>
+                  <th className="py-2.5 px-3">Credits</th>
                   <th className="py-2.5 px-3">Marks</th>
                   <th className="py-2.5 px-3">Attendance</th>
                   <th className="py-2.5 px-3">Assignments</th>
@@ -233,6 +235,12 @@ export default function ProfilePage() {
                         onChange={(e) => updateSubject(idx, 'name', e.target.value)}
                         className="min-w-56 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500"
                       />
+                    </td>
+                    <td className="py-2.5 px-3">
+                      <input type="text" required={!subject.courseCode} value={subject.courseCode || ''} onChange={(e) => updateSubject(idx, 'courseCode', e.target.value)} className="w-28 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500" placeholder="CS301" />
+                    </td>
+                    <td className="py-2.5 px-3">
+                      <input type="number" min={0.5} max={10} step="0.5" required={!subject.credits} value={subject.credits ?? 4} onChange={(e) => updateSubject(idx, 'credits', e.target.value)} className="w-20 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500" />
                     </td>
                     {['score', 'attendance', 'assignmentCompletion'].map((field) => (
                       <td key={field} className="py-2.5 px-3">

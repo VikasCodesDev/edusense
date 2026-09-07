@@ -67,7 +67,7 @@ export default function SubjectsPage() {
                     <BookOpen className="w-4 h-4 text-indigo-400" />
                     <h3 className="text-base font-bold text-white">{sub.name}</h3>
                   </div>
-                  <span className="text-xs text-slate-400">Department of Computer Science • 4 Credits</span>
+                  <span className="text-xs text-slate-400">{sub.courseCode || 'Legacy course code'} • {sub.credits ?? 4} Credits</span>
                 </div>
                 <span
                   className={`text-xs px-2.5 py-1 rounded-full font-medium ${

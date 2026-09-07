@@ -101,10 +101,10 @@ export default function LandingPage() {
           </div>
 
           {/* Main Hero Heading */}
-          <div className="max-w-4xl mx-auto space-y-4">
+          <div className="max-w-7xl mx-auto space-y-4">
             <h1 aria-label={HERO_LINES.join(' ')} className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
               {HERO_LINES.map((line, index) => (
-                <span key={line} className="block min-h-[1.2em]">
+                <span key={line} className="block min-h-[1.2em] sm:whitespace-nowrap">
                   {typedHeroLines[index] || ''}
                 </span>
               ))}

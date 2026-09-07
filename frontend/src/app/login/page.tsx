@@ -215,12 +215,12 @@ export default function LoginPage() {
               <div>
                 <label className="block text-xs font-medium text-slate-300 mb-1.5">Department</label>
                 <select value={department} onChange={(e) => setDepartment(e.target.value)} className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-indigo-500">
-                  <option value="CSE(Computer Science & Engineering)">CSE - Computer Science &amp; Engineering</option>
-                  <option value="AIML(Artificial Intelligence & Machine Learning)">AIML - Artificial Intelligence &amp; Machine Learning</option>
-                  <option value="AIDS(Artificial Intelligence & Data Science)">AIDS - Artificial Intelligence &amp; Data Science</option>
-                  <option value="CS(Cyber Security)">CS - Cyber Security</option>
-                  <option value="IT(Information Technology)">IT - Information Technology</option>
-                  <option value="ECE(Electronics & Communication Engineering)">ECE - Electronics &amp; Communication Engineering</option>
+                  <option value="CSE (Computer Science & Engineering)">CSE - Computer Science &amp; Engineering</option>
+                  <option value="AIML (Artificial Intelligence & Machine Learning)">AIML - Artificial Intelligence &amp; Machine Learning</option>
+                  <option value="AIDS (Artificial Intelligence & Data Science)">AIDS - Artificial Intelligence &amp; Data Science</option>
+                  <option value="CS (Cyber Security)">CS - Cyber Security</option>
+                  <option value="IT (Information Technology)">IT - Information Technology</option>
+                  <option value="ECE (Electronics & Communication Engineering)">ECE - Electronics &amp; Communication Engineering</option>
                 </select>
               </div>
               <div>

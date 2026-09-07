@@ -218,7 +218,7 @@ export default function LoginPage() {
                   <option value="CSE">CSE - Computer Science &amp; Engineering</option>
                   <option value="AIML">AIML - Artificial Intelligence &amp; Machine Learning</option>
                   <option value="AIDS">AIDS - Artificial Intelligence &amp; Data Science</option>
-                  <option value="Cybersecurity">Cybersecurity</option>
+                  <option value="CS">CS - Cyber Security</option>
                   <option value="IT">IT - Information Technology</option>
                   <option value="ECE">ECE - Electronics &amp; Communication Engineering</option>
                 </select>

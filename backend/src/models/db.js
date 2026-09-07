@@ -21,7 +21,8 @@ const COLLECTIONS = [
   'recommendations',
   'interventions',
   'datasets',
-  'activity_logs'
+  'activity_logs',
+  'bug_reports'
 ];
 const REAL_ADMIN_EMAIL = 'edusense.admin@gmail.com';
 const LEGACY_REAL_ADMIN_EMAIL = 'kmr.vik136@gmail.com';

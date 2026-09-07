@@ -161,6 +161,12 @@ export default function AdminDashboard() {
           </div>
         </Link>
 
+        <Link href="/admin/bug-reports" className="subtle-card subtle-card-hover rounded-2xl p-6 border border-slate-800 space-y-4 group">
+          <div className="w-12 h-12 rounded-xl bg-rose-600/20 text-rose-400 border border-rose-500/30 flex items-center justify-center group-hover:scale-105 transition-transform"><AlertTriangle className="w-6 h-6" /></div>
+          <div><h3 className="text-base font-bold text-white group-hover:text-rose-400 transition-colors">Reported Bugs</h3><p className="text-xs text-slate-400 mt-1">Review user-submitted issues and manage resolution status.</p></div>
+          <div className="text-xs font-semibold text-rose-400 inline-flex items-center gap-1"><span>Open Bug Reports</span><ArrowRight className="w-3.5 h-3.5" /></div>
+        </Link>
+
       </div>
 
       {/* Activity Logs Stream */}

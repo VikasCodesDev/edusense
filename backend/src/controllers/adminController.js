@@ -736,6 +736,30 @@ exports.getActivityLogs = async (req, res) => {
   }
 };
 
+exports.getBugReports = async (req, res) => {
+  try {
+    const reports = db.find('bug_reports')
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    return res.json({ success: true, reports });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+exports.updateBugReportStatus = async (req, res) => {
+  try {
+    const validStatuses = new Set(['Open', 'In Progress', 'Resolved', 'Closed']);
+    if (!validStatuses.has(req.body.status)) {
+      return res.status(400).json({ success: false, error: 'Invalid bug report status.' });
+    }
+    const report = db.updateOne('bug_reports', { _id: req.params.id }, { status: req.body.status });
+    if (!report) return res.status(404).json({ success: false, error: 'Bug report not found.' });
+    return res.json({ success: true, report });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+};
+
 function parseCsvString(csvString) {
   return new Promise((resolve, reject) => {
     const results = [];

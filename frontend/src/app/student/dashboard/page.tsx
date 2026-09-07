@@ -467,7 +467,7 @@ export default function StudentDashboard() {
                 <div className="flex items-start justify-between">
                   <div>
                     <h4 className="font-semibold text-sm text-white">{sub.name}</h4>
-                    <span className="text-[11px] text-slate-400">Course Code: CS{300 + idx}</span>
+                    <span className="text-[11px] text-slate-400">Course Code: {sub.courseCode || 'Legacy course code'}</span>
                   </div>
                   <span
                     className={`text-[10px] px-2 py-0.5 rounded font-mono ${

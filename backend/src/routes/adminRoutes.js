@@ -15,5 +15,7 @@ router.post('/import/confirm', requireAuth, requireRole('admin'), adminControlle
 router.get('/model', requireAuth, requireRole('admin'), adminController.getModelStatus);
 router.post('/model/retrain', requireAuth, requireRole('admin'), adminController.triggerModelRetrain);
 router.get('/logs', requireAuth, requireRole('admin'), adminController.getActivityLogs);
+router.get('/bug-reports', requireAuth, requireRole('admin'), adminController.getBugReports);
+router.put('/bug-reports/:id/status', requireAuth, requireRole('admin'), adminController.updateBugReportStatus);
 
 module.exports = router;

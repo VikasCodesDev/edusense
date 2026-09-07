@@ -84,7 +84,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
       <div>
         <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">Institutional Identity</span>
         <h1 className="text-2xl sm:text-3xl font-bold text-white mt-1">Student Academic Profile</h1>
@@ -212,16 +212,16 @@ export default function ProfilePage() {
             </button>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-300">
+            <table className="w-full min-w-[760px] table-fixed text-left text-xs text-slate-300">
               <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-slate-900/60 border-b border-slate-800">
                 <tr>
-                  <th className="py-2.5 px-3">Subject</th>
-                  <th className="py-2.5 px-3">Course Code</th>
-                  <th className="py-2.5 px-3">Credits</th>
-                  <th className="py-2.5 px-3">Marks</th>
-                  <th className="py-2.5 px-3">Attendance</th>
-                  <th className="py-2.5 px-3">Assignments</th>
-                  <th className="py-2.5 px-3 text-right">Action</th>
+                  <th className="w-[22%] py-2.5 px-3">Subject</th>
+                  <th className="w-[15%] py-2.5 px-3">Course Code</th>
+                  <th className="w-[10%] py-2.5 px-3">Credits</th>
+                  <th className="w-[13%] py-2.5 px-3">Marks</th>
+                  <th className="w-[13%] py-2.5 px-3">Attendance</th>
+                  <th className="w-[17%] py-2.5 px-3">Assignments</th>
+                  <th className="w-[10%] py-2.5 px-3 text-right">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800">
@@ -233,14 +233,14 @@ export default function ProfilePage() {
                         required
                         value={subject.name}
                         onChange={(e) => updateSubject(idx, 'name', e.target.value)}
-                        className="min-w-56 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500"
+                        className="w-full min-w-0 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500"
                       />
                     </td>
                     <td className="py-2.5 px-3">
-                      <input type="text" required={!subject.courseCode} value={subject.courseCode || ''} onChange={(e) => updateSubject(idx, 'courseCode', e.target.value)} className="w-28 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500" placeholder="CS301" />
+                      <input type="text" required={!subject.courseCode} value={subject.courseCode || ''} onChange={(e) => updateSubject(idx, 'courseCode', e.target.value)} className="w-full min-w-0 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500" placeholder="Course code" />
                     </td>
                     <td className="py-2.5 px-3">
-                      <input type="number" min={0.5} max={10} step="0.5" required={!subject.credits} value={subject.credits ?? 4} onChange={(e) => updateSubject(idx, 'credits', e.target.value)} className="w-20 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500" />
+                      <input type="number" min={0.5} max={10} step="0.5" required={!subject.credits} value={subject.credits ?? 4} onChange={(e) => updateSubject(idx, 'credits', e.target.value)}                       className="w-full min-w-0 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500" />
                     </td>
                     {['score', 'attendance', 'assignmentCompletion'].map((field) => (
                       <td key={field} className="py-2.5 px-3">
@@ -252,7 +252,7 @@ export default function ProfilePage() {
                           required
                           value={subject[field]}
                           onChange={(e) => updateSubject(idx, field, e.target.value)}
-                          className="w-24 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500"
+                          className="w-full min-w-0 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white focus:outline-none focus:border-indigo-500"
                         />
                       </td>
                     ))}

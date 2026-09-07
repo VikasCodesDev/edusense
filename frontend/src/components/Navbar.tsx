@@ -55,6 +55,7 @@ export default function Navbar() {
     { href: '/admin/data-import', label: 'Data Ingestion', icon: Database },
     { href: '/admin/model-management', label: 'ML Model Hub', icon: Cpu },
     { href: '/admin/users', label: 'Accounts', icon: Users },
+    { href: '/admin/bug-reports', label: 'Reported Bugs', icon: AlertTriangle },
   ];
 
   const currentLinks = isStudent ? studentLinks : isFaculty ? facultyLinks : isAdmin ? adminLinks : [];

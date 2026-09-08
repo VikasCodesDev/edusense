@@ -4,12 +4,9 @@
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const { OAuth2Client } = require('google-auth-library');
 const db = require('../models/db');
 const { JWT_SECRET } = require('../middleware/auth');
 const REAL_ADMIN_EMAIL = 'edusense.admin@gmail.com';
-const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -69,79 +66,6 @@ exports.login = async (req, res) => {
     });
   } catch (err) {
     return res.status(500).json({ success: false, error: err.message });
-  }
-};
-
-exports.googleLogin = async (req, res) => {
-  try {
-    const credential = String(req.body?.credential || '').trim();
-    if (!credential || !process.env.GOOGLE_CLIENT_ID) {
-      return res.status(503).json({ success: false, error: 'Google Login is not configured on the server.' });
-    }
-
-    const ticket = await googleClient.verifyIdToken({
-      idToken: credential,
-      audience: process.env.GOOGLE_CLIENT_ID
-    });
-    const payload = ticket.getPayload();
-    if (!payload?.sub || !payload.email || payload.email_verified !== true) {
-      return res.status(401).json({ success: false, error: 'Google account verification failed.' });
-    }
-
-    const normalizedEmail = payload.email.toLowerCase().trim();
-    const linkedUser = db.findOne('users', { googleId: payload.sub });
-    const emailUser = db.findOne('users', { email: normalizedEmail });
-    if (linkedUser && emailUser && linkedUser._id !== emailUser._id) {
-      return res.status(409).json({ success: false, error: 'This Google account is linked to a different EduSense account.' });
-    }
-    let user = linkedUser || emailUser;
-    if (user) {
-      user = db.updateOne('users', { _id: user._id }, { googleId: payload.sub }) || user;
-    } else {
-      const studentId = `GOOGLE-${crypto.randomUUID()}`;
-      user = db.create('users', {
-        name: String(payload.name || normalizedEmail.split('@')[0]).trim(),
-        email: normalizedEmail,
-        passwordHash: await bcrypt.hash(crypto.randomBytes(32).toString('hex'), 10),
-        googleId: payload.sub,
-        role: 'student',
-        studentId,
-        department: 'Computer Science & Engineering',
-        degree: 'Bachelor of Technology (B.Tech)'
-      });
-      db.create('students', {
-        userId: user._id,
-        studentId,
-        name: user.name,
-        email: user.email,
-        course: user.degree,
-        degree: user.degree,
-        semester: 1,
-        department: user.department,
-        academicDataComplete: false,
-        subjects: []
-      });
-    }
-
-    const token = jwt.sign(
-      { id: user._id, email: user.email, role: user.role, name: user.name },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
-    db.create('activity_logs', {
-      userId: user._id,
-      userName: user.name,
-      role: user.role,
-      action: 'USER_LOGIN',
-      details: `User ${user.email} logged in with Google.`
-    });
-
-    const { passwordHash, ...safeUser } = user;
-    safeUser.id = user._id;
-    return res.json({ success: true, token, user: safeUser });
-  } catch (err) {
-    console.error(`[Auth] Google Login failed: ${err.message}`);
-    return res.status(401).json({ success: false, error: 'Google authentication failed. Please try again.' });
   }
 };
 

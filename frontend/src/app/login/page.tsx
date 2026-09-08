@@ -1,30 +1,15 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Script from 'next/script';
 import { useAuth } from '@/context/AuthContext';
 import api from '@/lib/api';
 import { GraduationCap, Lock, Mail, User, AlertCircle, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import MagneticButton from '@/components/MagneticButton';
 
-declare global {
-  interface Window {
-    google?: {
-      accounts?: {
-        id: {
-          initialize: (options: { client_id: string; callback: (response: { credential: string }) => void }) => void;
-          renderButton: (element: HTMLElement, options: Record<string, string | number>) => void;
-        };
-      };
-    };
-  }
-}
-
 export default function LoginPage() {
   const router = useRouter();
-  const { login, googleLogin } = useAuth();
-  const googleButtonRef = useRef<HTMLDivElement>(null);
+  const { login } = useAuth();
 
   const [mode, setMode] = useState<'login' | 'register'>('login');
   const [email, setEmail] = useState('student1@edusense.edu');
@@ -39,37 +24,6 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const renderGoogleButton = () => {
-      if (mode !== 'login' || !googleButtonRef.current || !window.google?.accounts?.id || !process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID) return;
-      googleButtonRef.current.innerHTML = '';
-      window.google.accounts.id.initialize({
-        client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-        callback: async ({ credential }: { credential: string }) => {
-          setError(null);
-          setLoading(true);
-          const result = await googleLogin(credential, rememberMe);
-          if (result.success) {
-            router.push(result.role === 'faculty' ? '/faculty/dashboard' : result.role === 'admin' ? '/admin/dashboard' : '/student/dashboard');
-          } else {
-            setError(result.error || 'Google authentication failed.');
-          }
-          setLoading(false);
-        }
-      });
-      window.google.accounts.id.renderButton(googleButtonRef.current, {
-        theme: 'filled_black',
-        size: 'large',
-        shape: 'rectangular',
-        width: 384,
-        text: 'continue_with'
-      });
-    };
-    renderGoogleButton();
-    window.addEventListener('google-loaded', renderGoogleButton);
-    return () => window.removeEventListener('google-loaded', renderGoogleButton);
-  }, [mode, rememberMe, googleLogin, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,11 +71,6 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
-      <Script
-        src="https://accounts.google.com/gsi/client"
-        strategy="afterInteractive"
-        onLoad={() => window.dispatchEvent(new Event('google-loaded'))}
-      />
       <div className="w-full max-w-md space-y-8">
         
         {/* Header */}
@@ -364,9 +313,6 @@ export default function LoginPage() {
               {mode === 'login' ? "Don't have an account? Register here" : 'Already have an account? Sign in'}
             </button>
           </div>
-          {mode === 'login' && process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID && (
-            <div ref={googleButtonRef} className="flex justify-center pt-1" aria-label="Continue with Google" />
-          )}
         </form>
       </div>
     </div>

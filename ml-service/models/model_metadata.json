@@ -1,39 +1,39 @@
 {
   "version": "1.0.4",
   "algorithm": "Random Forest",
-  "trained_at": "2026-09-02T16:40:22.967304+00:00",
-  "total_samples": 164,
-  "train_samples": 131,
-  "test_samples": 33,
+  "trained_at": "2026-09-08T09:19:19.835751+00:00",
+  "total_samples": 600,
+  "train_samples": 480,
+  "test_samples": 120,
   "classes": [
     "Low",
     "Moderate",
     "High"
   ],
   "evaluation_metrics": {
-    "accuracy": 0.9697,
-    "precision": 0.9727,
-    "recall": 0.9697,
-    "f1_score": 0.97,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
     "high_risk_recall": 1.0,
-    "cv_accuracy_mean": 0.9772,
-    "cv_accuracy_std": 0.0186,
-    "cv_f1_mean": 0.9774,
+    "cv_accuracy_mean": 0.9812,
+    "cv_accuracy_std": 0.0138,
+    "cv_f1_mean": 0.9812,
     "confusion_matrix": [
       [
-        16,
-        1,
+        64,
+        0,
         0
       ],
       [
         0,
-        9,
+        30,
         0
       ],
       [
         0,
         0,
-        7
+        26
       ]
     ],
     "labels": [
@@ -44,29 +44,29 @@
   },
   "all_model_benchmarks": {
     "Random Forest": {
-      "accuracy": 0.9697,
-      "precision": 0.9727,
-      "recall": 0.9697,
-      "f1_score": 0.97,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
       "high_risk_recall": 1.0,
-      "cv_accuracy_mean": 0.9772,
-      "cv_accuracy_std": 0.0186,
-      "cv_f1_mean": 0.9774,
+      "cv_accuracy_mean": 0.9812,
+      "cv_accuracy_std": 0.0138,
+      "cv_f1_mean": 0.9812,
       "confusion_matrix": [
         [
-          16,
-          1,
+          64,
+          0,
           0
         ],
         [
           0,
-          9,
+          30,
           0
         ],
         [
           0,
           0,
-          7
+          26
         ]
       ],
       "labels": [
@@ -76,29 +76,29 @@
       ]
     },
     "Gradient Boosting": {
-      "accuracy": 1.0,
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1_score": 1.0,
+      "accuracy": 0.9833,
+      "precision": 0.9836,
+      "recall": 0.9833,
+      "f1_score": 0.9834,
       "high_risk_recall": 1.0,
-      "cv_accuracy_mean": 0.9698,
-      "cv_accuracy_std": 0.0279,
-      "cv_f1_mean": 0.9689,
+      "cv_accuracy_mean": 0.9812,
+      "cv_accuracy_std": 0.0167,
+      "cv_f1_mean": 0.981,
       "confusion_matrix": [
         [
-          17,
-          0,
+          63,
+          1,
           0
         ],
         [
           0,
-          9,
-          0
+          29,
+          1
         ],
         [
           0,
           0,
-          7
+          26
         ]
       ],
       "labels": [
@@ -108,29 +108,29 @@
       ]
     },
     "Logistic Regression": {
-      "accuracy": 0.9394,
-      "precision": 0.9504,
-      "recall": 0.9394,
-      "f1_score": 0.9405,
-      "high_risk_recall": 1.0,
-      "cv_accuracy_mean": 0.9698,
-      "cv_accuracy_std": 0.0279,
-      "cv_f1_mean": 0.97,
+      "accuracy": 0.975,
+      "precision": 0.9752,
+      "recall": 0.975,
+      "f1_score": 0.975,
+      "high_risk_recall": 0.9231,
+      "cv_accuracy_mean": 0.9417,
+      "cv_accuracy_std": 0.0083,
+      "cv_f1_mean": 0.9409,
       "confusion_matrix": [
         [
-          15,
+          64,
+          0,
+          0
+        ],
+        [
+          0,
+          29,
+          1
+        ],
+        [
+          0,
           2,
-          0
-        ],
-        [
-          0,
-          9,
-          0
-        ],
-        [
-          0,
-          0,
-          7
+          24
         ]
       ],
       "labels": [
@@ -140,29 +140,29 @@
       ]
     },
     "Decision Tree": {
-      "accuracy": 1.0,
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1_score": 1.0,
+      "accuracy": 0.9833,
+      "precision": 0.9836,
+      "recall": 0.9833,
+      "f1_score": 0.9834,
       "high_risk_recall": 1.0,
-      "cv_accuracy_mean": 0.9544,
-      "cv_accuracy_std": 0.0282,
-      "cv_f1_mean": 0.9529,
+      "cv_accuracy_mean": 0.9792,
+      "cv_accuracy_std": 0.0147,
+      "cv_f1_mean": 0.9791,
       "confusion_matrix": [
         [
-          17,
-          0,
+          63,
+          1,
           0
         ],
         [
           0,
-          9,
-          0
+          29,
+          1
         ],
         [
           0,
           0,
-          7
+          26
         ]
       ],
       "labels": [
@@ -174,84 +174,59 @@
   },
   "feature_importances": [
     {
-      "feature": "internal_test_avg",
-      "importance": 0.1308,
-      "percentage": 13.1
-    },
-    {
-      "feature": "score_os",
-      "importance": 0.1207,
-      "percentage": 12.1
-    },
-    {
-      "feature": "subject_avg_score",
-      "importance": 0.1181,
-      "percentage": 11.8
-    },
-    {
-      "feature": "assignment_avg_score",
-      "importance": 0.1065,
-      "percentage": 10.6
-    },
-    {
-      "feature": "score_cn",
-      "importance": 0.0978,
-      "percentage": 9.8
-    },
-    {
-      "feature": "previous_exam_score",
-      "importance": 0.083,
-      "percentage": 8.3
-    },
-    {
-      "feature": "score_maths",
-      "importance": 0.0746,
-      "percentage": 7.5
-    },
-    {
       "feature": "attendance_pct",
-      "importance": 0.0669,
-      "percentage": 6.7
+      "importance": 0.2374,
+      "percentage": 23.7
     },
     {
-      "feature": "score_dsa",
-      "importance": 0.0491,
-      "percentage": 4.9
-    },
-    {
-      "feature": "subject_failure_count",
-      "importance": 0.0486,
-      "percentage": 4.9
-    },
-    {
-      "feature": "score_dbms",
-      "importance": 0.0426,
-      "percentage": 4.3
-    },
-    {
-      "feature": "subject_min_score",
-      "importance": 0.036,
-      "percentage": 3.6
+      "feature": "internal_test_avg",
+      "importance": 0.1689,
+      "percentage": 16.9
     },
     {
       "feature": "assignment_completion_rate",
-      "importance": 0.0249,
-      "percentage": 2.5
+      "importance": 0.1276,
+      "percentage": 12.8
+    },
+    {
+      "feature": "subject_failure_count",
+      "importance": 0.1168,
+      "percentage": 11.7
+    },
+    {
+      "feature": "subject_avg_score",
+      "importance": 0.112,
+      "percentage": 11.2
+    },
+    {
+      "feature": "assignment_avg_score",
+      "importance": 0.0579,
+      "percentage": 5.8
+    },
+    {
+      "feature": "subject_min_score",
+      "importance": 0.0547,
+      "percentage": 5.5
+    },
+    {
+      "feature": "previous_exam_score",
+      "importance": 0.0435,
+      "percentage": 4.4
     },
     {
       "feature": "performance_trend",
-      "importance": 0.0004,
-      "percentage": 0.0
+      "importance": 0.0365,
+      "percentage": 3.6
     },
     {
       "feature": "study_engagement_score",
-      "importance": 0.0,
-      "percentage": 0.0
+      "importance": 0.0364,
+      "percentage": 3.6
     },
     {
       "feature": "subject_std_dev",
-      "importance": 0.0,
-      "percentage": 0.0
+      "importance": 0.0083,
+      "percentage": 0.8
     }
   ],
   "is_demo_model": false

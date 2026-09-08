@@ -239,16 +239,16 @@ export default function ModelManagementPage() {
           <p className="text-xs text-slate-400">Relative contribution of academic indicators in predicting risk</p>
         </div>
 
-        <div className="h-64 w-full pt-4">
+        <div className="h-[500px] w-full pt-4">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={featureImportanceData}
               layout="vertical"
-              margin={{ top: 5, right: 30, left: 80, bottom: 5 }}
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" horizontal={false} />
               <XAxis type="number" stroke="#64748b" fontSize={11} domain={[0, 'auto']} unit="%" />
-              <YAxis dataKey="featureLabel" type="category" stroke="#94a3b8" fontSize={11} />
+              <YAxis dataKey="featureLabel" type="category" stroke="#94a3b8" fontSize={11} width={170} />
               <Tooltip cursor={{ fill: '#1e293b', opacity: 0.35 }} contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', fontSize: '12px' }} />
               <Bar dataKey="percentage" fill="#6366f1" name="Importance %" radius={[0, 4, 4, 0]} />
             </BarChart>

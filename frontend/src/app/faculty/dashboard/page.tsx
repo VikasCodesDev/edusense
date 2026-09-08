@@ -220,7 +220,17 @@ export default function FacultyDashboard() {
                   ))}
                 </Pie>
                 <Legend formatter={(value) => <span className="text-slate-300 text-xs">{value}</span>} />
-                <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', fontSize: '12px' }} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: '#ffffff',
+                    borderColor: '#e2e8f0',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                  }}
+                  itemStyle={{ color: '#0f172a', fontWeight: 600 }}
+                  labelStyle={{ color: '#64748b', fontWeight: 500 }}
+                />
               </PieChart>
             </ResponsiveContainer>
           </div>

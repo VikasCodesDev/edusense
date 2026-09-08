@@ -77,7 +77,7 @@ export default function ProgressPage() {
         <h3 className="text-base font-bold text-white">Multi-Cycle Trend Evolution</h3>
         <div className="h-72 w-full pt-4">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+            <LineChart data={chartData} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
               <XAxis dataKey="cycle" stroke="#64748b" fontSize={11} />
               <YAxis stroke="#64748b" fontSize={11} domain={[0, 100]} />
@@ -89,6 +89,7 @@ export default function ProgressPage() {
             </LineChart>
           </ResponsiveContainer>
         </div>
+        {chartData.length < 2 && <p className="text-center text-xs text-slate-500">Not enough historical data for a trend yet.</p>}
       </div>
 
       {/* Timeline of Evaluation Checkpoints */}

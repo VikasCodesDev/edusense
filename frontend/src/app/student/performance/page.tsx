@@ -60,18 +60,18 @@ export default function PerformancePage() {
   const subjects = student?.subjects || [];
 
   const comparisonData = subjects.map((s: any) => ({
-    subject: s.name.split(' ')[0], // Short name
+    subject: s.name,
     fullName: s.name,
-    score: s.score ?? s.internalScore ?? 0,
-    classAverage: 68,
-    benchmark: 75
+    score: s.score ?? s.internalScore ?? 0
   }));
 
+  const hasSubjectAttendance = subjects.some((s: any) => Number.isFinite(Number(s.attendance)));
+  const hasSubjectAssignments = subjects.some((s: any) => Number.isFinite(Number(s.assignmentCompletion)));
   const radarData = subjects.map((s: any) => ({
-    subject: s.name.split(' ')[0],
+    subject: s.name,
     student: s.score ?? s.internalScore ?? 0,
-    attendance: s.attendance ?? student.attendancePct,
-    assignments: s.assignmentCompletion ?? student.assignmentCompletionRate
+    ...(hasSubjectAttendance && Number.isFinite(Number(s.attendance)) ? { attendance: Number(s.attendance) } : {}),
+    ...(hasSubjectAssignments && Number.isFinite(Number(s.assignmentCompletion)) ? { assignments: Number(s.assignmentCompletion) } : {})
   }));
 
   return (
@@ -126,21 +126,21 @@ export default function PerformancePage() {
         <div className="subtle-card rounded-2xl p-6 border border-slate-800 space-y-4">
           <div>
             <h3 className="text-base font-bold text-white">Subject Score vs Institutional Average</h3>
-            <p className="text-xs text-slate-400">Your score vs class cohort average (68%)</p>
+            <p className="text-xs text-slate-400">Your recorded score for each subject</p>
           </div>
 
           <div className="h-72 w-full pt-4">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={comparisonData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+              <BarChart data={comparisonData} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
                 <XAxis dataKey="subject" stroke="#64748b" fontSize={11} />
                 <YAxis stroke="#64748b" fontSize={11} domain={[0, 100]} />
                 <Tooltip
+                  cursor={{ fill: '#1e293b', opacity: 0.35 }}
                   contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', fontSize: '12px' }}
                 />
                 <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }} />
                 <Bar dataKey="score" fill="#6366f1" name="My Score %" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="classAverage" fill="#334155" name="Class Average %" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -160,7 +160,8 @@ export default function PerformancePage() {
                 <PolarAngleAxis dataKey="subject" stroke="#94a3b8" fontSize={11} />
                 <PolarRadiusAxis stroke="#475569" fontSize={10} domain={[0, 100]} />
                 <Radar name="Marks" dataKey="student" stroke="#6366f1" fill="#6366f1" fillOpacity={0.4} />
-                <Radar name="Attendance" dataKey="attendance" stroke="#10b981" fill="#10b981" fillOpacity={0.2} />
+                {hasSubjectAttendance && <Radar name="Attendance" dataKey="attendance" stroke="#10b981" fill="#10b981" fillOpacity={0.2} />}
+                {hasSubjectAssignments && <Radar name="Assignments" dataKey="assignments" stroke="#38bdf8" fill="#38bdf8" fillOpacity={0.2} />}
                 <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', fontSize: '12px' }} />
                 <Legend wrapperStyle={{ fontSize: '12px' }} />
               </RadarChart>

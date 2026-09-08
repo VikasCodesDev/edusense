@@ -22,6 +22,29 @@ import {
   ResponsiveContainer
 } from 'recharts';
 
+const FEATURE_LABELS: Record<string, string> = {
+  attendance_pct: 'Attendance Rate',
+  assignment_completion_rate: 'Assignment Completion Rate',
+  assignment_avg_score: 'Assignment Average Score',
+  internal_test_avg: 'Internal Test Average',
+  previous_exam_score: 'Previous Exam Score',
+  performance_trend: 'Performance Trend',
+  study_engagement_score: 'Study Engagement Score',
+  subject_failure_count: 'Subject Failure Count',
+  score_dsa: 'DSA Score',
+  score_dbms: 'DBMS Score',
+  score_maths: 'Mathematics Score',
+  score_os: 'Operating Systems Score',
+  score_cn: 'Computer Networks Score',
+  subject_min_score: 'Minimum Subject Score',
+  subject_avg_score: 'Average Subject Score',
+  subject_std_dev: 'Subject Score Variation'
+};
+
+function formatFeatureLabel(feature: string) {
+  return FEATURE_LABELS[feature] || feature.replace(/_/g, ' ').replace(/\b\w/g, (character) => character.toUpperCase());
+}
+
 export default function ModelManagementPage() {
   const [modelData, setModelData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -85,6 +108,10 @@ export default function ModelManagementPage() {
     { feature: 'previous_exam_score', percentage: 10.1 },
     { feature: 'subject_failure_count', percentage: 8.0 }
   ];
+  const featureImportanceData = featureImportances.map((item: any) => ({
+    ...item,
+    featureLabel: formatFeatureLabel(item.feature)
+  }));
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
@@ -215,14 +242,14 @@ export default function ModelManagementPage() {
         <div className="h-64 w-full pt-4">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
-              data={featureImportances}
+              data={featureImportanceData}
               layout="vertical"
               margin={{ top: 5, right: 30, left: 80, bottom: 5 }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" horizontal={false} />
-              <XAxis type="number" stroke="#64748b" fontSize={11} domain={[0, 40]} unit="%" />
-              <YAxis dataKey="feature" type="category" stroke="#94a3b8" fontSize={11} />
-              <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', fontSize: '12px' }} />
+              <XAxis type="number" stroke="#64748b" fontSize={11} domain={[0, 'auto']} unit="%" />
+              <YAxis dataKey="featureLabel" type="category" stroke="#94a3b8" fontSize={11} />
+              <Tooltip cursor={{ fill: '#1e293b', opacity: 0.35 }} contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', fontSize: '12px' }} />
               <Bar dataKey="percentage" fill="#6366f1" name="Importance %" radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>

@@ -19,6 +19,7 @@ interface AuthContextType {
   token: string | null;
   loading: boolean;
   login: (email: string, pass: string, role?: 'student' | 'faculty' | 'admin', rememberMe?: boolean) => Promise<{ success: boolean; role?: string; error?: string }>;
+  googleLogin: (credential: string, rememberMe?: boolean) => Promise<{ success: boolean; role?: string; error?: string }>;
   logout: () => void;
   switchDemoAccount: (role: 'student' | 'faculty' | 'admin', email?: string) => Promise<boolean>;
   refreshUser: () => Promise<void>;
@@ -86,8 +87,38 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
       return { success: false, error: 'Login failed.' };
     } catch (err: any) {
-      const msg = err.response?.data?.error || 'Invalid credentials. Please try again.';
+      const msg = err.response?.data?.error || (!err.response
+        ? 'The EduSense server is unavailable. Please check your connection and try again.'
+        : 'Invalid credentials. Please try again.');
       return { success: false, error: msg };
+    }
+  };
+
+  const googleLogin = async (credential: string, rememberMe = true) => {
+    try {
+      const res = await api.post('/auth/google', { credential });
+      if (res.data && res.data.success) {
+        const receivedToken = res.data.token;
+        const receivedUser = res.data.user;
+        const storage = rememberMe ? localStorage : sessionStorage;
+        const otherStorage = rememberMe ? sessionStorage : localStorage;
+        otherStorage.removeItem('edusense_token');
+        otherStorage.removeItem('edusense_user');
+        storage.setItem('edusense_token', receivedToken);
+        storage.setItem('edusense_user', JSON.stringify(receivedUser));
+        setToken(receivedToken);
+        setUser(receivedUser);
+        await refreshUser();
+        return { success: true, role: receivedUser.role };
+      }
+      return { success: false, error: 'Google authentication failed.' };
+    } catch (err: any) {
+      return {
+        success: false,
+        error: err.response?.data?.error || (!err.response
+          ? 'The EduSense server is unavailable. Please check your connection and try again.'
+          : 'Google authentication failed. Please try again.')
+      };
     }
   };
 
@@ -139,6 +170,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         token,
         loading,
         login,
+        googleLogin,
         logout,
         switchDemoAccount,
         refreshUser

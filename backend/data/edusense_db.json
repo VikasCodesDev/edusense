@@ -61,7 +61,7 @@
       "role": "admin",
       "department": "Computer Science & Engineering",
       "createdAt": "2026-09-01T15:07:52.679Z",
-      "updatedAt": "2026-09-05T14:39:44.446Z"
+      "updatedAt": "2026-09-08T08:38:00.645Z"
     },
     {
       "_id": "d4e38709-285b-4c6d-9ea0-9bb7c06b5a87",
@@ -29316,6 +29316,37 @@
       "details": "User student1@edusense.edu logged in successfully.",
       "createdAt": "2026-09-05T07:38:38.315Z",
       "updatedAt": "2026-09-05T07:38:38.315Z"
+    },
+    {
+      "_id": "a2cdcadd-89ba-44b3-a97e-fb782049262a",
+      "userId": "usr_student_01",
+      "userName": "Rahul Sharma",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User student1@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-08T08:38:00.991Z",
+      "updatedAt": "2026-09-08T08:38:00.991Z"
+    },
+    {
+      "_id": "fb5723e9-8fe6-40cb-993b-27ec16cb37cf",
+      "userId": "usr_faculty_01",
+      "userName": "Prof. Sunita Rao",
+      "role": "faculty",
+      "action": "USER_LOGIN",
+      "details": "User faculty@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-08T08:38:01.055Z",
+      "updatedAt": "2026-09-08T08:38:01.055Z"
+    },
+    {
+      "_id": "84d9f4f6-4bdb-4517-aede-d057a9b4fd80",
+      "userId": "usr_admin_01",
+      "userName": "System Administrator",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "details": "User admin@edusense.edu logged in successfully.",
+      "createdAt": "2026-09-08T08:38:01.123Z",
+      "updatedAt": "2026-09-08T08:38:01.123Z"
     }
-  ]
+  ],
+  "bug_reports": []
 }

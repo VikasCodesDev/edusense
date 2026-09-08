@@ -37,11 +37,9 @@ class StudentFeatures(BaseModel):
     performance_trend: float = Field(default=0.0, description="Performance trend (-50 to +50)")
     study_engagement_score: float = Field(default=75.0, ge=0, le=100)
     subject_failure_count: int = Field(default=0, ge=0)
-    score_dsa: Optional[float] = Field(default=70.0, ge=0, le=100)
-    score_dbms: Optional[float] = Field(default=70.0, ge=0, le=100)
-    score_maths: Optional[float] = Field(default=70.0, ge=0, le=100)
-    score_os: Optional[float] = Field(default=70.0, ge=0, le=100)
-    score_cn: Optional[float] = Field(default=70.0, ge=0, le=100)
+    subject_min_score: Optional[float] = Field(default=None, ge=0, le=100)
+    subject_avg_score: Optional[float] = Field(default=None, ge=0, le=100)
+    subject_std_dev: Optional[float] = Field(default=None, ge=0, le=100)
 
 class TrainRequest(BaseModel):
     records: Optional[List[Dict[str, Any]]] = None
@@ -168,12 +166,7 @@ def validate_dataset(req: ValidationRequest):
         "assignment_completion_rate": (0.0, 100.0, "Assignment completion must be between 0% and 100%"),
         "assignment_avg_score": (0.0, 100.0, "Assignment average score must be between 0 and 100"),
         "internal_test_avg": (0.0, 100.0, "Internal test average must be between 0 and 100"),
-        "previous_exam_score": (0.0, 100.0, "Previous exam score must be between 0 and 100"),
-        "score_dsa": (0.0, 100.0, "DSA score must be between 0 and 100"),
-        "score_dbms": (0.0, 100.0, "DBMS score must be between 0 and 100"),
-        "score_maths": (0.0, 100.0, "Maths score must be between 0 and 100"),
-        "score_os": (0.0, 100.0, "OS score must be between 0 and 100"),
-        "score_cn": (0.0, 100.0, "CN score must be between 0 and 100")
+        "previous_exam_score": (0.0, 100.0, "Previous exam score must be between 0 and 100")
     }
 
     for idx, row in enumerate(records):

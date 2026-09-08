@@ -31,15 +31,21 @@ const FEATURE_LABELS: Record<string, string> = {
   performance_trend: 'Performance Trend',
   study_engagement_score: 'Study Engagement Score',
   subject_failure_count: 'Subject Failure Count',
-  score_dsa: 'DSA Score',
-  score_dbms: 'DBMS Score',
-  score_maths: 'Mathematics Score',
-  score_os: 'Operating Systems Score',
-  score_cn: 'Computer Networks Score',
   subject_min_score: 'Minimum Subject Score',
   subject_avg_score: 'Average Subject Score',
   subject_std_dev: 'Subject Score Variation'
 };
+
+const DIRECT_INDICATORS = new Set([
+  'attendance_pct',
+  'assignment_completion_rate',
+  'assignment_avg_score',
+  'internal_test_avg',
+  'previous_exam_score',
+  'performance_trend',
+  'study_engagement_score',
+  'subject_failure_count'
+]);
 
 function formatFeatureLabel(feature: string) {
   return FEATURE_LABELS[feature] || feature.replace(/_/g, ' ').replace(/\b\w/g, (character) => character.toUpperCase());
@@ -100,17 +106,15 @@ export default function ModelManagementPage() {
     'Decision Tree': { accuracy: 0.9417, precision: 0.9420, recall: 0.9417, f1_score: 0.9417, high_risk_recall: 0.9038 }
   };
 
-  const featureImportances = modelData?.feature_importances || [
-    { feature: 'attendance_pct', percentage: 28.5 },
-    { feature: 'internal_test_avg', percentage: 24.2 },
-    { feature: 'performance_trend', percentage: 16.8 },
-    { feature: 'assignment_completion_rate', percentage: 12.4 },
-    { feature: 'previous_exam_score', percentage: 10.1 },
-    { feature: 'subject_failure_count', percentage: 8.0 }
-  ];
-  const featureImportanceData = featureImportances.map((item: any) => ({
+  const featureImportances = Array.isArray(modelData?.feature_importances)
+    ? modelData.feature_importances
+    : [];
+  const featureImportanceData = featureImportances
+    .filter((item: any) => !item.feature.startsWith('score_'))
+    .map((item: any) => ({
     ...item,
-    featureLabel: formatFeatureLabel(item.feature)
+    featureLabel: formatFeatureLabel(item.feature),
+    category: DIRECT_INDICATORS.has(item.feature) ? 'Direct Academic Indicator' : 'Derived / Aggregate Indicator'
   }));
 
   return (
@@ -237,8 +241,17 @@ export default function ModelManagementPage() {
             <span>Global Feature Importance (MDI)</span>
           </h3>
           <p className="text-xs text-slate-400">Relative contribution of academic indicators in predicting risk</p>
+          <div className="flex flex-wrap gap-2 text-[10px] text-slate-400">
+            <span className="rounded-full border border-indigo-400/30 bg-indigo-400/10 px-2 py-1">Direct Academic Indicators</span>
+            <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2 py-1">Derived / Aggregate Academic Indicators</span>
+          </div>
         </div>
 
+        {featureImportanceData.length === 0 ? (
+          <div className="flex h-40 items-center justify-center rounded-xl border border-slate-800 text-sm text-slate-400">
+            Current model feature importance is unavailable. Retrain or reconnect the ML service to load real model metadata.
+          </div>
+        ) : (
         <div className="h-[500px] w-full pt-4">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
@@ -254,6 +267,7 @@ export default function ModelManagementPage() {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        )}
       </div>
 
     </div>

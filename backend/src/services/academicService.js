@@ -2,14 +2,6 @@ const db = require('../models/db');
 const mlService = require('./mlService');
 const llmService = require('./llmService');
 
-const SUBJECTS = [
-  { key: 'score_dsa', name: 'Data Structures & Algorithms' },
-  { key: 'score_dbms', name: 'Database Management Systems' },
-  { key: 'score_maths', name: 'Applied Mathematics' },
-  { key: 'score_os', name: 'Operating Systems' },
-  { key: 'score_cn', name: 'Computer Networks' }
-];
-
 function hasAcademicData(student) {
   return Boolean(
     student &&
@@ -43,11 +35,6 @@ function getLatestRecommendation(studentId) {
   return latestByCreatedAt(db.find('recommendations', { studentId }));
 }
 
-function subjectScore(student, subjectName, fallback) {
-  const subject = (student.subjects || []).find((s) => s.name === subjectName || subjectName.includes(s.name));
-  return Number(subject?.score ?? subject?.internalScore ?? fallback);
-}
-
 function prepareFeatures(student) {
   const internal = Number(student.internalTestAvg);
   const subjects = Array.isArray(student.subjects) ? student.subjects : [];
@@ -58,10 +45,9 @@ function prepareFeatures(student) {
     ? subjectScores.reduce((sum, score) => sum + score, 0) / subjectScores.length
     : internal;
   const subjectFailures = subjectScores.filter((score) => score < 50).length;
-  const knownSubjectScore = (name) => {
-    const subject = subjects.find((item) => String(item.name || '').toLowerCase().includes(name));
-    return subject ? Number(subject.score ?? subject.internalScore) : subjectAverage;
-  };
+  const subjectVariance = subjectScores.length > 1
+    ? subjectScores.reduce((sum, score) => sum + ((score - subjectAverage) ** 2), 0) / subjectScores.length
+    : 0;
   return {
     student_id: student.studentId,
     attendance_pct: Number(student.attendancePct),
@@ -72,11 +58,9 @@ function prepareFeatures(student) {
     performance_trend: Number(student.performanceTrend ?? 0),
     study_engagement_score: Number(student.studyEngagementScore ?? 75),
     subject_failure_count: Number(student.subjectFailureCount ?? subjectFailures),
-    score_dsa: knownSubjectScore('data structures'),
-    score_dbms: knownSubjectScore('database management'),
-    score_maths: knownSubjectScore('math'),
-    score_os: knownSubjectScore('operating system'),
-    score_cn: knownSubjectScore('computer network')
+    subject_min_score: subjectScores.length > 0 ? Math.min(...subjectScores) : internal,
+    subject_avg_score: subjectAverage,
+    subject_std_dev: Math.sqrt(subjectVariance)
   };
 }
 
@@ -183,18 +167,7 @@ function normalizeSubjects(subjects) {
   }));
 }
 
-function defaultSubjectsFromStudent(student) {
-  return SUBJECTS.map((subject) => ({
-    name: subject.name,
-    score: Number(student.internalTestAvg || 0),
-    attendance: Number(student.attendancePct || 0),
-    assignmentCompletion: Number(student.assignmentCompletionRate || 0),
-    trend: 'stable'
-  }));
-}
-
 module.exports = {
-  SUBJECTS,
   hasAcademicData,
   latestByCreatedAt,
   getLatestPrediction,
@@ -202,6 +175,5 @@ module.exports = {
   prepareFeatures,
   refreshStudentIntelligence,
   validateAcademicPayload,
-  normalizeSubjects,
-  defaultSubjectsFromStudent
+  normalizeSubjects
 };

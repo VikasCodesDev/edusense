@@ -27,12 +27,7 @@ FEATURE_COLUMNS = [
     "previous_exam_score",
     "performance_trend",
     "study_engagement_score",
-    "subject_failure_count",
-    "score_dsa",
-    "score_dbms",
-    "score_maths",
-    "score_os",
-    "score_cn"
+    "subject_failure_count"
 ]
 
 TARGET_COLUMN = "risk_level"
@@ -45,18 +40,24 @@ METADATA_FILE = os.path.join(MODEL_DIR, "model_metadata.json")
 def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     """Computes derived academic indicators without data leakage."""
     df = df.copy()
-    subject_cols = ["score_dsa", "score_dbms", "score_maths", "score_os", "score_cn"]
-    existing_sub_cols = [c for c in subject_cols if c in df.columns]
+    existing_sub_cols = [c for c in df.columns if c.startswith("score_")]
     
     if existing_sub_cols:
         df["subject_min_score"] = df[existing_sub_cols].min(axis=1)
         df["subject_avg_score"] = df[existing_sub_cols].mean(axis=1)
         df["subject_std_dev"] = df[existing_sub_cols].std(axis=1).fillna(0)
-    else:
+    elif not all(column in df.columns for column in ["subject_min_score", "subject_avg_score", "subject_std_dev"]):
         df["subject_min_score"] = df["internal_test_avg"]
         df["subject_avg_score"] = df["internal_test_avg"]
         df["subject_std_dev"] = 0.0
-        
+
+    for column in ["subject_min_score", "subject_avg_score", "subject_std_dev"]:
+        if column in df.columns:
+            df[column] = pd.to_numeric(df[column], errors="coerce")
+    df["subject_min_score"] = df["subject_min_score"].fillna(df["internal_test_avg"])
+    df["subject_avg_score"] = df["subject_avg_score"].fillna(df["internal_test_avg"])
+    df["subject_std_dev"] = df["subject_std_dev"].fillna(0.0)
+
     return df
 
 class EduSenseMLService:
@@ -75,6 +76,12 @@ class EduSenseMLService:
                 self.scaler = saved_bundle.get("scaler")
                 with open(METADATA_FILE, "r") as f:
                     self.metadata = json.load(f)
+                if saved_bundle.get("feature_names") != self.feature_names:
+                    self.model = None
+                    self.scaler = None
+                    self.metadata = None
+                    print("[ML Service] Existing model uses an incompatible feature contract. Retraining is required.")
+                    return
                 print(f"[ML Service] Loaded model v{self.metadata.get('version', '1.0')} ({self.metadata.get('algorithm')})")
             except Exception as e:
                 print(f"[ML Service] Warning: Failed to load existing model: {e}")
@@ -248,6 +255,9 @@ class EduSenseMLService:
                 else:
                     val = student_data.get("marks", 60.0)
             row[col] = float(val)
+        for col in ["subject_min_score", "subject_avg_score", "subject_std_dev"]:
+            if student_data.get(col) is not None:
+                row[col] = float(student_data[col])
 
         df_single = pd.DataFrame([row])
         df_single = engineer_features(df_single)
@@ -300,9 +310,7 @@ class EduSenseMLService:
         internal = raw_features.get("internal_test_avg", 100)
         trend = raw_features.get("performance_trend", 0)
         failures = int(raw_features.get("subject_failure_count", 0))
-        dsa = raw_features.get("score_dsa", 100)
-        maths = raw_features.get("score_maths", 100)
-        dbms = raw_features.get("score_dbms", 100)
+        subject_min = raw_features.get("subject_min_score", internal)
 
         # Attendance check
         if att < 65:
@@ -376,22 +384,13 @@ class EduSenseMLService:
                 "description": f"Only {assign_comp}% of required assignments have been submitted."
             })
 
-        # Subject-specific weaknesses
-        weak_subs = []
-        if dsa < 50:
-            weak_subs.append(f"Data Structures ({dsa}%)")
-        if maths < 50:
-            weak_subs.append(f"Mathematics ({maths}%)")
-        if dbms < 50:
-            weak_subs.append(f"DBMS ({dbms}%)")
-
-        if weak_subs:
+        if subject_min < 50:
             factors.append({
-                "factor": "Subject-Specific Difficulty",
-                "impact": "High Negative" if len(weak_subs) > 1 else "Moderate Negative",
-                "value": ", ".join(weak_subs),
+                "factor": "Low Subject Performance",
+                "impact": "High Negative",
+                "value": f"Minimum subject score {subject_min}%",
                 "benchmark": "Passing score >= 50%",
-                "description": f"Below-threshold performance detected in: {', '.join(weak_subs)}."
+                "description": f"At least one subject score is below the passing threshold; the minimum recorded score is {subject_min}%."
             })
 
         if failures > 0:
@@ -437,11 +436,9 @@ if __name__ == "__main__":
         "performance_trend": -14.0,
         "study_engagement_score": 40.0,
         "subject_failure_count": 2,
-        "score_dsa": 40.0,
-        "score_dbms": 68.0,
-        "score_maths": 38.0,
-        "score_os": 45.0,
-        "score_cn": 50.0
+        "subject_min_score": 38.0,
+        "subject_avg_score": 48.2,
+        "subject_std_dev": 9.6
     }
     pred = pipeline_service.predict_student(test_sample)
     print("\nSample Prediction on At-Risk Student:")

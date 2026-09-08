@@ -27,27 +27,9 @@ class MLServiceClient {
       return response.data;
     } catch (err) {
       return {
-        status: 'fallback',
-        metadata: {
-          version: '1.0.4-local',
-          algorithm: 'Random Forest Classifier',
-          total_samples: 600,
-          evaluation_metrics: {
-            accuracy: 0.9833,
-            precision: 0.9835,
-            recall: 0.9833,
-            f1_score: 0.9833,
-            high_risk_recall: 0.9615
-          },
-          feature_importances: [
-            { feature: 'attendance_pct', importance: 0.28, percentage: 28.0 },
-            { feature: 'internal_test_avg', importance: 0.24, percentage: 24.0 },
-            { feature: 'performance_trend', importance: 0.16, percentage: 16.0 },
-            { feature: 'assignment_completion_rate', importance: 0.12, percentage: 12.0 },
-            { feature: 'previous_exam_score', importance: 0.10, percentage: 10.0 },
-            { feature: 'subject_failure_count', importance: 0.10, percentage: 10.0 }
-          ]
-        }
+        status: 'unavailable',
+        metadata: null,
+        message: 'ML service unavailable. Current model metadata cannot be displayed.'
       };
     }
   }
@@ -110,9 +92,7 @@ class MLServiceClient {
     const internal = Number(valueOrFallback(features.internal_test_avg, 65));
     const trend = Number(valueOrFallback(features.performance_trend, 0));
     const failures = Number(valueOrFallback(features.subject_failure_count, 0));
-    const dsa = Number(valueOrFallback(features.score_dsa, internal));
-    const maths = Number(valueOrFallback(features.score_maths, internal));
-    const dbms = Number(valueOrFallback(features.score_dbms, internal));
+    const subjectMin = Number(valueOrFallback(features.subject_min_score, internal));
 
     // Calculate academic risk index
     let riskPoints = 0;
@@ -186,17 +166,13 @@ class MLServiceClient {
       });
     }
 
-    if (dsa < 50 || maths < 50 || dbms < 50) {
-      const weaks = [];
-      if (dsa < 50) weaks.push(`Data Structures (${dsa}%)`);
-      if (maths < 50) weaks.push(`Maths (${maths}%)`);
-      if (dbms < 50) weaks.push(`DBMS (${dbms}%)`);
+    if (subjectMin < 50) {
       contributingFactors.push({
-        factor: 'Subject-Specific Difficulty',
+        factor: 'Low Subject Performance',
         impact: 'High Negative',
-        value: weaks.join(', '),
+        value: `Minimum subject score ${subjectMin}%`,
         benchmark: 'Passing score >= 50%',
-        description: `Below-threshold performance in: ${weaks.join(', ')}.`
+        description: `At least one subject score is below the passing threshold; the minimum recorded score is ${subjectMin}%.`
       });
     }
 

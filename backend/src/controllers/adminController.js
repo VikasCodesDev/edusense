@@ -697,11 +697,22 @@ exports.triggerModelRetrain = async (req, res) => {
       performance_trend: s.performanceTrend,
       study_engagement_score: s.studyEngagementScore || 75,
       subject_failure_count: s.subjectFailureCount || 0,
-      score_dsa: (s.subjects && s.subjects[0]?.score) || s.internalTestAvg,
-      score_dbms: (s.subjects && s.subjects[1]?.score) || s.internalTestAvg,
-      score_maths: (s.subjects && s.subjects[2]?.score) || s.internalTestAvg,
-      score_os: (s.subjects && s.subjects[3]?.score) || s.internalTestAvg,
-      score_cn: (s.subjects && s.subjects[4]?.score) || s.internalTestAvg,
+      ...(() => {
+        const scores = (s.subjects || [])
+          .map((subject) => Number(subject.score ?? subject.internalScore))
+          .filter(Number.isFinite);
+        const average = scores.length
+          ? scores.reduce((sum, score) => sum + score, 0) / scores.length
+          : Number(s.internalTestAvg);
+        const variance = scores.length > 1
+          ? scores.reduce((sum, score) => sum + ((score - average) ** 2), 0) / scores.length
+          : 0;
+        return {
+          subject_min_score: scores.length ? Math.min(...scores) : average,
+          subject_avg_score: average,
+          subject_std_dev: Math.sqrt(variance)
+        };
+      })(),
       risk_level: s.currentRiskLevel || getLatestPrediction(s.studentId)?.risk_level || 'Low'
     }));
 

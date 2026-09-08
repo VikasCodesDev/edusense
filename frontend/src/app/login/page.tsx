@@ -18,7 +18,7 @@ export default function LoginPage() {
   const [role, setRole] = useState<'student' | 'faculty' | 'admin'>('student');
   const [studentId, setStudentId] = useState('');
   const [semester, setSemester] = useState(1);
-  const [department, setDepartment] = useState('CSE');
+  const [department, setDepartment] = useState('CSE (Computer Science & Engineering)');
   const [degree, setDegree] = useState('Bachelor of Technology (B.Tech)');
   const [rememberMe, setRememberMe] = useState(true);
   const [showPassword, setShowPassword] = useState(false);

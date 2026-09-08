@@ -241,10 +241,6 @@ export default function ModelManagementPage() {
             <span>Global Feature Importance (MDI)</span>
           </h3>
           <p className="text-xs text-slate-400">Relative contribution of academic indicators in predicting risk</p>
-          <div className="flex flex-wrap gap-2 text-[10px] text-slate-400">
-            <span className="rounded-full border border-indigo-400/30 bg-indigo-400/10 px-2 py-1">Direct Academic Indicators</span>
-            <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2 py-1">Derived / Aggregate Academic Indicators</span>
-          </div>
         </div>
 
         {featureImportanceData.length === 0 ? (

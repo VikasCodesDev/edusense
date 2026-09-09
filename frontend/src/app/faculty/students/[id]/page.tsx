@@ -30,8 +30,12 @@ export default function StudentDetailPage() {
   const [interventionNote, setInterventionNote] = useState('');
   const [actionTaken, setActionTaken] = useState('');
   const [priority, setPriority] = useState('Medium');
+  const [followUpDate, setFollowUpDate] = useState('');
   const [savingIntervention, setSavingIntervention] = useState(false);
   const [interventionSuccess, setInterventionSuccess] = useState(false);
+  const [editingIntervention, setEditingIntervention] = useState<string | null>(null);
+  const [followUpForm, setFollowUpForm] = useState<any>({});
+  const [followUpError, setFollowUpError] = useState('');
 
   const fetchStudentData = async () => {
     try {
@@ -61,13 +65,15 @@ export default function StudentDetailPage() {
         studentId,
         note: interventionNote,
         actionTaken: actionTaken || 'Advisory session completed',
-        priority
+        priority,
+        followUpDate: followUpDate || undefined
       });
 
       if (res.data.success) {
         setInterventionSuccess(true);
         setInterventionNote('');
         setActionTaken('');
+        setFollowUpDate('');
         await fetchStudentData();
         setTimeout(() => setInterventionSuccess(false), 3000);
       }
@@ -75,6 +81,34 @@ export default function StudentDetailPage() {
       console.error('Failed to log intervention:', err);
     } finally {
       setSavingIntervention(false);
+    }
+  };
+
+  const beginInterventionUpdate = (item: any) => {
+    setFollowUpError('');
+    setEditingIntervention(item._id);
+    setFollowUpForm({
+      status: item.status || 'in_progress',
+      followUpDate: item.followUpDate || '',
+      outcome: item.outcome || '',
+      studentResponse: item.studentResponse || '',
+      nextAction: item.nextAction || '',
+      resolutionNotes: item.resolutionNotes || ''
+    });
+  };
+
+  const updateIntervention = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingIntervention) return;
+    try {
+      setFollowUpError('');
+      const res = await api.put(`/faculty/interventions/${editingIntervention}`, followUpForm);
+      if (res.data.success) {
+        setEditingIntervention(null);
+        await fetchStudentData();
+      }
+    } catch (err: any) {
+      setFollowUpError(err.response?.data?.error || err.message || 'Unable to update intervention.');
     }
   };
 
@@ -243,6 +277,16 @@ export default function StudentDetailPage() {
             </div>
 
             <div>
+              <label className="block text-slate-300 font-medium mb-1.5">Follow-up Date</label>
+              <input
+                type="date"
+                value={followUpDate}
+                onChange={(e) => setFollowUpDate(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-indigo-500"
+              />
+            </div>
+
+            <div>
               <label className="block text-slate-300 font-medium mb-1.5">Counseling Notes & Observations</label>
               <textarea
                 required
@@ -288,8 +332,58 @@ export default function StudentDetailPage() {
                       <span>{item.actionTaken}</span>
                       <span className="text-[10px] text-slate-500 font-mono">{item.createdAt?.split('T')[0]}</span>
                     </div>
+                    <div className="flex flex-wrap items-center gap-2 text-[10px]">
+                      <span className="text-indigo-300">Status: {(item.status || 'in_progress').replace('_', ' ')}</span>
+                      {item.followUpDate && <span className="text-amber-300">Follow-up: {item.followUpDate}</span>}
+                      {item.completedAt && <span className="text-emerald-300">Completed: {item.completedAt.split('T')[0]}</span>}
+                    </div>
                     <p className="text-slate-400">{item.note}</p>
+                    {item.outcome && <p className="text-slate-300">Outcome: {item.outcome}</p>}
+                    {item.studentResponse && <p className="text-slate-400">Student response: {item.studentResponse}</p>}
+                    {item.nextAction && <p className="text-slate-400">Next action: {item.nextAction}</p>}
+                    {item.resolutionNotes && <p className="text-slate-400">Follow-up notes: {item.resolutionNotes}</p>}
                     <div className="text-[10px] text-indigo-400">By {item.facultyName}</div>
+                    <button
+                      type="button"
+                      onClick={() => beginInterventionUpdate(item)}
+                      className="mt-2 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300"
+                    >
+                      Update Follow-up
+                    </button>
+                    {editingIntervention === item._id && (
+                      <form onSubmit={updateIntervention} className="mt-3 pt-3 border-t border-slate-700 space-y-3">
+                        {followUpError && <p className="text-rose-400">{followUpError}</p>}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          <label className="space-y-1">
+                            <span className="text-slate-400">Status</span>
+                            <select
+                              value={followUpForm.status}
+                              onChange={(e) => setFollowUpForm({ ...followUpForm, status: e.target.value })}
+                              className="w-full px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white"
+                            >
+                              <option value="planned">Planned</option>
+                              <option value="in_progress">In Progress</option>
+                              <option value="completed">Completed</option>
+                              <option value="rescheduled">Rescheduled</option>
+                              <option value="closed">Closed</option>
+                              <option value="resolved">Resolved (legacy)</option>
+                            </select>
+                          </label>
+                          <label className="space-y-1">
+                            <span className="text-slate-400">Follow-up Date</span>
+                            <input type="date" value={followUpForm.followUpDate} onChange={(e) => setFollowUpForm({ ...followUpForm, followUpDate: e.target.value })} className="w-full px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white" />
+                          </label>
+                        </div>
+                        <input value={followUpForm.outcome} onChange={(e) => setFollowUpForm({ ...followUpForm, outcome: e.target.value })} placeholder="Outcome" className="w-full px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white placeholder-slate-500" />
+                        <input value={followUpForm.studentResponse} onChange={(e) => setFollowUpForm({ ...followUpForm, studentResponse: e.target.value })} placeholder="Student response" className="w-full px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white placeholder-slate-500" />
+                        <input value={followUpForm.nextAction} onChange={(e) => setFollowUpForm({ ...followUpForm, nextAction: e.target.value })} placeholder="Next action" className="w-full px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white placeholder-slate-500" />
+                        <textarea value={followUpForm.resolutionNotes} onChange={(e) => setFollowUpForm({ ...followUpForm, resolutionNotes: e.target.value })} placeholder="Resolution / follow-up notes" rows={2} className="w-full px-2 py-1.5 bg-slate-900 border border-slate-700 rounded text-white placeholder-slate-500" />
+                        <div className="flex gap-2">
+                          <button type="submit" className="px-3 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white">Save Follow-up</button>
+                          <button type="button" onClick={() => setEditingIntervention(null)} className="px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">Cancel</button>
+                        </div>
+                      </form>
+                    )}
                   </div>
                 ))}
               </div>

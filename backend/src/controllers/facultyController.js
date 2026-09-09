@@ -82,6 +82,8 @@ exports.getDashboardOverview = async (req, res) => {
       const att = Number(s.attendancePct || 0);
 
       if (risk === 'High' || (risk === 'Moderate' && trend < -4)) {
+        const latestIntervention = db.find('interventions', { studentId: s.studentId })
+          .sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime())[0] || null;
         attentionList.push({
           _id: s._id,
           studentId: s.studentId,
@@ -93,7 +95,8 @@ exports.getDashboardOverview = async (req, res) => {
           currentRiskLevel: s.currentRiskLevel,
           currentRiskScore: s.currentRiskScore,
           performanceTrend: s.performanceTrend,
-          mainConcern: att < 65 ? 'Critical Attendance Shortage' : trend < -8 ? 'Sharp Performance Decline' : 'Low Assessment Averages'
+          mainConcern: att < 65 ? 'Critical Attendance Shortage' : trend < -8 ? 'Sharp Performance Decline' : 'Low Assessment Averages',
+          latestIntervention
         });
       }
 
@@ -279,6 +282,49 @@ exports.logIntervention = async (req, res) => {
       intervention,
       message: 'Intervention action logged successfully.'
     });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+exports.updateIntervention = async (req, res) => {
+  try {
+    const intervention = db.findById('interventions', req.params.id);
+    if (!intervention) {
+      return res.status(404).json({ success: false, error: 'Intervention not found.' });
+    }
+
+    const student = db.findOne('students', { studentId: intervention.studentId });
+    if (!student || !canAccessStudent(req.user, student)) {
+      return res.status(403).json({ success: false, error: 'Access denied for this intervention.' });
+    }
+
+    const allowedStatuses = new Set(['planned', 'in_progress', 'completed', 'rescheduled', 'closed', 'resolved']);
+    const { status, followUpDate, outcome, studentResponse, nextAction, resolutionNotes } = req.body;
+    if (status !== undefined && !allowedStatuses.has(status)) {
+      return res.status(400).json({ success: false, error: 'Invalid intervention status.' });
+    }
+
+    const update = {};
+    if (status !== undefined) update.status = status;
+    if (followUpDate !== undefined) update.followUpDate = followUpDate ? String(followUpDate) : null;
+    if (outcome !== undefined) update.outcome = String(outcome).trim();
+    if (studentResponse !== undefined) update.studentResponse = String(studentResponse).trim();
+    if (nextAction !== undefined) update.nextAction = String(nextAction).trim();
+    if (resolutionNotes !== undefined) update.resolutionNotes = String(resolutionNotes).trim();
+    if (status === 'completed' || status === 'closed') update.completedAt = intervention.completedAt || new Date().toISOString();
+    if (status && status !== 'completed' && status !== 'closed') update.completedAt = null;
+
+    const updated = db.updateById('interventions', intervention._id, update);
+    db.create('activity_logs', {
+      userId: req.user.id,
+      userName: req.user.name,
+      role: req.user.role,
+      action: 'FACULTY_INTERVENTION_UPDATED',
+      details: `Updated intervention for student ${student.name} (${student.studentId})`
+    });
+
+    return res.json({ success: true, intervention: updated, message: 'Intervention follow-up updated successfully.' });
   } catch (err) {
     return res.status(500).json({ success: false, error: err.message });
   }

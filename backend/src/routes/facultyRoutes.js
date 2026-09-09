@@ -7,5 +7,6 @@ router.get('/dashboard', requireAuth, requireRole(['faculty', 'admin']), faculty
 router.get('/students', requireAuth, requireRole(['faculty', 'admin']), facultyController.getStudentsList);
 router.get('/students/:id', requireAuth, requireRole(['faculty', 'admin']), facultyController.getStudentDetail);
 router.post('/interventions', requireAuth, requireRole(['faculty', 'admin']), facultyController.logIntervention);
+router.put('/interventions/:id', requireAuth, requireRole(['faculty', 'admin']), facultyController.updateIntervention);
 
 module.exports = router;

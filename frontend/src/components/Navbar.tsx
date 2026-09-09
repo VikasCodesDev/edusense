@@ -46,7 +46,7 @@ export default function Navbar() {
 
   const facultyLinks = [
     { href: '/faculty/dashboard', label: 'Overview', icon: LayoutDashboard },
-    { href: '/faculty/dashboard#students', label: 'Students Directory', icon: Users },
+    { href: '/faculty/students', label: 'Students Directory', icon: Users },
     { href: '/faculty/analytics', label: 'Cohort Analytics', icon: BarChart3 },
   ];
 

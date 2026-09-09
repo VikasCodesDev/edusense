@@ -86,7 +86,7 @@ export default function StudentDetailPage() {
     return (
       <div className="max-w-xl mx-auto my-16 text-center space-y-4">
         <h2 className="text-xl font-bold text-white">Student Not Found</h2>
-        <button onClick={() => router.push('/faculty/dashboard')} className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-xs">
+        <button onClick={() => router.push('/faculty/students')} className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-xs">
           Back to Faculty Dashboard
         </button>
       </div>
@@ -105,7 +105,7 @@ export default function StudentDetailPage() {
       {/* Navigation & Header */}
       <div className="space-y-4">
         <button
-          onClick={() => router.push('/faculty/dashboard')}
+          onClick={() => router.push('/faculty/students')}
           className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />

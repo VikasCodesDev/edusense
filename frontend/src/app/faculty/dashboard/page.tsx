@@ -11,9 +11,7 @@ import {
   BookOpen,
   Calendar,
   Layers,
-  CheckCircle2,
-  ClipboardList,
-  Clock
+  CheckCircle2
 } from 'lucide-react';
 import {
   BarChart,
@@ -64,7 +62,6 @@ export default function FacultyDashboard() {
 
   const subjectAverages = dashboardData?.subjectAverages || [];
   const earlyWarnings = dashboardData?.earlyWarningAlerts || [];
-  const attentionQueue = dashboardData?.studentsRequiringAttention || [];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
@@ -106,61 +103,6 @@ export default function FacultyDashboard() {
           >
             Review At-Risk Cohort
           </Link>
-        </div>
-      )}
-
-      {attentionQueue.length > 0 && (
-        <div className="subtle-card rounded-2xl p-6 border border-slate-800 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <ClipboardList className="w-4 h-4 text-rose-400" />
-                <span>Prioritized Early-Warning Queue</span>
-              </h3>
-              <p className="text-xs text-slate-400 mt-1">
-                Ordered by current risk score so the highest-risk authorized students appear first.
-              </p>
-            </div>
-            <Link href="/faculty/students?risk=High" className="text-xs text-indigo-400 hover:text-indigo-300">
-              Open Student Directory
-            </Link>
-          </div>
-          <div className="space-y-3">
-            {attentionQueue.map((student: any) => (
-              <div key={student.studentId} className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                <div className="space-y-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-semibold text-white">{student.name}</span>
-                    <span className="text-[10px] font-mono text-slate-500">{student.studentId}</span>
-                    <span className="px-2 py-0.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-[10px] font-semibold">
-                      {student.currentRiskLevel || 'High'} Risk · {student.currentRiskScore ?? 'N/A'}/100
-                    </span>
-                  </div>
-                  <p className="text-xs text-rose-300">{student.mainConcern}</p>
-                  <p className="text-[11px] text-slate-400">
-                    Attendance {student.attendancePct}% · Assessment {student.internalTestAvg}% · Trend {student.performanceTrend}%
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                  {student.latestIntervention ? (
-                    <span className="inline-flex items-center gap-1.5 text-[11px] text-amber-300">
-                      <Clock className="w-3.5 h-3.5" />
-                      {student.latestIntervention.status || 'in_progress'}
-                      {student.latestIntervention.followUpDate ? ` · Due ${student.latestIntervention.followUpDate}` : ''}
-                    </span>
-                  ) : (
-                    <span className="text-[11px] text-slate-500">No intervention logged</span>
-                  )}
-                  <Link
-                    href={`/faculty/students/${student.studentId}`}
-                    className="px-3 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 border border-indigo-500/30 text-xs font-medium text-center"
-                  >
-                    Review & Act
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       )}
 
